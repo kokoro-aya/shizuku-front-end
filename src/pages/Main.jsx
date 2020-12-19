@@ -187,9 +187,9 @@ const Main = (props) => {
     }
   }
 
-  const renderInput = (submit, reset, change, add) => {
+  const renderInput = (submit, reset, change, add, store) => {
     return (
-      <InputBox onSubmit={submit} onReset={reset} onChange={change} onAdd={add} />
+      <InputBox onSubmit={submit} onReset={reset} onChange={change} onAdd={add} store={store} />
     )
   }
 
@@ -213,7 +213,7 @@ const Main = (props) => {
       <Divider orientation='left'>Playground</Divider>
       <Row gutter={[16, 16]}>
         <Col className="gutter-row" xs={24} sm={24} md={12} lg={12} xl={12}>
-          {renderInput(onClickSubmit, onClickReset, onChange, onClickAdd)}
+          {renderInput(onClickSubmit, onClickReset, onChange, onClickAdd, code)}
         </Col>
         <Col className="gutter-row" xs={24} sm={24} md={12} lg={12} xl={12} style={{
           background: 'white',
