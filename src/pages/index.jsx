@@ -2,7 +2,7 @@ import {Layout, Menu, Select, Space, Switch} from 'antd'
 import { Link } from 'umi'
 import { MenuUnfoldOutlined, MenuFoldOutlined, CodeOutlined, EditOutlined, ProfileOutlined } from '@ant-design/icons'
 import React, {Component} from "react"
-import {solarized} from "../fragments/solarized";
+import { material_oceanic } from '../styles/prism-material-oceanic'
 
 const { Header, Sider, Content } = Layout
 const { Option } = Select
@@ -79,6 +79,9 @@ class SimpleLayout extends React.Component {
 }
 
 const Index = (props) => {
+
+  const codeHightlightStyle = material_oceanic
+
   return (
     <>
       <style>{`
@@ -97,7 +100,7 @@ const Index = (props) => {
           object-fit: fill;
           overflow: hidden;
         }
-        ${solarized}
+        ${codeHightlightStyle}
       `}</style>
       <SimpleLayout>
         {props.children}

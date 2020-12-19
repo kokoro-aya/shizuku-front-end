@@ -4,6 +4,7 @@ export default defineConfig({
   nodeModulesTransform: {
     type: 'none',
   },
+  title: '天津風 - 雫',
   routes: [
     {
       path: '/',

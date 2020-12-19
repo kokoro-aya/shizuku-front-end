@@ -4,6 +4,7 @@ import { DownOutlined } from '@ant-design/icons'
 import ContentEditable from "react-contenteditable"
 import { connect } from 'dva'
 import Prism from 'prismjs'
+import Editor from 'react-simple-code-editor'
 require('prismjs/components/prism-swift.min')
 
 const dropdown = (items) => (
@@ -20,8 +21,8 @@ const regex = /<\/?.*?>/g
 
 const InputBox = props => {
 
-  const handleChange = (event) => {
-    props.onChange(event.target.value)
+  const handleChange = (data) => {
+    props.onChange(data)
   }
 
   const handleSubmit = (event) => {
@@ -130,24 +131,25 @@ const InputBox = props => {
         </Space>
       </div>
       <br/>
-      <pre>
-        <code></code>
-        <textarea
+      <div style={{
+        'width': '100%',
+        'height': '400px',
+        'overflow': 'scroll',
+        'border': '1px dashed #aaa',
+      }}>
+        <Editor
           value={props.store}
-          disabled={false}
-          onChange={handleChange}
+          onValueChange={code => handleChange(code)}
+          textareaClassName='editor_textarea'
+          preClassName='editor_pre'
+          padding={10}
+          highlight={code => Prism.highlight(code, Prism.languages.swift, 'swift')}
           style={{
-            'width': '100%',
-            'height': '400px',
             'fontFamily': 'monospace',
-            'border': '1px dashed #aaa',
-            'padding': '5px',
             'resize': 'none',
-            'lineHeight': '100%',
-            'overflow': 'scroll',
           }}
         />
-      </pre>
+      </div>
       <br/>
       <Row justify="space-around" style={{ paddingBottom: '5%'}}>
         <Col span={6} style={{display: 'inline-flex', justifyContent: 'center', alignItems: 'center'}}>

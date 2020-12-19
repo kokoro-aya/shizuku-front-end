@@ -1,10 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="095a5d38-2a3c-4e5c-abe6-e5e436d6447a" name="Default Changelist" comment="Commit 1. Page Layout Setup">
+    <list default="true" id="095a5d38-2a3c-4e5c-abe6-e5e436d6447a" name="Default Changelist" comment="Commit 1.1 removed state in input, now it's lifted up to main">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shizuku.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shizuku.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.umirc.ts" beforeDir="false" afterPath="$PROJECT_DIR$/.umirc.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Input.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Input.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Main.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fragments/solarized.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/index.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,6 +57,10 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src" />
+      <recent name="$PROJECT_DIR$/src/fragments/styles" />
+      <recent name="$PROJECT_DIR$/public" />
+      <recent name="$PROJECT_DIR$/src/lib" />
       <recent name="$PROJECT_DIR$/src/resources" />
     </key>
   </component>
@@ -65,7 +83,7 @@
       <workItem from="1608061690333" duration="31030000" />
       <workItem from="1608300452046" duration="2620000" />
       <workItem from="1608304903576" duration="31778000" />
-      <workItem from="1608342791614" duration="1696000" />
+      <workItem from="1608342791614" duration="8149000" />
     </task>
     <task id="LOCAL-00001" summary="Commit 1. Page Layout Setup">
       <created>1608342769408</created>
@@ -74,15 +92,39 @@
       <option name="project" value="LOCAL" />
       <updated>1608342769408</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Commit 1.1 removed state in input, now it's lifted up to main">
+      <created>1608374320473</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1608374320473</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+    <option name="additionalRoots">
+      <list>
+        <option value="$PROJECT_DIR$/src/.umi" />
+      </list>
+    </option>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Commit 1. Page Layout Setup" />
-    <option name="LAST_COMMIT_MESSAGE" value="Commit 1. Page Layout Setup" />
+    <MESSAGE value="Commit 1.1 removed state in input, now it's lifted up to main" />
+    <option name="LAST_COMMIT_MESSAGE" value="Commit 1.1 removed state in input, now it's lifted up to main" />
   </component>
   <component name="WindowStateProjectService">
     <state x="591" y="178" width="1071" height="700" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1608233786597">
@@ -93,10 +135,10 @@
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="1075" y="384" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1680.1027@0.23.1680.1027" timestamp="1608071646825" />
-    <state x="951" y="270" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1608315402678">
+    <state x="951" y="270" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1608378651942">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state x="951" y="270" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1608315402678" />
+    <state x="951" y="270" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1608378651942" />
     <state width="1379" height="330" key="GridCell.Tab.0.bottom" timestamp="1608342775191">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
