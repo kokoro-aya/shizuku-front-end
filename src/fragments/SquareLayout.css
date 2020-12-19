@@ -1,0 +1,37 @@
+.icon {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.75;
+}
+
+.down {
+  transform: rotate(90deg);
+}
+
+.left {
+  transform: rotate(180deg);
+}
+.up {
+  transform: rotate(270deg);
+}
+
+.black { background-color: black }
+.silver { background-color: silver }
+.grey { background-color: grey }
+.white { background-color: white }
+.red { background-color: red }
+.orange { background-color: orange }
+.gold { background-color: gold }
+.pink { background-color: pink }
+.yellow { background-color: yellow }
+.beige { background-color: beige }
+.brown { background-color: brown }
+.green { background-color: green }
+.azure { background-color: azure }
+.cyan { background-color: cyan }
+.aliceblue { background-color: aliceblue }
+.blue { background-color: blue }
+.purple { background-color: purple }
