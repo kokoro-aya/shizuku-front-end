@@ -10,9 +10,12 @@ export default defineConfig({
       path: '/',
       component: '@/pages/index',
       routes: [
+        { path: '/', component: 'Home' },
         { path: '/main', component: 'Main' },
         { path: '/editor', component: 'Editor'},
         { path: '/about', component: 'About'},
+        { path: '/gallery', component: 'Gallery'},
+        { path: '/help', component: 'Help'},
       ]
     },
   ],

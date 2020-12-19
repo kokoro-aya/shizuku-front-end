@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Dropdown, Space, Row, Col, Menu } from 'antd'
+import {Button, Dropdown, Space, Row, Col, Menu, Card} from 'antd'
 import { DownOutlined } from '@ant-design/icons'
 import ContentEditable from "react-contenteditable"
 import { connect } from 'dva'
@@ -158,6 +158,20 @@ const InputBox = props => {
         <Col span={6} style={{display: 'inline-flex', justifyContent: 'center', alignItems: 'center'}}>
           <Button type="dashed" onClick={handleReset}>清空</Button>
         </Col>
+      </Row>
+      <Row justify='space-around' style={{ paddingBottom: '5%'}}>
+        <Col span={12}>
+          <Card style={{
+            overflow: 'scroll',
+            overflowWrap: 'break-word',
+            boxShadow: '0 4px 8px 0 rgba(0,0,0,0.2)',
+            border: '1px solid #e8e8e8',
+          }} title="备忘事项">
+            目前的Player结构还是写死在后端的，mock里面的player字段仅在initialize时被用到。
+            换地图的时候需要在后端更改对应的Player字段，并且重启一下后端。
+          </Card>
+        </Col>
+        <Col span={12}></Col>
       </Row>
     </div>
   )

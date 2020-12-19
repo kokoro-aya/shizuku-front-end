@@ -4,12 +4,12 @@ import {Col, Row} from 'antd';
 import StatusBar from "../fragments/StatusBar";
 import { count } from "../fragments/Utils";
 import styles from './DashboardLayout.css';
+import ProgressBar from "../fragments/ProgressBar";
 
 const Dashboard = (props) => {
-
   const width = props.grid[0].length
   const fontSize =  Math.round(320 / width)
-  const { initialGem } = props
+  const { initialGem, current, aLength } = props
   const gemOnGround = count(props.grid, 'GEM')
   const openedSwitch = count(props.grid, 'OPENEDSWITCH')
   const closedSwitch = count(props.grid, 'CLOSEDSWITCH')
@@ -61,7 +61,7 @@ const Dashboard = (props) => {
         </div>
       </Row>
       <Row>
-
+        <ProgressBar curr={current} total={aLength} />
       </Row>
     </Col>
   )

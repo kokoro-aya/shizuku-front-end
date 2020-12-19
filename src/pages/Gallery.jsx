@@ -6,7 +6,7 @@ export default () => {
     <div style={{
       minHeight: '600px',
     }}>
-      <Divider orientation='left'>About</Divider>
+      <Divider orientation='left'>Gallery</Divider>
       <div>This section is under construction.</div>
     </div>
   )

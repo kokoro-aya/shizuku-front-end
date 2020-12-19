@@ -50,6 +50,7 @@ const Square = (props) => {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
+    zIndex: '1',
   }
 
   const imgStyle = {

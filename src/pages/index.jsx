@@ -1,6 +1,6 @@
 import {Layout, Menu, Select, Space, Switch} from 'antd'
 import { Link } from 'umi'
-import { MenuUnfoldOutlined, MenuFoldOutlined, CodeOutlined, EditOutlined, ProfileOutlined } from '@ant-design/icons'
+import { MenuUnfoldOutlined, MenuFoldOutlined, CodeOutlined, EditOutlined, ProfileOutlined, HomeOutlined, ReadOutlined, FileSearchOutlined } from '@ant-design/icons'
 import React, {Component} from "react"
 import { material_oceanic } from '../styles/prism-material-oceanic'
 import { material_light } from '../styles/prism-material-light'
@@ -8,7 +8,7 @@ import { darcula } from '../styles/prism-darcula'
 import { atom_dark } from '../styles/prism-atom-dark'
 import { solarized_light } from '../styles/prism-solarized-light'
 
-const { Header, Sider, Content } = Layout
+const { Header, Sider, Content, Footer } = Layout
 const { Option } = Select
 
 class SimpleLayout extends React.Component {
@@ -34,18 +34,33 @@ class SimpleLayout extends React.Component {
       <Layout>
         <Sider theme={this.state.theme} collapsible collapsed={this.state.collapsed} onCollapse={this.onCollapse}>
           <div className="logo" style={{ minHeight : '60px' }}/>
-          <Menu  mode="inline"  defaultSelectedKeys={['1']}>
-            <Menu.Item key="1" icon={<CodeOutlined />}>
+          <Menu theme={this.state.theme} mode="inline"  defaultSelectedKeys={['1']}>
+            <Menu.Item key="1" icon={< HomeOutlined />}>
+              <Link to='/'>
+                Home
+              </Link>
+            </Menu.Item>
+            <Menu.Item key="2" icon={<CodeOutlined />}>
               <Link to="/main">
               Playground
               </Link>
             </Menu.Item>
-            <Menu.Item key="2" icon={<EditOutlined />}>
+            <Menu.Item key="3" icon={<EditOutlined />}>
               <Link to="/editor">
               Edit
               </Link>
             </Menu.Item>
-            <Menu.Item key="3" icon={<ProfileOutlined />}>
+            <Menu.Item key='4' icon={<FileSearchOutlined />}>
+              <Link to={'/gallery'}>
+                Gallery
+              </Link>
+            </Menu.Item>
+            <Menu.Item key='5' icon={<ReadOutlined />}>
+              <Link to='/help'>
+                Help
+              </Link>
+            </Menu.Item>
+            <Menu.Item key="6" icon={<ProfileOutlined />}>
               <Link to="/about">
               About
               </Link>
@@ -87,6 +102,9 @@ class SimpleLayout extends React.Component {
               this.props.children
             }
           </Content>
+          <Footer style={{textAlign: "center"}}>
+            2020 - Amatsukaze x Shizuku (天津風 x 雫) created by ironica
+          </Footer>
         </Layout>
       </Layout>
     )
@@ -131,10 +149,13 @@ const Index = (props) => {
           content: '';
         }
         .square>span {
+          position: absolute;
           width: 100%;
           height: 100%;
+          z-index: 5;
         }
         .square>span>svg {
+          position: relative;
           width: 100%;
           height: auto;
           object-fit: fill;

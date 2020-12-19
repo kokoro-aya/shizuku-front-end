@@ -36,20 +36,19 @@ const activateNotification = (type, message = null, desc = null) => {
 }
 
 const mapStateToProps = state => {
-  const { answer, nextFrame, initialized } = state[namespace]
+  const { answer, nextFrame, initialized, currentLength, answerLength } = state[namespace]
   return {
-    answer, nextFrame, initialized
+    answer, nextFrame, initialized, currentLength, answerLength
   }
 }
 
 const Main = (props) => {
 
   const [ code, setCode ] = useState("Input your code...")
-  const [ initialGem, setInitialGem ] = useState(0)
 
   useEffect(() => {
-    console.log("in useEffect: " + props.initialized)
     const interval = setInterval(() => {
+      // console.log("in setInterval: " + props.initialized)
       if (props.initialized !== 'true') {
         initialFetch()
       } else {
@@ -57,7 +56,7 @@ const Main = (props) => {
       }
     }, 1000)
     return () => clearInterval(interval)
-  }, [])
+  }, [props.initialized])
 
   const initialFetch = () => {
     props.dispatch({
@@ -73,14 +72,14 @@ const Main = (props) => {
     const { nextFrame, answer } = props
     if (nextFrame) {
       if (nextFrame.special === 'GEM') {
-        return () => activateNotification('info', '消息', '捡到了一颗钻石。')
+        activateNotification('info', '消息', '捡到了一颗钻石。')
       }
       if (nextFrame.special === 'SWITCH') {
-        return () => activateNotification('info', '消息', '按下了一个开关。')
+        activateNotification('info', '消息', '按下了一个开关。')
       }
     }
     if (answer.length === 1) {
-      return () => activateNotification('success', '任务执行成功', '程序执行完成。')
+      activateNotification('success', '任务执行成功', '程序执行完成。')
     }
   }
 
@@ -101,7 +100,10 @@ const Main = (props) => {
     console.log(code)
     props.dispatch({
       type: `${namespace}/handleSubmit`,
-      payload: code,
+      payload: {
+        code: code,
+        grid: props.nextFrame.grid,
+      },
     })
   }
 
@@ -195,9 +197,9 @@ const Main = (props) => {
     )
   }
 
-  const renderDashboard = (initialGem, grid, player) => {
+  const renderDashboard = (initialGem, grid, player, curr, len) => {
     return (
-      <Dashboard initialGem={initialGem} grid={grid} player={player} />
+      <Dashboard initialGem={initialGem} grid={grid} player={player} current={curr} aLength={len}/>
     )
   }
 
@@ -226,7 +228,7 @@ const Main = (props) => {
           border: '1px solid #e8e8e8',
         }}>
           <Row>
-            {renderDashboard(props.nextFrame.initialGem, props.nextFrame.grid, props.nextFrame.player)}
+            {renderDashboard(props.nextFrame.initialGem, props.nextFrame.grid, props.nextFrame.player, props.currentLength, props.answerLength)}
           </Row>
           <Row>
             {renderConsole(props.nextFrame.output)}

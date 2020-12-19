@@ -29,23 +29,43 @@ let playgrounds = [
   {
     id: 3,
     grid: [
-      ["OPEN", "OPEN", "OPEN"],
-      ["CLOSED", "OPEN", "CLOSED"],
+      ["BLOCKED", "BLOCKED", "BLOCKED", "OPEN", "OPEN", "CLOSEDSWITCH", "OPEN", "OPEN", "CLOSEDSWITCH", "OPEN", "OPEN", "BLOCKED", "BLOCKED", "BLOCKED", "BLOCKED"],
+      ["BLOCKED", "OPEN", "OPEN", "OPEN", "GEM", "BLOCKED", "BLOCKED", "BLOCKED", "GEM", "OPEN", "CLOSEDSWITCH", "OPEN", "OPEN", "OPENEDSWITCH", "BLOCKED"],
+      ["BLOCKED", "CLOSEDSWITCH", "GEM", "OPEN", "BLOCKED", "BLOCKED", "GEM", "BLOCKED", "BLOCKED", "BLOCKED", "GEM", "OPEN", "CLOSEDSWITCH", "OPEN", "GEM"],
+      ["BLOCKED", "OPEN", "BLOCKED", "BLOCKED", "BLOCKED", "GEM", "CLOSEDSWITCH", "OPEN", "BLOCKED", "BLOCKED", "BLOCKED", "GEM", "BLOCKED", "OPEN", "OPEN"],
+      ["OPENEDSWITCH", "GEM", "CLOSEDSWITCH", "OPEN", "BLOCKED", "BLOCKED", "GEM", "OPEN", "CLOSEDSWITCH", "OPEN", "OPEN", "BLOCKED", "BLOCKED", "OPEN", "OPEN"],
+      ["BLOCKED", "BLOCKED", "BLOCKED", "OPEN", "GEM", "BLOCKED", "BLOCKED", "OPEN", "OPEN", "BLOCKED", "GEM", "BLOCKED", "BLOCKED", "OPEN", "BLOCKED"],
+      ["BLOCKED", "BLOCKED", "BLOCKED", "BLOCKED", "OPEN", "OPEN", "OPEN", "OPEN", "BLOCKED", "BLOCKED", "BLOCKED", "BLOCKED", "BLOCKED", "GEM", "BLOCKED"],
     ],
     player: {
-      x: 0,
-      y: 0,
-      dir: "RIGHT",
+      x: 7,
+      y: 6,
+      dir: "UP",
     },
   },
+  {
+    id: 4,
+    grid: [
+      ['OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN'],
+      ['OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN'],
+      ['OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN'],
+      ['OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN'],
+      ['OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN'],
+    ],
+    player: {
+      x: 1,
+      y: 2,
+      dir: 'DOWN',
+    },
+  }
 ]
 
 let random_playground = 0
 
 export default {
   'get /dev/playground/fetch': function (req, res) {
-    const responseObj = playgrounds[random_playground % playgrounds.length]
-    // const responseObj = playgrounds[0]
+    // const responseObj = playgrounds[random_playground % playgrounds.length]
+    const responseObj = playgrounds[2]
     random_playground += 1
     setTimeout(() => {
       res.json(responseObj)
