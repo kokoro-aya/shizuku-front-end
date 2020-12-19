@@ -36,23 +36,22 @@ const activateNotification = (type, message = null, desc = null) => {
 }
 
 const mapStateToProps = state => {
-  const { answer, nextFrame } = state[namespace]
+  const { answer, nextFrame, initialized } = state[namespace]
   return {
-    answer, nextFrame
+    answer, nextFrame, initialized
   }
 }
 
 const Main = (props) => {
 
-  const [ firstLoad, setFirstLoad ] = useState(true)
-  const [ code, setCode ] = useState("")
+  const [ code, setCode ] = useState("Input your code...")
   const [ initialGem, setInitialGem ] = useState(0)
 
   useEffect(() => {
+    console.log("in useEffect: " + props.initialized)
     const interval = setInterval(() => {
-      if (firstLoad) {
+      if (props.initialized !== 'true') {
         initialFetch()
-        setFirstLoad(false)
       } else {
         getData()
       }
@@ -63,6 +62,7 @@ const Main = (props) => {
   const initialFetch = () => {
     props.dispatch({
       type: `${namespace}/initialFetch`,
+      payload: '',
     })
   }
 
@@ -85,9 +85,10 @@ const Main = (props) => {
   }
 
   const onClickReset = () => {
-    setCode("<p>Input your <span style='color: red'>code</span>...</p>")
+    setCode("Input your code...")
     props.dispatch({
       type: `${namespace}/initialFetch`,
+      payload: '',
     })
   }
 
@@ -97,9 +98,10 @@ const Main = (props) => {
   }
 
   const makeRequest = () => {
+    console.log(code)
     props.dispatch({
       type: `${namespace}/handleSubmit`,
-      payload: code.replace(regex, ''),
+      payload: code,
     })
   }
 

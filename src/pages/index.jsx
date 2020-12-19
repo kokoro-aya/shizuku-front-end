@@ -3,15 +3,23 @@ import { Link } from 'umi'
 import { MenuUnfoldOutlined, MenuFoldOutlined, CodeOutlined, EditOutlined, ProfileOutlined } from '@ant-design/icons'
 import React, {Component} from "react"
 import { material_oceanic } from '../styles/prism-material-oceanic'
+import { material_light } from '../styles/prism-material-light'
+import { darcula } from '../styles/prism-darcula'
+import { atom_dark } from '../styles/prism-atom-dark'
+import { solarized_light } from '../styles/prism-solarized-light'
 
 const { Header, Sider, Content } = Layout
 const { Option } = Select
 
 class SimpleLayout extends React.Component {
-  state = {
-    collapsed: false,
-    theme: 'light',
+  constructor(props) {
+    super(props);
+    this.state = {
+      collapsed: false,
+      theme: 'light',
+    }
   }
+
 
   onCollapse = collapsed => {
     this.setState({ collapsed })
@@ -58,6 +66,13 @@ class SimpleLayout extends React.Component {
                 <Option value="english" disabled>英文/English</Option>
                 <Option value="french" disabled>法语/Français</Option>
               </Select>
+              <Select defaultValue="solarized-light" style={{ width: 144, }} onChange={(sel) => this.props.changeColor(sel)}>
+                <Option value="solarized-light">Solarized Light</Option>
+                <Option value='material-light'>Material Light</Option>
+                <Option value='material-oceanic'>Material Oceanic</Option>
+                <Option value="atom-dark">Atom Dark</Option>
+                <Option value="darcula">Darcula</Option>
+              </Select>
             </Space>
           </Header>
           <Content
@@ -80,7 +95,32 @@ class SimpleLayout extends React.Component {
 
 const Index = (props) => {
 
-  const codeHightlightStyle = material_oceanic
+  let codeHightlightStyle = solarized_light
+
+  const changeColor = type => {
+    switch (type) {
+      case 'atom-dark': {
+        codeHightlightStyle = atom_dark
+        break
+      }
+      case 'darcula': {
+        codeHightlightStyle = darcula
+        break
+      }
+      case 'material-light': {
+        codeHightlightStyle = material_light
+        break
+      }
+      case 'material-oceanic': {
+        codeHightlightStyle = material_oceanic
+        break
+      }
+      case 'solarized-light': {
+        codeHightlightStyle = solarized_light
+        break
+      }
+    }
+  }
 
   return (
     <>
@@ -102,7 +142,7 @@ const Index = (props) => {
         }
         ${codeHightlightStyle}
       `}</style>
-      <SimpleLayout>
+      <SimpleLayout changeColor={() => changeColor}>
         {props.children}
       </SimpleLayout>
     </>

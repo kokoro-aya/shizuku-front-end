@@ -44,8 +44,8 @@ let random_playground = 0
 
 export default {
   'get /dev/playground/fetch': function (req, res) {
-    // const responseObj = playgrounds[random_playground % playgrounds.length]
-    const responseObj = playgrounds[0]
+    const responseObj = playgrounds[random_playground % playgrounds.length]
+    // const responseObj = playgrounds[0]
     random_playground += 1
     setTimeout(() => {
       res.json(responseObj)

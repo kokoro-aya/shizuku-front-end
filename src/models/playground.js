@@ -1,5 +1,6 @@
 import request from "umi-request";
-import { count } from "@/fragments/Utils";
+import {count} from "@/fragments/Utils";
+import * as playgroundService from '../services/playground'
 
 const delay = (millisecond) => {
   return new Promise(resolve => {
@@ -18,15 +19,28 @@ export default {
       player: {},
       output: '',
       initialGem: 0,
-    }
+    },
+    initialized: 'false',
   },
   effects: {
-    handleSubmit(state, sagaEffects) {
+    *handleSubmit({ payload }, sagaEffects) {
       console.log(state)
-      console.log(content)
-      // TODO complete the logic
+      console.log(payload)
+      const { call, put } = sagaEffects
+      try {
+        const answer = yield call(playgroundService.submit, payload)
+        if (answer.status === 'OK') {
+          message.warn('代码提交成功！')
+          yield put({type: 'loadPlayground', payload: answer.payload})
+        } else {
+          message.error(answer.msg)
+        }
+      } catch (e) {
+        message.error('无法连接到远端服务器')
+      }
     },
-    *initialFetch(state, sagaEffects) {
+    *initialFetch({payload}, sagaEffects) {
+      console.log('initializing')
       const endPointURI = '/dev/playground/fetch'
       const { call, put } = sagaEffects
       try {
@@ -39,6 +53,8 @@ export default {
   },
   reducers: {
     initialize(state, { payload }) {
+      console.log('initialized')
+      console.log(state.initialized)
       return {
         answer: [],
         nextFrame: {
@@ -46,7 +62,13 @@ export default {
           player: payload.player,
           output: '',
           initialGem: count(payload.grid, 'GEM')
-        }
+        },
+        initialized: 'true',
+      }
+    },
+    loadPlayground(state, { payload }) {
+      return {
+        ...state, answer: payload
       }
     },
     nextFrame(state, { payload }) {
@@ -63,6 +85,8 @@ export default {
             initialGem: initialGem,
           }
         }
+      } else {
+        return state
       }
     }
   }
