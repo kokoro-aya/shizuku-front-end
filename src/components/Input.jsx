@@ -1,10 +1,11 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {Button, Dropdown, Space, Row, Col, Menu, Card} from 'antd'
 import { DownOutlined } from '@ant-design/icons'
 import ContentEditable from "react-contenteditable"
 import { connect } from 'dva'
 import Prism from 'prismjs'
 import Editor from 'react-simple-code-editor'
+import MapSelector from "../fragments/MapSelector";
 require('prismjs/components/prism-swift.min')
 
 const dropdown = (items) => (
@@ -20,6 +21,8 @@ const dropdown = (items) => (
 const regex = /<\/?.*?>/g
 
 const InputBox = props => {
+
+  const [ isModalDisplayed, setModalDisplayed ] = useState(false)
 
   const handleChange = (data) => {
     props.onChange(data)
@@ -111,6 +114,10 @@ const InputBox = props => {
 
   return (
     <div>
+      <MapSelector visible={isModalDisplayed} close={() => setModalDisplayed(false)}/>
+      <div style={{marginTop: '16px', marginLeft: '16px'}}>
+        <Button type='primary' onClick={() => setModalDisplayed(true)}>更换地图</Button>
+      </div>
       <div style={{margin: '16px'}}>
         <Space wrap size='middle'>
           <Dropdown overlay={dropdown(blockedCommands)} placement="bottomLeft" arrow>
@@ -145,7 +152,8 @@ const InputBox = props => {
           padding={10}
           highlight={code => Prism.highlight(code, Prism.languages.swift, 'swift')}
           style={{
-            'fontFamily': 'monospace',
+            'fontFamily': 'Fira Code, Iosevka, source-code-pro, Menlo, Monaco, Consolas, Droid Sans, monospace, sans-serif',
+            fontVariantLigatures: 'normal',
             'resize': 'none',
           }}
         />
@@ -153,10 +161,10 @@ const InputBox = props => {
       <br/>
       <Row justify="space-around" style={{ paddingBottom: '5%'}}>
         <Col span={6} style={{display: 'inline-flex', justifyContent: 'center', alignItems: 'center'}}>
-          <Button type="primary" onClick={handleSubmit}>▶运行</Button>
+          <Button type="primary" onClick={handleSubmit} disabled={props.disabled}>▶运行</Button>
         </Col>
         <Col span={6} style={{display: 'inline-flex', justifyContent: 'center', alignItems: 'center'}}>
-          <Button type="dashed" onClick={handleReset}>清空</Button>
+          <Button type="dashed" onClick={handleReset}>重置</Button>
         </Col>
       </Row>
       <Row justify='space-around' style={{ paddingBottom: '5%'}}>

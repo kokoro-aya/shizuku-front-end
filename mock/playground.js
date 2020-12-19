@@ -46,16 +46,18 @@ let playgrounds = [
   {
     id: 4,
     grid: [
-      ['OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN'],
-      ['OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN'],
-      ['OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN'],
-      ['OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN'],
-      ['OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN'],
+      ['BLOCKED', 'OPEN', 'GEM', 'OPEN', 'BLOCKED', 'OPEN', 'OPEN', 'GEM', 'OPEN'],
+      ['BLOCKED', 'GEM', 'BLOCKED', 'OPEN', 'BLOCKED', 'GEM', 'BLOCKED', 'OPEN', 'OPEN'],
+      ['BLOCKED', 'OPEN', 'BLOCKED', 'OPEN', 'BLOCKED', 'OPEN', 'BLOCKED', 'OPEN', 'OPEN'],
+      ['BLOCKED', 'OPEN', 'BLOCKED', 'GEM', 'BLOCKED', 'OPEN', 'BLOCKED', 'GEM', 'OPEN'],
+      ['BLOCKED', 'OPEN', 'BLOCKED', 'OPEN', 'BLOCKED', 'GEM', 'BLOCKED', 'OPEN', 'OPENEDSWITCH'],
+      ['BLOCKED', 'GEM', 'BLOCKED', 'OPEN', 'BLOCKED', 'OPEN', 'BLOCKED', 'OPEN', 'OPEN'],
+      ['CLOSEDSWITCH', 'OPEN', 'BLOCKED', 'GEM', 'OPEN', 'OPEN', 'BLOCKED', 'OPEN', 'OPEN'],
     ],
     player: {
-      x: 1,
-      y: 2,
-      dir: 'DOWN',
+      x: 7,
+      y: 6,
+      dir: 'UP',
     },
   }
 ]
@@ -65,7 +67,7 @@ let random_playground = 0
 export default {
   'get /dev/playground/fetch': function (req, res) {
     // const responseObj = playgrounds[random_playground % playgrounds.length]
-    const responseObj = playgrounds[2]
+    const responseObj = playgrounds[3]
     random_playground += 1
     setTimeout(() => {
       res.json(responseObj)

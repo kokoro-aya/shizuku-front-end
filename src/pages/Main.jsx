@@ -4,7 +4,6 @@ import InputBox from '../components/Input'
 import Console from "../components/Console";
 import Dashboard from '../components/Dashboard';
 import {connect} from "../.umi/plugin-dva/exports";
-import { count } from "../fragments/Utils";
 
 const namespace = 'playground'
 
@@ -45,6 +44,8 @@ const mapStateToProps = state => {
 const Main = (props) => {
 
   const [ code, setCode ] = useState("Input your code...")
+  const [ idle, setIdle ] = useState(true)
+  const [ disabled, setDisabled ] = useState(false)
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -56,7 +57,8 @@ const Main = (props) => {
       }
     }, 1000)
     return () => clearInterval(interval)
-  }, [props.initialized])
+  }, [props.initialized, props.nextFrame, props.answer, idle, disabled]) // 如果想要让setInterval和呼叫的函数里对应的变量发生改变，就要在数组里声明
+  // setInterval相当于一个闭包，里面的变量如果不额外声明的话值是固定的
 
   const initialFetch = () => {
     props.dispatch({
@@ -71,19 +73,23 @@ const Main = (props) => {
     })
     const { nextFrame, answer } = props
     if (nextFrame) {
-      if (nextFrame.special === 'GEM') {
+      if (!idle && nextFrame.special === 'GEM') {
+        console.log('Collected a gem')
         activateNotification('info', '消息', '捡到了一颗钻石。')
       }
-      if (nextFrame.special === 'SWITCH') {
+      if (!idle && nextFrame.special === 'SWITCH') {
+        console.log('Toggled a switch')
         activateNotification('info', '消息', '按下了一个开关。')
       }
     }
-    if (answer.length === 1) {
+    if (!idle && answer.length === 0) {
       activateNotification('success', '任务执行成功', '程序执行完成。')
+      setIdle(true)
     }
   }
 
   const onClickReset = () => {
+    setDisabled(false)
     setCode("Input your code...")
     props.dispatch({
       type: `${namespace}/initialFetch`,
@@ -105,6 +111,11 @@ const Main = (props) => {
         grid: props.nextFrame.grid,
       },
     })
+    if (props.answer !== []) {
+      setIdle(false)
+      setDisabled(true)
+      // console.log('set idle to false')
+    }
   }
 
   const onChange = (data) => {
@@ -144,22 +155,22 @@ const Main = (props) => {
         break
       }
       case 6: {
-        const newHTML = code + 'moveForward() '
+        const newHTML = code + 'moveForward() \n'
         setCode(newHTML)
         break
       }
       case 7: {
-        const newHTML = code + 'turnLeft() '
+        const newHTML = code + 'turnLeft() \n'
         setCode(newHTML)
         break
       }
       case 8: {
-        const newHTML = code + 'collectGem() '
+        const newHTML = code + 'collectGem() \n'
         setCode(newHTML)
         break
       }
       case 9: {
-        const newHTML = code + 'toggleSwitch '
+        const newHTML = code + 'toggleSwitch() \n'
         setCode(newHTML)
         break
       }
@@ -191,22 +202,16 @@ const Main = (props) => {
     }
   }
 
-  const renderInput = (submit, reset, change, add, store) => {
-    return (
-      <InputBox onSubmit={submit} onReset={reset} onChange={change} onAdd={add} store={store} />
-    )
+  const renderInput = (submit, reset, change, add, store, disabled) => {
+    return <InputBox onSubmit={submit} onReset={reset} onChange={change} onAdd={add} store={store} disabled={disabled} />
   }
 
   const renderDashboard = (initialGem, grid, player, curr, len) => {
-    return (
-      <Dashboard initialGem={initialGem} grid={grid} player={player} current={curr} aLength={len}/>
-    )
+    return <Dashboard initialGem={initialGem} grid={grid} player={player} current={curr} aLength={len}/>
   }
 
   const renderConsole = (output) => {
-    return (
-      <Console output={output} />
-    )
+    return <Console output={output} />
   }
 
   return (
@@ -217,7 +222,7 @@ const Main = (props) => {
       <Divider orientation='left'>Playground</Divider>
       <Row gutter={[16, 16]}>
         <Col className="gutter-row" xs={24} sm={24} md={12} lg={12} xl={12}>
-          {renderInput(onClickSubmit, onClickReset, onChange, onClickAdd, code)}
+          {renderInput(onClickSubmit, onClickReset, onChange, onClickAdd, code, disabled)}
         </Col>
         <Col className="gutter-row" xs={24} sm={24} md={12} lg={12} xl={12} style={{
           background: 'white',

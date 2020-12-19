@@ -24,6 +24,7 @@ export default {
       player: {},
       output: '',
       initialGem: 0,
+      special: '',
     },
     initialized: 'false',
     currentLength: 0,
@@ -68,7 +69,8 @@ export default {
           grid: payload.grid,
           player: payload.player,
           output: '',
-          initialGem: count(payload.grid, 'GEM')
+          initialGem: count(payload.grid, 'GEM'),
+          special: '',
         },
         initialized: 'true',
         currentLength: 0,
@@ -85,7 +87,7 @@ export default {
         const answer = state.answer
         const initialGem = state.nextFrame.initialGem
         const nextFrame = answer.shift()
-        console.log(nextFrame)
+        // console.log(nextFrame)
         return {
           answer: answer,
           nextFrame: {
@@ -93,6 +95,7 @@ export default {
             player: nextFrame.player,
             output: nextFrame.consoleLog,
             initialGem: initialGem,
+            special: nextFrame.special,
           },
           initialized: 'true',
           currentLength: state.currentLength + 1,
