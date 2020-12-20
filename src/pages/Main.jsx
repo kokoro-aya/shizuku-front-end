@@ -35,9 +35,9 @@ const activateNotification = (type, message = null, desc = null) => {
 }
 
 const mapStateToProps = state => {
-  const { answer, nextFrame, initialized, currentLength, answerLength } = state[namespace]
+  const { answer, nextFrame, initialized, currentLength, answerLength, returnedError } = state[namespace]
   return {
-    answer, nextFrame, initialized, currentLength, answerLength
+    answer, nextFrame, initialized, currentLength, answerLength, returnedError
   }
 }
 
@@ -57,7 +57,7 @@ const Main = (props) => {
       }
     }, 1000)
     return () => clearInterval(interval)
-  }, [props.initialized, props.nextFrame, props.answer, idle, disabled]) // 如果想要让setInterval和呼叫的函数里对应的变量发生改变，就要在数组里声明
+  }, [props.initialized, props.nextFrame, props.answer, idle, disabled, ]) // 如果想要让setInterval和呼叫的函数里对应的变量发生改变，就要在数组里声明
   // setInterval相当于一个闭包，里面的变量如果不额外声明的话值是固定的
 
   const initialFetch = () => {
@@ -82,7 +82,7 @@ const Main = (props) => {
         activateNotification('info', '消息', '按下了一个开关。')
       }
     }
-    if (!idle && answer.length === 0) {
+    if (!props.returnedError && !idle && answer.length === 0) {
       activateNotification('success', '任务执行成功', '程序执行完成。')
       setIdle(true)
     }
@@ -206,13 +206,15 @@ const Main = (props) => {
     return <InputBox onSubmit={submit} onReset={reset} onChange={change} onAdd={add} store={store} disabled={disabled} />
   }
 
-  const renderDashboard = (initialGem, grid, player, curr, len) => {
-    return <Dashboard initialGem={initialGem} grid={grid} player={player} current={curr} aLength={len}/>
+  const renderDashboard = (initialGem, grid, player, curr, len, status) => {
+    return <Dashboard initialGem={initialGem} grid={grid} player={player} current={curr} aLength={len} status={status}/>
   }
 
   const renderConsole = (output) => {
     return <Console output={output} />
   }
+
+  const status = props.returnedError ? 'err' : (idle ? (disabled ? 'success' : 'idle' ) : (disabled ? 'processing' : 'impossible'))
 
   return (
     <div style={{
@@ -233,7 +235,14 @@ const Main = (props) => {
           border: '1px solid #e8e8e8',
         }}>
           <Row>
-            {renderDashboard(props.nextFrame.initialGem, props.nextFrame.grid, props.nextFrame.player, props.currentLength, props.answerLength)}
+            {renderDashboard(
+              props.nextFrame.initialGem,
+              props.nextFrame.grid,
+              props.nextFrame.player,
+              props.currentLength,
+              props.answerLength,
+              status)
+            }
           </Row>
           <Row>
             {renderConsole(props.nextFrame.output)}

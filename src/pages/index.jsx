@@ -70,10 +70,10 @@ class SimpleLayout extends React.Component {
         <Layout className="site-layout">
           <Header className="site-layout-background" style={{ padding: 0, }}>
             <Space size="large">
-              <Switch checked={this.state.theme==='dark'}
+              <Switch checked={this.state.theme === 'dark'}
                       onChange={this.changeTheme}
-                      checkedChildren="Dark"
-                      unCheckedChildren="Light"
+                      checkedChildren="暗色"
+                      unCheckedChildren="亮色"
                       style={{ marginLeft: '16px' }}
                       />
               <Select defaultValue="chinese" style={{ width: 144, }}>

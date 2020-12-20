@@ -52,7 +52,9 @@ const Dashboard = (props) => {
   return (
     <Col span={24}>
       <Row>
-        <StatusBar iconSize={fontSize} gemInBag={initialGem - gemOnGround} gemOnGround={gemOnGround} openedSwitch={openedSwitch} closedSwitch={closedSwitch} />
+        <StatusBar iconSize={fontSize} gemInBag={initialGem - gemOnGround}
+                   gemOnGround={gemOnGround} openedSwitch={openedSwitch}
+                   closedSwitch={closedSwitch} status={props.status} />
       </Row>
       <Row>
         {/*<div className={styles.wrapperGrid}>*/}

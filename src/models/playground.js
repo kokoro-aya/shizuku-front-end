@@ -29,6 +29,7 @@ export default {
     initialized: 'false',
     currentLength: 0,
     answerLength: 1,
+    returnedError: null,
   },
   effects: {
     *handleSubmit({ payload }, sagaEffects) {
@@ -42,9 +43,11 @@ export default {
           yield put({type: 'loadPlayground', payload: answer.payload})
         } else {
           message.error(answer.msg)
+          yield put({type: 'returnError',})
         }
       } catch (e) {
         message.error('无法连接到远端服务器')
+        yield put({type: 'returnError',})
       }
     },
     *initialFetch({payload}, sagaEffects) {
@@ -56,6 +59,7 @@ export default {
         yield put({type: 'initialize', payload: playground})
       } catch (e) {
         message.error('数据获取失败')
+        yield put({type: 'returnError',})
       }
     },
   },
@@ -75,11 +79,12 @@ export default {
         initialized: 'true',
         currentLength: 0,
         answerLength: 1,
+        returnedError: false,
       }
     },
     loadPlayground(state, { payload }) {
       return {
-        ...state, answer: payload, answerLength: payload.length
+        ...state, answer: payload, answerLength: payload.length, returnedError: false,
       }
     },
     nextFrame(state, { payload }) {
@@ -103,6 +108,11 @@ export default {
         }
       } else {
         return state
+      }
+    },
+    returnError(state, { payload }) {
+      return {
+        ...state, returnedError: true,
       }
     }
   }

@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import {Button, Dropdown, Space, Row, Col, Menu, Card} from 'antd'
+import {Button, Dropdown, Space, Row, Col, Menu, Card, Divider} from 'antd'
 import { DownOutlined } from '@ant-design/icons'
 import ContentEditable from "react-contenteditable"
 import { connect } from 'dva'
@@ -118,6 +118,7 @@ const InputBox = props => {
       <div style={{marginTop: '16px', marginLeft: '16px'}}>
         <Button type='primary' onClick={() => setModalDisplayed(true)}>更换地图</Button>
       </div>
+      <Divider orientation='left'>输入指令</Divider>
       <div style={{margin: '16px'}}>
         <Space wrap size='middle'>
           <Dropdown overlay={dropdown(blockedCommands)} placement="bottomLeft" arrow>
