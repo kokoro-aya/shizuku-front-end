@@ -1,7 +1,7 @@
 import {Layout, Menu, Select, Space, Switch} from 'antd'
 import { Link } from 'umi'
 import { MenuUnfoldOutlined, MenuFoldOutlined, CodeOutlined, EditOutlined, ProfileOutlined, HomeOutlined, ReadOutlined, FileSearchOutlined } from '@ant-design/icons'
-import React, {Component} from "react"
+import React, {Component, useState} from "react"
 import { material_oceanic } from '../styles/prism-material-oceanic'
 import { material_light } from '../styles/prism-material-light'
 import { darcula } from '../styles/prism-darcula'
@@ -113,29 +113,28 @@ class SimpleLayout extends React.Component {
 
 const Index = (props) => {
 
-  let codeHightlightStyle = solarized_light
+  const [ codeHighlightStyle, setCodeHighlightStyle ] = useState(solarized_light)
 
   const changeColor = type => {
-    console.log('I\'m in index')
     switch (type) {
       case 'atom-dark': {
-        codeHightlightStyle = atom_dark
+        setCodeHighlightStyle(atom_dark)
         break
       }
       case 'darcula': {
-        codeHightlightStyle = darcula
+        setCodeHighlightStyle(darcula)
         break
       }
       case 'material-light': {
-        codeHightlightStyle = material_light
+        setCodeHighlightStyle(material_light)
         break
       }
       case 'material-oceanic': {
-        codeHightlightStyle = material_oceanic
+        setCodeHighlightStyle(material_oceanic)
         break
       }
       case 'solarized-light': {
-        codeHightlightStyle = solarized_light
+        setCodeHighlightStyle(solarized_light)
         break
       }
     }
@@ -162,7 +161,7 @@ const Index = (props) => {
           object-fit: fill;
           overflow: hidden;
         }
-        ${codeHightlightStyle}
+        ${codeHighlightStyle}
       `}</style>
       <SimpleLayout changeColor={(e) => changeColor(e)}>
         {props.children}

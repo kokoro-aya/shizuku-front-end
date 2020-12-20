@@ -39,7 +39,7 @@ const Dashboard = (props) => {
     paddingTop: '100%',
   }
   const squareStyle = {
-    border: '1px dotted grey',
+    border: '0.5px dotted grey',
     position: 'relative',
   }
   const wrapperStyle = {

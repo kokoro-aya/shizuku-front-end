@@ -1,10 +1,10 @@
 import React from 'react'
-import {Col, Divider, Row, Tabs} from "antd";
+import {Card, Col, Divider, Row, Tabs} from "antd";
 
 const { TabPane } = Tabs
 
 const ShizukuDesc = () => {
-  const style = {marginBottom: '16px'}
+  const style = {marginBottom: '16px', overflowWrap: 'break-word',}
   return (
     <>
       <div style={style}>Shizuku is an application that allows you to write your code and interact with a character in
@@ -33,7 +33,7 @@ const ShizukuDesc = () => {
 }
 
 const AmatsukazeDesc = () => {
-  const style = {marginBottom: '16px'}
+  const style = {marginBottom: '16px', overflowWrap: 'break-word',}
   return (
     <>
       <div style={style}>Amatsukaze is a simple programming language dedicated for the application Shizuku. It supports
@@ -216,20 +216,23 @@ const AmatsukazeDesc = () => {
 
 export default () => {
   return (
-    <div style={{
-      minHeight: '600px',
-    }}>
-      <Divider orientation='left'>帮助说明</Divider>
-      <div style={{margin: '16px'}}>
-        <Tabs defaultActiveKey='1' >
-          <TabPane tab='Shizuku' key='1'>
-            <ShizukuDesc />
-          </TabPane>
-          <TabPane tab='The Amatsukaze Language' key='2'>
-            <AmatsukazeDesc />
-          </TabPane>
-        </Tabs>
-      </div>
-    </div>
+      <Row>
+        <Col xs={24} sm={22} md={20} lg={18} xl={16}>
+          <Divider orientation='left'>帮助说明</Divider>
+          <Card title='Amatsukaze x Shizuku' style={{
+            boxShadow: '0 4px 8px 0 rgba(0,0,0,0.2)',
+            border: '1px solid #e8e8e8',
+          }}>
+            <Tabs defaultActiveKey='1' >
+              <TabPane tab='Shizuku' key='1'>
+                <ShizukuDesc />
+              </TabPane>
+              <TabPane tab='The Amatsukaze Language' key='2'>
+                <AmatsukazeDesc />
+              </TabPane>
+            </Tabs>
+          </Card>
+        </Col>
+      </Row>
   )
 }

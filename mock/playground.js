@@ -59,6 +59,28 @@ let playgrounds = [
       y: 6,
       dir: 'UP',
     },
+  },
+  {
+    id: 5,
+    grid: [
+      ['GEM', 'OPEN', 'OPEN', 'GEM', 'OPEN', 'OPEN', 'GEM', 'GEM', 'GEM', 'GEM', 'OPEN', 'OPEN', 'GEM', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'GEM', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'GEM', 'GEM', 'OPEN', 'OPEN', 'OPEN', ],
+      ['GEM', 'OPEN', 'OPEN', 'GEM', 'OPEN', 'OPEN', 'GEM', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'GEM', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'GEM', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'GEM', 'OPEN', 'OPEN', 'GEM', 'OPEN', 'OPEN', ],
+      ['GEM', 'GEM', 'GEM', 'GEM', 'OPEN', 'OPEN', 'GEM', 'GEM', 'GEM', 'GEM', 'OPEN', 'OPEN', 'GEM', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'GEM', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'GEM', 'OPEN', 'OPEN', 'GEM', 'OPEN', 'OPEN', ],
+      ['GEM', 'OPEN', 'OPEN', 'GEM', 'OPEN', 'OPEN', 'GEM', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'GEM', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'GEM', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'GEM', 'OPEN', 'OPEN', 'GEM', 'OPEN', 'OPEN', ],
+      ['GEM', 'OPEN', 'OPEN', 'GEM', 'OPEN', 'OPEN', 'GEM', 'GEM', 'GEM', 'GEM', 'OPEN', 'OPEN', 'GEM', 'GEM', 'GEM', 'GEM', 'OPEN', 'OPEN', 'GEM', 'GEM', 'GEM', 'GEM', 'OPEN', 'OPEN', 'OPEN', 'GEM', 'GEM', 'OPEN', 'OPEN', 'OPEN', ],
+      ['OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', ],
+      ['OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', ],
+      ['GEM', 'OPEN', 'OPEN', 'OPEN', 'GEM', 'OPEN', 'OPEN', 'OPEN', 'GEM', 'GEM', 'OPEN', 'OPEN', 'OPEN', 'GEM', 'GEM', 'GEM', 'OPEN', 'OPEN', 'OPEN', 'GEM', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'GEM', 'GEM', 'GEM', 'OPEN', 'OPEN', ],
+      ['GEM', 'OPEN', 'OPEN', 'OPEN', 'GEM', 'OPEN', 'OPEN', 'GEM', 'OPEN', 'OPEN', 'GEM', 'OPEN', 'OPEN', 'GEM', 'OPEN', 'OPEN', 'GEM', 'OPEN', 'OPEN', 'GEM', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'GEM', 'OPEN', 'OPEN', 'GEM', 'OPEN', ],
+      ['GEM', 'OPEN', 'GEM', 'OPEN', 'GEM', 'OPEN', 'OPEN', 'GEM', 'OPEN', 'OPEN', 'GEM', 'OPEN', 'OPEN', 'GEM', 'GEM', 'GEM', 'OPEN', 'OPEN', 'OPEN', 'GEM', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'GEM', 'OPEN', 'OPEN', 'GEM', 'OPEN', ],
+      ['OPEN', 'GEM', 'OPEN', 'GEM', 'OPEN', 'OPEN', 'OPEN', 'GEM', 'OPEN', 'OPEN', 'GEM', 'OPEN', 'OPEN', 'GEM', 'OPEN', 'GEM', 'OPEN', 'OPEN', 'OPEN', 'GEM', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'GEM', 'OPEN', 'OPEN', 'GEM', 'OPEN', ],
+      ['OPEN', 'GEM', 'OPEN', 'GEM', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'GEM', 'GEM', 'OPEN', 'OPEN', 'OPEN', 'GEM', 'OPEN', 'OPEN', 'GEM', 'OPEN', 'OPEN', 'GEM', 'GEM', 'GEM', 'GEM', 'OPEN', 'OPEN', 'GEM', 'GEM', 'GEM', 'OPEN', 'OPEN', ],
+    ],
+    player: {
+      x: 0,
+      y: 0,
+      dir: 'RIGHT',
+    }
   }
 ]
 
@@ -67,7 +89,7 @@ let random_playground = 0
 export default {
   'get /dev/playground/fetch': function (req, res) {
     // const responseObj = playgrounds[random_playground % playgrounds.length]
-    const responseObj = playgrounds[2]
+    const responseObj = playgrounds[4]
     random_playground += 1
     setTimeout(() => {
       res.json(responseObj)
