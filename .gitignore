@@ -20,7 +20,6 @@
 /.env.local
 
 # 3rd party
-/src/styles
 
 # non relevant
 /etc

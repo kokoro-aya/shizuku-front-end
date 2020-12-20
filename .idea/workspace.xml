@@ -10,16 +10,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="095a5d38-2a3c-4e5c-abe6-e5e436d6447a" name="Default Changelist" comment="Commit 3.1 Add modal for change of map (currently not implemented)">
+    <list default="true" id="095a5d38-2a3c-4e5c-abe6-e5e436d6447a" name="Default Changelist" comment="Commit 3.2 minor updates">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mock/playground.js" beforeDir="false" afterPath="$PROJECT_DIR$/mock/playground.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Dashboard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dashboard.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Input.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Input.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fragments/StatusBar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/fragments/StatusBar.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/playground.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/playground.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Help.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Help.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Home.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Main.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/About.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/About.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/index.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -92,7 +86,8 @@
       <workItem from="1608300452046" duration="2620000" />
       <workItem from="1608304903576" duration="31778000" />
       <workItem from="1608342791614" duration="35412000" />
-      <workItem from="1608417825930" duration="13680000" />
+      <workItem from="1608417825930" duration="14032000" />
+      <workItem from="1608476867982" duration="763000" />
     </task>
     <task id="LOCAL-00001" summary="Commit 1. Page Layout Setup">
       <created>1608342769408</created>
@@ -136,7 +131,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608417083232</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Commit 3.2 minor updates">
+      <created>1608474408473</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1608474408473</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -166,7 +168,8 @@
     <MESSAGE value="Commit 2.1" />
     <MESSAGE value="Commit 3. First Deliverable, added a progress bar" />
     <MESSAGE value="Commit 3.1 Add modal for change of map (currently not implemented)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Commit 3.1 Add modal for change of map (currently not implemented)" />
+    <MESSAGE value="Commit 3.2 minor updates" />
+    <option name="LAST_COMMIT_MESSAGE" value="Commit 3.2 minor updates" />
   </component>
   <component name="WindowStateProjectService">
     <state x="591" y="178" width="1071" height="700" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1608233786597">
@@ -249,10 +252,10 @@
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="1379" height="330" key="GridCell.Tab.3.right/0.23.1680.1027@0.23.1680.1027" timestamp="1608417101778" />
-    <state x="580" y="256" key="Vcs.Push.Dialog.v2" timestamp="1608404849582">
+    <state x="580" y="256" key="Vcs.Push.Dialog.v2" timestamp="1608477326372">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state x="580" y="256" key="Vcs.Push.Dialog.v2/0.23.1680.1027@0.23.1680.1027" timestamp="1608404849582" />
+    <state x="580" y="256" key="Vcs.Push.Dialog.v2/0.23.1680.1027@0.23.1680.1027" timestamp="1608477326372" />
     <state x="277" y="432" width="1200" height="787" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1608341955466">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>

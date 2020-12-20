@@ -116,6 +116,7 @@ const Index = (props) => {
   let codeHightlightStyle = solarized_light
 
   const changeColor = type => {
+    console.log('I\'m in index')
     switch (type) {
       case 'atom-dark': {
         codeHightlightStyle = atom_dark
@@ -163,7 +164,7 @@ const Index = (props) => {
         }
         ${codeHightlightStyle}
       `}</style>
-      <SimpleLayout changeColor={() => changeColor}>
+      <SimpleLayout changeColor={(e) => changeColor(e)}>
         {props.children}
       </SimpleLayout>
     </>
