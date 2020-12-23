@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import {Modal, Cascader, Switch, Row, Col, Space, Slider,Radio} from 'antd'
+import {Modal, Cascader, Switch, Row, Col, Space, Slider, Radio, Divider} from 'antd'
 import { CloseOutlined, CheckOutlined } from '@ant-design/icons'
 
 const Customizable = (props) => {
@@ -29,15 +29,16 @@ const Customizable = (props) => {
         <Col span={8}>
           <Space direction='vertical'>
             <div>
+              <Divider orientation='left'>横坐标</Divider>
               <Slider min={0} max={10} defaultValue={5} onChange={onHorizontalChange} />
-              横坐标
             </div>
             <div>
+              <Divider orientation='left'>纵坐标</Divider>
               <Slider min={0} max={10} defaultValue={5} onChange={onVerticalChange}/>
-              纵坐标
             </div>
 
             <Radio.Group onChange={onDirectionChange} value={props.dir}>
+              <Divider orientation='left'>玩家面对的方向</Divider>
               <Radio value='up'>上</Radio>
               <Radio value='down'>下</Radio>
               <Radio value='left'>左</Radio>
@@ -55,27 +56,45 @@ const MapSelector = (props) => {
   const [ check, setCheck ] = useState(false)
 
   const options = [{
-    value: 'plain',
-    label: '平原',
+    value: 'simple',
+    label: '简单',
+    children: [{
+      value: 'plain',
+      label: '平原',
+    }, {
+      value: '3-walls',
+      label: '三堵墙',
+    },{
+      value: 'helloworld',
+      label: '你好世界',
+    }],
   },{
-    value: '3-walls',
-    label: '三堵墙',
-  },{
-    value: 'go-and-back',
-    label: '回形路径',
-  },{
-    value: 'labyrinth',
+    value: 'maze',
     label: '迷宫',
+    children: [
+      {
+        value: 'go-and-back',
+        label: '回形路径',
+      },{
+        value: 'labyrinth',
+        label: '迷宫',
+      }],
   },{
     value: 'mountainous',
-    label: '崇山峻岭',
-  },{
-    value: 'small-path',
-    label: '小径',
-  },{
-    value: 'zigzag',
-    label: 'Z字',
-  }]
+    label: '丘陵',
+    children: [
+      {
+        value: 'mountains',
+        label: '崇山峻岭',
+      },{
+        value: 'small-path',
+        label: '小径',
+      },{
+        value: 'zigzag',
+        label: 'Z字',
+      }
+    ]
+  },]
 
   const onCascadeChange = value => {
     console.log("Cascade: " + value)

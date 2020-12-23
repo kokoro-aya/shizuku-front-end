@@ -38,7 +38,7 @@ const InputBox = props => {
   }
 
   const handleAdd = (num) => {
-    props.onAdd(num)
+    props.onAdd(num, document.getElementById('amatsukaze-code-editor'))
   }
 
 
@@ -114,6 +114,7 @@ const InputBox = props => {
 
   return (
     <div>
+      <Divider orientation='left'>Playground</Divider>
       <MapSelector visible={isModalDisplayed} close={() => setModalDisplayed(false)}/>
       <div style={{marginTop: '16px', marginLeft: '16px'}}>
         <Button type='primary' onClick={() => setModalDisplayed(true)}>更换地图</Button>
@@ -150,6 +151,7 @@ const InputBox = props => {
           onValueChange={code => handleChange(code)}
           textareaClassName='editor_textarea'
           preClassName='editor_pre'
+          textareaId='amatsukaze-code-editor'
           padding={10}
           highlight={code => Prism.highlight(code, Prism.languages.swift, 'swift')}
           style={{

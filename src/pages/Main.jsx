@@ -122,84 +122,15 @@ const Main = (props) => {
     setCode(data)
   }
 
-  const onClickAdd = (num) => {
-    switch (num) {
-      case 0: {
-        const newHTML = code + 'isBlocked '
-        setCode(newHTML)
-        break
-      }
-      case 1: {
-        const newHTML = code + 'isBlockedLeft '
-        setCode(newHTML)
-        break
-      }
-      case 2: {
-        const newHTML = code + 'isBlockedRight '
-        setCode(newHTML)
-        break
-      }
-      case 3: {
-        const newHTML = code + 'isOnGem '
-        setCode(newHTML)
-        break
-      }
-      case 4: {
-        const newHTML = code + 'isOnOpenedSwitch '
-        setCode(newHTML)
-        break
-      }
-      case 5: {
-        const newHTML = code + 'isOnClosedSwitch '
-        setCode(newHTML)
-        break
-      }
-      case 6: {
-        const newHTML = code + 'moveForward() \n'
-        setCode(newHTML)
-        break
-      }
-      case 7: {
-        const newHTML = code + 'turnLeft() \n'
-        setCode(newHTML)
-        break
-      }
-      case 8: {
-        const newHTML = code + 'collectGem() \n'
-        setCode(newHTML)
-        break
-      }
-      case 9: {
-        const newHTML = code + 'toggleSwitch() \n'
-        setCode(newHTML)
-        break
-      }
-      case 10: {
-        const newHTML = code + 'print() '
-        setCode(newHTML)
-        break
-      }
-      case 11: {
-        const newHTML = code + 'for _ in 1 ... 3 { } '
-        setCode(newHTML)
-        break
-      }
-      case 12: {
-        const newHTML = code + 'while cond { } '
-        setCode(newHTML)
-        break
-      }
-      case 13: {
-        const newHTML = code + 'repeat { } while cond '
-        setCode(newHTML)
-        break
-      }
-      case 14: {
-        const newHTML = code + 'func foo() -> Void { } '
-        setCode(newHTML)
-        break
-      }
-    }
+  const onClickAdd = (num, el) => {
+    const start = el.selectionStart
+    const end = el.selectionEnd
+    const toAdd = [
+      'isBlocked ', 'isBlockedLeft', 'isBlockedRight', 'isOnGem', 'isOnOpenedSwitch ', 'isOnClosedSwitch ', 'moveForward() \n',
+      'turnLeft() \n', 'collectGem() \n', 'toggleSwitch() \n', 'print() ', 'for _ in 1 ... 3 { } ', 'while cond { } ',
+      'repeat { } while cond ', 'func foo() -> Void { } ',
+    ]
+    setCode(code.substring(0, start) + toAdd[num] + code.substring(end, code.length))
   }
 
   const renderInput = (submit, reset, change, add, store, disabled) => {
@@ -221,32 +152,32 @@ const Main = (props) => {
       minHeight: '600px',
       overflow: 'hidden',
     }}>
-      <Divider orientation='left'>Playground</Divider>
       <Row gutter={[16, 16]}>
         <Col className="gutter-row" xs={24} sm={24} md={12} lg={12} xl={12}>
           {renderInput(onClickSubmit, onClickReset, onChange, onClickAdd, code, disabled)}
         </Col>
-        <Col className="gutter-row" xs={24} sm={24} md={12} lg={12} xl={12} style={{
-          background: 'white',
-          minHeight: '600px',
-          overflow: 'scroll',
-          overflowWrap: 'break-word',
-          boxShadow: '0 4px 8px 0 rgba(0,0,0,0.2)',
-          border: '1px solid #e8e8e8',
-        }}>
-          <Row>
-            {renderDashboard(
-              props.nextFrame.initialGem,
-              props.nextFrame.grid,
-              props.nextFrame.player,
-              props.currentLength,
-              props.answerLength,
-              status)
-            }
-          </Row>
-          <Row>
-            {renderConsole(props.nextFrame.output)}
-          </Row>
+        <Col className="gutter-row" xs={24} sm={24} md={12} lg={12} xl={12} >
+          <div style={{
+            background: 'white',
+            overflow: 'scroll',
+            overflowWrap: 'break-word',
+            boxShadow: '0 4px 8px 0 rgba(0,0,0,0.2)',
+            border: '1px solid #e8e8e8',
+          }}>
+            <Row>
+              {renderDashboard(
+                props.nextFrame.initialGem,
+                props.nextFrame.grid,
+                props.nextFrame.player,
+                props.currentLength,
+                props.answerLength,
+                status)
+              }
+            </Row>
+            <Row>
+              {renderConsole(props.nextFrame.output)}
+            </Row>
+          </div>
         </Col>
       </Row>
     </div>

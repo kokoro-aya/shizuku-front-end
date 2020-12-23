@@ -1,6 +1,6 @@
 import {Layout, Menu, Select, Space, Switch} from 'antd'
 import { Link } from 'umi'
-import { MenuUnfoldOutlined, MenuFoldOutlined, CodeOutlined, EditOutlined, ProfileOutlined, HomeOutlined, ReadOutlined, FileSearchOutlined } from '@ant-design/icons'
+import { CodeOutlined, EditOutlined, ProfileOutlined, HomeOutlined, ReadOutlined, FileSearchOutlined, AndroidOutlined, MessageOutlined, } from '@ant-design/icons'
 import React, {Component, useState} from "react"
 import { material_oceanic } from '../styles/prism-material-oceanic'
 import { material_light } from '../styles/prism-material-light'
@@ -32,7 +32,17 @@ class SimpleLayout extends React.Component {
   render() {
     return (
       <Layout>
-        <Sider theme={this.state.theme} collapsible collapsed={this.state.collapsed} onCollapse={this.onCollapse}>
+        <Sider theme={this.state.theme}
+               collapsible collapsed={this.state.collapsed}
+               onCollapse={this.onCollapse}
+               style={{
+                 overflow: 'auto',
+                 height: '100vh',
+                 position: 'sticky',
+                 left: 0,
+                 top: 0, // source: https://github.com/ant-design/ant-design/issues/6997
+               }}
+        >
           <div className="logo" style={{ minHeight : '60px' }}/>
           <Menu theme={this.state.theme} mode="inline"  defaultSelectedKeys={['1']}>
             <Menu.Item key="1" icon={< HomeOutlined />}>
@@ -42,12 +52,12 @@ class SimpleLayout extends React.Component {
             </Menu.Item>
             <Menu.Item key="2" icon={<CodeOutlined />}>
               <Link to="/main">
-              Playground
+                Playground
               </Link>
             </Menu.Item>
             <Menu.Item key="3" icon={<EditOutlined />}>
               <Link to="/editor">
-              Edit
+                Edit
               </Link>
             </Menu.Item>
             <Menu.Item key='4' icon={<FileSearchOutlined />}>
@@ -55,20 +65,30 @@ class SimpleLayout extends React.Component {
                 Gallery
               </Link>
             </Menu.Item>
-            <Menu.Item key='5' icon={<ReadOutlined />}>
+            <Menu.Item key='5' icon={<AndroidOutlined />}>
+              <Link to={'/story'}>
+                Story
+              </Link>
+            </Menu.Item>
+            <Menu.Item key='6' icon={<ReadOutlined />}>
               <Link to='/help'>
                 Help
               </Link>
             </Menu.Item>
-            <Menu.Item key="6" icon={<ProfileOutlined />}>
+            <Menu.Item key='7' icon={<MessageOutlined />}>
+              <Link to='/feedback'>
+                Feedback
+              </Link>
+            </Menu.Item>
+            <Menu.Item key="8" icon={<ProfileOutlined />}>
               <Link to="/about">
-              About
+                About
               </Link>
             </Menu.Item>
           </Menu>
         </Sider>
         <Layout className="site-layout">
-          <Header className="site-layout-background" style={{ padding: 0, }}>
+          <Header className="site-layout-background" style={{ /*position: 'fixed', zIndex: 1, width: '100%',*/ padding: 0, }}>
             <Space size="large">
               <Switch checked={this.state.theme === 'dark'}
                       onChange={this.changeTheme}
