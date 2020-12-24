@@ -1,5 +1,5 @@
 import request from "umi-request";
-import {count} from "@/fragments/Utils";
+import {count, pack} from "@/fragments/Utils";
 import * as playgroundService from '../services/playground';
 import {message} from 'antd';
 
@@ -14,14 +14,48 @@ export default {
   state: {
     answer: [],
     nextFrame: {
-      grid: [
-        ['OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN'],
-        ['OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN'],
-        ['OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN'],
-        ['OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN'],
-        ['OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN'],
-      ],
-      player: {},
+      grid: {
+        grid: [
+          ['OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN'],
+          ['OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN'],
+          ['OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN'],
+          ['OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN'],
+          ['OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN'],
+        ],
+        layout: [
+          ['NONE', 'NONE', 'NONE', 'NONE', 'NONE', 'NONE', 'NONE', 'NONE'],
+          ['NONE', 'NONE', 'NONE', 'NONE', 'NONE', 'NONE', 'NONE', 'NONE'],
+          ['NONE', 'NONE', 'NONE', 'NONE', 'NONE', 'NONE', 'NONE', 'NONE'],
+          ['NONE', 'NONE', 'NONE', 'NONE', 'NONE', 'NONE', 'NONE', 'NONE'],
+          ['NONE', 'NONE', 'NONE', 'NONE', 'NONE', 'NONE', 'NONE', 'NONE'],
+        ],
+        layout2s: [
+          [{color: "WHITE", level: 2}, {color: "WHITE", level: 2}, {color: "WHITE", level: 2},
+            {color: "WHITE", level: 2}, {color: "WHITE", level: 2}, {color: "WHITE", level: 2},
+            {color: "WHITE", level: 2}, {color: "WHITE", level: 2}],
+          [{color: "WHITE", level: 2}, {color: "WHITE", level: 2}, {color: "WHITE", level: 2},
+            {color: "WHITE", level: 2}, {color: "WHITE", level: 2}, {color: "WHITE", level: 2},
+            {color: "WHITE", level: 2}, {color: "WHITE", level: 2}],
+          [{color: "WHITE", level: 2}, {color: "WHITE", level: 2}, {color: "WHITE", level: 2},
+            {color: "WHITE", level: 2}, {color: "WHITE", level: 2}, {color: "WHITE", level: 2},
+            {color: "WHITE", level: 2}, {color: "WHITE", level: 2}],
+          [{color: "WHITE", level: 2}, {color: "WHITE", level: 2}, {color: "WHITE", level: 2},
+            {color: "WHITE", level: 2}, {color: "WHITE", level: 2}, {color: "WHITE", level: 2},
+            {color: "WHITE", level: 2}, {color: "WHITE", level: 2}],
+          [{color: "WHITE", level: 2}, {color: "WHITE", level: 2}, {color: "WHITE", level: 2},
+            {color: "WHITE", level: 2}, {color: "WHITE", level: 2}, {color: "WHITE", level: 2},
+            {color: "WHITE", level: 2}, {color: "WHITE", level: 2}],
+        ]
+      },
+      players: [{
+        id: 0,
+        x: 0,
+        y: 0,
+        dir: "RIGHT",
+        role: "SPECIALIST",
+      }],
+      portals: [],
+      locks: [],
       output: '',
       initialGem: 0,
       special: '',
@@ -36,7 +70,8 @@ export default {
       // console.log(payload)
       const { call, put } = sagaEffects
       try {
-        const answer = yield call(playgroundService.submit, payload)
+        const packed = pack(payload.code, payload.grid, payload.portals, payload.locks, payload.players)
+        const answer = yield call(playgroundService.submit, packed)
         console.log(answer)
         if (answer.status === 'OK') {
           message.warn('代码提交成功！')
@@ -71,9 +106,11 @@ export default {
         answer: [],
         nextFrame: {
           grid: payload.grid,
-          player: payload.player,
+          players: payload.players,
+          portals: payload.portals,
+          locks: payload.locks,
           output: '',
-          initialGem: count(payload.grid, 'GEM'),
+          initialGem: count(payload.grid.layout, 'GEM'),
           special: '',
         },
         initialized: 'true',
@@ -96,8 +133,10 @@ export default {
         return {
           answer: answer,
           nextFrame: {
-            grid: nextFrame.grid.grid,
-            player: nextFrame.player,
+            grid: nextFrame.grid,
+            players: nextFrame.players,
+            portals: nextFrame.portals,
+            locks: nextFrame.locks,
             output: nextFrame.consoleLog,
             initialGem: initialGem,
             special: nextFrame.special,

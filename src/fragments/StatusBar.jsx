@@ -10,7 +10,7 @@ const Status = (props) => {
 }
 
 const StatusBar = (props) => {
-  const { gemInBag, gemOnGround, openedSwitch, closedSwitch } = props
+  const { gemInBag, gemOnGround, openedSwitch, closedSwitch, beeperAtGround } = props
   const spanStyle = { fontSize: `16px`, marginLeft: '8px' }
   return (
     <>
@@ -27,7 +27,7 @@ const StatusBar = (props) => {
           </div>
           <div>
           <AlertTwoTone twoToneColor='#f7c242' style={{fontSize: `16px`}} />
-          <Tag style={spanStyle} color='orange'>Beeper: 0 / 0</Tag>
+          <Tag style={spanStyle} color='orange'>Beeper: ?? / {beeperAtGround}</Tag>
           </div>
           <div style={{ paddingLeft: '16px' }}>
             <Status status={props.status} style={spanStyle}/>

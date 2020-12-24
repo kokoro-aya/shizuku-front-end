@@ -172,15 +172,15 @@ const InputBox = props => {
       </Row>
       <Row justify='space-around' style={{ paddingBottom: '5%'}}>
         <Col span={12}>
-          <Card style={{
-            overflow: 'scroll',
-            overflowWrap: 'break-word',
-            boxShadow: '0 4px 8px 0 rgba(0,0,0,0.2)',
-            border: '1px solid #e8e8e8',
-          }} title="备忘事项">
-            目前的Player结构还是写死在后端的，mock里面的player字段仅在initialize时被用到。
-            换地图的时候需要在后端更改对应的Player字段，并且重启一下后端。
-          </Card>
+          {/*<Card style={{*/}
+          {/*  overflow: 'scroll',*/}
+          {/*  overflowWrap: 'break-word',*/}
+          {/*  boxShadow: '0 4px 8px 0 rgba(0,0,0,0.2)',*/}
+          {/*  border: '1px solid #e8e8e8',*/}
+          {/*}} title="备忘事项">*/}
+          {/*  目前的Player结构还是写死在后端的，mock里面的player字段仅在initialize时被用到。*/}
+          {/*  换地图的时候需要在后端更改对应的Player字段，并且重启一下后端。*/}
+          {/*</Card>*/}
         </Col>
         <Col span={12}></Col>
       </Row>
