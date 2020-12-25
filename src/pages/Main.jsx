@@ -109,6 +109,9 @@ const Main = (props) => {
       payload: {
         code: code,
         grid: props.nextFrame.grid,
+        portals: props.nextFrame.portals,
+        locks: props.nextFrame.locks,
+        players: props.nextFrame.players,
       },
     })
     if (props.answer !== []) {
@@ -137,8 +140,8 @@ const Main = (props) => {
     return <InputBox onSubmit={submit} onReset={reset} onChange={change} onAdd={add} store={store} disabled={disabled} />
   }
 
-  const renderDashboard = (initialGem, grid, player, curr, len, status) => {
-    return <Dashboard initialGem={initialGem} grid={grid} player={player} current={curr} aLength={len} status={status}/>
+  const renderDashboard = (initialGem, grid, players, locks, curr, len, status) => {
+    return <Dashboard initialGem={initialGem} grid={grid} players={players} locks={locks} current={curr} aLength={len} status={status}/>
   }
 
   const renderConsole = (output) => {
@@ -168,7 +171,8 @@ const Main = (props) => {
               {renderDashboard(
                 props.nextFrame.initialGem,
                 props.nextFrame.grid,
-                props.nextFrame.player,
+                props.nextFrame.players,
+                props.nextFrame.locks,
                 props.currentLength,
                 props.answerLength,
                 status)

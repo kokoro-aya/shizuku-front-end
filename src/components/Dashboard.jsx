@@ -7,26 +7,71 @@ import styles from './DashboardLayout.css';
 import ProgressBar from "../fragments/ProgressBar";
 
 const Dashboard = (props) => {
-  const width = props.grid[0].length
+  const width = props.grid.grid[0].length
   const fontSize =  Math.round(320 / width)
   const { initialGem, current, aLength } = props
-  const gemOnGround = count(props.grid, 'GEM')
-  const openedSwitch = count(props.grid, 'OPENEDSWITCH')
-  const closedSwitch = count(props.grid, 'CLOSEDSWITCH')
+  const gemOnGround = count(props.grid.layout, 'GEM')
+  const openedSwitch = count(props.grid.layout, 'OPENEDSWITCH')
+  const closedSwitch = count(props.grid.layout, 'CLOSEDSWITCH')
+  // const beeperInBag = // TODO
+  const beeperAtGround = count(props.grid.layout, "BEEPER")
 
-  const renderGrid = (grid, player, size) => {
-    return grid.map((gridRow, y) => {
+  const preprocessGrid = (grid, layout, layout2s, players, locks) => {
+    return grid.flatMap((gridRow, y) => {
+      const row = gridRow.map((gridItem, x) => {
+        if (players.filter(p => p.x === x && p.y === y).length !== 0) {
+          return {
+            x: x,
+            y: y,
+            grid: grid[y][x],
+            layout: layout[y][x],
+            color: layout2s[y][x].color,
+            level: layout2s[y][x].level,
+            isPlayer: true,
+            playerId: players.filter(p => p.x === x && p.y === y)[0].id,
+            // TODO: collectedGem, stamina, beeperInBag
+          }
+        } else if (locks.filter(p => p.coo.x === x && p.coo.y === y).length !== 0) {
+          return {
+            x: x,
+            y: y,
+            grid: grid[y][x],
+            layout: layout[y][x],
+            color: layout2s[y][x].color,
+            level: layout2s[y][x].level,
+            isPlayer: false,
+            lockInfo: locks.filter(p => p.coo.x === x && p.coo.y === y)[0].controlled,
+          }
+        } else {
+          return {
+            x: x,
+            y: y,
+            grid: grid[y][x],
+            layout: layout[y][x],
+            color: layout2s[y][x].color,
+            level: layout2s[y][x].level,
+            isPlayer: false,
+          }
+        }
+      })
+      return [row]
+    })
+  }
+
+  const renderGrid = (grid, players, locks, size) => {
+    const preprocessedGrid = preprocessGrid(grid.grid, grid.layout, grid.layout2s, players, locks)
+
+    return preprocessedGrid.map((gridRow, y) => {
       const row = gridRow.map((gridItem, x) => {
         const key = y * gridRow.length + x
-        if (player.y * gridRow.length + player.x === key) {
+        if (gridItem.isPlayer) {
+          const p = players.filter(e => e.x === x && e.y === y)
           return (
-            // <Square className={styles.sq} value={gridItem} dir={player.dir} isPlayer={true} key={key}/>
-              <Square style={squareStyle} value={gridItem} dir={player.dir} isPlayer={true} fontSize={size} key={key} />
+            <Square style={squareStyle} value={gridItem} dir={p[0].dir} isPlayer={true} fontSize={size} key={key} />
           )
         } else {
           return (
-            // <Square className={styles.sq} value={gridItem} isPlayer={false} key={key}/>
-              <Square style={squareStyle} value={gridItem} isPlayer={false} fontSize={size} key={key} />
+            <Square style={squareStyle} value={gridItem} isPlayer={false} fontSize={size} key={key} />
           )
         }
       })
@@ -54,12 +99,12 @@ const Dashboard = (props) => {
       <Row>
         <StatusBar iconSize={fontSize} gemInBag={initialGem - gemOnGround}
                    gemOnGround={gemOnGround} openedSwitch={openedSwitch}
-                   closedSwitch={closedSwitch} status={props.status} />
+                   closedSwitch={closedSwitch} beeperAtGround={beeperAtGround} status={props.status} />
       </Row>
       <Row>
         {/*<div className={styles.wrapperGrid}>*/}
         <div style={wrapperStyle} >
-          {renderGrid(props.grid, props.player, fontSize)}
+          {renderGrid(props.grid, props.players, props.locks, fontSize)}
         </div>
       </Row>
       <Row>
