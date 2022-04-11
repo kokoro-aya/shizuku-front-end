@@ -17,15 +17,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="095a5d38-2a3c-4e5c-abe6-e5e436d6447a" name="Default Changelist" comment="stable version 1.0.0">
-      <change afterPath="$PROJECT_DIR$/mock/playground_old.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/screenshot.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mock/playground.js" beforeDir="false" afterPath="$PROJECT_DIR$/mock/playground.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Dashboard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dashboard.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Input.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Input.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/fragments/Square.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/fragments/Square.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fragments/StatusBar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/fragments/StatusBar.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fragments/Utils.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/fragments/Utils.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/models/playground.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/playground.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Help.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Help.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/Main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Main.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -48,11 +47,8 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="JsFlowSettings">
-    <service-enabled>true</service-enabled>
-    <exe-path />
-    <other-services-enabled>true</other-services-enabled>
-    <auto-save>true</auto-save>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="1lZbKJzLHp2iFpxUSf0qdZfgQlU" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -62,7 +58,9 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/img" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -74,8 +72,12 @@
     <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/node_modules/prettier" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Background" />
     <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
+    <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/img" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/src/fragments/styles" />
@@ -111,6 +113,7 @@
       <workItem from="1608715475409" duration="587000" />
       <workItem from="1608716158361" duration="23000" />
       <workItem from="1608815315524" duration="20317000" />
+      <workItem from="1649704910265" duration="778000" />
     </task>
     <task id="LOCAL-00001" summary="Commit 1. Page Layout Setup">
       <created>1608342769408</created>
@@ -215,7 +218,6 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Commit 1. Page Layout Setup" />
@@ -230,119 +232,12 @@
     <MESSAGE value="stable version 1.0.0" />
     <option name="LAST_COMMIT_MESSAGE" value="stable version 1.0.0" />
   </component>
-  <component name="WindowStateProjectService">
-    <state x="591" y="178" width="1071" height="700" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1608233786597">
-      <screen x="0" y="23" width="1680" height="1027" />
-    </state>
-    <state x="591" y="178" width="1071" height="700" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1608233786597" />
-    <state x="1075" y="384" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1608071646825">
-      <screen x="0" y="23" width="1680" height="1027" />
-    </state>
-    <state x="1075" y="384" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1680.1027@0.23.1680.1027" timestamp="1608071646825" />
-    <state x="951" y="270" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1608378651942">
-      <screen x="0" y="23" width="1680" height="1027" />
-    </state>
-    <state x="951" y="270" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1608378651942" />
-    <state x="853" y="420" key="Github.ShareDialog" timestamp="1608388480963">
-      <screen x="0" y="23" width="1680" height="1027" />
-    </state>
-    <state x="853" y="420" key="Github.ShareDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1608388480963" />
-    <state width="1467" height="330" key="GridCell.Tab.0.bottom" timestamp="1608850877621">
-      <screen x="0" y="23" width="1680" height="1027" />
-    </state>
-    <state width="1467" height="330" key="GridCell.Tab.0.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1608850877621" />
-    <state width="1467" height="330" key="GridCell.Tab.0.center" timestamp="1608850877620">
-      <screen x="0" y="23" width="1680" height="1027" />
-    </state>
-    <state width="1467" height="330" key="GridCell.Tab.0.center/0.23.1680.1027@0.23.1680.1027" timestamp="1608850877620" />
-    <state width="1467" height="330" key="GridCell.Tab.0.left" timestamp="1608850877619">
-      <screen x="0" y="23" width="1680" height="1027" />
-    </state>
-    <state width="1467" height="330" key="GridCell.Tab.0.left/0.23.1680.1027@0.23.1680.1027" timestamp="1608850877619" />
-    <state width="1467" height="330" key="GridCell.Tab.0.right" timestamp="1608850877620">
-      <screen x="0" y="23" width="1680" height="1027" />
-    </state>
-    <state width="1467" height="330" key="GridCell.Tab.0.right/0.23.1680.1027@0.23.1680.1027" timestamp="1608850877620" />
-    <state width="1467" height="330" key="GridCell.Tab.1.bottom" timestamp="1608850877623">
-      <screen x="0" y="23" width="1680" height="1027" />
-    </state>
-    <state width="1467" height="330" key="GridCell.Tab.1.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1608850877623" />
-    <state width="1467" height="330" key="GridCell.Tab.1.center" timestamp="1608850877622">
-      <screen x="0" y="23" width="1680" height="1027" />
-    </state>
-    <state width="1467" height="330" key="GridCell.Tab.1.center/0.23.1680.1027@0.23.1680.1027" timestamp="1608850877622" />
-    <state width="1467" height="330" key="GridCell.Tab.1.left" timestamp="1608850877621">
-      <screen x="0" y="23" width="1680" height="1027" />
-    </state>
-    <state width="1467" height="330" key="GridCell.Tab.1.left/0.23.1680.1027@0.23.1680.1027" timestamp="1608850877621" />
-    <state width="1467" height="330" key="GridCell.Tab.1.right" timestamp="1608850877622">
-      <screen x="0" y="23" width="1680" height="1027" />
-    </state>
-    <state width="1467" height="330" key="GridCell.Tab.1.right/0.23.1680.1027@0.23.1680.1027" timestamp="1608850877622" />
-    <state width="1467" height="330" key="GridCell.Tab.2.bottom" timestamp="1608850877623">
-      <screen x="0" y="23" width="1680" height="1027" />
-    </state>
-    <state width="1467" height="330" key="GridCell.Tab.2.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1608850877623" />
-    <state width="1467" height="330" key="GridCell.Tab.2.center" timestamp="1608850877623">
-      <screen x="0" y="23" width="1680" height="1027" />
-    </state>
-    <state width="1467" height="330" key="GridCell.Tab.2.center/0.23.1680.1027@0.23.1680.1027" timestamp="1608850877623" />
-    <state width="1467" height="330" key="GridCell.Tab.2.left" timestamp="1608850877623">
-      <screen x="0" y="23" width="1680" height="1027" />
-    </state>
-    <state width="1467" height="330" key="GridCell.Tab.2.left/0.23.1680.1027@0.23.1680.1027" timestamp="1608850877623" />
-    <state width="1467" height="330" key="GridCell.Tab.2.right" timestamp="1608850877623">
-      <screen x="0" y="23" width="1680" height="1027" />
-    </state>
-    <state width="1467" height="330" key="GridCell.Tab.2.right/0.23.1680.1027@0.23.1680.1027" timestamp="1608850877623" />
-    <state width="1467" height="330" key="GridCell.Tab.3.bottom" timestamp="1608850877624">
-      <screen x="0" y="23" width="1680" height="1027" />
-    </state>
-    <state width="1467" height="330" key="GridCell.Tab.3.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1608850877624" />
-    <state width="1467" height="330" key="GridCell.Tab.3.center" timestamp="1608850877624">
-      <screen x="0" y="23" width="1680" height="1027" />
-    </state>
-    <state width="1467" height="330" key="GridCell.Tab.3.center/0.23.1680.1027@0.23.1680.1027" timestamp="1608850877624" />
-    <state width="1467" height="330" key="GridCell.Tab.3.left" timestamp="1608850877624">
-      <screen x="0" y="23" width="1680" height="1027" />
-    </state>
-    <state width="1467" height="330" key="GridCell.Tab.3.left/0.23.1680.1027@0.23.1680.1027" timestamp="1608850877624" />
-    <state width="1467" height="330" key="GridCell.Tab.3.right" timestamp="1608850877624">
-      <screen x="0" y="23" width="1680" height="1027" />
-    </state>
-    <state width="1467" height="330" key="GridCell.Tab.3.right/0.23.1680.1027@0.23.1680.1027" timestamp="1608850877624" />
-    <state x="360" y="155" key="SettingsEditor" timestamp="1608485202870">
-      <screen x="0" y="23" width="1680" height="1027" />
-    </state>
-    <state x="360" y="155" key="SettingsEditor/0.23.1680.1027@0.23.1680.1027" timestamp="1608485202870" />
-    <state x="580" y="256" key="Vcs.Push.Dialog.v2" timestamp="1608716168304">
-      <screen x="0" y="23" width="1680" height="1027" />
-    </state>
-    <state x="580" y="256" key="Vcs.Push.Dialog.v2/0.23.1680.1027@0.23.1680.1027" timestamp="1608716168304" />
-    <state x="277" y="432" width="1200" height="787" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1608341955466">
-      <screen x="0" y="23" width="1680" height="1027" />
-    </state>
-    <state x="277" y="432" width="1200" height="787" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1608341955466" />
-    <state x="986" y="164" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1608419253678">
-      <screen x="0" y="23" width="1680" height="1027" />
-    </state>
-    <state x="986" y="164" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.23.1680.1027@0.23.1680.1027" timestamp="1608419253678" />
-    <state x="0" y="315" width="604" height="735" key="find.popup" timestamp="1608332994670">
-      <screen x="0" y="23" width="1680" height="1027" />
-    </state>
-    <state x="0" y="315" width="604" height="735" key="find.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1608332994670" />
-    <state x="1036" y="240" width="670" height="676" key="search.everywhere.popup" timestamp="1608465141467">
-      <screen x="0" y="23" width="1680" height="1027" />
-    </state>
-    <state x="1036" y="240" width="670" height="676" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1608465141467" />
-  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/models/playground.js</url>
           <line>72</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="13" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
