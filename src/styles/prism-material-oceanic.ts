@@ -209,4 +209,4 @@ export const material_oceanic = `
   .token.variable {
     color: #f07178;
   }
-`
+`;

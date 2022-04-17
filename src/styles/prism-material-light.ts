@@ -206,4 +206,4 @@ export const material_light = `
   .token.variable {
   \tcolor: #e53935;
   }
-`
+`;

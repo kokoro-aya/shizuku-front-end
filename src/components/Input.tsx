@@ -1,14 +1,27 @@
-import React, { useState } from 'react';
+import React, { MouseEventHandler, useState } from 'react';
 import { Button, Dropdown, Space, Row, Col, Menu, Card, Divider } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
 import ContentEditable from 'react-contenteditable';
-import { connect } from 'dva';
+import { connect } from 'umi';
 import Prism from 'prismjs';
 import Editor from '@monaco-editor/react';
 import MapSelector from '../fragments/MapSelector';
-require('prismjs/components/prism-swift.min');
 
-const dropdown = items => (
+interface InputBoxProps {
+  onSubmit: MouseEventHandler<HTMLElement>;
+  onReset: () => void;
+  onChange: (arg0: string) => void;
+  onAdd: (arg0: number, arg1: HTMLInputElement) => void;
+  store: string;
+  disabled: boolean;
+}
+
+interface DropdownUnit {
+  onClick: () => void;
+  desc: string;
+}
+
+const dropdown = (items: DropdownUnit[]) => (
   <Menu>
     {items.map((e, i) => (
       <Menu.Item onClick={e.onClick} key={i}>
@@ -20,14 +33,14 @@ const dropdown = items => (
 
 const regex = /<\/?.*?>/g;
 
-const InputBox = props => {
+const InputBox: React.FC<InputBoxProps> = (props) => {
   const [isModalDisplayed, setModalDisplayed] = useState(false);
 
-  const handleChange = data => {
-    props.onChange(data);
-  };
+  // const handleChange = data => {
+  //   props.onChange(data);
+  // };
 
-  const handleSubmit = event => {
+  const handleSubmit = (event: React.MouseEvent<HTMLElement>) => {
     event.preventDefault();
     props.onSubmit(event);
   };
@@ -36,8 +49,11 @@ const InputBox = props => {
     props.onReset();
   };
 
-  const handleAdd = num => {
-    props.onAdd(num, document.getElementById('amatsukaze-code-editor'));
+  const handleAdd = (num: number) => {
+    props.onAdd(
+      num,
+      document.getElementById('amatsukaze-code-editor') as HTMLInputElement,
+    );
   };
 
   const blockedCommands = [
@@ -124,45 +140,58 @@ const InputBox = props => {
       <Divider orientation="left">输入指令</Divider>
       <div style={{ margin: '16px' }}>
         <Space wrap size="middle">
-          <Dropdown
-            overlay={dropdown(blockedCommands)}
-            placement="bottomLeft"
-            arrow
-          >
-            <Button>
-              blocked指令 <DownOutlined />
-            </Button>
-          </Dropdown>
-          <Dropdown
-            overlay={dropdown(isOnCommands)}
-            placement="bottomLeft"
-            arrow
-          >
-            <Button>
-              isOn指令 <DownOutlined />
-            </Button>
-          </Dropdown>
+          {
+            // FIXME find a solution for the no children error of Dropdown
+            // @ts-ignore
+            <Dropdown
+              overlay={dropdown(blockedCommands)}
+              placement="bottomLeft"
+              arrow
+            >
+              <Button>
+                blocked指令 <DownOutlined />
+              </Button>
+            </Dropdown>
+          }
+          {
+            // @ts-ignore
+            <Dropdown
+              overlay={dropdown(isOnCommands)}
+              placement="bottomLeft"
+              arrow
+            >
+              <Button>
+                isOn指令 <DownOutlined />
+              </Button>
+            </Dropdown>
+          }
           <Button onClick={moveForwardCommand.onClick}>moveForward</Button>
           <Button onClick={turnLeftCommand.onClick}>turnLeft</Button>
-          <Dropdown
-            overlay={dropdown(toggleCommands)}
-            placement="bottomLeft"
-            arrow
-          >
-            <Button>
-              toggle指令 <DownOutlined />
-            </Button>
-          </Dropdown>
+          {
+            // @ts-ignore
+            <Dropdown
+              overlay={dropdown(toggleCommands)}
+              placement="bottomLeft"
+              arrow
+            >
+              <Button>
+                toggle指令 <DownOutlined />
+              </Button>
+            </Dropdown>
+          }
           <Button onClick={printCommand.onClick}>print(...)</Button>
-          <Dropdown
-            overlay={dropdown(structuralCommands)}
-            placement="bottomLeft"
-            arrow
-          >
-            <Button>
-              结构化指令 <DownOutlined />
-            </Button>
-          </Dropdown>
+          {
+            // @ts-ignore
+            <Dropdown
+              overlay={dropdown(structuralCommands)}
+              placement="bottomLeft"
+              arrow
+            >
+              <Button>
+                结构化指令 <DownOutlined />
+              </Button>
+            </Dropdown>
+          }
         </Space>
       </div>
       <br />
@@ -188,11 +217,7 @@ const InputBox = props => {
         {/*    'resize': 'none',*/}
         {/*  }}*/}
         {/*/>*/}
-        <Editor
-          height="50vh"
-          language="swift"
-          value={'// write your code here'}
-        />
+        <Editor height="50vh" language="swift" value={props.store} />
       </div>
       <br />
       <Row justify="space-around" style={{ paddingBottom: '5%' }}>

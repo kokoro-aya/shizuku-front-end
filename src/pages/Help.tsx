@@ -4,7 +4,10 @@ import { Card, Col, Divider, Row, Tabs } from 'antd';
 const { TabPane } = Tabs;
 
 const ShizukuDesc = () => {
-  const style = { marginBottom: '16px', overflowWrap: 'break-word' };
+  const style = {
+    marginBottom: '16px' as const,
+    overflowWrap: 'break-word' as const,
+  };
   return (
     <>
       <div style={style}>
@@ -58,7 +61,10 @@ const ShizukuDesc = () => {
 };
 
 const AmatsukazeDesc = () => {
-  const style = { marginBottom: '16px', overflowWrap: 'break-word' };
+  const style = {
+    marginBottom: '16px' as const,
+    overflowWrap: 'break-word' as const,
+  };
   return (
     <>
       <div style={style}>
@@ -100,9 +106,9 @@ const AmatsukazeDesc = () => {
       </div>
       <pre style={style}>
         <code>
-          7 >= 9<br />
+          7 {'>'}= 9<br />
           2 &lt; 1<br />
-          6 &lt;= 3<br />3 > 12
+          6 &lt;= 3<br />3 {'>'} 12
         </code>
       </pre>
       <div style={style}>
@@ -315,8 +321,8 @@ const AmatsukazeDesc = () => {
         different numbers of arguments.
       </div>
       <div style={style}>
-        Note that if you add another function `foo() -> Void`, it will throw an
-        error.
+        Note that if you add another function `foo() -{'>'} Void`, it will throw
+        an error.
       </div>
       <div style={style}>
         You can nest conditions and loops in a function to create more powerful
@@ -356,7 +362,10 @@ const AmatsukazeDesc = () => {
 };
 
 const UpdateLogs = () => {
-  const style = { marginBottom: '16px', overflowWrap: 'break-word' };
+  const style = {
+    marginBottom: '16px' as const,
+    overflowWrap: 'break-word' as const,
+  };
   return (
     <>
       <h3>Amatsukaze</h3>

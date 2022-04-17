@@ -1,15 +1,26 @@
-import React, { useEffect, useState } from 'react';
+import React, { MouseEventHandler, useEffect, useState } from 'react';
 import { Row, Col, Divider, notification } from 'antd';
 import InputBox from '../components/Input';
 import Console from '../components/Console';
-import Dashboard from '../components/Dashboard';
+import Dashboard, {
+  DashboardGrid,
+  Player,
+  Lock,
+  Portal,
+} from '../components/Dashboard';
 import { connect } from '../.umi/plugin-dva/exports';
 
 const namespace = 'playground';
 
 const regex = /<\/?.*?>/g;
 
-const activateNotification = (type, message = null, desc = null) => {
+type NotificationType = 'success' | 'info' | 'warning' | 'error';
+
+const activateNotification = (
+  type: NotificationType,
+  message: string | null = null,
+  desc: string | null = null,
+) => {
   switch (type) {
     case 'success':
       return notification['success']({
@@ -35,7 +46,7 @@ const activateNotification = (type, message = null, desc = null) => {
   }
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state: PlaygroundStateToPropsMap) => {
   const {
     answer,
     nextFrame,
@@ -54,7 +65,45 @@ const mapStateToProps = state => {
   };
 };
 
-const Main = props => {
+type PlaygroundStateToPropsMap = { playground: PlaygroundStates };
+
+interface PlaygroundStates {
+  initialized: string;
+  nextFrame: FrameProps;
+  answer: FrameProps[];
+  currentLength: number;
+  answerLength: number;
+  returnedError: boolean;
+}
+
+interface PlaygroundProps extends PlaygroundStates {
+  dispatch<T>(arg0: DispatchType<T>): void;
+}
+
+type DispatchType<T> = {
+  type: string;
+  payload?: T;
+};
+
+interface FrameProps {
+  grid: DashboardGrid;
+  players: Player[];
+  portals: Portal[];
+  locks: Lock[];
+  output: string;
+  initialGem: number;
+  special: string;
+}
+
+interface SubmitProps {
+  code: string;
+  grid: DashboardGrid;
+  portals: Portal[];
+  locks: Lock[];
+  players: Player[];
+}
+
+const Playground: React.FC<PlaygroundProps> = (props) => {
   const [code, setCode] = useState('Input your code...');
   const [idle, setIdle] = useState(true);
   const [disabled, setDisabled] = useState(false);
@@ -80,7 +129,7 @@ const Main = props => {
   };
 
   const getData = () => {
-    props.dispatch({
+    props.dispatch<FrameProps>({
       type: `${namespace}/nextFrame`,
     });
     const { nextFrame, answer } = props;
@@ -109,14 +158,14 @@ const Main = props => {
     });
   };
 
-  const onClickSubmit = event => {
+  const onClickSubmit = (event: React.MouseEvent<HTMLElement>) => {
     event.preventDefault();
     makeRequest();
   };
 
   const makeRequest = () => {
     // console.log(code)
-    props.dispatch({
+    props.dispatch<SubmitProps>({
       type: `${namespace}/handleSubmit`,
       payload: {
         code: code,
@@ -136,11 +185,11 @@ const Main = props => {
     }
   };
 
-  const onChange = data => {
+  const onChange = (data: string) => {
     setCode(data);
   };
 
-  const onClickAdd = (num, el) => {
+  const onClickAdd = (num: number, el: HTMLInputElement) => {
     const start = el.selectionStart;
     const end = el.selectionEnd;
     const toAdd = [
@@ -160,12 +209,23 @@ const Main = props => {
       'repeat { } while cond ',
       'func foo() -> Void { } ',
     ];
-    setCode(
-      code.substring(0, start) + toAdd[num] + code.substring(end, code.length),
-    );
+    if (start !== null && end !== null) {
+      setCode(
+        code.substring(0, start) +
+          toAdd[num] +
+          code.substring(end, code.length),
+      );
+    }
   };
 
-  const renderInput = (submit, reset, change, add, store, disabled) => {
+  const renderInput = (
+    submit: MouseEventHandler<HTMLElement>,
+    reset: () => void,
+    change: (arg0: string) => void,
+    add: (arg0: number, arg1: HTMLInputElement) => void,
+    store: string,
+    disabled: boolean,
+  ) => {
     return (
       <InputBox
         onSubmit={submit}
@@ -179,13 +239,13 @@ const Main = props => {
   };
 
   const renderDashboard = (
-    initialGem,
-    grid,
-    players,
-    locks,
-    curr,
-    len,
-    status,
+    initialGem: number,
+    grid: DashboardGrid,
+    players: Player[],
+    locks: Lock[],
+    curr: number,
+    len: number,
+    status: 'err' | 'success' | 'idle' | 'processing' | 'impossible',
   ) => {
     return (
       <Dashboard
@@ -200,7 +260,7 @@ const Main = props => {
     );
   };
 
-  const renderConsole = output => {
+  const renderConsole = (output: string) => {
     return <Console output={output} />;
   };
 
@@ -261,4 +321,4 @@ const Main = props => {
   );
 };
 
-export default connect(mapStateToProps)(Main);
+export default connect(mapStateToProps)(Playground);

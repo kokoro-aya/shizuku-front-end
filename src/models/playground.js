@@ -1,13 +1,7 @@
 import request from 'umi-request';
-import { count, pack } from '@/fragments/Utils';
+import { count, pack } from '@/Utils';
 import * as playgroundService from '../services/playground';
 import { message } from 'antd';
-
-const delay = millisecond => {
-  return new Promise(resolve => {
-    setTimeout(resolve, millisecond);
-  });
-};
 
 export default {
   namespace: 'playground',

@@ -9,11 +9,20 @@ import { Popover } from 'antd';
 import _ from 'lodash';
 import arrow from '../resources/arrow.png';
 import styles from './SquareLayout.css';
+import { PreprocessedGrid } from '@/components/Dashboard';
 
-const Square = props => {
+interface SquareProps {
+  fontSize: number;
+  isPlayer: boolean;
+  dir?: string;
+  value: PreprocessedGrid;
+  style: { border: string; position: 'relative' };
+}
+
+const Square: React.FC<SquareProps> = (props) => {
   const fontSize = props.fontSize;
 
-  const getDir = props => {
+  const getDir = (props: SquareProps) => {
     const { isPlayer } = props;
     if (isPlayer) {
       const { dir } = props;
@@ -102,14 +111,14 @@ const Square = props => {
 
   const contentStyle = {
     fontSize: `${fontSize}px`, // fixme 用固定百分比取代
-    position: 'absolute',
+    position: 'absolute' as const,
     top: '0',
     left: '0',
     width: '100%',
     height: '100%',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
+    display: 'flex' as const,
+    justifyContent: 'center' as const,
+    alignItems: 'center' as const,
     zIndex: '1',
     background: getColor(),
     opacity: '0.6',
@@ -130,9 +139,9 @@ const Square = props => {
     >
       <div style={props.style} className={'square' /* && getColor() */}>
         <div style={contentStyle} className="subsquare">
-          {getValue(props)}
+          {getValue(/*props*/)}
         </div>
-        {getDir(props, imgStyle)}
+        {getDir(props /*imgStyle*/)}
       </div>
     </Popover>
   );

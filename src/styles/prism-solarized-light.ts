@@ -148,4 +148,4 @@ export const solarized_light = `
   .token.entity {
   \tcursor: help;
   }
-`
+`;

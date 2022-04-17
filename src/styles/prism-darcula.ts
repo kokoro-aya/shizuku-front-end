@@ -158,4 +158,4 @@ export const darcula = `
   code.language-css .token.selector > .token.pseudo-element {
   \tcolor: #ffc66d;
   }
-`
+`;
