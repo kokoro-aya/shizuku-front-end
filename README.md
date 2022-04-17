@@ -18,8 +18,8 @@ The Shizuku is a SPA with following features:
 
 Here are several features that could be achieved in the current refactor:
 
+- [x] Refactor with TypeScript
 - [ ] Adapt to the new server side (may need to have minor work in the server side with some Kotlin code)
-- [ ] Refactor with TypeScript
 - [ ] i18n, themes and dark mode
 - [ ] Some predefined maps and possibility to switch the map
 - [ ] A simple map editor
