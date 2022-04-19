@@ -1,33 +1,54 @@
-import React, { useEffect, useState } from 'react';
-import { Row, Col, Divider, notification } from 'antd';
+import React, { MouseEventHandler, useEffect, useState } from 'react';
+import { Row, Col, notification } from 'antd';
 import InputBox from '../components/Input';
 import Console from '../components/Console';
 import Dashboard from '../components/Dashboard';
 import { connect } from '../.umi/plugin-dva/exports';
+import { Frame, ModelStates } from '@/models/types';
+import { SentData } from '@/data/SentData';
 
 const namespace = 'playground';
 
 const regex = /<\/?.*?>/g;
 
-const activateNotification = (type, message = null, desc = null) => {
+enum NotificationType {
+  Success,
+  Info,
+  Warning,
+  Error,
+}
+
+export enum ExecutionStatus {
+  Err,
+  Success,
+  Idle,
+  Processing,
+  Impossible,
+}
+
+const activateNotification = (
+  type: NotificationType,
+  message: string | null = null,
+  desc: string | null = null,
+) => {
   switch (type) {
-    case 'success':
+    case NotificationType.Success:
       return notification['success']({
         message: message == null ? '任务执行成功' : message,
         description: desc == null ? '代码正在运行中……' : desc,
       });
-    case 'info':
+    case NotificationType.Info:
       return notification['info']({
         message: message == null ? '提示' : message,
         description:
           desc == null ? '虽然不知道发生了什么但是似乎很厉害的样子？' : desc,
       });
-    case 'warning':
+    case NotificationType.Warning:
       return notification['warning']({
         message: message == null ? '警告' : message,
         description: desc == null ? '似乎有些不对劲' : desc,
       });
-    case 'error':
+    case NotificationType.Error:
       return notification['error']({
         message: message == null ? '错误' : message,
         description: desc == null ? '发生了一些错误' : desc,
@@ -35,26 +56,43 @@ const activateNotification = (type, message = null, desc = null) => {
   }
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state: PlaygroundStateToPropsMap) => {
   const {
-    answer,
-    nextFrame,
     initialized,
+    initialGem,
+    nextFrame,
+    answer,
     currentLength,
     answerLength,
     returnedError,
+    gamingCondition,
+    userCollision,
   } = state[namespace];
   return {
-    answer,
-    nextFrame,
     initialized,
+    initialGem,
+    nextFrame,
+    answer,
     currentLength,
     answerLength,
     returnedError,
+    gamingCondition,
+    userCollision,
   };
 };
 
-const Main = props => {
+type PlaygroundStateToPropsMap = { playground: ModelStates };
+
+interface PlaygroundProps extends ModelStates {
+  dispatch<T>(arg0: DispatchType<T>): void;
+}
+
+type DispatchType<T> = {
+  type: string;
+  payload?: T;
+};
+
+const Playground: React.FC<PlaygroundProps> = (props) => {
   const [code, setCode] = useState('Input your code...');
   const [idle, setIdle] = useState(true);
   const [disabled, setDisabled] = useState(false);
@@ -62,7 +100,7 @@ const Main = props => {
   useEffect(() => {
     const interval = setInterval(() => {
       // console.log("in setInterval: " + props.initialized)
-      if (props.initialized !== 'true') {
+      if (!props.initialized) {
         initialFetch();
       } else {
         getData();
@@ -80,22 +118,36 @@ const Main = props => {
   };
 
   const getData = () => {
-    props.dispatch({
+    props.dispatch<Frame>({
       type: `${namespace}/nextFrame`,
     });
     const { nextFrame, answer } = props;
     if (nextFrame) {
-      if (!idle && nextFrame.special === 'GEM') {
+      if (!idle && nextFrame.special.includes('GEM')) {
         console.log('Collected a gem');
-        activateNotification('info', '消息', '捡到了一颗钻石。');
+        activateNotification(NotificationType.Info, '消息', '捡到了一颗钻石。');
       }
-      if (!idle && nextFrame.special === 'SWITCH') {
+      if (!idle && nextFrame.special.includes('SWITCH')) {
         console.log('Toggled a switch');
-        activateNotification('info', '消息', '按下了一个开关。');
+        activateNotification(NotificationType.Info, '消息', '按下了一个开关。');
+      }
+      if (!idle && nextFrame.special.includes('WIN')) {
+        activateNotification(NotificationType.Success, '你赢了', '恭喜通关。');
+      }
+      if (!idle && nextFrame.special.includes('LOST')) {
+        activateNotification(
+          NotificationType.Warning,
+          '游戏结束',
+          '你失败了。',
+        );
       }
     }
     if (!props.returnedError && !idle && answer.length === 0) {
-      activateNotification('success', '任务执行成功', '程序执行完成。');
+      activateNotification(
+        NotificationType.Info,
+        '任务已执行',
+        '程序执行完成。',
+      );
       setIdle(true);
     }
   };
@@ -109,21 +161,22 @@ const Main = props => {
     });
   };
 
-  const onClickSubmit = event => {
+  const onClickSubmit = (event: React.MouseEvent<HTMLElement>) => {
     event.preventDefault();
     makeRequest();
   };
 
   const makeRequest = () => {
     // console.log(code)
-    props.dispatch({
+    const { output, special, ...sentData } = props.nextFrame;
+    props.dispatch<SentData>({
       type: `${namespace}/handleSubmit`,
       payload: {
+        type: 'default',
         code: code,
-        grid: props.nextFrame.grid,
-        portals: props.nextFrame.portals,
-        locks: props.nextFrame.locks,
-        players: props.nextFrame.players,
+        ...sentData,
+        gamingCondition: props.gamingCondition,
+        userCollision: props.userCollision,
       },
     });
     console.log(props.answer);
@@ -136,11 +189,11 @@ const Main = props => {
     }
   };
 
-  const onChange = data => {
+  const onChange = (data: string) => {
     setCode(data);
   };
 
-  const onClickAdd = (num, el) => {
+  const onClickAdd = (num: number, el: HTMLInputElement) => {
     const start = el.selectionStart;
     const end = el.selectionEnd;
     const toAdd = [
@@ -160,12 +213,23 @@ const Main = props => {
       'repeat { } while cond ',
       'func foo() -> Void { } ',
     ];
-    setCode(
-      code.substring(0, start) + toAdd[num] + code.substring(end, code.length),
-    );
+    if (start !== null && end !== null) {
+      setCode(
+        code.substring(0, start) +
+          toAdd[num] +
+          code.substring(end, code.length),
+      );
+    }
   };
 
-  const renderInput = (submit, reset, change, add, store, disabled) => {
+  const renderInput = (
+    submit: MouseEventHandler<HTMLElement>,
+    reset: () => void,
+    change: (arg0: string) => void,
+    add: (arg0: number, arg1: HTMLInputElement) => void,
+    store: string,
+    disabled: boolean,
+  ) => {
     return (
       <InputBox
         onSubmit={submit}
@@ -179,20 +243,15 @@ const Main = props => {
   };
 
   const renderDashboard = (
-    initialGem,
-    grid,
-    players,
-    locks,
-    curr,
-    len,
-    status,
+    frame: Frame,
+    curr: number,
+    len: number,
+    status: ExecutionStatus,
   ) => {
     return (
       <Dashboard
-        initialGem={initialGem}
-        grid={grid}
-        players={players}
-        locks={locks}
+        frame={frame}
+        initialGem={props.initialGem}
         current={curr}
         aLength={len}
         status={status}
@@ -200,19 +259,19 @@ const Main = props => {
     );
   };
 
-  const renderConsole = output => {
+  const renderConsole = (output: string) => {
     return <Console output={output} />;
   };
 
   const status = props.returnedError
-    ? 'err'
+    ? ExecutionStatus.Err
     : idle
     ? disabled
-      ? 'success'
-      : 'idle'
+      ? ExecutionStatus.Success
+      : ExecutionStatus.Idle
     : disabled
-    ? 'processing'
-    : 'impossible';
+    ? ExecutionStatus.Processing
+    : ExecutionStatus.Impossible;
 
   return (
     <div
@@ -244,10 +303,7 @@ const Main = props => {
           >
             <Row>
               {renderDashboard(
-                props.nextFrame.initialGem,
-                props.nextFrame.grid,
-                props.nextFrame.players,
-                props.nextFrame.locks,
+                props.nextFrame,
                 props.currentLength,
                 props.answerLength,
                 status,
@@ -261,4 +317,4 @@ const Main = props => {
   );
 };
 
-export default connect(mapStateToProps)(Main);
+export default connect(mapStateToProps)(Playground);

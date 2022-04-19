@@ -142,4 +142,4 @@ export const atom_dark = `
   .token.italic {
   \tfont-style: italic;
   }
-`
+`;

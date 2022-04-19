@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="BranchesTreeState">
     <expand>
       <path>
@@ -16,16 +19,18 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="095a5d38-2a3c-4e5c-abe6-e5e436d6447a" name="Default Changelist" comment="stable version 1.0.0">
-      <change afterPath="$PROJECT_DIR$/img/screenshot.png" afterDir="false" />
+    <list default="true" id="095a5d38-2a3c-4e5c-abe6-e5e436d6447a" name="Default Changelist" comment="Fixed last adaptations">
+      <change afterPath="$PROJECT_DIR$/mock/enums.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mock/playground.js" beforeDir="false" afterPath="$PROJECT_DIR$/mock/playground.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fragments/Square.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/fragments/Square.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/playground.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/playground.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Help.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Help.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Main.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mock/playground.ts" beforeDir="false" afterPath="$PROJECT_DIR$/mock/playground.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Dashboard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dashboard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/DataFragments.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/DataFragments.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/Enums.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/Enums.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/Payload.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/Payload.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/ReceivedData.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/ReceivedData.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fragments/Square.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/fragments/Square.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/playground.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/playground.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,30 +55,29 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
+  </component>
   <component name="ProjectId" id="1lZbKJzLHp2iFpxUSf0qdZfgQlU" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/img" />
-    <property name="list.type.of.created.stylesheet" value="CSS" />
-    <property name="node.js.detected.package.eslint" value="true" />
-    <property name="node.js.detected.package.tslint" value="true" />
-    <property name="node.js.path.for.package.eslint" value="project" />
-    <property name="node.js.path.for.package.tslint" value="project" />
-    <property name="node.js.selected.package.eslint" value="(autodetect)" />
-    <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="nodejs_package_manager_path" value="npm" />
-    <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/node_modules/prettier" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Background" />
-    <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
-    <property name="vue.rearranger.settings.migration" value="true" />
-  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;/Users/irony/WebstormProjects/shizuku-front-end/node_modules/prettier&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Users/irony/WebstormProjects/shizuku-front-end/node_modules/typescript/lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/img" />
@@ -84,6 +88,9 @@
       <recent name="$PROJECT_DIR$/public" />
       <recent name="$PROJECT_DIR$/src/lib" />
       <recent name="$PROJECT_DIR$/src/resources" />
+    </key>
+    <key name="es6.move.members.recent.items">
+      <recent name="$PROJECT_DIR$/src/data/DataFragments.ts" />
     </key>
   </component>
   <component name="RunManager">
@@ -114,6 +121,15 @@
       <workItem from="1608716158361" duration="23000" />
       <workItem from="1608815315524" duration="20317000" />
       <workItem from="1649704910265" duration="778000" />
+      <workItem from="1649964254022" duration="9112000" />
+      <workItem from="1650147148779" duration="4778000" />
+      <workItem from="1650198481248" duration="2144000" />
+      <workItem from="1650200699845" duration="4849000" />
+      <workItem from="1650285095242" duration="29000" />
+      <workItem from="1650286744410" duration="159000" />
+      <workItem from="1650288083162" duration="24000" />
+      <workItem from="1650373948782" duration="7791000" />
+      <workItem from="1650391446548" duration="18040000" />
     </task>
     <task id="LOCAL-00001" summary="Commit 1. Page Layout Setup">
       <created>1608342769408</created>
@@ -185,7 +201,63 @@
       <option name="project" value="LOCAL" />
       <updated>1608715983876</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="start to work on version 2, change text area to monaco editor">
+      <created>1650142211911</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1650142211911</updated>
+    </task>
+    <task id="LOCAL-00012" summary="ver2.0.0 adapt to typescript">
+      <created>1650231497662</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1650231497662</updated>
+    </task>
+    <task id="LOCAL-00013" summary="update README.md">
+      <created>1650231542044</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1650231542044</updated>
+    </task>
+    <task id="LOCAL-00014" summary="add data definition, prepare to migrate to new data structure protocol">
+      <created>1650377866932</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1650377866932</updated>
+    </task>
+    <task id="LOCAL-00015" summary="moved all to typescript">
+      <created>1650380707534</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1650380707534</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Adapt to new data structure and refactored code (not finished yet)">
+      <created>1650407119245</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1650407119245</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Fixed last adaptations">
+      <created>1650408501643</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1650408501643</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Fixed last adaptations">
+      <created>1650408693276</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1650408693276</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -230,22 +302,15 @@
     <MESSAGE value="Commit - upload styles" />
     <MESSAGE value="Commit - just for test" />
     <MESSAGE value="stable version 1.0.0" />
-    <option name="LAST_COMMIT_MESSAGE" value="stable version 1.0.0" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/models/playground.js</url>
-          <line>72</line>
-          <option name="timeStamp" value="13" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/fragments/Utils.jsx</url>
-          <line>13</line>
-          <option name="timeStamp" value="14" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="minor updates version 1.0.x and WIP started" />
+    <MESSAGE value="start to work on version 2, change text area to monaco editor" />
+    <MESSAGE value="typescript: fixed imports" />
+    <MESSAGE value="ver2.0.0 adapt to typescript" />
+    <MESSAGE value="update README.md" />
+    <MESSAGE value="add data definition, prepare to migrate to new data structure protocol" />
+    <MESSAGE value="moved all to typescript" />
+    <MESSAGE value="Adapt to new data structure and refactored code (not finished yet)" />
+    <MESSAGE value="Fixed last adaptations" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed last adaptations" />
   </component>
 </project>
