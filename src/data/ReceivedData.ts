@@ -1,3 +1,5 @@
+import { GameStatus } from '@/data/Enums';
+
 import { Payload } from '@/data/Payload';
 
 export type ReceivedData = SuccessData | FailedData;

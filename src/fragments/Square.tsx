@@ -9,16 +9,8 @@ import { Popover } from 'antd';
 import _ from 'lodash';
 import arrow from '../resources/arrow.png';
 import styles from './SquareLayout.css';
-import { PreprocessedGrid } from '@/components/Dashboard';
-import {
-  Coordinate,
-  Grid,
-  LockData,
-  PlatformData,
-  PlayerData,
-  PortalData,
-  StairData,
-} from '@/data/DataFragments';
+import { Coordinate, Grid, PlayerData } from '@/data/DataFragments';
+import { Block, Color, Direction, Role } from '@/data/Enums';
 
 interface SquareProps {
   fontSize: number;
@@ -43,7 +35,7 @@ const Square: React.FC<SquareProps> = (props) => {
 
   const { player, terrain, groundObjects } = props;
 
-  const getDir = (props: SquareProps) => {
+  const getDir = () => {
     if (player !== undefined) {
       const { dir } = player;
       switch (dir) {
@@ -59,19 +51,20 @@ const Square: React.FC<SquareProps> = (props) => {
     } else return null;
   };
 
+  const propCount = () => {
+    let count = 0;
+    if (terrain.block !== Block.OPEN) count += 1;
+    if (groundObjects.beeper) count += 1;
+    if (groundObjects.aSwitch) count += 1;
+    if (groundObjects.portal) count += 1;
+    if (groundObjects.monster) count += 1;
+    if (groundObjects.lock) count += 1;
+    if (groundObjects.platform) count += 1;
+    if (groundObjects.stair) count += 1;
+    return count;
+  };
+
   const getValue = () => {
-    const propCount = () => {
-      let count = 0;
-      if (terrain.block !== Block.OPEN) count += 1;
-      if (groundObjects.beeper) count += 1;
-      if (groundObjects.aSwitch) count += 1;
-      if (groundObjects.portal) count += 1;
-      if (groundObjects.monster) count += 1;
-      if (groundObjects.lock) count += 1;
-      if (groundObjects.platform) count += 1;
-      if (groundObjects.stair) count += 1;
-      return count;
-    };
     if (propCount() === 0) {
       return '';
     } else if (propCount() === 1) {
@@ -197,6 +190,12 @@ const Square: React.FC<SquareProps> = (props) => {
         <p>方向: {getDirInfo(groundObjects.stair.dir)}</p>
       </div>
     ) : null;
+
+    const debugText = (
+      <div>
+        <p>Prop count: {propCount()}</p>
+      </div>
+    );
     return (
       <div>
         {terrainText}
@@ -207,6 +206,7 @@ const Square: React.FC<SquareProps> = (props) => {
         {lockText}
         {platformText}
         {stairText}
+        {debugText}
       </div>
     );
   };
@@ -258,7 +258,7 @@ const Square: React.FC<SquareProps> = (props) => {
         <div style={contentStyle} className="subsquare">
           {getValue(/*props*/)}
         </div>
-        {getDir(props /*imgStyle*/)}
+        {getDir()}
       </div>
     </Popover>
   );

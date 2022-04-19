@@ -20,7 +20,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="095a5d38-2a3c-4e5c-abe6-e5e436d6447a" name="Default Changelist" comment="Fixed last adaptations">
+      <change afterPath="$PROJECT_DIR$/mock/enums.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mock/playground.ts" beforeDir="false" afterPath="$PROJECT_DIR$/mock/playground.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Dashboard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dashboard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/DataFragments.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/DataFragments.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/Enums.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/Enums.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/Payload.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/Payload.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/ReceivedData.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/ReceivedData.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fragments/Square.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/fragments/Square.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/playground.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/playground.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -119,7 +129,7 @@
       <workItem from="1650286744410" duration="159000" />
       <workItem from="1650288083162" duration="24000" />
       <workItem from="1650373948782" duration="7791000" />
-      <workItem from="1650391446548" duration="16990000" />
+      <workItem from="1650391446548" duration="18040000" />
     </task>
     <task id="LOCAL-00001" summary="Commit 1. Page Layout Setup">
       <created>1608342769408</created>
@@ -240,7 +250,14 @@
       <option name="project" value="LOCAL" />
       <updated>1650408501643</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Fixed last adaptations">
+      <created>1650408693276</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1650408693276</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

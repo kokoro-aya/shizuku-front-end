@@ -1,6 +1,7 @@
 import { Frame } from '@/models/types';
 import { Request, Response } from '@umijs/types';
 import { GamingCondition } from '@/data/SentData';
+import { Block, Color, Biome, Role, Direction } from './enums';
 
 export interface InitStates extends Frame {
   id: number;

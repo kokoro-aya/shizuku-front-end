@@ -1,3 +1,5 @@
+import { Block } from '@/data/Enums';
+
 import { CoreData } from '@/data/DataFragments';
 
 interface SerializedBlock {

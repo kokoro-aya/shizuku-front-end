@@ -6,6 +6,7 @@ import { Effect, ImmerReducer } from 'umi';
 import { InitStates } from '../../mock/playground';
 import { SuccessData } from '@/data/ReceivedData';
 import { constructFrame } from '@/Utils';
+import { Biome, Block, Color } from '@/data/Enums';
 
 export interface PlaygroundModelInterface {
   namespace: 'playground';

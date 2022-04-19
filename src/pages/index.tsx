@@ -10,11 +10,11 @@ import {
   AndroidOutlined,
   MessageOutlined,
 } from '@ant-design/icons';
-import React, { Component, useState } from 'react';
-import { material_oceanic } from '../styles/prism-material-oceanic';
-import { material_light } from '../styles/prism-material-light';
-import { darcula } from '../styles/prism-darcula';
-import { atom_dark } from '../styles/prism-atom-dark';
+import React, { useState } from 'react';
+import { material_oceanic } from '@/styles/prism-material-oceanic';
+import { material_light } from '@/styles/prism-material-light';
+import { darcula } from '@/styles/prism-darcula';
+import { atom_dark } from '@/styles/prism-atom-dark';
 import { solarized_light } from '@/styles/prism-solarized-light';
 // FIXME: remove useless import and refactor styles
 
@@ -146,7 +146,7 @@ class SimpleLayout extends React.Component<
             {this.props.children}
           </Content>
           <Footer style={{ textAlign: 'center' }}>
-            2020 - Amatsukaze x Shizuku (天津風 x 雫) created by ironica
+            2020 - 2022 - Shizuku (天津風 x 雫) created by kokoro-aya
           </Footer>
         </Layout>
       </Layout>

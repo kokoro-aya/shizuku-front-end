@@ -2,13 +2,13 @@ import Square from '../fragments/Square';
 import React from 'react';
 import { Col, Row } from 'antd';
 import StatusBar from '../fragments/StatusBar';
-import { count } from '@/Utils';
 import styles from './DashboardLayout.css';
 import ProgressBar from '../fragments/ProgressBar';
 import { Coordinate } from '@/data/DataFragments';
 import { ExecutionStatus } from '@/pages/Playground';
 import { Frame } from '@/models/types';
 import * as _ from 'lodash';
+import { Color } from '@/data/Enums';
 
 interface DashboardProp {
   frame: Frame;
@@ -46,6 +46,9 @@ const Dashboard: React.FC<DashboardProp> = (props) => {
   const preprocessGrid = (frame: Frame) => {
     return frame.grid.flatMap((gridRow, y) => {
       const row = gridRow.map((gridItem, x) => {
+        const aSwitch = frame.switches.find(
+          (p) => p.coo.x === x && p.coo.y === y,
+        );
         const portal = frame.portals.find(
           (p) => p.coo.x === x && p.coo.y === y,
         );
@@ -62,10 +65,11 @@ const Dashboard: React.FC<DashboardProp> = (props) => {
               frame.beepers.find((p) => p.x === x && p.y === y) === undefined
                 ? undefined
                 : (true as const),
-            aSwitch: frame.switches.find((p) => p.coo.x === x && p.coo.y === y)
-              ?.on
-              ? { on: true }
-              : { on: false },
+            aSwitch: aSwitch
+              ? aSwitch.on
+                ? { on: true }
+                : { on: false }
+              : undefined,
             portal:
               portal === undefined
                 ? undefined
