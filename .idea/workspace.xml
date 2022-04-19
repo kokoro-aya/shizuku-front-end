@@ -19,39 +19,10 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="095a5d38-2a3c-4e5c-abe6-e5e436d6447a" name="Default Changelist" comment="typescript: fixed imports">
-      <change afterPath="$PROJECT_DIR$/.eslintrc" afterDir="false" />
+    <list default="true" id="095a5d38-2a3c-4e5c-abe6-e5e436d6447a" name="Default Changelist" comment="update README.md">
+      <change afterPath="$PROJECT_DIR$/src/data/Data.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/Enums.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.prettierrc" beforeDir="false" afterPath="$PROJECT_DIR$/.prettierrc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.umirc.ts" beforeDir="false" afterPath="$PROJECT_DIR$/.umirc.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Console.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Console.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Dashboard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dashboard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Input.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Input.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fragments/EditableContent.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fragments/MapSelector.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/fragments/MapSelector.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fragments/ProgressBar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/fragments/ProgressBar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fragments/Square.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/fragments/Square.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fragments/StatusBar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/fragments/StatusBar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fragments/Utils.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/playground.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/playground.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/About.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/About.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Editor.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Editor.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Feedback.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Feedback.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Gallery.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Gallery.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Help.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Help.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Home.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Playground.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Story.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Story.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/index.old.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/playground.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/playground.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/prism-atom-dark.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/prism-atom-dark.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/prism-darcula.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/prism-darcula.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/prism-material-light.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/prism-material-light.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/prism-material-oceanic.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/prism-material-oceanic.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/prism-solarized-light.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/prism-solarized-light.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,6 +65,7 @@
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;/Users/irony/WebstormProjects/shizuku-front-end/node_modules/prettier&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
     &quot;ts.external.directory.path&quot;: &quot;/Users/irony/WebstormProjects/shizuku-front-end/node_modules/typescript/lib&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
@@ -141,7 +113,11 @@
       <workItem from="1649964254022" duration="9112000" />
       <workItem from="1650147148779" duration="4778000" />
       <workItem from="1650198481248" duration="2144000" />
-      <workItem from="1650200699845" duration="4670000" />
+      <workItem from="1650200699845" duration="4849000" />
+      <workItem from="1650285095242" duration="29000" />
+      <workItem from="1650286744410" duration="159000" />
+      <workItem from="1650288083162" duration="24000" />
+      <workItem from="1650373948782" duration="2305000" />
     </task>
     <task id="LOCAL-00001" summary="Commit 1. Page Layout Setup">
       <created>1608342769408</created>
@@ -220,7 +196,21 @@
       <option name="project" value="LOCAL" />
       <updated>1650142211911</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="ver2.0.0 adapt to typescript">
+      <created>1650231497662</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1650231497662</updated>
+    </task>
+    <task id="LOCAL-00013" summary="update README.md">
+      <created>1650231542044</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1650231542044</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -268,7 +258,9 @@
     <MESSAGE value="minor updates version 1.0.x and WIP started" />
     <MESSAGE value="start to work on version 2, change text area to monaco editor" />
     <MESSAGE value="typescript: fixed imports" />
-    <option name="LAST_COMMIT_MESSAGE" value="typescript: fixed imports" />
+    <MESSAGE value="ver2.0.0 adapt to typescript" />
+    <MESSAGE value="update README.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="update README.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
