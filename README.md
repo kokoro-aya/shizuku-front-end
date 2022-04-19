@@ -19,7 +19,7 @@ The Shizuku is a SPA with following features:
 Here are several features that could be achieved in the current refactor:
 
 - [x] Refactor with TypeScript
-- [x] Adapt to the new server side (at last, I have decided to adapt to the ![simulatte](https://github.com/Ironica/simulatte) server instead of another one)
+- [x] Adapt to the new server side (at last, I have decided to adapt to the [simulatte](https://github.com/Ironica/simulatte) server instead of another one)
 - [ ] Adapt to Monaco Editor, link the editor to the playground and add support for themes
 - [ ] i18n, themes and dark mode
 - [ ] Some predefined maps and possibility to switch the map
