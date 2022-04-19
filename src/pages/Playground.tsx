@@ -1,5 +1,5 @@
 import React, { MouseEventHandler, useEffect, useState } from 'react';
-import { Row, Col, Divider, notification } from 'antd';
+import { Row, Col, notification } from 'antd';
 import InputBox from '../components/Input';
 import Console from '../components/Console';
 import Dashboard, {
@@ -85,7 +85,7 @@ type DispatchType<T> = {
   payload?: T;
 };
 
-interface FrameProps {
+export interface FrameProps {
   grid: DashboardGrid;
   players: Player[];
   portals: Portal[];

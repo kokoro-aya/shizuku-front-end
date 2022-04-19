@@ -1,3 +1,5 @@
+import { Request, Response } from '@umijs/types';
+
 let playgrounds = [
   {
     id: 1,
@@ -521,7 +523,7 @@ let playgrounds = [
 let random_playground = 0;
 
 export default {
-  'get /dev/playground/fetch': (req, res) => {
+  'get /dev/playground/fetch': (req: Request, res: Response) => {
     // const responseObj = playgrounds[random_playground % playgrounds.length]
     const responseObj = playgrounds[1];
     random_playground += 1;
@@ -529,7 +531,7 @@ export default {
       res.json(responseObj);
     }, 1000);
   },
-  'post /dev/playground/add': (req, res) => {
+  'post /dev/playground/add': (req: Request, res: Response) => {
     playgrounds = [
       ...playgrounds,
       {
@@ -541,7 +543,7 @@ export default {
       success: true,
     });
   },
-  'delete /dev/playground/:id': (req, res) => {
+  'delete /dev/playground/:id': (req: Request, res: Response) => {
     let id = parseInt(req.params.id);
     if (id < 5) {
       setTimeout(() => {
@@ -550,7 +552,7 @@ export default {
         });
       }, 1500);
     } else {
-      playgrounds = playgrounds.filter(p => p.id !== id);
+      playgrounds = playgrounds.filter((p) => p.id !== id);
       setTimeout(() => {
         res.json({
           success: true,

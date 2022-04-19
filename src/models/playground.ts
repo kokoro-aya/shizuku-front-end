@@ -2,8 +2,25 @@ import request from 'umi-request';
 import { count, pack } from '@/Utils';
 import * as playgroundService from '../services/playground';
 import { message } from 'antd';
+import { ErrorState, ModelStates } from '@/models/types';
+import { Effect, ImmerReducer } from 'umi';
 
-export default {
+export interface PlaygroundModelInterface {
+  namespace: 'playground';
+  state: {};
+  effects: {
+    handleSubmit: Effect;
+    initialFetch: Effect;
+  };
+  reducers: {
+    initialize: ImmerReducer<ModelStates>;
+    loadPlayground: ImmerReducer<ModelStates>;
+    nextFrame: ImmerReducer<ModelStates>;
+    returnError: ImmerReducer<ErrorState>;
+  };
+}
+
+const model: PlaygroundModelInterface = {
   namespace: 'playground',
   state: {
     answer: [],
@@ -97,9 +114,8 @@ export default {
     returnedError: null,
   },
   effects: {
-    *handleSubmit({ payload }, sagaEffects) {
+    *handleSubmit({ payload }, { call, put }) {
       // console.log(payload)
-      const { call, put } = sagaEffects;
       try {
         const packed = pack(
           payload.code,
@@ -122,10 +138,9 @@ export default {
         yield put({ type: 'returnError' });
       }
     },
-    *initialFetch({ payload }, sagaEffects) {
+    *initialFetch({ payload }, { call, put }) {
       // console.log('initializing')
       const endPointURI = '/dev/playground/fetch';
-      const { call, put } = sagaEffects;
       try {
         const playground = yield call(request, endPointURI);
         yield put({ type: 'initialize', payload: playground });
@@ -165,10 +180,10 @@ export default {
       };
     },
     nextFrame(state, { payload }) {
-      if (state.answer.length !== 0) {
+      const nextFrame = state.answer.shift();
+      if (nextFrame !== undefined) {
         const answer = [...state.answer];
         const initialGem = state.nextFrame.initialGem;
-        const nextFrame = answer.shift();
         // console.log(nextFrame)
         return {
           answer: answer,
@@ -177,7 +192,7 @@ export default {
             players: nextFrame.players,
             portals: nextFrame.portals,
             locks: state.nextFrame.locks, // TODO fix this! Should locks be reflected in server side answer, or should we remove portals in answer?
-            output: nextFrame.consoleLog,
+            output: nextFrame.output,
             initialGem: initialGem,
             special: nextFrame.special,
           },
@@ -197,3 +212,5 @@ export default {
     },
   },
 };
+
+export default model;
