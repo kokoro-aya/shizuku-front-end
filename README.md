@@ -1,6 +1,6 @@
 # Shizuku (WIP)
 
-A front-end for [Amatsukaze](https://github.com/kokoro-aya/amatsukaze). Run on umijs/antd.
+A front-end for [simulatte](https://github.com/Ironica/simulatte). Run on umijs/antd.
 
 **Currently this project is under refactoring. The goals of this refactor is listed below the description.**
 
@@ -19,7 +19,7 @@ The Shizuku is a SPA with following features:
 Here are several features that could be achieved in the current refactor:
 
 - [x] Refactor with TypeScript
-- [ ] Adapt to the new server side (may need to have minor work in the server side with some Kotlin code)
+- [x] Adapt to the new server side (at last, I have decided to adapt to the ![simulatte](https://github.com/Ironica/simulatte) server instead of another one)
 - [ ] i18n, themes and dark mode
 - [ ] Some predefined maps and possibility to switch the map
 - [ ] A simple map editor

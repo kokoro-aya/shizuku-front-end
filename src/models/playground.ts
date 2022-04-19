@@ -3,10 +3,9 @@ import * as playgroundService from '../services/playground';
 import { message } from 'antd';
 import { ErrorState, ModelStates } from '@/models/types';
 import { Effect, ImmerReducer } from 'umi';
-import { InitialState } from '@@/plugin-initial-state/exports';
 import { InitStates } from '../../mock/playground';
-import { SentData } from '@/data/SentData';
 import { SuccessData } from '@/data/ReceivedData';
+import { constructFrame } from '@/Utils';
 
 export interface PlaygroundModelInterface {
   namespace: 'playground';
@@ -366,11 +365,13 @@ const model: PlaygroundModelInterface = {
       return nextState;
     },
     loadPlayground(state, { payload }) {
-      const _p = payload as SuccessData;
-      // TODO fix this
+      const data = payload as SuccessData;
+
       const nextState: ModelStates = {
         ...state,
-        answer: payload,
+        answer: data.payload.map((p) =>
+          constructFrame(p, state.nextFrame.grid, state.nextFrame.stairs),
+        ),
         answerLength: payload.length,
         returnedError: false,
       };

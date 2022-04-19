@@ -58,20 +58,26 @@ const activateNotification = (
 
 const mapStateToProps = (state: PlaygroundStateToPropsMap) => {
   const {
-    answer,
-    nextFrame,
     initialized,
+    initialGem,
+    nextFrame,
+    answer,
     currentLength,
     answerLength,
     returnedError,
+    gamingCondition,
+    userCollision,
   } = state[namespace];
   return {
-    answer,
-    nextFrame,
     initialized,
+    initialGem,
+    nextFrame,
+    answer,
     currentLength,
     answerLength,
     returnedError,
+    gamingCondition,
+    userCollision,
   };
 };
 
