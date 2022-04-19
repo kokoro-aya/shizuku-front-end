@@ -19,12 +19,18 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="095a5d38-2a3c-4e5c-abe6-e5e436d6447a" name="Default Changelist" comment="add data definition, prepare to migrate to new data structure protocol">
-      <change afterPath="$PROJECT_DIR$/src/models/types.ts" afterDir="false" />
+    <list default="true" id="095a5d38-2a3c-4e5c-abe6-e5e436d6447a" name="Default Changelist" comment="moved all to typescript">
+      <change afterPath="$PROJECT_DIR$/src/data/DataFragments.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/Payload.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/ReceivedData.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mock/playground.js" beforeDir="false" afterPath="$PROJECT_DIR$/mock/playground.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/playground.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/playground.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mock/playground.ts" beforeDir="false" afterPath="$PROJECT_DIR$/mock/playground.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Dashboard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dashboard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/Data.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/SentData.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fragments/Square.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/fragments/Square.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/playground.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/playground.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/types.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/Playground.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Playground.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -84,6 +90,9 @@
       <recent name="$PROJECT_DIR$/src/lib" />
       <recent name="$PROJECT_DIR$/src/resources" />
     </key>
+    <key name="es6.move.members.recent.items">
+      <recent name="$PROJECT_DIR$/src/data/DataFragments.ts" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="Unnamed" type="JavascriptDebugType" nameIsGenerated="true" uri="http://localhost:8000">
@@ -120,7 +129,8 @@
       <workItem from="1650285095242" duration="29000" />
       <workItem from="1650286744410" duration="159000" />
       <workItem from="1650288083162" duration="24000" />
-      <workItem from="1650373948782" duration="4532000" />
+      <workItem from="1650373948782" duration="7791000" />
+      <workItem from="1650391446548" duration="15083000" />
     </task>
     <task id="LOCAL-00001" summary="Commit 1. Page Layout Setup">
       <created>1608342769408</created>
@@ -220,7 +230,14 @@
       <option name="project" value="LOCAL" />
       <updated>1650377866932</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="moved all to typescript">
+      <created>1650380707534</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1650380707534</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -271,17 +288,7 @@
     <MESSAGE value="ver2.0.0 adapt to typescript" />
     <MESSAGE value="update README.md" />
     <MESSAGE value="add data definition, prepare to migrate to new data structure protocol" />
-    <option name="LAST_COMMIT_MESSAGE" value="add data definition, prepare to migrate to new data structure protocol" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/models/playground.ts</url>
-          <line>66</line>
-          <option name="timeStamp" value="13" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="moved all to typescript" />
+    <option name="LAST_COMMIT_MESSAGE" value="moved all to typescript" />
   </component>
 </project>

@@ -5,49 +5,17 @@ import StatusBar from '../fragments/StatusBar';
 import { count } from '@/Utils';
 import styles from './DashboardLayout.css';
 import ProgressBar from '../fragments/ProgressBar';
+import { Coordinate } from '@/data/DataFragments';
+import { ExecutionStatus } from '@/pages/Playground';
+import { Frame } from '@/models/types';
+import * as _ from 'lodash';
 
 interface DashboardProp {
+  frame: Frame;
   initialGem: number;
   current: number;
   aLength: number;
-  grid: DashboardGrid;
-  players: Player[];
-  locks: Lock[];
-  status: 'err' | 'success' | 'idle' | 'processing' | 'impossible';
-}
-
-export interface DashboardGrid {
-  grid: GridType[][];
-  layout: LayoutType[][];
-  layout2s: Layout2S[][];
-}
-
-type GridType = 'OPEN' | 'BLOCKED';
-type LayoutType = 'GEM' | 'OPENEDSWITCH' | 'CLOSEDSWITCH' | 'BEEPER' | 'NONE';
-export type Layout2S = { color: string; level: number };
-
-export interface Player {
-  id: number;
-  x: number;
-  y: number;
-  dir: 'RIGHT' | 'LEFT' | 'UP' | 'DOWN';
-  role: 'PLAYER'; // TODO add more roles
-}
-
-export interface Lock {
-  coo: Coordinate;
-  controlled: Coordinate[];
-}
-
-export interface Portal {
-  coo: Coordinate;
-  dest: Coordinate;
-  isActive: boolean;
-}
-
-interface Coordinate {
-  x: number;
-  y: number;
+  status: ExecutionStatus;
 }
 
 export interface PreprocessedGrid {
@@ -63,118 +31,111 @@ export interface PreprocessedGrid {
 }
 
 const Dashboard: React.FC<DashboardProp> = (props) => {
-  const width = props.grid.grid[0].length;
+  const width = props.frame.grid[0].length;
   const fontSize = Math.round(320 / width);
-  const { initialGem, current, aLength } = props;
-  const gemOnGround = count(props.grid.layout, 'GEM');
-  const openedSwitch = count(props.grid.layout, 'OPENEDSWITCH');
-  const closedSwitch = count(props.grid.layout, 'CLOSEDSWITCH');
-  // const beeperInBag = // TODO
-  const beeperAtGround = count(props.grid.layout, 'BEEPER');
+  const { initialGem, frame, current, aLength } = props;
+  const openedSwitch = frame.switches.filter((e) => e.on).length;
+  const closedSwitch = frame.switches.filter((e) => !e.on).length;
 
-  const preprocessGrid = (
-    grid: GridType[][],
-    layout: LayoutType[][],
-    layout2s: Layout2S[][],
-    players: Player[],
-    locks: Lock[],
-  ): PreprocessedGrid[][] => {
-    return grid.flatMap((gridRow, y) => {
+  const gemOnGround = frame.gems.length;
+  const beeperAtGround = frame.beepers.length;
+
+  const collectedGems = _.sum(frame.players.map((e) => e.collectedGem));
+  const beepersInBags = _.sum(frame.players.map((e) => e.hasBeeper));
+
+  const preprocessGrid = (frame: Frame) => {
+    return frame.grid.flatMap((gridRow, y) => {
       const row = gridRow.map((gridItem, x) => {
-        if (players.filter((p) => p.x === x && p.y === y).length !== 0) {
-          return {
-            x: x,
-            y: y,
-            grid: grid[y][x],
-            layout: layout[y][x],
-            color: layout2s[y][x].color,
-            level: layout2s[y][x].level,
-            isPlayer: true,
-            playerId: players.filter((p) => p.x === x && p.y === y)[0].id,
-            // TODO: collectedGem, stamina, beeperInBag
-          };
-        } else if (
-          locks.filter((p) => p.coo.x === x && p.coo.y === y).length !== 0
-        ) {
-          return {
-            x: x,
-            y: y,
-            grid: grid[y][x],
-            layout: layout[y][x],
-            color: layout2s[y][x].color,
-            level: layout2s[y][x].level,
-            isPlayer: false,
-            lockInfo: locks.filter((p) => p.coo.x === x && p.coo.y === y)[0]
-              .controlled,
-          };
-        } else {
-          return {
-            x: x,
-            y: y,
-            grid: grid[y][x],
-            layout: layout[y][x],
-            color: layout2s[y][x].color,
-            level: layout2s[y][x].level,
-            isPlayer: false,
-          };
-        }
+        const portal = frame.portals.find(
+          (p) => p.coo.x === x && p.coo.y === y,
+        );
+        const lock = frame.locks.find((p) => p.coo.x === x && p.coo.y === y);
+        const platform = frame.platforms.find(
+          (p) => p.coo.x === x && p.coo.y === y,
+        );
+        const stair = frame.stairs.find((p) => p.coo.x === x && p.coo.y === y);
+        return {
+          player: frame.players.find((p) => p.x === x && p.y === y),
+          terrain: gridItem,
+          groundObjects: {
+            beeper:
+              frame.beepers.find((p) => p.x === x && p.y === y) === undefined
+                ? undefined
+                : (true as const),
+            aSwitch: frame.switches.find((p) => p.coo.x === x && p.coo.y === y)
+              ?.on
+              ? { on: true }
+              : { on: false },
+            portal:
+              portal === undefined
+                ? undefined
+                : {
+                    dest: portal.dest,
+                    color: portal.color ?? Color.WHITE,
+                    energy: portal.energy,
+                  },
+            monster:
+              frame.monsters.find((p) => p.x === x && p.y === y) === undefined
+                ? undefined
+                : (true as const),
+            lock:
+              lock === undefined
+                ? undefined
+                : {
+                    controlled: lock.controlled!,
+                    isActive: lock.isActive,
+                    energy: lock.energy,
+                  },
+            platform:
+              platform === undefined ? undefined : { level: platform.level },
+            stair: stair === undefined ? undefined : { dir: stair.dir },
+          },
+        };
       });
       return [row];
     });
   };
 
-  const renderGrid = (
-    grid: DashboardGrid,
-    players: Player[],
-    locks: Lock[],
-    size: number,
-  ) => {
-    const preprocessedGrid = preprocessGrid(
-      grid.grid,
-      grid.layout,
-      grid.layout2s,
-      players,
-      locks,
-    );
+  const renderGrid = (size: number) => {
+    const preprocessedGrid = preprocessGrid(frame);
 
     return preprocessedGrid.map((gridRow, y) => {
       const row = gridRow.map((gridItem, x) => {
         const key = y * gridRow.length + x;
-        if (gridItem.isPlayer) {
-          const p = players.filter((e) => e.x === x && e.y === y);
-          return (
-            <Square
-              style={squareStyle}
-              value={gridItem}
-              dir={p[0].dir}
-              isPlayer={true}
-              fontSize={size}
-              key={key}
-            />
-          );
-        } else {
-          return (
-            <Square
-              style={squareStyle}
-              value={gridItem}
-              isPlayer={false}
-              fontSize={size}
-              key={key}
-            />
-          );
-        }
+        const coo = { x: x, y: y };
+        return (
+          <Square
+            fontSize={size}
+            player={gridItem.player}
+            terrain={gridItem.terrain}
+            groundObjects={gridItem.groundObjects}
+            coo={coo}
+            key={key}
+          />
+        );
       });
       return [row];
     });
+  };
+
+  const getStatus = (s: ExecutionStatus) => {
+    switch (s) {
+      case ExecutionStatus.Err:
+        return 'exception';
+      case ExecutionStatus.Idle:
+        return 'normal';
+      case ExecutionStatus.Processing:
+        return 'active';
+      case ExecutionStatus.Success:
+        return 'success';
+      case ExecutionStatus.Impossible:
+        return 'exception';
+    }
   };
 
   const beforeStyle = {
     display: 'inline-block',
     paddingTop: '100%',
-  };
-  const squareStyle = {
-    border: '0.5px dotted grey',
-    position: 'relative' as const,
   };
   const wrapperStyle = {
     width: '100%',
@@ -193,14 +154,12 @@ const Dashboard: React.FC<DashboardProp> = (props) => {
           openedSwitch={openedSwitch}
           closedSwitch={closedSwitch}
           beeperAtGround={beeperAtGround}
-          status={props.status}
+          status={getStatus(props.status)}
         />
       </Row>
       <Row>
         {/*<div className={styles.wrapperGrid}>*/}
-        <div style={wrapperStyle}>
-          {renderGrid(props.grid, props.players, props.locks, fontSize)}
-        </div>
+        <div style={wrapperStyle}>{renderGrid(fontSize)}</div>
       </Row>
       <Row>
         <ProgressBar curr={current} total={aLength} />

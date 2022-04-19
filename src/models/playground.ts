@@ -1,13 +1,16 @@
 import request from 'umi-request';
-import { count, pack } from '@/Utils';
 import * as playgroundService from '../services/playground';
 import { message } from 'antd';
 import { ErrorState, ModelStates } from '@/models/types';
 import { Effect, ImmerReducer } from 'umi';
+import { InitialState } from '@@/plugin-initial-state/exports';
+import { InitStates } from '../../mock/playground';
+import { SentData } from '@/data/SentData';
+import { SuccessData } from '@/data/ReceivedData';
 
 export interface PlaygroundModelInterface {
   namespace: 'playground';
-  state: {};
+  state: ModelStates;
   effects: {
     handleSubmit: Effect;
     initialFetch: Effect;
@@ -20,111 +23,292 @@ export interface PlaygroundModelInterface {
   };
 }
 
+const initialState: ModelStates = {
+  initialized: false,
+  initialGem: 0,
+  nextFrame: {
+    grid: [
+      [
+        {
+          block: Block.BLOCKED,
+          biome: Biome.PLAINS,
+          color: Color.WHITE,
+          level: 0,
+        },
+        {
+          block: Block.BLOCKED,
+          biome: Biome.PLAINS,
+          color: Color.WHITE,
+          level: 0,
+        },
+        {
+          block: Block.BLOCKED,
+          biome: Biome.PLAINS,
+          color: Color.WHITE,
+          level: 0,
+        },
+        {
+          block: Block.BLOCKED,
+          biome: Biome.PLAINS,
+          color: Color.WHITE,
+          level: 0,
+        },
+        {
+          block: Block.BLOCKED,
+          biome: Biome.PLAINS,
+          color: Color.WHITE,
+          level: 0,
+        },
+        {
+          block: Block.BLOCKED,
+          biome: Biome.PLAINS,
+          color: Color.WHITE,
+          level: 0,
+        },
+        {
+          block: Block.BLOCKED,
+          biome: Biome.PLAINS,
+          color: Color.WHITE,
+          level: 0,
+        },
+        {
+          block: Block.BLOCKED,
+          biome: Biome.PLAINS,
+          color: Color.WHITE,
+          level: 0,
+        },
+      ],
+      [
+        {
+          block: Block.BLOCKED,
+          biome: Biome.PLAINS,
+          color: Color.WHITE,
+          level: 0,
+        },
+        {
+          block: Block.BLOCKED,
+          biome: Biome.PLAINS,
+          color: Color.WHITE,
+          level: 0,
+        },
+        {
+          block: Block.BLOCKED,
+          biome: Biome.PLAINS,
+          color: Color.WHITE,
+          level: 0,
+        },
+        {
+          block: Block.BLOCKED,
+          biome: Biome.PLAINS,
+          color: Color.WHITE,
+          level: 0,
+        },
+        {
+          block: Block.BLOCKED,
+          biome: Biome.PLAINS,
+          color: Color.WHITE,
+          level: 0,
+        },
+        {
+          block: Block.BLOCKED,
+          biome: Biome.PLAINS,
+          color: Color.WHITE,
+          level: 0,
+        },
+        {
+          block: Block.BLOCKED,
+          biome: Biome.PLAINS,
+          color: Color.WHITE,
+          level: 0,
+        },
+        {
+          block: Block.BLOCKED,
+          biome: Biome.PLAINS,
+          color: Color.WHITE,
+          level: 0,
+        },
+      ],
+      [
+        {
+          block: Block.BLOCKED,
+          biome: Biome.PLAINS,
+          color: Color.WHITE,
+          level: 0,
+        },
+        {
+          block: Block.BLOCKED,
+          biome: Biome.PLAINS,
+          color: Color.WHITE,
+          level: 0,
+        },
+        {
+          block: Block.BLOCKED,
+          biome: Biome.PLAINS,
+          color: Color.WHITE,
+          level: 0,
+        },
+        {
+          block: Block.BLOCKED,
+          biome: Biome.PLAINS,
+          color: Color.WHITE,
+          level: 0,
+        },
+        {
+          block: Block.BLOCKED,
+          biome: Biome.PLAINS,
+          color: Color.WHITE,
+          level: 0,
+        },
+        {
+          block: Block.BLOCKED,
+          biome: Biome.PLAINS,
+          color: Color.WHITE,
+          level: 0,
+        },
+        {
+          block: Block.BLOCKED,
+          biome: Biome.PLAINS,
+          color: Color.WHITE,
+          level: 0,
+        },
+        {
+          block: Block.BLOCKED,
+          biome: Biome.PLAINS,
+          color: Color.WHITE,
+          level: 0,
+        },
+      ],
+      [
+        {
+          block: Block.BLOCKED,
+          biome: Biome.PLAINS,
+          color: Color.WHITE,
+          level: 0,
+        },
+        {
+          block: Block.BLOCKED,
+          biome: Biome.PLAINS,
+          color: Color.WHITE,
+          level: 0,
+        },
+        {
+          block: Block.BLOCKED,
+          biome: Biome.PLAINS,
+          color: Color.WHITE,
+          level: 0,
+        },
+        {
+          block: Block.BLOCKED,
+          biome: Biome.PLAINS,
+          color: Color.WHITE,
+          level: 0,
+        },
+        {
+          block: Block.BLOCKED,
+          biome: Biome.PLAINS,
+          color: Color.WHITE,
+          level: 0,
+        },
+        {
+          block: Block.BLOCKED,
+          biome: Biome.PLAINS,
+          color: Color.WHITE,
+          level: 0,
+        },
+        {
+          block: Block.BLOCKED,
+          biome: Biome.PLAINS,
+          color: Color.WHITE,
+          level: 0,
+        },
+        {
+          block: Block.BLOCKED,
+          biome: Biome.PLAINS,
+          color: Color.WHITE,
+          level: 0,
+        },
+      ],
+      [
+        {
+          block: Block.BLOCKED,
+          biome: Biome.PLAINS,
+          color: Color.WHITE,
+          level: 0,
+        },
+        {
+          block: Block.BLOCKED,
+          biome: Biome.PLAINS,
+          color: Color.WHITE,
+          level: 0,
+        },
+        {
+          block: Block.BLOCKED,
+          biome: Biome.PLAINS,
+          color: Color.WHITE,
+          level: 0,
+        },
+        {
+          block: Block.BLOCKED,
+          biome: Biome.PLAINS,
+          color: Color.WHITE,
+          level: 0,
+        },
+        {
+          block: Block.BLOCKED,
+          biome: Biome.PLAINS,
+          color: Color.WHITE,
+          level: 0,
+        },
+        {
+          block: Block.BLOCKED,
+          biome: Biome.PLAINS,
+          color: Color.WHITE,
+          level: 0,
+        },
+        {
+          block: Block.BLOCKED,
+          biome: Biome.PLAINS,
+          color: Color.WHITE,
+          level: 0,
+        },
+        {
+          block: Block.BLOCKED,
+          biome: Biome.PLAINS,
+          color: Color.WHITE,
+          level: 0,
+        },
+      ],
+    ],
+    gems: [],
+    beepers: [],
+    switches: [],
+    portals: [],
+    monsters: [],
+    locks: [],
+    platforms: [],
+    players: [],
+    stairs: [],
+    output: '',
+    special: '',
+  },
+  answer: [],
+  currentLength: 0,
+  answerLength: 1,
+  returnedError: false,
+  gamingCondition: undefined,
+  userCollision: false,
+};
+
 const model: PlaygroundModelInterface = {
   namespace: 'playground',
   state: {
-    answer: [],
-    nextFrame: {
-      grid: {
-        grid: [
-          ['OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN'],
-          ['OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN'],
-          ['OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN'],
-          ['OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN'],
-          ['OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN', 'OPEN'],
-        ],
-        layout: [
-          ['NONE', 'NONE', 'NONE', 'NONE', 'NONE', 'NONE', 'NONE', 'NONE'],
-          ['NONE', 'NONE', 'NONE', 'NONE', 'NONE', 'NONE', 'NONE', 'NONE'],
-          ['NONE', 'NONE', 'NONE', 'NONE', 'NONE', 'NONE', 'NONE', 'NONE'],
-          ['NONE', 'NONE', 'NONE', 'NONE', 'NONE', 'NONE', 'NONE', 'NONE'],
-          ['NONE', 'NONE', 'NONE', 'NONE', 'NONE', 'NONE', 'NONE', 'NONE'],
-        ],
-        layout2s: [
-          [
-            { color: 'WHITE', level: 2 },
-            { color: 'WHITE', level: 2 },
-            { color: 'WHITE', level: 2 },
-            { color: 'WHITE', level: 2 },
-            { color: 'WHITE', level: 2 },
-            { color: 'WHITE', level: 2 },
-            { color: 'WHITE', level: 2 },
-            { color: 'WHITE', level: 2 },
-          ],
-          [
-            { color: 'WHITE', level: 2 },
-            { color: 'WHITE', level: 2 },
-            { color: 'WHITE', level: 2 },
-            { color: 'WHITE', level: 2 },
-            { color: 'WHITE', level: 2 },
-            { color: 'WHITE', level: 2 },
-            { color: 'WHITE', level: 2 },
-            { color: 'WHITE', level: 2 },
-          ],
-          [
-            { color: 'WHITE', level: 2 },
-            { color: 'WHITE', level: 2 },
-            { color: 'WHITE', level: 2 },
-            { color: 'WHITE', level: 2 },
-            { color: 'WHITE', level: 2 },
-            { color: 'WHITE', level: 2 },
-            { color: 'WHITE', level: 2 },
-            { color: 'WHITE', level: 2 },
-          ],
-          [
-            { color: 'WHITE', level: 2 },
-            { color: 'WHITE', level: 2 },
-            { color: 'WHITE', level: 2 },
-            { color: 'WHITE', level: 2 },
-            { color: 'WHITE', level: 2 },
-            { color: 'WHITE', level: 2 },
-            { color: 'WHITE', level: 2 },
-            { color: 'WHITE', level: 2 },
-          ],
-          [
-            { color: 'WHITE', level: 2 },
-            { color: 'WHITE', level: 2 },
-            { color: 'WHITE', level: 2 },
-            { color: 'WHITE', level: 2 },
-            { color: 'WHITE', level: 2 },
-            { color: 'WHITE', level: 2 },
-            { color: 'WHITE', level: 2 },
-            { color: 'WHITE', level: 2 },
-          ],
-        ],
-      },
-      players: [
-        {
-          id: 0,
-          x: 0,
-          y: 0,
-          dir: 'RIGHT',
-          role: 'SPECIALIST',
-        },
-      ],
-      portals: [],
-      locks: [],
-      output: '',
-      initialGem: 0,
-      special: '',
-    },
-    initialized: 'false',
-    currentLength: 0,
-    answerLength: 1,
-    returnedError: null,
+    ...initialState,
   },
   effects: {
     *handleSubmit({ payload }, { call, put }) {
       // console.log(payload)
       try {
-        const packed = pack(
-          payload.code,
-          payload.grid,
-          payload.portals,
-          payload.locks,
-          payload.players,
-        );
-        const answer = yield call(playgroundService.submit, packed);
+        const answer = yield call(playgroundService.submit, payload);
         // console.log(answer)
         if (answer.status === 'OK') {
           message.warn('代码提交成功！');
@@ -154,52 +338,56 @@ const model: PlaygroundModelInterface = {
     initialize(state, { payload }) {
       // console.log('initialized')
       // console.log(state.initialized)
-      return {
+      const _p = payload as InitStates;
+      const nextState: ModelStates = {
         answer: [],
         nextFrame: {
-          grid: payload.grid,
-          players: payload.players,
-          portals: payload.portals,
-          locks: payload.locks,
+          grid: _p.grid,
+          stairs: _p.stairs,
+          gems: _p.gems,
+          beepers: _p.beepers,
+          switches: _p.switches,
+          portals: _p.portals,
+          monsters: _p.monsters,
+          locks: _p.locks,
+          platforms: _p.platforms,
+          players: _p.players,
           output: '',
-          initialGem: count(payload.grid.layout, 'GEM'),
           special: '',
         },
-        initialized: 'true',
+        initialized: true,
+        initialGem: _p.gems.length,
         currentLength: 0,
         answerLength: 1,
         returnedError: false,
+        gamingCondition: _p.gamingCondition,
+        userCollision: _p.userCollision,
       };
+      return nextState;
     },
     loadPlayground(state, { payload }) {
-      return {
+      const _p = payload as SuccessData;
+      // TODO fix this
+      const nextState: ModelStates = {
         ...state,
         answer: payload,
         answerLength: payload.length,
         returnedError: false,
       };
+      return nextState;
     },
     nextFrame(state, { payload }) {
-      const nextFrame = state.answer.shift();
-      if (nextFrame !== undefined) {
-        const answer = [...state.answer];
-        const initialGem = state.nextFrame.initialGem;
+      const { answer, nextFrame, currentLength, ...values } = state;
+      const newFrame = answer.shift();
+      if (newFrame !== undefined) {
         // console.log(nextFrame)
-        return {
+        const nextState: ModelStates = {
+          ...values,
           answer: answer,
-          nextFrame: {
-            grid: nextFrame.grid,
-            players: nextFrame.players,
-            portals: nextFrame.portals,
-            locks: state.nextFrame.locks, // TODO fix this! Should locks be reflected in server side answer, or should we remove portals in answer?
-            output: nextFrame.output,
-            initialGem: initialGem,
-            special: nextFrame.special,
-          },
-          initialized: 'true',
-          currentLength: state.currentLength + 1,
-          answerLength: state.answerLength,
+          nextFrame: { ...newFrame },
+          currentLength: currentLength + 1,
         };
+        return nextState;
       } else {
         return state;
       }

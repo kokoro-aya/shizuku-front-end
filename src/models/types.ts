@@ -1,23 +1,23 @@
-import { DashboardGrid, Portal, Lock, Player } from '@/components/Dashboard';
-import { FrameProps } from '@/pages/Playground';
+import { CoreData, Grid, StairData } from '@/data/DataFragments';
+import { GamingCondition } from '@/data/SentData';
 
-export interface FetchPayload {
-  payload: {
-    code: string;
-    grid: DashboardGrid;
-    portals: Portal[];
-    locks: Lock[];
-    players: Player[];
-  };
+export interface Frame extends CoreData {
+  grid: Grid[][];
+  stairs: StairData[];
+  output: string;
+  special: string;
 }
 
 export interface ModelStates {
-  initialized: string;
-  nextFrame: FrameProps;
-  answer: FrameProps[];
+  initialized: boolean;
+  initialGem: number;
+  nextFrame: Frame;
+  answer: Frame[];
   currentLength: number;
   answerLength: number;
   returnedError: boolean;
+  gamingCondition?: GamingCondition;
+  userCollision: boolean;
 }
 
 export interface ErrorState {

@@ -2,19 +2,29 @@ import React, { MouseEventHandler, useEffect, useState } from 'react';
 import { Row, Col, notification } from 'antd';
 import InputBox from '../components/Input';
 import Console from '../components/Console';
-import Dashboard, {
-  DashboardGrid,
-  Player,
-  Lock,
-  Portal,
-} from '../components/Dashboard';
+import Dashboard from '../components/Dashboard';
 import { connect } from '../.umi/plugin-dva/exports';
+import { Frame, ModelStates } from '@/models/types';
+import { SentData } from '@/data/SentData';
 
 const namespace = 'playground';
 
 const regex = /<\/?.*?>/g;
 
-type NotificationType = 'success' | 'info' | 'warning' | 'error';
+enum NotificationType {
+  Success,
+  Info,
+  Warning,
+  Error,
+}
+
+export enum ExecutionStatus {
+  Err,
+  Success,
+  Idle,
+  Processing,
+  Impossible,
+}
 
 const activateNotification = (
   type: NotificationType,
@@ -22,23 +32,23 @@ const activateNotification = (
   desc: string | null = null,
 ) => {
   switch (type) {
-    case 'success':
+    case NotificationType.Success:
       return notification['success']({
         message: message == null ? '任务执行成功' : message,
         description: desc == null ? '代码正在运行中……' : desc,
       });
-    case 'info':
+    case NotificationType.Info:
       return notification['info']({
         message: message == null ? '提示' : message,
         description:
           desc == null ? '虽然不知道发生了什么但是似乎很厉害的样子？' : desc,
       });
-    case 'warning':
+    case NotificationType.Warning:
       return notification['warning']({
         message: message == null ? '警告' : message,
         description: desc == null ? '似乎有些不对劲' : desc,
       });
-    case 'error':
+    case NotificationType.Error:
       return notification['error']({
         message: message == null ? '错误' : message,
         description: desc == null ? '发生了一些错误' : desc,
@@ -65,18 +75,9 @@ const mapStateToProps = (state: PlaygroundStateToPropsMap) => {
   };
 };
 
-type PlaygroundStateToPropsMap = { playground: PlaygroundStates };
+type PlaygroundStateToPropsMap = { playground: ModelStates };
 
-interface PlaygroundStates {
-  initialized: string;
-  nextFrame: FrameProps;
-  answer: FrameProps[];
-  currentLength: number;
-  answerLength: number;
-  returnedError: boolean;
-}
-
-interface PlaygroundProps extends PlaygroundStates {
+interface PlaygroundProps extends ModelStates {
   dispatch<T>(arg0: DispatchType<T>): void;
 }
 
@@ -84,24 +85,6 @@ type DispatchType<T> = {
   type: string;
   payload?: T;
 };
-
-export interface FrameProps {
-  grid: DashboardGrid;
-  players: Player[];
-  portals: Portal[];
-  locks: Lock[];
-  output: string;
-  initialGem: number;
-  special: string;
-}
-
-interface SubmitProps {
-  code: string;
-  grid: DashboardGrid;
-  portals: Portal[];
-  locks: Lock[];
-  players: Player[];
-}
 
 const Playground: React.FC<PlaygroundProps> = (props) => {
   const [code, setCode] = useState('Input your code...');
@@ -111,7 +94,7 @@ const Playground: React.FC<PlaygroundProps> = (props) => {
   useEffect(() => {
     const interval = setInterval(() => {
       // console.log("in setInterval: " + props.initialized)
-      if (props.initialized !== 'true') {
+      if (!props.initialized) {
         initialFetch();
       } else {
         getData();
@@ -129,22 +112,36 @@ const Playground: React.FC<PlaygroundProps> = (props) => {
   };
 
   const getData = () => {
-    props.dispatch<FrameProps>({
+    props.dispatch<Frame>({
       type: `${namespace}/nextFrame`,
     });
     const { nextFrame, answer } = props;
     if (nextFrame) {
-      if (!idle && nextFrame.special === 'GEM') {
+      if (!idle && nextFrame.special.includes('GEM')) {
         console.log('Collected a gem');
-        activateNotification('info', '消息', '捡到了一颗钻石。');
+        activateNotification(NotificationType.Info, '消息', '捡到了一颗钻石。');
       }
-      if (!idle && nextFrame.special === 'SWITCH') {
+      if (!idle && nextFrame.special.includes('SWITCH')) {
         console.log('Toggled a switch');
-        activateNotification('info', '消息', '按下了一个开关。');
+        activateNotification(NotificationType.Info, '消息', '按下了一个开关。');
+      }
+      if (!idle && nextFrame.special.includes('WIN')) {
+        activateNotification(NotificationType.Success, '你赢了', '恭喜通关。');
+      }
+      if (!idle && nextFrame.special.includes('LOST')) {
+        activateNotification(
+          NotificationType.Warning,
+          '游戏结束',
+          '你失败了。',
+        );
       }
     }
     if (!props.returnedError && !idle && answer.length === 0) {
-      activateNotification('success', '任务执行成功', '程序执行完成。');
+      activateNotification(
+        NotificationType.Info,
+        '任务已执行',
+        '程序执行完成。',
+      );
       setIdle(true);
     }
   };
@@ -165,14 +162,15 @@ const Playground: React.FC<PlaygroundProps> = (props) => {
 
   const makeRequest = () => {
     // console.log(code)
-    props.dispatch<SubmitProps>({
+    const { output, special, ...sentData } = props.nextFrame;
+    props.dispatch<SentData>({
       type: `${namespace}/handleSubmit`,
       payload: {
+        type: 'default',
         code: code,
-        grid: props.nextFrame.grid,
-        portals: props.nextFrame.portals,
-        locks: props.nextFrame.locks,
-        players: props.nextFrame.players,
+        ...sentData,
+        gamingCondition: props.gamingCondition,
+        userCollision: props.userCollision,
       },
     });
     console.log(props.answer);
@@ -239,20 +237,15 @@ const Playground: React.FC<PlaygroundProps> = (props) => {
   };
 
   const renderDashboard = (
-    initialGem: number,
-    grid: DashboardGrid,
-    players: Player[],
-    locks: Lock[],
+    frame: Frame,
     curr: number,
     len: number,
-    status: 'err' | 'success' | 'idle' | 'processing' | 'impossible',
+    status: ExecutionStatus,
   ) => {
     return (
       <Dashboard
-        initialGem={initialGem}
-        grid={grid}
-        players={players}
-        locks={locks}
+        frame={frame}
+        initialGem={props.initialGem}
         current={curr}
         aLength={len}
         status={status}
@@ -265,14 +258,14 @@ const Playground: React.FC<PlaygroundProps> = (props) => {
   };
 
   const status = props.returnedError
-    ? 'err'
+    ? ExecutionStatus.Err
     : idle
     ? disabled
-      ? 'success'
-      : 'idle'
+      ? ExecutionStatus.Success
+      : ExecutionStatus.Idle
     : disabled
-    ? 'processing'
-    : 'impossible';
+    ? ExecutionStatus.Processing
+    : ExecutionStatus.Impossible;
 
   return (
     <div
@@ -304,10 +297,7 @@ const Playground: React.FC<PlaygroundProps> = (props) => {
           >
             <Row>
               {renderDashboard(
-                props.nextFrame.initialGem,
-                props.nextFrame.grid,
-                props.nextFrame.players,
-                props.nextFrame.locks,
+                props.nextFrame,
                 props.currentLength,
                 props.answerLength,
                 status,
