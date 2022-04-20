@@ -4,8 +4,9 @@ import InputBox from '../components/Input';
 import Console from '../components/Console';
 import Dashboard from '../components/Dashboard';
 import { connect } from '../.umi/plugin-dva/exports';
-import { Frame, ModelStates } from '@/models/types';
+import { Frame, ModelStates } from '@/models/playground.types';
 import { SentData } from '@/data/SentData';
+import { DispatchSender, DispatchType } from '@/models/dispatch.type';
 
 const namespace = 'playground';
 
@@ -83,14 +84,7 @@ const mapStateToProps = (state: PlaygroundStateToPropsMap) => {
 
 type PlaygroundStateToPropsMap = { playground: ModelStates };
 
-interface PlaygroundProps extends ModelStates {
-  dispatch<T>(arg0: DispatchType<T>): void;
-}
-
-type DispatchType<T> = {
-  type: string;
-  payload?: T;
-};
+interface PlaygroundProps extends ModelStates, DispatchSender {}
 
 const Playground: React.FC<PlaygroundProps> = (props) => {
   const [code, setCode] = useState('Input your code...');
@@ -154,7 +148,7 @@ const Playground: React.FC<PlaygroundProps> = (props) => {
 
   const onClickReset = () => {
     setDisabled(false);
-    setCode('Input your code...');
+    setCode('// Input your code...');
     props.dispatch({
       type: `${namespace}/initialFetch`,
       payload: '',
@@ -222,47 +216,6 @@ const Playground: React.FC<PlaygroundProps> = (props) => {
     }
   };
 
-  const renderInput = (
-    submit: MouseEventHandler<HTMLElement>,
-    reset: () => void,
-    change: (arg0: string) => void,
-    add: (arg0: number, arg1: HTMLInputElement) => void,
-    store: string,
-    disabled: boolean,
-  ) => {
-    return (
-      <InputBox
-        onSubmit={submit}
-        onReset={reset}
-        onChange={change}
-        onAdd={add}
-        store={store}
-        disabled={disabled}
-      />
-    );
-  };
-
-  const renderDashboard = (
-    frame: Frame,
-    curr: number,
-    len: number,
-    status: ExecutionStatus,
-  ) => {
-    return (
-      <Dashboard
-        frame={frame}
-        initialGem={props.initialGem}
-        current={curr}
-        aLength={len}
-        status={status}
-      />
-    );
-  };
-
-  const renderConsole = (output: string) => {
-    return <Console output={output} />;
-  };
-
   const status = props.returnedError
     ? ExecutionStatus.Err
     : idle
@@ -282,14 +235,14 @@ const Playground: React.FC<PlaygroundProps> = (props) => {
     >
       <Row gutter={[16, 16]}>
         <Col className="gutter-row" xs={24} sm={24} md={12} lg={12} xl={12}>
-          {renderInput(
-            onClickSubmit,
-            onClickReset,
-            onChange,
-            onClickAdd,
-            code,
-            disabled,
-          )}
+          <InputBox
+            onSubmit={onClickSubmit}
+            onReset={onClickReset}
+            onChange={onChange}
+            onAdd={onClickAdd}
+            store={code}
+            disabled={disabled}
+          />
         </Col>
         <Col className="gutter-row" xs={24} sm={24} md={12} lg={12} xl={12}>
           <div
@@ -302,14 +255,17 @@ const Playground: React.FC<PlaygroundProps> = (props) => {
             }}
           >
             <Row>
-              {renderDashboard(
-                props.nextFrame,
-                props.currentLength,
-                props.answerLength,
-                status,
-              )}
+              <Dashboard
+                frame={props.nextFrame}
+                initialGem={props.initialGem}
+                current={props.currentLength}
+                aLength={props.answerLength}
+                status={status}
+              />
             </Row>
-            <Row>{renderConsole(props.nextFrame.output)}</Row>
+            <Row>
+              <Console output={props.nextFrame.output} />
+            </Row>
           </div>
         </Col>
       </Row>

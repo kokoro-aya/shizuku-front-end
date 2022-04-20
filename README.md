@@ -6,9 +6,10 @@ A front-end for [simulatte](https://github.com/kokoro-aya/simulatte). Run on umi
 
 ![](./img/screenshot.png)
 
-This project provides a simple interface to present the features of Amatsukaze, a simple application inspired by
+This project provides a simple interface to present the features of Amatsukaze or Simulatte, a simple application inspired by
 Karel and Playgrounds. The Amatsukaze consists of a fictive programming language and a grid where users could control
-the character to move around and interact with it.
+the character to move around and interact with it, which has been discontinued. The Simulatte consists of achieving the similar
+features of game by using Kotlin DSL.
 
 The Shizuku is a SPA with following features:
 

@@ -1,5 +1,5 @@
 import { Payload } from '@/data/Payload';
-import { Frame } from '@/models/types';
+import { Frame } from '@/models/playground.types';
 import { Grid, StairData } from '@/data/DataFragments';
 
 export const count = <T>(grid: Array<Array<T>>, pred: (arg0: T) => boolean) => {

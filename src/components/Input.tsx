@@ -6,6 +6,9 @@ import { connect } from 'umi';
 import Prism from 'prismjs';
 import Editor from '@monaco-editor/react';
 import MapSelector from '../fragments/MapSelector';
+import { Theme, ThemeState } from '@/models/codescheme';
+
+const namespace = 'codescheme';
 
 interface InputBoxProps {
   onSubmit: MouseEventHandler<HTMLElement>;
@@ -14,6 +17,7 @@ interface InputBoxProps {
   onAdd: (arg0: number, arg1: HTMLInputElement) => void;
   store: string;
   disabled: boolean;
+  theme: Theme;
 }
 
 interface DropdownUnit {
@@ -32,6 +36,13 @@ const dropdown = (items: DropdownUnit[]) => (
 );
 
 const regex = /<\/?.*?>/g;
+
+const mapStateToProps = (state: ThemeStateToPropsMap) => {
+  const { theme } = state[namespace];
+  return { theme };
+};
+
+type ThemeStateToPropsMap = { codescheme: ThemeState };
 
 const InputBox: React.FC<InputBoxProps> = (props) => {
   const [isModalDisplayed, setModalDisplayed] = useState(false);
@@ -217,7 +228,12 @@ const InputBox: React.FC<InputBoxProps> = (props) => {
         {/*    'resize': 'none',*/}
         {/*  }}*/}
         {/*/>*/}
-        <Editor height="50vh" language="swift" value={props.store} />
+        <Editor
+          height="50vh"
+          language="kotlin"
+          theme={props.theme.toString()}
+          value={props.store}
+        />
       </div>
       <br />
       <Row justify="space-around" style={{ paddingBottom: '5%' }}>
@@ -268,4 +284,4 @@ const InputBox: React.FC<InputBoxProps> = (props) => {
   );
 };
 
-export default connect()(InputBox);
+export default connect(mapStateToProps)(InputBox);
