@@ -1,12 +1,12 @@
-import React, { MouseEventHandler, useEffect, useState } from 'react';
-import { Button, Dropdown, Space, Row, Col, Menu, Card, Divider } from 'antd';
+import React, { MouseEventHandler, useRef, useState } from 'react';
+import { Button, Dropdown, Space, Row, Col, Menu, Divider } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
-import ContentEditable from 'react-contenteditable';
 import { connect } from 'umi';
-import Prism from 'prismjs';
-import Editor, { useMonaco } from '@monaco-editor/react';
+import Editor, { OnMount } from '@monaco-editor/react';
 import MapSelector from '../fragments/MapSelector';
 import { Theme, ThemeState } from '@/models/codescheme';
+import { editor } from 'monaco-editor';
+import IStandaloneCodeEditor from 'monaco-editor';
 
 import { clouds } from '@/styles/Clouds';
 import { dawn } from '@/styles/Dawn';
@@ -23,7 +23,6 @@ interface InputBoxProps {
   onSubmit: MouseEventHandler<HTMLElement>;
   onReset: () => void;
   onChange: (arg0: string) => void;
-  onAdd: (arg0: number, arg1: HTMLInputElement) => void;
   onEditorChange: (value: string | undefined, ev: unknown) => void;
   store: string;
   disabled: boolean;
@@ -31,14 +30,17 @@ interface InputBoxProps {
 }
 
 interface DropdownUnit {
-  onClick: () => void;
   desc: string;
+  code: string;
 }
 
-const dropdown = (items: DropdownUnit[]) => (
+const dropdown = (items: DropdownUnit[], editor: editor.IEditor) => (
   <Menu>
     {items.map((e, i) => (
-      <Menu.Item onClick={e.onClick} key={i}>
+      <Menu.Item
+        onClick={() => editor.trigger('keyboard', 'type', { text: e.code })}
+        key={i}
+      >
         {e.desc}
       </Menu.Item>
     ))}
@@ -57,31 +59,28 @@ type ThemeStateToPropsMap = { codescheme: ThemeState };
 const InputBox: React.FC<InputBoxProps> = (props) => {
   const [isModalDisplayed, setModalDisplayed] = useState(false);
 
-  const [isThemesLoaded, setThemesLoaded] = useState(false);
+  // @ts-ignore
+  const monacoRef = useRef<IStandaloneCodeEditor>();
 
-  const monaco = useMonaco();
-
-  useEffect(() => {
-    if (monaco && !isThemesLoaded) {
-      // @ts-ignore
-      monaco.editor.defineTheme('clouds', clouds);
-      // @ts-ignore
-      monaco.editor.defineTheme('dawn', dawn);
-      // @ts-ignore
-      monaco.editor.defineTheme('dracula', dracula);
-      // @ts-ignore
-      monaco.editor.defineTheme('monokai', monokai);
-      // @ts-ignore
-      monaco.editor.defineTheme('oceanic-next', oceanic_next);
-      // @ts-ignore
-      monaco.editor.defineTheme('solarized-dark', solarized_dark);
-      // @ts-ignore
-      monaco.editor.defineTheme('solarized-light', solarized_light);
-      // @ts-ignore
-      monaco.editor.defineTheme('twilight', twilight);
-      setThemesLoaded(true);
-    }
-  }, [monaco]); // equiv. componentDidMount to load theme definitions
+  const onEditorMount: OnMount = (editor, monaco) => {
+    // @ts-ignore
+    monaco.editor.defineTheme('clouds', clouds);
+    // @ts-ignore
+    monaco.editor.defineTheme('dawn', dawn);
+    // @ts-ignore
+    monaco.editor.defineTheme('dracula', dracula);
+    // @ts-ignore
+    monaco.editor.defineTheme('monokai', monokai);
+    // @ts-ignore
+    monaco.editor.defineTheme('oceanic-next', oceanic_next);
+    // @ts-ignore
+    monaco.editor.defineTheme('solarized-dark', solarized_dark);
+    // @ts-ignore
+    monaco.editor.defineTheme('solarized-light', solarized_light);
+    // @ts-ignore
+    monaco.editor.defineTheme('twilight', twilight);
+    monacoRef.current = editor;
+  };
 
   const handleSubmit = (event: React.MouseEvent<HTMLElement>) => {
     event.preventDefault();
@@ -92,79 +91,60 @@ const InputBox: React.FC<InputBoxProps> = (props) => {
     props.onReset();
   };
 
-  const handleAdd = (num: number) => {
-    props.onAdd(
-      num,
-      document.getElementById('amatsukaze-code-editor') as HTMLInputElement,
-    );
-  };
-
   const blockedCommands = [
-    {
-      desc: 'isBlocked',
-      onClick: () => handleAdd(0),
-    },
-    {
-      desc: 'isBlockedLeft',
-      onClick: () => handleAdd(1),
-    },
-    {
-      desc: 'isBlockedRight',
-      onClick: () => handleAdd(2),
-    },
+    { desc: 'isBlocked', code: 'isBlocked ' },
+    { desc: 'isBlockedLeft', code: 'isBlockedLeft ' },
+    { desc: 'isBlockedRight', code: 'isBlockedRight ' },
   ];
   const isOnCommands = [
-    {
-      desc: 'isOnGem',
-      onClick: () => handleAdd(3),
-    },
-    {
-      desc: 'isOnOpenedSwitch',
-      onClick: () => handleAdd(4),
-    },
-    {
-      desc: 'isOnClosedSwitch',
-      onClick: () => handleAdd(5),
-    },
+    { desc: 'isOnGem', code: 'isOnGem ' },
+    { desc: 'isOnOpenedSwitch', code: 'isOnOpenedSwitch ' },
+    { desc: 'isOnClosedSwitch', code: 'isOnClosedSwitch ' },
   ];
   const moveForwardCommand = {
     desc: 'moveForward()',
-    onClick: () => handleAdd(6),
+    code: `moveForward()
+  `,
   };
   const turnLeftCommand = {
     desc: 'turnLeft()',
-    onClick: () => handleAdd(7),
+    code: `turnLeft()
+  `,
   };
   const toggleCommands = [
     {
       desc: 'collectGem()',
-      onClick: () => handleAdd(8),
+      code: `collectGem()
+    `,
     },
     {
       desc: 'toggleSwitch()',
-      onClick: () => handleAdd(9),
+      code: `toggleSwitch()
+    `,
     },
   ];
-  const printCommand = {
-    desc: 'print(...)',
-    onClick: () => handleAdd(10),
-  };
+
+  const printCommand = { desc: 'console.log(...)', code: 'console.log() ' };
   const structuralCommands = [
     {
       desc: 'for循环',
-      onClick: () => handleAdd(11),
+      code: `for (_ in 1 until 3) {
+...`,
     },
     {
       desc: 'while循环',
-      onClick: () => handleAdd(12),
+      code: `while (cond) {
+...`,
     },
     {
       desc: 'repeat循环',
-      onClick: () => handleAdd(13),
+      code: `repeat (3) {
+...`,
     },
     {
       desc: '函数',
-      onClick: () => handleAdd(14),
+      code: `fun foo(): Unit {
+...`,
     },
   ];
 
@@ -187,7 +167,7 @@ const InputBox: React.FC<InputBoxProps> = (props) => {
             // FIXME find a solution for the no children error of Dropdown
             // @ts-ignore
             <Dropdown
-              overlay={dropdown(blockedCommands)}
+              overlay={dropdown(blockedCommands, monacoRef.current!)}
               placement="bottomLeft"
               arrow
             >
@@ -199,7 +179,7 @@ const InputBox: React.FC<InputBoxProps> = (props) => {
           {
             // @ts-ignore
             <Dropdown
-              overlay={dropdown(isOnCommands)}
+              overlay={dropdown(isOnCommands, monacoRef.current!)}
               placement="bottomLeft"
               arrow
             >
@@ -208,12 +188,28 @@ const InputBox: React.FC<InputBoxProps> = (props) => {
               </Button>
             </Dropdown>
           }
-          <Button onClick={moveForwardCommand.onClick}>moveForward</Button>
-          <Button onClick={turnLeftCommand.onClick}>turnLeft</Button>
+          <Button
+            onClick={() =>
+              monacoRef.current!.trigger('keyboard', 'type', {
+                text: moveForwardCommand.code,
+              })
+            }
+          >
+            moveForward
+          </Button>
+          <Button
+            onClick={() =>
+              monacoRef.current!.trigger('keyboard', 'type', {
+                text: turnLeftCommand.code,
+              })
+            }
+          >
+            turnLeft
+          </Button>
           {
             // @ts-ignore
             <Dropdown
-              overlay={dropdown(toggleCommands)}
+              overlay={dropdown(toggleCommands, monacoRef.current!)}
               placement="bottomLeft"
               arrow
             >
@@ -222,11 +218,19 @@ const InputBox: React.FC<InputBoxProps> = (props) => {
               </Button>
             </Dropdown>
           }
-          <Button onClick={printCommand.onClick}>print(...)</Button>
+          <Button
+            onClick={() =>
+              monacoRef.current!.trigger('keyboard', 'type', {
+                text: printCommand.code,
+              })
+            }
+          >
+            print(...)
+          </Button>
           {
             // @ts-ignore
             <Dropdown
-              overlay={dropdown(structuralCommands)}
+              overlay={dropdown(structuralCommands, monacoRef.current!)}
               placement="bottomLeft"
               arrow
             >
@@ -266,6 +270,7 @@ const InputBox: React.FC<InputBoxProps> = (props) => {
           theme={props.theme.toString()}
           value={props.store}
           onChange={props.onEditorChange}
+          onMount={onEditorMount}
         />
       </div>
       <br />

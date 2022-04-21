@@ -19,27 +19,10 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="095a5d38-2a3c-4e5c-abe6-e5e436d6447a" name="Default Changelist" comment="Monaco editor works, pass theme as state and it works">
-      <change afterPath="$PROJECT_DIR$/src/styles/Clouds.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/styles/Dawn.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/styles/Dracula.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/styles/Monokai.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/styles/Oceanic Next.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/styles/Solarized-dark.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/styles/Solarized-light.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/styles/Twilight.ts" afterDir="false" />
+    <list default="true" id="095a5d38-2a3c-4e5c-abe6-e5e436d6447a" name="Default Changelist" comment="Bind monaco to state, added themes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SimpleLayout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/SimpleLayout.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Input.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Input.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/codescheme.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/codescheme.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Home.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/Playground.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Playground.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/prism-atom-dark.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/prism-darcula.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/prism-material-light.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/prism-material-oceanic.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/prism-solarized-light.ts" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -152,7 +135,7 @@
       <workItem from="1650416953248" duration="191000" />
       <workItem from="1650417920836" duration="6145000" />
       <workItem from="1650496115594" duration="2731000" />
-      <workItem from="1650499403125" duration="41000" />
+      <workItem from="1650499403125" duration="2857000" />
     </task>
     <task id="LOCAL-00001" summary="Commit 1. Page Layout Setup">
       <created>1608342769408</created>
@@ -308,7 +291,14 @@
       <option name="project" value="LOCAL" />
       <updated>1650494464339</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Bind monaco to state, added themes">
+      <created>1650500007725</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1650500007725</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -366,6 +356,7 @@
     <MESSAGE value="update readme" />
     <MESSAGE value="license and minor updates" />
     <MESSAGE value="Monaco editor works, pass theme as state and it works" />
-    <option name="LAST_COMMIT_MESSAGE" value="Monaco editor works, pass theme as state and it works" />
+    <MESSAGE value="Bind monaco to state, added themes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Bind monaco to state, added themes" />
   </component>
 </project>

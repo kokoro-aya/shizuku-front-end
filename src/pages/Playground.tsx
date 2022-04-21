@@ -1,4 +1,4 @@
-import React, { MouseEventHandler, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Row, Col, notification } from 'antd';
 import InputBox from '../components/Input';
 import Console from '../components/Console';
@@ -6,8 +6,7 @@ import Dashboard from '../components/Dashboard';
 import { connect } from '../.umi/plugin-dva/exports';
 import { Frame, ModelStates } from '@/models/playground.types';
 import { SentData } from '@/data/SentData';
-import { DispatchSender, DispatchType } from '@/models/dispatch.type';
-import { useMonaco } from '@monaco-editor/react';
+import { DispatchSender } from '@/models/dispatch.type';
 
 const namespace = 'playground';
 
@@ -92,8 +91,6 @@ const Playground: React.FC<PlaygroundProps> = (props) => {
   const [code, setCode] = useState(initCode);
   const [idle, setIdle] = useState(true);
   const [disabled, setDisabled] = useState(false);
-
-  const monaco = useMonaco();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -201,7 +198,7 @@ const Playground: React.FC<PlaygroundProps> = (props) => {
     ? ExecutionStatus.Processing
     : ExecutionStatus.Impossible;
 
-  const handleEditorChange = (value: string | undefined, ev: unknown) => {
+  const handleEditorChange = (value: string | undefined, _: unknown) => {
     setCode(value ?? '');
   };
 
