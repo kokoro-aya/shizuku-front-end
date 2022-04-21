@@ -3,11 +3,14 @@ import { Reducer } from 'umi';
 export enum Theme {
   Light = 'light',
   VSDark = 'vs-dark',
-  AtomDark = 'atom-dark',
-  Darcula = 'darcula',
-  MaterialLight = 'material-light',
-  MaterialOceanic = 'material-oceanic',
+  Clouds = 'clouds',
+  Dawn = 'dawn',
+  Dracula = 'dracula',
+  Monokai = 'monokai',
+  OceanicNext = 'oceanic-next',
+  SolarizedDark = 'solarized-dark',
   SolarizedLight = 'solarized-light',
+  Twilight = 'twilight',
 }
 
 export interface CodeSchemeInterface {

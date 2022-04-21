@@ -19,22 +19,27 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="095a5d38-2a3c-4e5c-abe6-e5e436d6447a" name="Default Changelist" comment="license and minor updates">
-      <change afterPath="$PROJECT_DIR$/src/SimpleLayout.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/models/codescheme.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/models/dispatch.type.ts" afterDir="false" />
+    <list default="true" id="095a5d38-2a3c-4e5c-abe6-e5e436d6447a" name="Default Changelist" comment="Monaco editor works, pass theme as state and it works">
+      <change afterPath="$PROJECT_DIR$/src/styles/Clouds.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/styles/Dawn.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/styles/Dracula.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/styles/Monokai.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/styles/Oceanic Next.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/styles/Solarized-dark.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/styles/Solarized-light.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/styles/Twilight.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.umirc.ts" beforeDir="false" afterPath="$PROJECT_DIR$/.umirc.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mock/playground.ts" beforeDir="false" afterPath="$PROJECT_DIR$/mock/playground.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mock/playground_old.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Dashboard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dashboard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SimpleLayout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/SimpleLayout.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Input.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Input.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/playground.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/playground.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/playground.types.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/codescheme.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/codescheme.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Home.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/Playground.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Playground.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/prism-atom-dark.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/prism-darcula.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/prism-material-light.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/prism-material-oceanic.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/prism-solarized-light.ts" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,7 +65,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectId" id="1lZbKJzLHp2iFpxUSf0qdZfgQlU" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -71,6 +76,7 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/irony/WebstormProjects/shizuku-front-end/src/styles&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -84,6 +90,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/styles" />
       <recent name="$PROJECT_DIR$/img" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -143,7 +150,9 @@
       <workItem from="1650391446548" duration="19194000" />
       <workItem from="1650411543369" duration="26000" />
       <workItem from="1650416953248" duration="191000" />
-      <workItem from="1650417920836" duration="4449000" />
+      <workItem from="1650417920836" duration="6145000" />
+      <workItem from="1650496115594" duration="2731000" />
+      <workItem from="1650499403125" duration="41000" />
     </task>
     <task id="LOCAL-00001" summary="Commit 1. Page Layout Setup">
       <created>1608342769408</created>
@@ -292,7 +301,14 @@
       <option name="project" value="LOCAL" />
       <updated>1650417133711</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Monaco editor works, pass theme as state and it works">
+      <created>1650494464339</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1650494464339</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -349,6 +365,7 @@
     <MESSAGE value="Fixed minor issues, import of enums" />
     <MESSAGE value="update readme" />
     <MESSAGE value="license and minor updates" />
-    <option name="LAST_COMMIT_MESSAGE" value="license and minor updates" />
+    <MESSAGE value="Monaco editor works, pass theme as state and it works" />
+    <option name="LAST_COMMIT_MESSAGE" value="Monaco editor works, pass theme as state and it works" />
   </component>
 </project>

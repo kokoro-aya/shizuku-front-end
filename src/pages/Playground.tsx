@@ -7,6 +7,7 @@ import { connect } from '../.umi/plugin-dva/exports';
 import { Frame, ModelStates } from '@/models/playground.types';
 import { SentData } from '@/data/SentData';
 import { DispatchSender, DispatchType } from '@/models/dispatch.type';
+import { useMonaco } from '@monaco-editor/react';
 
 const namespace = 'playground';
 
@@ -87,9 +88,12 @@ type PlaygroundStateToPropsMap = { playground: ModelStates };
 interface PlaygroundProps extends ModelStates, DispatchSender {}
 
 const Playground: React.FC<PlaygroundProps> = (props) => {
-  const [code, setCode] = useState('Input your code...');
+  const initCode = '// Input your code...';
+  const [code, setCode] = useState(initCode);
   const [idle, setIdle] = useState(true);
   const [disabled, setDisabled] = useState(false);
+
+  const monaco = useMonaco();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -161,7 +165,7 @@ const Playground: React.FC<PlaygroundProps> = (props) => {
   };
 
   const makeRequest = () => {
-    // console.log(code)
+    console.log(code);
     const { output, special, ...sentData } = props.nextFrame;
     props.dispatch<SentData>({
       type: `${namespace}/handleSubmit`,
@@ -187,35 +191,6 @@ const Playground: React.FC<PlaygroundProps> = (props) => {
     setCode(data);
   };
 
-  const onClickAdd = (num: number, el: HTMLInputElement) => {
-    const start = el.selectionStart;
-    const end = el.selectionEnd;
-    const toAdd = [
-      'isBlocked ',
-      'isBlockedLeft',
-      'isBlockedRight',
-      'isOnGem',
-      'isOnOpenedSwitch ',
-      'isOnClosedSwitch ',
-      'moveForward() \n',
-      'turnLeft() \n',
-      'collectGem() \n',
-      'toggleSwitch() \n',
-      'print() ',
-      'for _ in 1 ... 3 { } ',
-      'while cond { } ',
-      'repeat { } while cond ',
-      'func foo() -> Void { } ',
-    ];
-    if (start !== null && end !== null) {
-      setCode(
-        code.substring(0, start) +
-          toAdd[num] +
-          code.substring(end, code.length),
-      );
-    }
-  };
-
   const status = props.returnedError
     ? ExecutionStatus.Err
     : idle
@@ -225,6 +200,10 @@ const Playground: React.FC<PlaygroundProps> = (props) => {
     : disabled
     ? ExecutionStatus.Processing
     : ExecutionStatus.Impossible;
+
+  const handleEditorChange = (value: string | undefined, ev: unknown) => {
+    setCode(value ?? '');
+  };
 
   return (
     <div
@@ -239,7 +218,8 @@ const Playground: React.FC<PlaygroundProps> = (props) => {
             onSubmit={onClickSubmit}
             onReset={onClickReset}
             onChange={onChange}
-            onAdd={onClickAdd}
+            onEditorChange={handleEditorChange}
+            init={initCode}
             store={code}
             disabled={disabled}
           />

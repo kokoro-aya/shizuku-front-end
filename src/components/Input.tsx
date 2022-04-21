@@ -1,12 +1,21 @@
-import React, { MouseEventHandler, useState } from 'react';
+import React, { MouseEventHandler, useEffect, useState } from 'react';
 import { Button, Dropdown, Space, Row, Col, Menu, Card, Divider } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
 import ContentEditable from 'react-contenteditable';
 import { connect } from 'umi';
 import Prism from 'prismjs';
-import Editor from '@monaco-editor/react';
+import Editor, { useMonaco } from '@monaco-editor/react';
 import MapSelector from '../fragments/MapSelector';
 import { Theme, ThemeState } from '@/models/codescheme';
+
+import { clouds } from '@/styles/Clouds';
+import { dawn } from '@/styles/Dawn';
+import { dracula } from '@/styles/Dracula';
+import { monokai } from '@/styles/Monokai';
+import { oceanic_next } from '@/styles/Oceanic Next';
+import { solarized_dark } from '@/styles/Solarized-dark';
+import { solarized_light } from '@/styles/Solarized-light';
+import { twilight } from '@/styles/Twilight';
 
 const namespace = 'codescheme';
 
@@ -15,6 +24,7 @@ interface InputBoxProps {
   onReset: () => void;
   onChange: (arg0: string) => void;
   onAdd: (arg0: number, arg1: HTMLInputElement) => void;
+  onEditorChange: (value: string | undefined, ev: unknown) => void;
   store: string;
   disabled: boolean;
   theme: Theme;
@@ -47,9 +57,31 @@ type ThemeStateToPropsMap = { codescheme: ThemeState };
 const InputBox: React.FC<InputBoxProps> = (props) => {
   const [isModalDisplayed, setModalDisplayed] = useState(false);
 
-  // const handleChange = data => {
-  //   props.onChange(data);
-  // };
+  const [isThemesLoaded, setThemesLoaded] = useState(false);
+
+  const monaco = useMonaco();
+
+  useEffect(() => {
+    if (monaco && !isThemesLoaded) {
+      // @ts-ignore
+      monaco.editor.defineTheme('clouds', clouds);
+      // @ts-ignore
+      monaco.editor.defineTheme('dawn', dawn);
+      // @ts-ignore
+      monaco.editor.defineTheme('dracula', dracula);
+      // @ts-ignore
+      monaco.editor.defineTheme('monokai', monokai);
+      // @ts-ignore
+      monaco.editor.defineTheme('oceanic-next', oceanic_next);
+      // @ts-ignore
+      monaco.editor.defineTheme('solarized-dark', solarized_dark);
+      // @ts-ignore
+      monaco.editor.defineTheme('solarized-light', solarized_light);
+      // @ts-ignore
+      monaco.editor.defineTheme('twilight', twilight);
+      setThemesLoaded(true);
+    }
+  }, [monaco]); // equiv. componentDidMount to load theme definitions
 
   const handleSubmit = (event: React.MouseEvent<HTMLElement>) => {
     event.preventDefault();
@@ -233,6 +265,7 @@ const InputBox: React.FC<InputBoxProps> = (props) => {
           language="kotlin"
           theme={props.theme.toString()}
           value={props.store}
+          onChange={props.onEditorChange}
         />
       </div>
       <br />

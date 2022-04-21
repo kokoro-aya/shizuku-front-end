@@ -141,11 +141,14 @@ class SimpleLayout extends React.Component<
               >
                 <Option value="light">Light</Option>
                 <Option value="vs-dark">Visual Studio Dark</Option>
-                <Option value="atom-dark">Atom Dark</Option>
-                <Option value="darcula">Darcula</Option>
-                <Option value="material-light">Material Light</Option>
-                <Option value="material-oceanic">Material Oceanic</Option>
+                <Option value="clouds">Clouds</Option>
+                <Option value="dawn">Dawn</Option>
+                <Option value="dracula">Dracula</Option>
+                <Option value="monokai">Monokai</Option>
+                <Option value="oceanic-next">Oceanic Next</Option>
                 <Option value="solarized-light">Solarized Light</Option>
+                <Option value="solarized-dark">Solarized Dark</Option>
+                <Option value="twilight">Twilight</Option>
               </Select>
             </Space>
           </Header>
