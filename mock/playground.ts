@@ -1,4 +1,4 @@
-import { Frame } from '@/models/types';
+import { Frame } from '@/models/playground.types';
 import { Request, Response } from '@umijs/types';
 import { GamingCondition } from '@/data/SentData';
 import { Block, Color, Biome, Role, Direction } from './enums';

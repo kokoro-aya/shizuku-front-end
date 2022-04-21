@@ -1,28 +1,33 @@
+import React from 'react';
 import { Layout, Menu, Select, Space, Switch } from 'antd';
-import { Link } from 'umi';
 import {
+  AndroidOutlined,
   CodeOutlined,
   EditOutlined,
-  ProfileOutlined,
-  HomeOutlined,
-  ReadOutlined,
   FileSearchOutlined,
-  AndroidOutlined,
+  HomeOutlined,
   MessageOutlined,
+  ProfileOutlined,
+  ReadOutlined,
 } from '@ant-design/icons';
-import React, { useState } from 'react';
-import { material_oceanic } from '@/styles/prism-material-oceanic';
-import { material_light } from '@/styles/prism-material-light';
-import { darcula } from '@/styles/prism-darcula';
-import { atom_dark } from '@/styles/prism-atom-dark';
-import { solarized_light } from '@/styles/prism-solarized-light';
-// FIXME: remove useless import and refactor styles
+import { connect, Link } from 'umi';
+import { Theme, ThemeState } from '@/models/codescheme';
+import { DispatchSender } from '@/models/dispatch.type';
+
+const namespace = 'codescheme';
 
 const { Header, Sider, Content, Footer } = Layout;
 const { Option } = Select;
 
-interface SimpleLayoutProps extends IndexProps {
-  changeColor: (arg0: string) => void;
+const mapStateToProps = (state: ThemeStateToPropsMap) => {
+  const { theme } = state[namespace];
+  return { theme };
+};
+
+type ThemeStateToPropsMap = { codescheme: ThemeState };
+
+interface SimpleLayoutProps extends DispatchSender {
+  children: React.ReactNode;
 }
 
 interface SimpleLayoutStates {
@@ -123,15 +128,27 @@ class SimpleLayout extends React.Component<
                 </Option>
               </Select>
               <Select
-                defaultValue="solarized-light"
+                defaultValue="light"
                 style={{ width: 144 }}
-                onChange={(sel) => this.props.changeColor(sel)}
+                onChange={
+                  (sel) =>
+                    this.props.dispatch<Theme>({
+                      type: `${namespace}/updateTheme`,
+                      payload: sel as Theme,
+                    })
+                  /* this.props.changeColor(sel)*/
+                }
               >
+                <Option value="light">Light</Option>
+                <Option value="vs-dark">Visual Studio Dark</Option>
+                <Option value="clouds">Clouds</Option>
+                <Option value="dawn">Dawn</Option>
+                <Option value="dracula">Dracula</Option>
+                <Option value="monokai">Monokai</Option>
+                <Option value="oceanic-next">Oceanic Next</Option>
                 <Option value="solarized-light">Solarized Light</Option>
-                <Option value="material-light">Material Light</Option>
-                <Option value="material-oceanic">Material Oceanic</Option>
-                <Option value="atom-dark">Atom Dark</Option>
-                <Option value="darcula">Darcula</Option>
+                <Option value="solarized-dark">Solarized Dark</Option>
+                <Option value="twilight">Twilight</Option>
               </Select>
             </Space>
           </Header>
@@ -154,66 +171,4 @@ class SimpleLayout extends React.Component<
   }
 }
 
-interface IndexProps {
-  children: React.ReactNode;
-}
-
-const Index: React.FC<IndexProps> = (props: IndexProps) => {
-  const [codeHighlightStyle, setCodeHighlightStyle] = useState(solarized_light);
-
-  const changeColor = (type: string) => {
-    switch (type) {
-      case 'atom-dark': {
-        setCodeHighlightStyle(atom_dark);
-        break;
-      }
-      case 'darcula': {
-        setCodeHighlightStyle(darcula);
-        break;
-      }
-      case 'material-light': {
-        setCodeHighlightStyle(material_light);
-        break;
-      }
-      case 'material-oceanic': {
-        setCodeHighlightStyle(material_oceanic);
-        break;
-      }
-      case 'solarized-light': {
-        setCodeHighlightStyle(solarized_light);
-        break;
-      }
-    }
-  };
-
-  return (
-    <>
-      <style>{`
-        .square:before {
-          display: inline-block;
-          padding-top: 100%;
-          content: '';
-        }
-        .square>span {
-          position: absolute;
-          width: 100%;
-          height: 100%;
-          z-index: 5;
-        }
-        .square>span>svg {
-          position: relative;
-          width: 100%;
-          height: auto;
-          object-fit: fill;
-          overflow: hidden;
-        }
-        ${codeHighlightStyle}
-      `}</style>
-      <SimpleLayout changeColor={(e) => changeColor(e)}>
-        {props.children}
-      </SimpleLayout>
-    </>
-  );
-};
-
-export default Index;
+export default connect(mapStateToProps)(SimpleLayout);

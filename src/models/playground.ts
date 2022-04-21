@@ -1,7 +1,7 @@
 import request from 'umi-request';
 import * as playgroundService from '../services/playground';
 import { message } from 'antd';
-import { ErrorState, ModelStates } from '@/models/types';
+import { ErrorState, ModelStates } from '@/models/playground.types';
 import { Effect, ImmerReducer } from 'umi';
 import { InitStates } from '../../mock/playground';
 import { SuccessData } from '@/data/ReceivedData';

@@ -7,7 +7,6 @@ import {
 } from '@ant-design/icons';
 import { Popover } from 'antd';
 import _ from 'lodash';
-import arrow from '../resources/arrow.png';
 import styles from './SquareLayout.css';
 import { Coordinate, Grid, PlayerData } from '@/data/DataFragments';
 import { Block, Color, Direction, Role } from '@/data/Enums';

@@ -6,7 +6,7 @@ import styles from './DashboardLayout.css';
 import ProgressBar from '../fragments/ProgressBar';
 import { Coordinate } from '@/data/DataFragments';
 import { ExecutionStatus } from '@/pages/Playground';
-import { Frame } from '@/models/types';
+import { Frame } from '@/models/playground.types';
 import * as _ from 'lodash';
 import { Color } from '@/data/Enums';
 
