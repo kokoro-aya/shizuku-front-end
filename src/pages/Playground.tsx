@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Row, Col, notification } from 'antd';
-import InputBox from '../components/Input';
-import Console from '../components/Console';
-import Dashboard from '../components/Dashboard';
+import InputBox from '../playground.page/components/Input';
+import Console from '../playground.page/components/Console';
+import Dashboard from '../playground.page/components/Dashboard';
 import { connect } from '../.umi/plugin-dva/exports';
 import { Frame, ModelStates } from '@/models/playground.types';
 import { SentData } from '@/data/SentData';
