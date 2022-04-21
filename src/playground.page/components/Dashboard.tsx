@@ -40,8 +40,8 @@ const Dashboard: React.FC<DashboardProp> = (props) => {
   const gemOnGround = frame.gems.length;
   const beeperAtGround = frame.beepers.length;
 
-  const collectedGems = _.sum(frame.players.map((e) => e.collectedGem));
-  const beepersInBags = _.sum(frame.players.map((e) => e.hasBeeper));
+  const collectedGems = _.sum(frame.players.map((e) => e.collectedGem ?? 0));
+  const beepersInBags = _.sum(frame.players.map((e) => e.hasBeeper ?? 0));
 
   const preprocessGrid = (frame: Frame) => {
     return frame.grid.flatMap((gridRow, y) => {

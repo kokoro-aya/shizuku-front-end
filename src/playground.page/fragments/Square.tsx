@@ -82,6 +82,8 @@ const Square: React.FC<SquareProps> = (props) => {
         return <div style={style}>⛰</div>;
       case Block.LOCK:
         return <div style={style}>🗝</div>;
+      case Block.VOID:
+        return voidPattern();
       case Block.STAIR:
         if (groundObjects.stair) {
           switch (groundObjects.stair.dir) {
@@ -97,8 +99,6 @@ const Square: React.FC<SquareProps> = (props) => {
         } else {
           throw new Error('A stair block must be linked to stair object');
         }
-      case Block.VOID:
-        return voidPattern();
     }
   };
 
@@ -150,8 +150,8 @@ const Square: React.FC<SquareProps> = (props) => {
         <p>
           坐标: x:{player.x}, y:{player.y}
         </p>
-        <p>持有的beeper数量: {player.hasBeeper}</p>
-        <p>收集的宝石: {player.collectedGem}</p>
+        <p>持有的beeper数量: {player.hasBeeper ?? 0}</p>
+        <p>收集的宝石: {player.collectedGem ?? 0}</p>
         <p>角色: {player.role === Role.PLAYER ? '角色' : '专家'}</p>
         <p>体力: {player.stamina}</p>
       </div>

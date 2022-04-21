@@ -19,25 +19,11 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="095a5d38-2a3c-4e5c-abe6-e5e436d6447a" name="Default Changelist" comment="refactor code">
-      <change afterPath="$PROJECT_DIR$/mock/maps/map1.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mock/maps/map2.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mock/maps/map3.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mock/maps/map4.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/locale/en-US.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/locale/fr-FR.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/locale/zh-CN.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/models/initialstuff.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mock/playground.ts" beforeDir="false" afterPath="$PROJECT_DIR$/mock/playground.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/DataFragments.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/DataFragments.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/playground.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/playground.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/playground.types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/playground.types.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/playground.page/components/Dashboard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/playground.page/components/Dashboard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/playground.page/fragments/Square.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/playground.page/fragments/Square.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/playground.page/fragments/StatusBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/playground.page/fragments/StatusBar.tsx" afterDir="false" />
+    <list default="true" id="095a5d38-2a3c-4e5c-abe6-e5e436d6447a" name="Default Changelist" comment="now the code works and css is awesome">
+      <change afterPath="$PROJECT_DIR$/mock/maps/map5.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mock/maps/map6.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mock/maps/map7.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mock/maps/map8.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -151,7 +137,7 @@
       <workItem from="1650417920836" duration="6145000" />
       <workItem from="1650496115594" duration="2731000" />
       <workItem from="1650499403125" duration="5623000" />
-      <workItem from="1650571744331" duration="7949000" />
+      <workItem from="1650571744331" duration="8453000" />
     </task>
     <task id="LOCAL-00001" summary="Commit 1. Page Layout Setup">
       <created>1608342769408</created>
@@ -342,7 +328,14 @@
       <option name="project" value="LOCAL" />
       <updated>1650502763199</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="now the code works and css is awesome">
+      <created>1650580497033</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1650580497033</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -377,7 +370,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Commit 1.1 removed state in input, now it's lifted up to main" />
     <MESSAGE value="Commit 2. Highlight textarea" />
     <MESSAGE value="Commit 2.1" />
     <MESSAGE value="Commit 3. First Deliverable, added a progress bar" />
@@ -402,6 +394,7 @@
     <MESSAGE value="Bind monaco to state, added themes" />
     <MESSAGE value="Adapted command palette for monaco editor" />
     <MESSAGE value="refactor code" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor code" />
+    <MESSAGE value="now the code works and css is awesome" />
+    <option name="LAST_COMMIT_MESSAGE" value="now the code works and css is awesome" />
   </component>
 </project>
