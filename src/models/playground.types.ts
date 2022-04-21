@@ -1,9 +1,16 @@
-import { CoreData, Grid, StairData } from '@/data/DataFragments';
+import {
+  CoreData,
+  Grid,
+  PlayerData,
+  ReceivedPlayerData,
+  StairData,
+} from '@/data/DataFragments';
 import { GamingCondition } from '@/data/SentData';
 
 export interface Frame extends CoreData {
   grid: Grid[][];
   stairs: StairData[];
+  players: ReceivedPlayerData[];
   output: string;
   special: string;
 }

@@ -19,10 +19,25 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="095a5d38-2a3c-4e5c-abe6-e5e436d6447a" name="Default Changelist" comment="Bind monaco to state, added themes">
+    <list default="true" id="095a5d38-2a3c-4e5c-abe6-e5e436d6447a" name="Default Changelist" comment="refactor code">
+      <change afterPath="$PROJECT_DIR$/mock/maps/map1.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mock/maps/map2.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mock/maps/map3.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mock/maps/map4.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/locale/en-US.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/locale/fr-FR.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/locale/zh-CN.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/models/initialstuff.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Input.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Input.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Playground.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Playground.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mock/playground.ts" beforeDir="false" afterPath="$PROJECT_DIR$/mock/playground.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/DataFragments.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/DataFragments.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/playground.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/playground.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/playground.types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/playground.types.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/playground.page/components/Dashboard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/playground.page/components/Dashboard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/playground.page/fragments/Square.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/playground.page/fragments/Square.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/playground.page/fragments/StatusBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/playground.page/fragments/StatusBar.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,11 +92,11 @@
       <recent name="$PROJECT_DIR$/img" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/playground.page" />
       <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/src/fragments/styles" />
       <recent name="$PROJECT_DIR$/public" />
       <recent name="$PROJECT_DIR$/src/lib" />
-      <recent name="$PROJECT_DIR$/src/resources" />
     </key>
     <key name="es6.move.members.recent.items">
       <recent name="$PROJECT_DIR$/src/data/DataFragments.ts" />
@@ -135,7 +150,8 @@
       <workItem from="1650416953248" duration="191000" />
       <workItem from="1650417920836" duration="6145000" />
       <workItem from="1650496115594" duration="2731000" />
-      <workItem from="1650499403125" duration="2857000" />
+      <workItem from="1650499403125" duration="5623000" />
+      <workItem from="1650571744331" duration="7949000" />
     </task>
     <task id="LOCAL-00001" summary="Commit 1. Page Layout Setup">
       <created>1608342769408</created>
@@ -298,7 +314,35 @@
       <option name="project" value="LOCAL" />
       <updated>1650500007725</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Adapted command palette for monaco editor">
+      <created>1650502551564</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1650502551564</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Adapted command palette for monaco editor">
+      <created>1650502570754</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1650502570754</updated>
+    </task>
+    <task id="LOCAL-00026" summary="refactor code">
+      <created>1650502754359</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1650502754359</updated>
+    </task>
+    <task id="LOCAL-00027" summary="refactor code">
+      <created>1650502763199</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1650502763199</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -333,7 +377,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Commit 1. Page Layout Setup" />
     <MESSAGE value="Commit 1.1 removed state in input, now it's lifted up to main" />
     <MESSAGE value="Commit 2. Highlight textarea" />
     <MESSAGE value="Commit 2.1" />
@@ -357,6 +400,8 @@
     <MESSAGE value="license and minor updates" />
     <MESSAGE value="Monaco editor works, pass theme as state and it works" />
     <MESSAGE value="Bind monaco to state, added themes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Bind monaco to state, added themes" />
+    <MESSAGE value="Adapted command palette for monaco editor" />
+    <MESSAGE value="refactor code" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor code" />
   </component>
 </project>

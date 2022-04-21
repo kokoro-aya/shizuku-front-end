@@ -61,6 +61,10 @@ const Dashboard: React.FC<DashboardProp> = (props) => {
           player: frame.players.find((p) => p.x === x && p.y === y),
           terrain: gridItem,
           groundObjects: {
+            gem:
+              frame.gems.find((p) => p.x === x && p.y === y) === undefined
+                ? undefined
+                : (true as const),
             beeper:
               frame.beepers.find((p) => p.x === x && p.y === y) === undefined
                 ? undefined
@@ -153,10 +157,11 @@ const Dashboard: React.FC<DashboardProp> = (props) => {
       <Row>
         <StatusBar
           iconSize={fontSize}
-          gemInBag={initialGem - gemOnGround}
+          gemInBag={collectedGems}
           gemOnGround={gemOnGround}
           openedSwitch={openedSwitch}
           closedSwitch={closedSwitch}
+          beeperInBag={beepersInBags}
           beeperAtGround={beeperAtGround}
           status={getStatus(props.status)}
         />

@@ -48,14 +48,13 @@ interface StatusBarProps {
   gemOnGround: number;
   openedSwitch: number;
   closedSwitch: number;
+  beeperInBag: number;
   beeperAtGround: number;
   status: string;
   iconSize?: number;
 }
 
 const StatusBar: React.FC<StatusBarProps> = (props) => {
-  const { gemInBag, gemOnGround, openedSwitch, closedSwitch, beeperAtGround } =
-    props;
   const spanStyle = { fontSize: `16px`, marginLeft: '8px' };
   return (
     <>
@@ -65,19 +64,19 @@ const StatusBar: React.FC<StatusBarProps> = (props) => {
           <div>
             <StarTwoTone twoToneColor="#66ccff" style={{ fontSize: `16px` }} />
             <Tag style={spanStyle} color="blue">
-              Gem: {gemInBag} / {gemOnGround}
+              Gem: {props.gemInBag} / {props.gemOnGround}
             </Tag>
           </div>
           <div>
             <BulbTwoTone twoToneColor="#52c41a" style={{ fontSize: `16px` }} />
             <Tag style={spanStyle} color="green">
-              Switch: {openedSwitch} / {closedSwitch}
+              Switch: {props.openedSwitch} / {props.closedSwitch}
             </Tag>
           </div>
           <div>
             <AlertTwoTone twoToneColor="#f7c242" style={{ fontSize: `16px` }} />
             <Tag style={spanStyle} color="orange">
-              Beeper: ?? / {beeperAtGround}
+              Beeper: {props.beeperInBag} / {props.beeperAtGround}
             </Tag>
           </div>
           <div style={{ paddingLeft: '16px' }}>
