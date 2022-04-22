@@ -19,10 +19,25 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="095a5d38-2a3c-4e5c-abe6-e5e436d6447a" name="Default Changelist" comment="Bind monaco to state, added themes">
+    <list default="true" id="095a5d38-2a3c-4e5c-abe6-e5e436d6447a" name="Default Changelist" comment="includes the end gaming status and info into the playground">
+      <change afterPath="$PROJECT_DIR$/src/locales/en-US.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/locales/en-US/sections.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/locales/fr-FR.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/locales/fr-FR/sections.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/locales/zh-CN.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/locales/zh-CN/sections.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Input.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Input.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Playground.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Playground.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.umirc.ts" beforeDir="false" afterPath="$PROJECT_DIR$/.umirc.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SimpleLayout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/SimpleLayout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/locale/en-US.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/locale/fr-FR.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/locale/zh-CN.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/About.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/About.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Editor.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Editor.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Feedback.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Feedback.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Gallery.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Gallery.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Home.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Story.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Story.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +63,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
+    <option name="selectedTabId" value="ProjectErrors" />
   </component>
   <component name="ProjectId" id="1lZbKJzLHp2iFpxUSf0qdZfgQlU" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -77,11 +92,11 @@
       <recent name="$PROJECT_DIR$/img" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/playground.page" />
       <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/src/fragments/styles" />
       <recent name="$PROJECT_DIR$/public" />
       <recent name="$PROJECT_DIR$/src/lib" />
-      <recent name="$PROJECT_DIR$/src/resources" />
     </key>
     <key name="es6.move.members.recent.items">
       <recent name="$PROJECT_DIR$/src/data/DataFragments.ts" />
@@ -135,7 +150,9 @@
       <workItem from="1650416953248" duration="191000" />
       <workItem from="1650417920836" duration="6145000" />
       <workItem from="1650496115594" duration="2731000" />
-      <workItem from="1650499403125" duration="2857000" />
+      <workItem from="1650499403125" duration="5623000" />
+      <workItem from="1650571744331" duration="9670000" />
+      <workItem from="1650630136808" duration="6648000" />
     </task>
     <task id="LOCAL-00001" summary="Commit 1. Page Layout Setup">
       <created>1608342769408</created>
@@ -298,7 +315,70 @@
       <option name="project" value="LOCAL" />
       <updated>1650500007725</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Adapted command palette for monaco editor">
+      <created>1650502551564</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1650502551564</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Adapted command palette for monaco editor">
+      <created>1650502570754</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1650502570754</updated>
+    </task>
+    <task id="LOCAL-00026" summary="refactor code">
+      <created>1650502754359</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1650502754359</updated>
+    </task>
+    <task id="LOCAL-00027" summary="refactor code">
+      <created>1650502763199</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1650502763199</updated>
+    </task>
+    <task id="LOCAL-00028" summary="now the code works and css is awesome">
+      <created>1650580497033</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1650580497033</updated>
+    </task>
+    <task id="LOCAL-00029" summary="added more maps and minor fixes">
+      <created>1650582058709</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1650582058709</updated>
+    </task>
+    <task id="LOCAL-00030" summary="fixed map import issues, add game rule display">
+      <created>1650633877366</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1650633877366</updated>
+    </task>
+    <task id="LOCAL-00031" summary="includes the end gaming status and info into the playground">
+      <created>1650634895833</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1650634895833</updated>
+    </task>
+    <task id="LOCAL-00032" summary="includes the end gaming status and info into the playground">
+      <created>1650634919467</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1650634919467</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -333,12 +413,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Commit 1. Page Layout Setup" />
-    <MESSAGE value="Commit 1.1 removed state in input, now it's lifted up to main" />
-    <MESSAGE value="Commit 2. Highlight textarea" />
-    <MESSAGE value="Commit 2.1" />
-    <MESSAGE value="Commit 3. First Deliverable, added a progress bar" />
-    <MESSAGE value="Commit 3.1 Add modal for change of map (currently not implemented)" />
     <MESSAGE value="Commit 3.2 minor updates" />
     <MESSAGE value="Commit - upload styles" />
     <MESSAGE value="Commit - just for test" />
@@ -357,6 +431,13 @@
     <MESSAGE value="license and minor updates" />
     <MESSAGE value="Monaco editor works, pass theme as state and it works" />
     <MESSAGE value="Bind monaco to state, added themes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Bind monaco to state, added themes" />
+    <MESSAGE value="Adapted command palette for monaco editor" />
+    <MESSAGE value="refactor code" />
+    <MESSAGE value="now the code works and css is awesome" />
+    <MESSAGE value="added more maps" />
+    <MESSAGE value="added more maps and minor fixes" />
+    <MESSAGE value="fixed map import issues, add game rule display" />
+    <MESSAGE value="includes the end gaming status and info into the playground" />
+    <option name="LAST_COMMIT_MESSAGE" value="includes the end gaming status and info into the playground" />
   </component>
 </project>

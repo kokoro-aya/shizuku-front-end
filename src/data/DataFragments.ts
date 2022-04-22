@@ -3,7 +3,7 @@ import { Biome, Block, Color, Direction, Role } from '@/data/Enums';
 export interface Grid {
   block: Block;
   biome: Biome;
-  color: Color;
+  color?: Color;
   level: number;
 }
 
@@ -31,8 +31,8 @@ export interface PlayerData {
   dir: Direction;
   role: Role;
   stamina: number;
-  collectedGem: number;
-  hasBeeper: number;
+  collectedGem?: number;
+  hasBeeper?: number;
 }
 
 export interface LockData {

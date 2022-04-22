@@ -6,7 +6,8 @@ import { Effect, ImmerReducer } from 'umi';
 import { InitStates } from '../../mock/playground';
 import { SuccessData } from '@/data/ReceivedData';
 import { constructFrame } from '@/Utils';
-import { Biome, Block, Color } from '@/data/Enums';
+import { GameStatus } from '@/data/Enums';
+import { initialState } from '@/models/initialstuff';
 
 export interface PlaygroundModelInterface {
   namespace: 'playground';
@@ -23,282 +24,6 @@ export interface PlaygroundModelInterface {
   };
 }
 
-const initialState: ModelStates = {
-  initialized: false,
-  initialGem: 0,
-  nextFrame: {
-    grid: [
-      [
-        {
-          block: Block.BLOCKED,
-          biome: Biome.PLAINS,
-          color: Color.WHITE,
-          level: 0,
-        },
-        {
-          block: Block.BLOCKED,
-          biome: Biome.PLAINS,
-          color: Color.WHITE,
-          level: 0,
-        },
-        {
-          block: Block.BLOCKED,
-          biome: Biome.PLAINS,
-          color: Color.WHITE,
-          level: 0,
-        },
-        {
-          block: Block.BLOCKED,
-          biome: Biome.PLAINS,
-          color: Color.WHITE,
-          level: 0,
-        },
-        {
-          block: Block.BLOCKED,
-          biome: Biome.PLAINS,
-          color: Color.WHITE,
-          level: 0,
-        },
-        {
-          block: Block.BLOCKED,
-          biome: Biome.PLAINS,
-          color: Color.WHITE,
-          level: 0,
-        },
-        {
-          block: Block.BLOCKED,
-          biome: Biome.PLAINS,
-          color: Color.WHITE,
-          level: 0,
-        },
-        {
-          block: Block.BLOCKED,
-          biome: Biome.PLAINS,
-          color: Color.WHITE,
-          level: 0,
-        },
-      ],
-      [
-        {
-          block: Block.BLOCKED,
-          biome: Biome.PLAINS,
-          color: Color.WHITE,
-          level: 0,
-        },
-        {
-          block: Block.BLOCKED,
-          biome: Biome.PLAINS,
-          color: Color.WHITE,
-          level: 0,
-        },
-        {
-          block: Block.BLOCKED,
-          biome: Biome.PLAINS,
-          color: Color.WHITE,
-          level: 0,
-        },
-        {
-          block: Block.BLOCKED,
-          biome: Biome.PLAINS,
-          color: Color.WHITE,
-          level: 0,
-        },
-        {
-          block: Block.BLOCKED,
-          biome: Biome.PLAINS,
-          color: Color.WHITE,
-          level: 0,
-        },
-        {
-          block: Block.BLOCKED,
-          biome: Biome.PLAINS,
-          color: Color.WHITE,
-          level: 0,
-        },
-        {
-          block: Block.BLOCKED,
-          biome: Biome.PLAINS,
-          color: Color.WHITE,
-          level: 0,
-        },
-        {
-          block: Block.BLOCKED,
-          biome: Biome.PLAINS,
-          color: Color.WHITE,
-          level: 0,
-        },
-      ],
-      [
-        {
-          block: Block.BLOCKED,
-          biome: Biome.PLAINS,
-          color: Color.WHITE,
-          level: 0,
-        },
-        {
-          block: Block.BLOCKED,
-          biome: Biome.PLAINS,
-          color: Color.WHITE,
-          level: 0,
-        },
-        {
-          block: Block.BLOCKED,
-          biome: Biome.PLAINS,
-          color: Color.WHITE,
-          level: 0,
-        },
-        {
-          block: Block.BLOCKED,
-          biome: Biome.PLAINS,
-          color: Color.WHITE,
-          level: 0,
-        },
-        {
-          block: Block.BLOCKED,
-          biome: Biome.PLAINS,
-          color: Color.WHITE,
-          level: 0,
-        },
-        {
-          block: Block.BLOCKED,
-          biome: Biome.PLAINS,
-          color: Color.WHITE,
-          level: 0,
-        },
-        {
-          block: Block.BLOCKED,
-          biome: Biome.PLAINS,
-          color: Color.WHITE,
-          level: 0,
-        },
-        {
-          block: Block.BLOCKED,
-          biome: Biome.PLAINS,
-          color: Color.WHITE,
-          level: 0,
-        },
-      ],
-      [
-        {
-          block: Block.BLOCKED,
-          biome: Biome.PLAINS,
-          color: Color.WHITE,
-          level: 0,
-        },
-        {
-          block: Block.BLOCKED,
-          biome: Biome.PLAINS,
-          color: Color.WHITE,
-          level: 0,
-        },
-        {
-          block: Block.BLOCKED,
-          biome: Biome.PLAINS,
-          color: Color.WHITE,
-          level: 0,
-        },
-        {
-          block: Block.BLOCKED,
-          biome: Biome.PLAINS,
-          color: Color.WHITE,
-          level: 0,
-        },
-        {
-          block: Block.BLOCKED,
-          biome: Biome.PLAINS,
-          color: Color.WHITE,
-          level: 0,
-        },
-        {
-          block: Block.BLOCKED,
-          biome: Biome.PLAINS,
-          color: Color.WHITE,
-          level: 0,
-        },
-        {
-          block: Block.BLOCKED,
-          biome: Biome.PLAINS,
-          color: Color.WHITE,
-          level: 0,
-        },
-        {
-          block: Block.BLOCKED,
-          biome: Biome.PLAINS,
-          color: Color.WHITE,
-          level: 0,
-        },
-      ],
-      [
-        {
-          block: Block.BLOCKED,
-          biome: Biome.PLAINS,
-          color: Color.WHITE,
-          level: 0,
-        },
-        {
-          block: Block.BLOCKED,
-          biome: Biome.PLAINS,
-          color: Color.WHITE,
-          level: 0,
-        },
-        {
-          block: Block.BLOCKED,
-          biome: Biome.PLAINS,
-          color: Color.WHITE,
-          level: 0,
-        },
-        {
-          block: Block.BLOCKED,
-          biome: Biome.PLAINS,
-          color: Color.WHITE,
-          level: 0,
-        },
-        {
-          block: Block.BLOCKED,
-          biome: Biome.PLAINS,
-          color: Color.WHITE,
-          level: 0,
-        },
-        {
-          block: Block.BLOCKED,
-          biome: Biome.PLAINS,
-          color: Color.WHITE,
-          level: 0,
-        },
-        {
-          block: Block.BLOCKED,
-          biome: Biome.PLAINS,
-          color: Color.WHITE,
-          level: 0,
-        },
-        {
-          block: Block.BLOCKED,
-          biome: Biome.PLAINS,
-          color: Color.WHITE,
-          level: 0,
-        },
-      ],
-    ],
-    gems: [],
-    beepers: [],
-    switches: [],
-    portals: [],
-    monsters: [],
-    locks: [],
-    platforms: [],
-    players: [],
-    stairs: [],
-    output: '',
-    special: '',
-  },
-  answer: [],
-  currentLength: 0,
-  answerLength: 1,
-  returnedError: false,
-  gamingCondition: undefined,
-  userCollision: false,
-};
-
 const model: PlaygroundModelInterface = {
   namespace: 'playground',
   state: {
@@ -312,7 +37,8 @@ const model: PlaygroundModelInterface = {
         // console.log(answer)
         if (answer.status === 'OK') {
           message.warn('代码提交成功！');
-          yield put({ type: 'loadPlayground', payload: answer.payload });
+          console.log(answer);
+          yield put({ type: 'loadPlayground', payload: answer });
         } else {
           message.error(answer.msg);
           yield put({ type: 'returnError' });
@@ -362,6 +88,8 @@ const model: PlaygroundModelInterface = {
         returnedError: false,
         gamingCondition: _p.gamingCondition,
         userCollision: _p.userCollision,
+        gameStatus: GameStatus.PENDING,
+        gained: 0,
       };
       return nextState;
     },
@@ -375,6 +103,8 @@ const model: PlaygroundModelInterface = {
         ),
         answerLength: payload.length,
         returnedError: false,
+        gameStatus: data.game,
+        gained: data.gained,
       };
       return nextState;
     },

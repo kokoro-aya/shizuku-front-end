@@ -1,5 +1,6 @@
 import React from 'react';
 import { Col, Divider, Row } from 'antd';
+import { useIntl } from 'umi';
 
 export default () => {
   return (
@@ -8,8 +9,10 @@ export default () => {
         minHeight: '600px',
       }}
     >
-      <Divider orientation="left">Gallery</Divider>
-      <div>This section is under construction.</div>
+      <Divider orientation="left">
+        {useIntl().formatMessage({ id: 'section.Gallery' })}
+      </Divider>
+      <div>{useIntl().formatMessage({ id: 'underConstruct' })}</div>
     </div>
   );
 };

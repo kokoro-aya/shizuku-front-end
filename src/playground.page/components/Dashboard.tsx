@@ -4,11 +4,12 @@ import { Col, Row } from 'antd';
 import StatusBar from '../fragments/StatusBar';
 import styles from './DashboardLayout.css';
 import ProgressBar from '../fragments/ProgressBar';
-import { Coordinate } from '@/data/DataFragments';
 import { ExecutionStatus } from '@/pages/Playground';
 import { Frame } from '@/models/playground.types';
 import * as _ from 'lodash';
 import { Color } from '@/data/Enums';
+import { GamingCondition } from '@/data/SentData';
+import { GameConditions } from '@/playground.page/fragments/GameConditions';
 
 interface DashboardProp {
   frame: Frame;
@@ -16,18 +17,7 @@ interface DashboardProp {
   current: number;
   aLength: number;
   status: ExecutionStatus;
-}
-
-export interface PreprocessedGrid {
-  layout: string;
-  isPlayer: boolean;
-  lockInfo?: Coordinate[];
-  color: string;
-  level: number;
-  grid: string;
-  x: number;
-  y: number;
-  playerId?: number;
+  gamingCondition?: GamingCondition;
 }
 
 const Dashboard: React.FC<DashboardProp> = (props) => {
@@ -40,8 +30,8 @@ const Dashboard: React.FC<DashboardProp> = (props) => {
   const gemOnGround = frame.gems.length;
   const beeperAtGround = frame.beepers.length;
 
-  const collectedGems = _.sum(frame.players.map((e) => e.collectedGem));
-  const beepersInBags = _.sum(frame.players.map((e) => e.hasBeeper));
+  const collectedGems = _.sum(frame.players.map((e) => e.collectedGem ?? 0));
+  const beepersInBags = _.sum(frame.players.map((e) => e.hasBeeper ?? 0));
 
   const preprocessGrid = (frame: Frame) => {
     return frame.grid.flatMap((gridRow, y) => {
@@ -61,6 +51,10 @@ const Dashboard: React.FC<DashboardProp> = (props) => {
           player: frame.players.find((p) => p.x === x && p.y === y),
           terrain: gridItem,
           groundObjects: {
+            gem:
+              frame.gems.find((p) => p.x === x && p.y === y) === undefined
+                ? undefined
+                : (true as const),
             beeper:
               frame.beepers.find((p) => p.x === x && p.y === y) === undefined
                 ? undefined
@@ -151,12 +145,16 @@ const Dashboard: React.FC<DashboardProp> = (props) => {
   return (
     <Col span={24}>
       <Row>
+        <GameConditions gamingCondition={props.gamingCondition} />
+      </Row>
+      <Row>
         <StatusBar
           iconSize={fontSize}
-          gemInBag={initialGem - gemOnGround}
+          gemInBag={collectedGems}
           gemOnGround={gemOnGround}
           openedSwitch={openedSwitch}
           closedSwitch={closedSwitch}
+          beeperInBag={beepersInBags}
           beeperAtGround={beeperAtGround}
           status={getStatus(props.status)}
         />

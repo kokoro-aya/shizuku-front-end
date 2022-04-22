@@ -1,5 +1,6 @@
 import React from 'react';
 import { Divider } from 'antd';
+import { useIntl } from 'umi';
 
 const Feedback = () => {
   return (
@@ -8,8 +9,10 @@ const Feedback = () => {
         minHeight: '600px',
       }}
     >
-      <Divider orientation="left">Feedback</Divider>
-      <div>This section is under construction</div>
+      <Divider orientation="left">
+        {useIntl().formatMessage({ id: 'section.Feedback' })}
+      </Divider>
+      <div>{useIntl().formatMessage({ id: 'underConstruct' })}</div>
     </div>
   );
 };

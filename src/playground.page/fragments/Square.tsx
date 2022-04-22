@@ -1,15 +1,14 @@
 import React from 'react';
 import {
-  UpOutlined,
-  RightOutlined,
   DownOutlined,
   LeftOutlined,
+  RightOutlined,
+  UpOutlined,
 } from '@ant-design/icons';
 import { Popover } from 'antd';
 import _ from 'lodash';
-import styles from './SquareLayout.css';
 import { Coordinate, Grid, PlayerData } from '@/data/DataFragments';
-import { Block, Color, Direction, Role } from '@/data/Enums';
+import { Biome, Block, Color, Direction, Role } from '@/data/Enums';
 
 interface SquareProps {
   fontSize: number;
@@ -20,6 +19,7 @@ interface SquareProps {
 }
 
 interface GroundObjects {
+  gem?: true;
   beeper?: true;
   aSwitch?: { on: boolean };
   portal?: { dest: Coordinate; color: Color; energy: number };
@@ -50,51 +50,95 @@ const Square: React.FC<SquareProps> = (props) => {
     } else return null;
   };
 
-  const propCount = () => {
-    let count = 0;
-    if (terrain.block !== Block.OPEN) count += 1;
-    if (groundObjects.beeper) count += 1;
-    if (groundObjects.aSwitch) count += 1;
-    if (groundObjects.portal) count += 1;
-    if (groundObjects.monster) count += 1;
-    if (groundObjects.lock) count += 1;
-    if (groundObjects.platform) count += 1;
-    if (groundObjects.stair) count += 1;
-    return count;
+  const voidPattern = () => {
+    const divStyle = {
+      border: '1px solid gray',
+      ...alignStyle,
+      zIndex: 1,
+    };
+
+    const divAfterStyle = {
+      content: '',
+      position: 'absolute' as const,
+      borderTop: '1px solid red',
+      width: '40px',
+      transform: 'rotate(45deg)',
+      transformOrigin: '0% 0%',
+    };
+
+    return (
+      <div style={divStyle}>
+        <div style={divAfterStyle}></div>
+      </div>
+    );
   };
 
-  const getValue = () => {
-    if (propCount() === 0) {
-      return '';
-    } else if (propCount() === 1) {
-      if (terrain.block === Block.BLOCKED) return '⛰';
-      if (groundObjects.beeper) return '📹';
-      if (groundObjects.aSwitch) {
-        return groundObjects.aSwitch.on ? '🔲' : '🔳';
-      }
-      if (groundObjects.portal) return '💠';
-      if (groundObjects.monster) return '😈';
-      if (groundObjects.lock) return '🗝';
-      if (groundObjects.platform) return '_';
-      if (groundObjects.stair) {
-        switch (groundObjects.stair.dir) {
-          case Direction.UP:
-            return '🔼️';
-          case Direction.DOWN:
-            return '🔽';
-          case Direction.LEFT:
-            return '◀️';
-          case Direction.RIGHT:
-            return '▶️';
+  const getTerrain = () => {
+    const style = { ...alignStyle, zIndex: 1 };
+    switch (terrain.block) {
+      case Block.OPEN:
+        return <div style={style}></div>;
+      case Block.BLOCKED:
+        return <div style={style}>⛰</div>;
+      case Block.LOCK:
+        return <div style={style}>🗝</div>;
+      case Block.VOID:
+        return voidPattern();
+      case Block.STAIR:
+        if (groundObjects.stair) {
+          switch (groundObjects.stair.dir) {
+            case Direction.UP:
+              return <div style={style}>🔼️</div>;
+            case Direction.DOWN:
+              return <div style={style}>🔽</div>;
+            case Direction.LEFT:
+              return <div style={style}>◀️</div>;
+            case Direction.RIGHT:
+              return <div style={style}>▶</div>;
+          }
+        } else {
+          throw new Error('A stair block must be linked to stair object');
         }
-      }
-    } else {
-      return '❓';
     }
   };
 
-  const getColor = (color: Color) => {
-    return color.toString().toLowerCase();
+  const getObjects = () => {
+    const gem = groundObjects.gem ? (
+      <div style={{ ...alignStyle, zIndex: 7 }}>💎</div>
+    ) : null;
+    const beeper = groundObjects.beeper ? (
+      <div style={{ ...alignStyle, zIndex: 6 }}>📹</div>
+    ) : null;
+    const aSwitch = groundObjects.aSwitch ? (
+      groundObjects.aSwitch.on ? (
+        <div style={{ ...alignStyle, zIndex: 5 }}>🔲</div>
+      ) : (
+        <div style={{ ...alignStyle, zIndex: 5 }}>🔳</div>
+      )
+    ) : null;
+    const portal = groundObjects.portal ? (
+      <div style={{ ...alignStyle, zIndex: 4 }}>💠</div>
+    ) : null;
+    const monster = groundObjects.monster ? (
+      <div style={{ ...alignStyle, zIndex: 3 }}>😈</div>
+    ) : null;
+    const platform = groundObjects.platform ? (
+      <div style={{ ...alignStyle, zIndex: 2 }}>_</div>
+    ) : null;
+    return (
+      <div>
+        {gem}
+        {beeper}
+        {aSwitch}
+        {portal}
+        {monster}
+        {platform}
+      </div>
+    );
+  };
+
+  const getColor = (color?: Color) => {
+    return color?.toString()?.toLowerCase() ?? 'white';
   };
 
   const getPlayerInfo = () => {
@@ -106,8 +150,8 @@ const Square: React.FC<SquareProps> = (props) => {
         <p>
           坐标: x:{player.x}, y:{player.y}
         </p>
-        <p>持有的beeper数量: {player.hasBeeper}</p>
-        <p>收集的宝石: {player.collectedGem}</p>
+        <p>持有的beeper数量: {player.hasBeeper ?? 0}</p>
+        <p>收集的宝石: {player.collectedGem ?? 0}</p>
         <p>角色: {player.role === Role.PLAYER ? '角色' : '专家'}</p>
         <p>体力: {player.stamina}</p>
       </div>
@@ -138,6 +182,30 @@ const Square: React.FC<SquareProps> = (props) => {
           <p>这个格子是空白的</p>
         </div>
       );
+
+    const switchBiome = () => {
+      switch (terrain.biome) {
+        case Biome.SNOWY:
+          return '雪山';
+        case Biome.PLAINS:
+          return '平地';
+        case Biome.RAINY:
+          return '雨林';
+        case Biome.HELL:
+          return '地狱';
+      }
+    };
+
+    const biomeText = (
+      <div>
+        <p>生物群系: {switchBiome()}</p>
+      </div>
+    );
+    const colorText = (
+      <div>
+        <p>颜色: {terrain.color}</p>
+      </div>
+    );
     const beeperText = groundObjects.beeper ? (
       <div>
         <p>这里有个beeper</p>
@@ -190,14 +258,11 @@ const Square: React.FC<SquareProps> = (props) => {
       </div>
     ) : null;
 
-    const debugText = (
-      <div>
-        <p>Prop count: {propCount()}</p>
-      </div>
-    );
     return (
       <div>
         {terrainText}
+        {biomeText}
+        {colorText}
         {beeperText}
         {switchText}
         {portalText}
@@ -205,7 +270,6 @@ const Square: React.FC<SquareProps> = (props) => {
         {lockText}
         {platformText}
         {stairText}
-        {debugText}
       </div>
     );
   };
@@ -220,26 +284,25 @@ const Square: React.FC<SquareProps> = (props) => {
     );
   };
 
-  const contentStyle = {
+  const alignStyle = {
     fontSize: `${fontSize}px`, // fixme 用固定百分比取代
     position: 'absolute' as const,
-    top: '0',
-    left: '0',
+    top: 0,
+    left: 0,
+    right: 0,
     width: '100%',
     height: '100%',
     display: 'flex' as const,
     justifyContent: 'center' as const,
     alignItems: 'center' as const,
-    zIndex: '1',
-    background: getColor(terrain.color),
     opacity: '0.6',
   };
 
-  const imgStyle = {
-    width: '100%',
-    height: 'auto',
-    objectFit: 'fill',
-    overflow: 'hidden',
+  const contentStyle = {
+    ...alignStyle,
+    zIndex: 8,
+    background: getColor(terrain.color),
+    opacity: '0.6',
   };
 
   const squareStyle = {
@@ -255,9 +318,10 @@ const Square: React.FC<SquareProps> = (props) => {
     >
       <div style={squareStyle} className={'square' /* && getColor() */}>
         <div style={contentStyle} className="subsquare">
-          {getValue(/*props*/)}
+          {getTerrain()}
+          {getObjects()}
+          {getDir()}
         </div>
-        {getDir()}
       </div>
     </Popover>
   );

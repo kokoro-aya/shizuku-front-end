@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Row, Col, notification } from 'antd';
+import { Col, notification, Row } from 'antd';
 import InputBox from '../playground.page/components/Input';
 import Console from '../playground.page/components/Console';
 import Dashboard from '../playground.page/components/Dashboard';
@@ -7,6 +7,7 @@ import { connect } from '../.umi/plugin-dva/exports';
 import { Frame, ModelStates } from '@/models/playground.types';
 import { SentData } from '@/data/SentData';
 import { DispatchSender } from '@/models/dispatch.type';
+import { GameStatus } from '@/data/Enums';
 
 const namespace = 'playground';
 
@@ -119,22 +120,36 @@ const Playground: React.FC<PlaygroundProps> = (props) => {
     const { nextFrame, answer } = props;
     if (nextFrame) {
       if (!idle && nextFrame.special.includes('GEM')) {
-        console.log('Collected a gem');
+        // console.log('Collected a gem');
         activateNotification(NotificationType.Info, '消息', '捡到了一颗钻石。');
       }
       if (!idle && nextFrame.special.includes('SWITCH')) {
-        console.log('Toggled a switch');
+        // console.log('Toggled a switch');
         activateNotification(NotificationType.Info, '消息', '按下了一个开关。');
       }
-      if (!idle && nextFrame.special.includes('WIN')) {
-        activateNotification(NotificationType.Success, '你赢了', '恭喜通关。');
+      if (!idle && nextFrame.special.includes('ATTACK')) {
+        activateNotification(NotificationType.Info, '消息', '击败了一个怪物。');
       }
-      if (!idle && nextFrame.special.includes('LOST')) {
-        activateNotification(
-          NotificationType.Warning,
-          '游戏结束',
-          '你失败了。',
-        );
+      if (!idle && answer.length === 0) {
+        if (props.gameStatus === GameStatus.WIN) {
+          activateNotification(
+            NotificationType.Success,
+            '你赢了',
+            '恭喜通关。',
+          );
+        } else if (props.gameStatus === GameStatus.LOST) {
+          activateNotification(
+            NotificationType.Warning,
+            '你失败了',
+            '请再试一下吧。',
+          );
+        } else {
+          activateNotification(
+            NotificationType.Info,
+            '游戏没有结束',
+            `已满足的胜利条件: ${props.gained}`,
+          );
+        }
       }
     }
     if (!props.returnedError && !idle && answer.length === 0) {
@@ -238,6 +253,7 @@ const Playground: React.FC<PlaygroundProps> = (props) => {
                 current={props.currentLength}
                 aLength={props.answerLength}
                 status={status}
+                gamingCondition={props.gamingCondition}
               />
             </Row>
             <Row>
