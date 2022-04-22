@@ -21,4 +21,11 @@ export default defineConfig({
       ],
     },
   ],
+  locale: {
+    antd: true,
+    default: 'zh-CN',
+    title: true,
+    baseNavigator: true,
+    baseSeparator: '-',
+  },
 });

@@ -8,7 +8,7 @@ import {
   AndroidOutlined,
   MessageOutlined,
 } from '@ant-design/icons';
-import { Link } from 'umi';
+import { Link, useIntl } from 'umi';
 
 export default () => {
   const [hovered, setHovered] = useState([0, 0, 0, 0, 0, 0]);
@@ -29,8 +29,12 @@ export default () => {
         minHeight: '600px',
       }}
     >
-      <Divider orientation="left">欢迎</Divider>
-      <div style={{ margin: '16px' }}>This section is under construction.</div>
+      <Divider orientation="left">
+        {useIntl().formatMessage({ id: 'welcome' })}
+      </Divider>
+      <div style={{ margin: '16px' }}>
+        {useIntl().formatMessage({ id: 'underConstruct' })}
+      </div>
       <Row
         gutter={[
           { xs: 8, sm: 16, md: 24, lg: 32 },
@@ -54,7 +58,7 @@ export default () => {
                 background: hovered[0] ? 'aliceblue' : 'white',
               }}
             >
-              Playground
+              {useIntl().formatMessage({ id: 'section.Playground' })}
             </Card>
           </Link>
         </Col>
@@ -75,7 +79,7 @@ export default () => {
                 background: hovered[1] ? 'aliceblue' : 'white',
               }}
             >
-              Map Editor
+              {useIntl().formatMessage({ id: 'section.Editor' })}
             </Card>
           </Link>
         </Col>
@@ -95,7 +99,7 @@ export default () => {
                 background: hovered[2] ? 'aliceblue' : 'white',
               }}
             >
-              Gallery
+              {useIntl().formatMessage({ id: 'section.Gallery' })}
             </Card>
           </Link>
         </Col>
@@ -115,7 +119,7 @@ export default () => {
                 background: hovered[3] ? 'aliceblue' : 'white',
               }}
             >
-              Story
+              {useIntl().formatMessage({ id: 'section.Story' })}
             </Card>
           </Link>
         </Col>
@@ -136,7 +140,7 @@ export default () => {
                 background: hovered[4] ? 'aliceblue' : 'white',
               }}
             >
-              Help
+              {useIntl().formatMessage({ id: 'section.Help' })}
             </Card>
           </Link>
         </Col>
@@ -157,7 +161,7 @@ export default () => {
                 background: hovered[5] ? 'aliceblue' : 'white',
               }}
             >
-              Feedback
+              {useIntl().formatMessage({ id: 'section.Feedback' })}
             </Card>
           </Link>
         </Col>
