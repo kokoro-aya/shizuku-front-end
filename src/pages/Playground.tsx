@@ -238,6 +238,7 @@ const Playground: React.FC<PlaygroundProps> = (props) => {
                 current={props.currentLength}
                 aLength={props.answerLength}
                 status={status}
+                gamingCondition={props.gamingCondition}
               />
             </Row>
             <Row>

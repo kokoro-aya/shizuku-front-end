@@ -1,4 +1,4 @@
-import { Biome, Block } from 'mock/enums';
+import { Biome, Block, Role, Direction } from '../enums';
 import { InitStates } from '../playground';
 
 export const map8: InitStates = {
@@ -91,8 +91,8 @@ export const map8: InitStates = {
       id: 1,
       x: 1,
       y: 0,
-      dir: 'DOWN',
-      role: 'PLAYER',
+      dir: Direction.DOWN,
+      role: Role.PLAYER,
       stamina: 500,
     },
   ],

@@ -1,6 +1,5 @@
 import { InitStates } from '../playground';
-import { Biome, Block, Role } from '../enums';
-import { Direction } from '@/data/Enums';
+import { Biome, Block, Role, Direction } from '../enums';
 
 export const map5: InitStates = {
   id: 5,

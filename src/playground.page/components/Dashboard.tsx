@@ -4,11 +4,12 @@ import { Col, Row } from 'antd';
 import StatusBar from '../fragments/StatusBar';
 import styles from './DashboardLayout.css';
 import ProgressBar from '../fragments/ProgressBar';
-import { Coordinate } from '@/data/DataFragments';
 import { ExecutionStatus } from '@/pages/Playground';
 import { Frame } from '@/models/playground.types';
 import * as _ from 'lodash';
 import { Color } from '@/data/Enums';
+import { GamingCondition } from '@/data/SentData';
+import { GameConditions } from '@/playground.page/fragments/GameConditions';
 
 interface DashboardProp {
   frame: Frame;
@@ -16,18 +17,7 @@ interface DashboardProp {
   current: number;
   aLength: number;
   status: ExecutionStatus;
-}
-
-export interface PreprocessedGrid {
-  layout: string;
-  isPlayer: boolean;
-  lockInfo?: Coordinate[];
-  color: string;
-  level: number;
-  grid: string;
-  x: number;
-  y: number;
-  playerId?: number;
+  gamingCondition?: GamingCondition;
 }
 
 const Dashboard: React.FC<DashboardProp> = (props) => {
@@ -154,6 +144,9 @@ const Dashboard: React.FC<DashboardProp> = (props) => {
 
   return (
     <Col span={24}>
+      <Row>
+        <GameConditions gamingCondition={props.gamingCondition} />
+      </Row>
       <Row>
         <StatusBar
           iconSize={fontSize}

@@ -19,11 +19,15 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="095a5d38-2a3c-4e5c-abe6-e5e436d6447a" name="Default Changelist" comment="now the code works and css is awesome">
-      <change afterPath="$PROJECT_DIR$/mock/maps/map5.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mock/maps/map6.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mock/maps/map7.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mock/maps/map8.ts" afterDir="false" />
+    <list default="true" id="095a5d38-2a3c-4e5c-abe6-e5e436d6447a" name="Default Changelist" comment="added more maps and minor fixes">
+      <change afterPath="$PROJECT_DIR$/src/playground.page/fragments/GameConditions.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mock/maps/map5.ts" beforeDir="false" afterPath="$PROJECT_DIR$/mock/maps/map5.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mock/maps/map6.ts" beforeDir="false" afterPath="$PROJECT_DIR$/mock/maps/map6.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mock/maps/map7.ts" beforeDir="false" afterPath="$PROJECT_DIR$/mock/maps/map7.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mock/maps/map8.ts" beforeDir="false" afterPath="$PROJECT_DIR$/mock/maps/map8.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Playground.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Playground.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/playground.page/components/Dashboard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/playground.page/components/Dashboard.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,7 +53,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
+    <option name="selectedTabId" value="ProjectErrors" />
   </component>
   <component name="ProjectId" id="1lZbKJzLHp2iFpxUSf0qdZfgQlU" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -137,7 +141,8 @@
       <workItem from="1650417920836" duration="6145000" />
       <workItem from="1650496115594" duration="2731000" />
       <workItem from="1650499403125" duration="5623000" />
-      <workItem from="1650571744331" duration="8453000" />
+      <workItem from="1650571744331" duration="9670000" />
+      <workItem from="1650630136808" duration="2932000" />
     </task>
     <task id="LOCAL-00001" summary="Commit 1. Page Layout Setup">
       <created>1608342769408</created>
@@ -335,7 +340,14 @@
       <option name="project" value="LOCAL" />
       <updated>1650580497033</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="added more maps and minor fixes">
+      <created>1650582058709</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1650582058709</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -370,8 +382,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Commit 2. Highlight textarea" />
-    <MESSAGE value="Commit 2.1" />
     <MESSAGE value="Commit 3. First Deliverable, added a progress bar" />
     <MESSAGE value="Commit 3.1 Add modal for change of map (currently not implemented)" />
     <MESSAGE value="Commit 3.2 minor updates" />
@@ -395,6 +405,8 @@
     <MESSAGE value="Adapted command palette for monaco editor" />
     <MESSAGE value="refactor code" />
     <MESSAGE value="now the code works and css is awesome" />
-    <option name="LAST_COMMIT_MESSAGE" value="now the code works and css is awesome" />
+    <MESSAGE value="added more maps" />
+    <MESSAGE value="added more maps and minor fixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="added more maps and minor fixes" />
   </component>
 </project>
