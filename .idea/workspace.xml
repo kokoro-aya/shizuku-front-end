@@ -19,18 +19,12 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="095a5d38-2a3c-4e5c-abe6-e5e436d6447a" name="Default Changelist" comment="locales cover to notifications">
+    <list default="true" id="095a5d38-2a3c-4e5c-abe6-e5e436d6447a" name="Default Changelist" comment="i18n (besides debug info in Square and map selections)">
+      <change afterPath="$PROJECT_DIR$/src/models/editor.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/models/editor.types.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/locales/en-US.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/locales/en-US.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/locales/en-US/playground.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/locales/en-US/playground.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/locales/fr-FR.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/locales/fr-FR.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/locales/fr-FR/playground.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/locales/fr-FR/playground.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/locales/zh-CN.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/locales/zh-CN.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/locales/zh-CN/playground.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/locales/zh-CN/playground.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/playground.page/components/Dashboard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/playground.page/components/Dashboard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/playground.page/components/Input.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/playground.page/components/Input.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/playground.page/fragments/GameConditions.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/playground.page/fragments/GameConditions.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/playground.page/fragments/StatusBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/playground.page/fragments/StatusBar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mock/playground.ts" beforeDir="false" afterPath="$PROJECT_DIR$/mock/playground.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/playground.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/playground.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -146,7 +140,7 @@
       <workItem from="1650499403125" duration="5623000" />
       <workItem from="1650571744331" duration="9670000" />
       <workItem from="1650630136808" duration="9329000" />
-      <workItem from="1650645490736" duration="2692000" />
+      <workItem from="1650645490736" duration="5969000" />
     </task>
     <task id="LOCAL-00001" summary="Commit 1. Page Layout Setup">
       <created>1608342769408</created>
@@ -386,7 +380,14 @@
       <option name="project" value="LOCAL" />
       <updated>1650641947073</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="i18n (besides debug info in Square and map selections)">
+      <created>1650655101274</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1650655101274</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -421,7 +422,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Commit - just for test" />
     <MESSAGE value="stable version 1.0.0" />
     <MESSAGE value="minor updates version 1.0.x and WIP started" />
     <MESSAGE value="start to work on version 2, change text area to monaco editor" />
@@ -446,6 +446,7 @@
     <MESSAGE value="includes the end gaming status and info into the playground" />
     <MESSAGE value="simple implementation of locales" />
     <MESSAGE value="locales cover to notifications" />
-    <option name="LAST_COMMIT_MESSAGE" value="locales cover to notifications" />
+    <MESSAGE value="i18n (besides debug info in Square and map selections)" />
+    <option name="LAST_COMMIT_MESSAGE" value="i18n (besides debug info in Square and map selections)" />
   </component>
 </project>
