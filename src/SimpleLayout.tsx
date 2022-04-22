@@ -116,14 +116,8 @@ const SimpleLayout: React.FC<SimpleLayoutProps> = (props) => {
             /*position: 'fixed', zIndex: 1, width: '100%',*/ padding: 0,
           }}
         >
-          <Space size="large">
-            <Switch
-              checked={state.theme === 'dark'}
-              onChange={changeTheme}
-              checkedChildren={useIntl().formatMessage({ id: 'dark' })}
-              unCheckedChildren={useIntl().formatMessage({ id: 'light' })}
-              style={{ marginLeft: '16px' }}
-            />
+          <Space size="large" align="center">
+            <p></p>
             <Select
               onSelect={(value: string) => setLocale(value, false)}
               defaultValue="zh-CN"

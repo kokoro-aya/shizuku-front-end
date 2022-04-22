@@ -1,4 +1,5 @@
-import sections from '@/locales/zh-CN/sections';
+import sections from './zh-CN/sections';
+import playground from './zh-CN/playground';
 
 export default {
   welcome: '欢迎',

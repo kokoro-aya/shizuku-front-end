@@ -19,25 +19,18 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="095a5d38-2a3c-4e5c-abe6-e5e436d6447a" name="Default Changelist" comment="includes the end gaming status and info into the playground">
-      <change afterPath="$PROJECT_DIR$/src/locales/en-US.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/locales/en-US/sections.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/locales/fr-FR.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/locales/fr-FR/sections.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/locales/zh-CN.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/locales/zh-CN/sections.ts" afterDir="false" />
+    <list default="true" id="095a5d38-2a3c-4e5c-abe6-e5e436d6447a" name="Default Changelist" comment="simple implementation of locales">
+      <change afterPath="$PROJECT_DIR$/src/locales/en-US/playground.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/locales/fr-FR/playground.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/locales/zh-CN/playground.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.umirc.ts" beforeDir="false" afterPath="$PROJECT_DIR$/.umirc.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/SimpleLayout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/SimpleLayout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/locale/en-US.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/locale/fr-FR.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/locale/zh-CN.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/About.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/About.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Editor.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Editor.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Feedback.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Feedback.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Gallery.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Gallery.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Home.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Story.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Story.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/locales/en-US.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/locales/en-US.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/locales/fr-FR.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/locales/fr-FR.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/locales/zh-CN.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/locales/zh-CN.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Playground.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Playground.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -152,7 +145,7 @@
       <workItem from="1650496115594" duration="2731000" />
       <workItem from="1650499403125" duration="5623000" />
       <workItem from="1650571744331" duration="9670000" />
-      <workItem from="1650630136808" duration="6648000" />
+      <workItem from="1650630136808" duration="7992000" />
     </task>
     <task id="LOCAL-00001" summary="Commit 1. Page Layout Setup">
       <created>1608342769408</created>
@@ -378,7 +371,14 @@
       <option name="project" value="LOCAL" />
       <updated>1650634919467</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="simple implementation of locales">
+      <created>1650639450882</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1650639450882</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -413,7 +413,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Commit 3.2 minor updates" />
     <MESSAGE value="Commit - upload styles" />
     <MESSAGE value="Commit - just for test" />
     <MESSAGE value="stable version 1.0.0" />
@@ -438,6 +437,7 @@
     <MESSAGE value="added more maps and minor fixes" />
     <MESSAGE value="fixed map import issues, add game rule display" />
     <MESSAGE value="includes the end gaming status and info into the playground" />
-    <option name="LAST_COMMIT_MESSAGE" value="includes the end gaming status and info into the playground" />
+    <MESSAGE value="simple implementation of locales" />
+    <option name="LAST_COMMIT_MESSAGE" value="simple implementation of locales" />
   </component>
 </project>
