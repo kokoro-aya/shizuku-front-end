@@ -1,1 +1,57 @@
-export default {};
+export default {
+  'playground.defaultNotification.success.message':
+    'Le tâche a été exécuté avec succès',
+  'playground.defaultNotification.success.desc':
+    'Le code est en exécution......',
+  'playground.defaultNotification.info.message': 'Notice',
+  'playground.defaultNotification.info.desc': 'Que se passe-t-il?',
+  'playground.defaultNotification.warning.message': 'Avertissement',
+  'playground.defaultNotification.warning.desc':
+    'Il y a quelque chose qui ne marche bien',
+  'playground.defaultNotification.error.message': 'Erreur',
+  'playground.defaultNotification.error.desc': 'Des erreurs ont eu lieu',
+  'playground.notification.type.info': 'Info',
+  'playground.notification.type.win': 'Tu as gagné',
+  'playground.notification.type.lost': 'Tu as perdu',
+  'playground.notification.type.pending': "Le jeu n'est pas encore fini",
+  'playground.notification.desc.gem': 'Un diamond a été pris.',
+  'playground.notification.desc.switch': 'Un switch a été déclenché.',
+  'playground.notification.desc.beeper': 'Un beeper a été pris.',
+  'playground.notification.desc.attack': 'Un monstre a été battu',
+  'playground.notification.desc.win': 'Félicitation.',
+  'playground.notification.desc.lost': 'Tu veux réessayer?',
+  'playground.notification.desc.pending': 'Conditions satisfaites: {count}.',
+  'playground.notification.type.endGame': 'Le tâche a été exécuté',
+  'playground.notification.desc.endGame': 'Le programme a fini son exécution.',
+  'playground.input.loop': 'Boucle {name}',
+  'playground.input.function': 'Fonction',
+  'playground.input.changeMap': 'Changer de map',
+  'playground.input.insertCode': 'Insérer un code',
+  'playground.input.inst': 'Instruction {var}',
+  'playground.input.structInst': 'Instruction structurelle',
+  'playground.input.run': '▶ Démarrer',
+  'playground.input.reset': 'Effacer',
+  'playground.gameCond.collectGems': 'Collecter au moins {num} diamonds.',
+  'playground.gameCond.switchesBy':
+    'Au moins {num} switches doivent être allumés.',
+  'playground.gameCond.monstersKilled': 'Tuer au moins {num} monstres.',
+  'playground.gameCond.monstersKilledLessThan': 'Tuer au plus {num} monstres',
+  'playground.gameCond.arriveAt':
+    'Avoir pour chaque coordonnée un joueur dedans: {coo}.',
+  'playground.gameCond.endGameAfter': 'Finir le jeu avant {num} tours.',
+  'playground.gameCond.noSameTileRepassed':
+    'Les joueurs ne doivent pas repasser sur les mêmes tiles.',
+  'playground.gameCond.noEndGameCondition':
+    "Ce jeu n'a pas donné de condition de fin du jeu",
+  'playground.gameCond.gameRules': 'Règles du Jeu',
+  'playground.gameCond.click': 'Cliquer ici pour connaitre les règles',
+  'playground.status.currentStatus': 'Le Status Actuel',
+  'playground.status.success': 'Succès',
+  'playground.status.processing': 'Exécution en cours...',
+  'playground.status.idle': 'En attente...',
+  'playground.status.impossible': 'Erreur',
+  'playground.status.gem': 'Diamonds: {gemInBag} / {gemOnGround}',
+  'playground.status.switch': 'Switches: {openedSwitch} / {closedSwitch}',
+  'playground.status.beeper': 'Beepers: {beeperInBag} / {beeperAtGround}',
+  'playground.status.monster': 'Monstres vivants: {monsters}',
+};

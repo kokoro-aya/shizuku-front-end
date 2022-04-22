@@ -33,6 +33,8 @@ const Dashboard: React.FC<DashboardProp> = (props) => {
   const collectedGems = _.sum(frame.players.map((e) => e.collectedGem ?? 0));
   const beepersInBags = _.sum(frame.players.map((e) => e.hasBeeper ?? 0));
 
+  const monsters = frame.monsters.length;
+
   const preprocessGrid = (frame: Frame) => {
     return frame.grid.flatMap((gridRow, y) => {
       const row = gridRow.map((gridItem, x) => {
@@ -156,6 +158,7 @@ const Dashboard: React.FC<DashboardProp> = (props) => {
           closedSwitch={closedSwitch}
           beeperInBag={beepersInBags}
           beeperAtGround={beeperAtGround}
+          monsters={monsters}
           status={getStatus(props.status)}
         />
       </Row>

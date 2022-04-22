@@ -7,4 +7,5 @@ export default {
   dark: 'foncée',
   light: 'clair',
   ...sections,
+  ...playground,
 };

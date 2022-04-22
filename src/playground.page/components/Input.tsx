@@ -1,7 +1,7 @@
 import React, { MouseEventHandler, useRef, useState } from 'react';
 import { Button, Dropdown, Space, Row, Col, Menu, Divider } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
-import { connect } from 'umi';
+import { connect, useIntl } from 'umi';
 import Editor, { OnMount } from '@monaco-editor/react';
 import MapSelector from '../fragments/MapSelector';
 import { Theme, ThemeState } from '@/models/codescheme';
@@ -127,22 +127,31 @@ const InputBox: React.FC<InputBoxProps> = (props) => {
   const printCommand = { desc: 'console.log(...)', code: 'console.log() ' };
   const structuralCommands = [
     {
-      desc: 'for循环',
+      desc: useIntl().formatMessage(
+        { id: 'playground.input.loop' },
+        { name: 'for' },
+      ),
       code: `for (_ in 1 until 3) {
 ...`,
     },
     {
-      desc: 'while循环',
+      desc: useIntl().formatMessage(
+        { id: 'playground.input.loop' },
+        { name: 'while' },
+      ),
       code: `while (cond) {
 ...`,
     },
     {
-      desc: 'repeat循环',
+      desc: useIntl().formatMessage(
+        { id: 'playground.input.loop' },
+        { name: 'repeat' },
+      ),
       code: `repeat (3) {
 ...`,
     },
     {
-      desc: '函数',
+      desc: useIntl().formatMessage({ id: 'playground.input.function' }),
       code: `fun foo(): Unit {
 ...`,
     },
@@ -157,10 +166,12 @@ const InputBox: React.FC<InputBoxProps> = (props) => {
       />
       <div style={{ marginTop: '16px', marginLeft: '16px' }}>
         <Button type="primary" onClick={() => setModalDisplayed(true)}>
-          更换地图
+          {useIntl().formatMessage({ id: 'playground.input.changeMap' })}
         </Button>
       </div>
-      <Divider orientation="left">输入指令</Divider>
+      <Divider orientation="left">
+        {useIntl().formatMessage({ id: 'playground.input.insertCode' })}
+      </Divider>
       <div style={{ margin: '16px' }}>
         <Space wrap size="middle">
           {
@@ -172,7 +183,11 @@ const InputBox: React.FC<InputBoxProps> = (props) => {
               arrow
             >
               <Button>
-                blocked指令 <DownOutlined />
+                {useIntl().formatMessage(
+                  { id: 'playground.input.inst' },
+                  { var: 'blocked' },
+                )}{' '}
+                <DownOutlined />
               </Button>
             </Dropdown>
           }
@@ -184,7 +199,11 @@ const InputBox: React.FC<InputBoxProps> = (props) => {
               arrow
             >
               <Button>
-                isOn指令 <DownOutlined />
+                {useIntl().formatMessage(
+                  { id: 'playground.input.inst' },
+                  { var: 'isOn' },
+                )}{' '}
+                <DownOutlined />
               </Button>
             </Dropdown>
           }
@@ -214,7 +233,11 @@ const InputBox: React.FC<InputBoxProps> = (props) => {
               arrow
             >
               <Button>
-                toggle指令 <DownOutlined />
+                {useIntl().formatMessage(
+                  { id: 'playground.input.inst' },
+                  { var: 'toggle' },
+                )}{' '}
+                <DownOutlined />
               </Button>
             </Dropdown>
           }
@@ -235,7 +258,8 @@ const InputBox: React.FC<InputBoxProps> = (props) => {
               arrow
             >
               <Button>
-                结构化指令 <DownOutlined />
+                {useIntl().formatMessage({ id: 'playground.input.structInst' })}{' '}
+                <DownOutlined />
               </Button>
             </Dropdown>
           }
@@ -288,7 +312,7 @@ const InputBox: React.FC<InputBoxProps> = (props) => {
             onClick={handleSubmit}
             disabled={props.disabled}
           >
-            ▶运行
+            {useIntl().formatMessage({ id: 'playground.input.run' })}
           </Button>
         </Col>
         <Col
@@ -300,7 +324,7 @@ const InputBox: React.FC<InputBoxProps> = (props) => {
           }}
         >
           <Button type="dashed" onClick={handleReset}>
-            重置
+            {useIntl().formatMessage({ id: 'playground.input.reset' })}
           </Button>
         </Col>
       </Row>
