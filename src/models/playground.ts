@@ -6,7 +6,7 @@ import { Effect, ImmerReducer } from 'umi';
 import { InitStates } from '../../mock/playground';
 import { SuccessData } from '@/data/ReceivedData';
 import { constructFrame } from '@/Utils';
-import { Biome, Block, Color } from '@/data/Enums';
+import { GameStatus } from '@/data/Enums';
 import { initialState } from '@/models/initialstuff';
 
 export interface PlaygroundModelInterface {
@@ -88,6 +88,8 @@ const model: PlaygroundModelInterface = {
         returnedError: false,
         gamingCondition: _p.gamingCondition,
         userCollision: _p.userCollision,
+        gameStatus: GameStatus.PENDING,
+        gained: 0,
       };
       return nextState;
     },
@@ -101,6 +103,8 @@ const model: PlaygroundModelInterface = {
         ),
         answerLength: payload.length,
         returnedError: false,
+        gameStatus: data.game,
+        gained: data.gained,
       };
       return nextState;
     },

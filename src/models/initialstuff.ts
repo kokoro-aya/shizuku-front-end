@@ -1,5 +1,5 @@
 import { ModelStates } from '@/models/playground.types';
-import { Biome, Block, Color } from '@/data/Enums';
+import { Biome, Block, GameStatus } from '@/data/Enums';
 
 export const initialState: ModelStates = {
   initialized: false,
@@ -235,4 +235,6 @@ export const initialState: ModelStates = {
   returnedError: false,
   gamingCondition: undefined,
   userCollision: false,
+  gameStatus: GameStatus.PENDING,
+  gained: 0,
 };
