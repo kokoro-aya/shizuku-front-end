@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Col, notification, Row } from 'antd';
+import { useIntl } from 'umi';
 import InputBox from '../playground.page/components/Input';
 import Console from '../playground.page/components/Console';
 import Dashboard from '../playground.page/components/Dashboard';
@@ -36,24 +37,63 @@ const activateNotification = (
   switch (type) {
     case NotificationType.Success:
       return notification['success']({
-        message: message == null ? '任务执行成功' : message,
-        description: desc == null ? '代码正在运行中……' : desc,
+        message:
+          message == null
+            ? useIntl().formatMessage({
+                id: 'playground.defaultNotification.success.message',
+              })
+            : message,
+        description:
+          desc == null
+            ? useIntl().formatMessage({
+                id: 'playground.defaultNotification.success.desc',
+              })
+            : desc,
       });
     case NotificationType.Info:
       return notification['info']({
-        message: message == null ? '提示' : message,
+        message:
+          message == null
+            ? useIntl().formatMessage({
+                id: 'playground.defaultNotification.info.message',
+              })
+            : message,
         description:
-          desc == null ? '虽然不知道发生了什么但是似乎很厉害的样子？' : desc,
+          desc == null
+            ? useIntl().formatMessage({
+                id: 'playground.defaultNotification.info.desc',
+              })
+            : desc,
       });
     case NotificationType.Warning:
       return notification['warning']({
-        message: message == null ? '警告' : message,
-        description: desc == null ? '似乎有些不对劲' : desc,
+        message:
+          message == null
+            ? useIntl().formatMessage({
+                id: 'playground.defaultNotification.warning.message',
+              })
+            : message,
+        description:
+          desc == null
+            ? useIntl().formatMessage({
+                id: 'playground.defaultNotification.warning.desc',
+              })
+            : desc,
       });
     case NotificationType.Error:
       return notification['error']({
-        message: message == null ? '错误' : message,
-        description: desc == null ? '发生了一些错误' : desc,
+        message:
+          message == null
+            ? useIntl().formatMessage({
+                id: 'playground.defaultNotification.error.message',
+              })
+            : message,
+        description:
+          desc == null
+            ? useIntl().formatMessage({
+                id: 'playground.defaultNotification.error.desc',
+              })
+            : desc,
       });
   }
 };
@@ -121,33 +161,67 @@ const Playground: React.FC<PlaygroundProps> = (props) => {
     if (nextFrame) {
       if (!idle && nextFrame.special.includes('GEM')) {
         // console.log('Collected a gem');
-        activateNotification(NotificationType.Info, '消息', '捡到了一颗钻石。');
+        activateNotification(
+          NotificationType.Info,
+          useIntl().formatMessage({ id: 'playground.notification.type.info' }),
+          useIntl().formatMessage({ id: 'playground.notification.desc.gem' }),
+        );
       }
       if (!idle && nextFrame.special.includes('SWITCH')) {
         // console.log('Toggled a switch');
-        activateNotification(NotificationType.Info, '消息', '按下了一个开关。');
+        activateNotification(
+          NotificationType.Info,
+          useIntl().formatMessage({ id: 'playground.notification.type.info' }),
+          useIntl().formatMessage({
+            id: 'playground.notification.desc.switch',
+          }),
+        );
+      }
+      if (!idle && nextFrame.special.includes('BEEPER')) {
+        activateNotification(
+          NotificationType.Info,
+          useIntl().formatMessage({ id: 'playground.notification.type.info' }),
+          useIntl().formatMessage({
+            id: 'playground.notification.desc.beeper',
+          }),
+        );
       }
       if (!idle && nextFrame.special.includes('ATTACK')) {
-        activateNotification(NotificationType.Info, '消息', '击败了一个怪物。');
+        activateNotification(
+          NotificationType.Info,
+          useIntl().formatMessage({ id: 'playground.notification.type.info' }),
+          useIntl().formatMessage({
+            id: 'playground.notification.desc.attack',
+          }),
+        );
       }
       if (!idle && answer.length === 0) {
         if (props.gameStatus === GameStatus.WIN) {
           activateNotification(
             NotificationType.Success,
-            '你赢了',
-            '恭喜通关。',
+            useIntl().formatMessage({ id: 'playground.notification.type.win' }),
+            useIntl().formatMessage({ id: 'playground.notification.desc.win' }),
           );
         } else if (props.gameStatus === GameStatus.LOST) {
           activateNotification(
             NotificationType.Warning,
-            '你失败了',
-            '请再试一下吧。',
+            useIntl().formatMessage({
+              id: 'playground.notification.type.lost',
+            }),
+            useIntl().formatMessage({
+              id: 'playground.notification.desc.lost',
+            }),
           );
         } else {
           activateNotification(
             NotificationType.Info,
-            '游戏没有结束',
-            `已满足的胜利条件: ${props.gained}`,
+            useIntl().formatMessage({
+              id: 'playground.notification.type.pending',
+            }),
+            useIntl().formatMessage(
+              { id: 'playground.notification.desc.pending' },
+              { count: `${props.gained}` },
+            ),
           );
         }
       }
@@ -155,8 +229,8 @@ const Playground: React.FC<PlaygroundProps> = (props) => {
     if (!props.returnedError && !idle && answer.length === 0) {
       activateNotification(
         NotificationType.Info,
-        '任务已执行',
-        '程序执行完成。',
+        useIntl().formatMessage({ id: 'playground.notification.type.endGame' }),
+        useIntl().formatMessage({ id: 'playground.notification.desc.endGame' }),
       );
       setIdle(true);
     }

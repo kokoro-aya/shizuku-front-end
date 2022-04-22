@@ -22,8 +22,8 @@ Here are several features that could be achieved in the current refactor:
 - [x] Refactor with TypeScript
 - [x] Adapt to the new server side (at last, I have decided to adapt to the [simulatte](https://github.com/kokoro-aya/simulatte) server instead of another one)
 - [x] Adapt to Monaco Editor, link the editor to the playground and add support for themes
-- [ ] i18n
-- [ ] themes and dark mode
+- [x] i18n
+- [ ] ~~dark mode~~ (won't achieve due to limits of ant design)
 - [ ] Some predefined maps and possibility to switch the map
 - [ ] A simple map editor
 - [ ] A connected server and code evaluation *on the fly* (need to adapt the server at the same time)

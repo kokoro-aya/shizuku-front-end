@@ -1,6 +1,7 @@
 import { GamingCondition } from '@/data/SentData';
 import React from 'react';
 import { Button, Divider, Dropdown, Menu, Space } from 'antd';
+import { useIntl } from 'umi';
 
 interface GameConditionsProps {
   gamingCondition?: GamingCondition;
@@ -8,27 +9,55 @@ interface GameConditionsProps {
 
 export const GameConditions: React.FC<GameConditionsProps> = (props) => {
   const collectGemsBy = props?.gamingCondition?.collectGemsBy
-    ? `收集至少 ${props.gamingCondition.collectGemsBy} 个宝石`
+    ? useIntl().formatMessage(
+        { id: 'playground.gameCond.collectGems' },
+        {
+          num: props.gamingCondition.collectGemsBy,
+        },
+      )
     : null;
   const switchesOnBy = props?.gamingCondition?.switchesOnBy
-    ? `开启至少 ${props.gamingCondition.switchesOnBy} 个开关`
+    ? useIntl().formatMessage(
+        { id: 'playground.gameCond.switchesBy' },
+        {
+          num: props.gamingCondition.switchesOnBy,
+        },
+      )
     : null;
   const monstersKilled = props?.gamingCondition?.monstersKilled
-    ? `杀死至少 ${props.gamingCondition.monstersKilled} 个怪兽`
+    ? useIntl().formatMessage(
+        { id: 'playground.gameCond.monstersKilled' },
+        {
+          num: props.gamingCondition.monstersKilled,
+        },
+      )
     : null;
   const monstersKilledLessThan = props?.gamingCondition?.monstersKilledLessThan
-    ? `杀死不多于 ${props.gamingCondition.monstersKilledLessThan} 个怪兽`
+    ? useIntl().formatMessage(
+        { id: 'playground.gameCond.monstersKilledLessThan' },
+        {
+          num: props.gamingCondition.monstersKilledLessThan,
+        },
+      )
     : null;
   const arriveAt = props?.gamingCondition?.arriveAt
-    ? `在以下坐标各有一个角色: ${props.gamingCondition.arriveAt
-        .map((e) => `(x:${e.x}, y:${e.y})`)
-        .join(',')}`
+    ? useIntl().formatMessage(
+        { id: 'playground.gameCond.arriveAt' },
+        {
+          coo: props.gamingCondition.arriveAt
+            .map((e) => `(x:${e.x}, y:${e.y})`)
+            .join(','),
+        },
+      )
     : null;
   const endGameAfter = props?.gamingCondition?.endGameAfter
-    ? `结束游戏在第 ${props.gamingCondition.endGameAfter} 个回合以前`
+    ? useIntl().formatMessage(
+        { id: 'playground.gameCond.endGameAfter' },
+        { num: props.gamingCondition.endGameAfter },
+      )
     : null;
   const noSameTileRepassed = props?.gamingCondition?.noSameTileRepassed
-    ? '不能走重复的格子'
+    ? useIntl().formatMessage({ id: 'playground.gameCond.noSameTileRepassed' })
     : null;
 
   const items: Array<string> = [
@@ -42,13 +71,17 @@ export const GameConditions: React.FC<GameConditionsProps> = (props) => {
   ].filter((e) => e !== null) as Array<string>;
 
   if (items.length === 0) {
-    items.push('该游戏没有设置胜利条件');
+    items.push(
+      useIntl().formatMessage({ id: 'playground.gameCond.noEndGameCondition' }),
+    );
   }
 
   return (
     <>
       <div style={{ padding: '0% 5% 0% 5%', width: '100%' }}>
-        <Divider orientation="left">游戏规则</Divider>
+        <Divider orientation="left">
+          {useIntl().formatMessage({ id: 'playground.gameCond.gameRules' })}
+        </Divider>
         <Space wrap size="middle">
           {
             // @ts-ignore
@@ -62,7 +95,9 @@ export const GameConditions: React.FC<GameConditionsProps> = (props) => {
               }
               placement="bottomLeft"
             >
-              <Button>点此了解游戏规则</Button>
+              <Button>
+                {useIntl().formatMessage({ id: 'playground.gameCond.click' })}
+              </Button>
             </Dropdown>
           }
         </Space>

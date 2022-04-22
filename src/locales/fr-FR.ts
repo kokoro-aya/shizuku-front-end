@@ -1,4 +1,5 @@
-import sections from '@/locales/fr-FR/sections';
+import sections from './fr-FR/sections';
+import playground from './fr-FR/playground';
 
 export default {
   welcome: 'Bienvenue',
@@ -6,4 +7,5 @@ export default {
   dark: 'foncée',
   light: 'clair',
   ...sections,
+  ...playground,
 };
