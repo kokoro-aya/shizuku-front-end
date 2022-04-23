@@ -12,4 +12,5 @@ export interface MapCategory {
 
 export interface MapSelectStates {
   maps: Array<MapCategory>;
+  current?: string;
 }

@@ -20,13 +20,14 @@ const model: MapSelectInterface = {
   namespace: 'mapselect',
   state: {
     maps: [],
+    current: undefined,
   },
   effects: {
     *fetch({ payload }, { call, put }) {
       const endPointURI = '/dev/playground/fetch';
       try {
         const value = yield call(request, endPointURI);
-        console.log('value: ' + value);
+        // console.log('value: ' + value);
         yield put({ type: 'initialize', payload: value });
       } catch (e) {
         message.error('地图列表获取失败');

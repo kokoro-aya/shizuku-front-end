@@ -24,7 +24,7 @@ Here are several features that could be achieved in the current refactor:
 - [x] Adapt to Monaco Editor, link the editor to the playground and add support for themes
 - [x] i18n
 - [ ] ~~dark mode~~ (won't achieve due to limits of ant design)
-- [ ] Some predefined maps and possibility to switch the map
+- [x] Some predefined maps and possibility to switch the map
 - [ ] A simple map editor
 - [ ] A connected server and code evaluation *on the fly* (need to adapt the server at the same time)
 - [ ] A gallery of maps and maybe a map server to persist data

@@ -81,13 +81,14 @@ const Customizable: React.FC<CustomizableProps> = (props) => {
 const namespace = 'mapselect' as const;
 
 const mapStateToProps = (state: MapSelectorStateToPropsMap) => {
-  const { maps } = state[namespace];
-  return { maps };
+  const { maps, current } = state[namespace];
+  return { maps, current };
 };
 
 type MapSelectorStateToPropsMap = { mapselect: MapSelectStates };
 
 interface MapSelectorProps extends MapSelectStates, CompatibleDispatchSender {
+  onSelect: (arg0?: string) => void;
   visible: boolean;
   close: () => void;
 }
@@ -95,14 +96,7 @@ interface MapSelectorProps extends MapSelectStates, CompatibleDispatchSender {
 const MapSelector: React.FC<MapSelectorProps> = (props) => {
   const [check, setCheck] = useState(false);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      console.log('Dispatch fetch');
-      initialFetch();
-      console.log(props.maps);
-    }, 1000);
-    return () => clearInterval(interval);
-  }, []);
+  const [path, setPath] = useState<string | undefined>(undefined);
 
   const initialFetch = () => {
     props.dispatch!({
@@ -112,7 +106,7 @@ const MapSelector: React.FC<MapSelectorProps> = (props) => {
   };
 
   const onCascadeChange = (value: (string | number)[]) => {
-    console.log('Cascade: ' + value);
+    setPath(value.join('/'));
   };
 
   const handleHorizontalChange = (value: number) => {
@@ -127,10 +121,6 @@ const MapSelector: React.FC<MapSelectorProps> = (props) => {
     console.log('Direction' + value);
   };
 
-  const handleOk = () => {
-    props.close();
-  };
-
   const handleCancel = () => {
     props.close();
   };
@@ -143,7 +133,10 @@ const MapSelector: React.FC<MapSelectorProps> = (props) => {
           width="60%"
           title="选择一张地图"
           visible={props.visible}
-          onOk={handleOk}
+          onOk={() => {
+            props.onSelect(path);
+            props.close();
+          }}
           onCancel={handleCancel}
         >
           <div style={{ padding: '16px' }}>
@@ -151,6 +144,7 @@ const MapSelector: React.FC<MapSelectorProps> = (props) => {
               options={props.maps}
               placeholder="请选择一张地图"
               onChange={onCascadeChange}
+              onDropdownVisibleChange={initialFetch}
             />
           </div>
           {/*<div style={{ padding: '16px' }}>*/}

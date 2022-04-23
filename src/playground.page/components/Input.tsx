@@ -20,6 +20,7 @@ import { twilight } from '@/styles/Twilight';
 const namespace = 'codescheme';
 
 interface InputBoxProps {
+  onFetchMap: (arg0?: string) => void;
   onSubmit: MouseEventHandler<HTMLElement>;
   onReset: () => void;
   onChange: (arg0: string) => void;
@@ -237,6 +238,7 @@ const InputBox: React.FC<InputBoxProps> = (props) => {
     <>
       <Divider orientation="left">Playground</Divider>
       <MapSelector
+        onSelect={props.onFetchMap}
         visible={isModalDisplayed}
         close={() => setModalDisplayed(false)}
       />

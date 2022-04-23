@@ -71,46 +71,46 @@ export default {
         value: 'default',
         label: 'default',
         children: playgrounds.default.map((e) => {
-          return { value: 'default/' + e.id, label: e.name ?? 'No Name' };
+          return { value: '' + e.id, label: e.name ?? 'No Name' };
         }),
       },
       {
         value: 'simple',
         label: 'simple',
         children: playgrounds.simple.map((e) => {
-          return { value: 'simple/' + e.id, label: e.name ?? 'No Name' };
+          return { value: '' + e.id, label: e.name ?? 'No Name' };
         }),
       },
       {
         value: 'puzzle',
         label: 'puzzle',
         children: playgrounds.puzzle.map((e) => {
-          return { value: 'puzzle/' + e.id, label: e.name ?? 'No Name' };
+          return { value: '' + e.id, label: e.name ?? 'No Name' };
         }),
       },
       {
         value: 'hills',
         label: 'hills',
         children: playgrounds.hills.map((e) => {
-          return { value: 'hills/' + e.id, label: e.name ?? 'No Name' };
+          return { value: '' + e.id, label: e.name ?? 'No Name' };
         }),
       },
       {
         value: 'complex',
         label: 'complex',
         children: playgrounds.complex.map((e) => {
-          return { value: 'complex/' + e.id, label: e.name ?? 'No Name' };
+          return { value: '' + e.id, label: e.name ?? 'No Name' };
         }),
       },
       {
         value: 'custom',
         label: 'custom',
         children: playgrounds.custom.map((e) => {
-          return { value: 'custom/' + e.id, label: e.name ?? 'No Name' };
+          return { value: '' + e.id, label: e.name ?? 'No Name' };
         }),
       },
     ];
-    console.log(r);
+    // console.log(r);
     setTimeout(() => {
       res.json(r);
     }, 1000);

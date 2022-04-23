@@ -22,6 +22,7 @@ export interface ModelStates {
   userCollision: boolean;
   gameStatus: GameStatus;
   gained: number;
+  currentMap?: string;
 }
 
 export interface ErrorState {
