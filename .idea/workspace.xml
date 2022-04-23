@@ -19,16 +19,83 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="095a5d38-2a3c-4e5c-abe6-e5e436d6447a" name="Default Changelist" comment="Add i18n for squares">
+    <list default="true" id="095a5d38-2a3c-4e5c-abe6-e5e436d6447a" name="Default Changelist" comment="added copyright">
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/copyright/copyright_AGPL_shizuku.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mock/enums.ts" beforeDir="false" afterPath="$PROJECT_DIR$/mock/enums.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mock/maps/map1.ts" beforeDir="false" afterPath="$PROJECT_DIR$/mock/maps/map1.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mock/maps/map2.ts" beforeDir="false" afterPath="$PROJECT_DIR$/mock/maps/map2.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mock/maps/map3.ts" beforeDir="false" afterPath="$PROJECT_DIR$/mock/maps/map3.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mock/maps/map4.ts" beforeDir="false" afterPath="$PROJECT_DIR$/mock/maps/map4.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mock/maps/map5.ts" beforeDir="false" afterPath="$PROJECT_DIR$/mock/maps/map5.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mock/maps/map6.ts" beforeDir="false" afterPath="$PROJECT_DIR$/mock/maps/map6.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mock/maps/map7.ts" beforeDir="false" afterPath="$PROJECT_DIR$/mock/maps/map7.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mock/maps/map8.ts" beforeDir="false" afterPath="$PROJECT_DIR$/mock/maps/map8.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mock/playground.ts" beforeDir="false" afterPath="$PROJECT_DIR$/mock/playground.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mock/utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/mock/utils.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SimpleLayout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/SimpleLayout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/DataFragments.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/DataFragments.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/Enums.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/Enums.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/Payload.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/Payload.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/ReceivedData.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/ReceivedData.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/SentData.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/SentData.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/locales/en-US.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/locales/en-US.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/locales/en-US/dialog.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/locales/en-US/dialog.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/locales/en-US/playground.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/locales/en-US/playground.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/locales/en-US/sections.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/locales/en-US/sections.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/locales/en-US/square.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/locales/en-US/square.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/locales/fr-FR.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/locales/fr-FR.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/locales/fr-FR/dialog.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/locales/fr-FR/dialog.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/locales/fr-FR/playground.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/locales/fr-FR/playground.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/locales/fr-FR/sections.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/locales/fr-FR/sections.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/locales/fr-FR/square.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/locales/fr-FR/square.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/locales/hook.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/locales/hook.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/locales/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/locales/types.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/locales/zh-CN.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/locales/zh-CN.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/locales/zh-CN/dialog.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/locales/zh-CN/dialog.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/locales/zh-CN/playground.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/locales/zh-CN/playground.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/locales/zh-CN/sections.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/locales/zh-CN/sections.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/locales/zh-CN/square.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/locales/zh-CN/square.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/locales/zh-TW.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/locales/zh-TW.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/locales/zh-TW/dialog.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/locales/zh-TW/dialog.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/locales/zh-TW/playground.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/locales/zh-TW/playground.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/locales/zh-TW/sections.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/locales/zh-TW/sections.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/locales/zh-TW/square.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/locales/zh-TW/square.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/codescheme.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/codescheme.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/dispatch.type.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/dispatch.type.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/editor.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/editor.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/editor.types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/editor.types.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/initialstuff.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/initialstuff.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/mapselect.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/mapselect.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/mapselect.types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/mapselect.types.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/playground.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/playground.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/playground.types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/playground.types.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/About.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/About.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Editor.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Editor.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Feedback.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Feedback.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Gallery.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Gallery.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Help.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Help.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Home.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Playground.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Playground.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Story.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Story.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/index.less" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/index.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/playground.page/components/Console.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/playground.page/components/Console.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/playground.page/components/Dashboard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/playground.page/components/Dashboard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/playground.page/components/DashboardLayout.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/playground.page/components/DashboardLayout.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/playground.page/components/Input.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/playground.page/components/Input.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/playground.page/fragments/GameConditions.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/playground.page/fragments/GameConditions.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/playground.page/fragments/MapSelector.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/playground.page/fragments/MapSelector.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/playground.page/fragments/ProgressBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/playground.page/fragments/ProgressBar.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/playground.page/fragments/Square.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/playground.page/fragments/Square.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/playground.page/fragments/SquareLayout.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/playground.page/fragments/SquareLayout.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/playground.page/fragments/StatusBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/playground.page/fragments/StatusBar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/playground.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/playground.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,6 +120,11 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="NamedScopeManager">
+    <order>
+      <scope name="Shizuku-Source" />
+    </order>
+  </component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="ProjectErrors" />
   </component>
@@ -64,6 +136,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "last_opened_file_path": "/Users/irony/WebstormProjects/shizuku-front-end/src/locales/fr-FR",
     "node.js.detected.package.eslint": "true",
@@ -72,7 +145,7 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "prettierjs.PrettierConfiguration.Package": "/Users/irony/WebstormProjects/shizuku-front-end/node_modules/prettier",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "settings.editor.selected.configurable": "project.scopes",
     "ts.external.directory.path": "/Users/irony/WebstormProjects/shizuku-front-end/node_modules/typescript/lib",
     "vue.rearranger.settings.migration": "true"
   }
@@ -147,7 +220,8 @@
       <workItem from="1650499403125" duration="5623000" />
       <workItem from="1650571744331" duration="9670000" />
       <workItem from="1650630136808" duration="9329000" />
-      <workItem from="1650645490736" duration="42246000" />
+      <workItem from="1650645490736" duration="42538000" />
+      <workItem from="1650756003998" duration="1817000" />
     </task>
     <task id="LOCAL-00001" summary="Commit 1. Page Layout Setup">
       <created>1608342769408</created>
@@ -471,7 +545,14 @@
       <option name="project" value="LOCAL" />
       <updated>1650751651499</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="Update README.md">
+      <created>1650753835579</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1650753835579</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -506,8 +587,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fixed minor issues, import of enums" />
-    <MESSAGE value="update readme" />
     <MESSAGE value="license and minor updates" />
     <MESSAGE value="Monaco editor works, pass theme as state and it works" />
     <MESSAGE value="Bind monaco to state, added themes" />
@@ -531,6 +610,8 @@
     <MESSAGE value="Fixed map loading/reloading issue and remove useless console.logs" />
     <MESSAGE value="Types for i18n, added collision info, more i18n messages" />
     <MESSAGE value="Add i18n for squares" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add i18n for squares" />
+    <MESSAGE value="Update README.md" />
+    <MESSAGE value="added copyright" />
+    <option name="LAST_COMMIT_MESSAGE" value="added copyright" />
   </component>
 </project>

@@ -1,4 +1,4 @@
-# Shizuku (WIP)
+# Project Shizuku
 
 A front-end for [simulatte](https://github.com/kokoro-aya/simulatte). Run on umijs/antd/monaco editor.
 
@@ -28,6 +28,9 @@ The layout is on 2d, this has created difficulty to present information (for exa
 displayed them in the tooltip prompt. This is not a good way to present info in a game and it's not fun, but I don't have a better
 way.
 
+For testing purpose, some maps present in the mocks contain a sample code in the local variable `code`, you can use this code to
+test the corresponding map. The default map to be loaded is set to map4 in mock. This could be changed in the future.
+
 Several implemented features since recent update:
 
 - [x] Refactor with TypeScript
@@ -35,6 +38,12 @@ Several implemented features since recent update:
 - [x] Adapt to Monaco Editor, link the editor to the playground and add support for themes
 - [x] i18n in a typed way (4 languages are supported: zh-CN, zh-TW, en-US and fr-FR)
 - [x] Some predefined maps and possibility to switch the map
+
+Known bugs: 
+
+- The ending-game notice might be pop up in the first time as soon as the game is in process.
+- You may need to reset the game to make it possible to launch a game (while clicking reset, the playground will keep the same)
+- Bottom lines of the editor box and dashboard box is not aligned on load, but you could resize the page, and then they will be aligned
 
 More documentations are under construction.
 

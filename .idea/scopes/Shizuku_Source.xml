@@ -1,0 +1,3 @@
+<component name="DependencyValidationManager">
+  <scope name="Shizuku-Source" pattern="((file[shizuku]:mock//*&amp;&amp;!file:mock/.gitkeep||file[shizuku]:src/*)&amp;&amp;!file[shizuku]:src/styles/*||file[shizuku]:src//*)&amp;&amp;!file[shizuku]:src/styles//*" />
+</component>
