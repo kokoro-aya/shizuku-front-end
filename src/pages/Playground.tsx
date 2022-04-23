@@ -110,6 +110,7 @@ const mapStateToProps = (state: PlaygroundStateToPropsMap) => {
     returnedError,
     gamingCondition,
     userCollision,
+    currentMap,
   } = state[namespace];
   return {
     initialized,
@@ -121,6 +122,7 @@ const mapStateToProps = (state: PlaygroundStateToPropsMap) => {
     returnedError,
     gamingCondition,
     userCollision,
+    currentMap,
   };
 };
 
@@ -138,7 +140,7 @@ const Playground: React.FC<PlaygroundProps> = (props) => {
     const interval = setInterval(() => {
       // console.log("in setInterval: " + props.initialized)
       if (!props.initialized) {
-        initialFetch();
+        initialFetch(props.currentMap);
       } else {
         getData();
       }
@@ -167,11 +169,28 @@ const Playground: React.FC<PlaygroundProps> = (props) => {
     };
   });
 
-  const initialFetch = () => {
-    props.dispatch({
-      type: `${namespace}/initialFetch`,
-      payload: '',
+  const initialFetch = (mapPath?: string) => {
+    if (mapPath === undefined) {
+      props.dispatch({
+        type: `${namespace}/initialFetch`,
+        payload: '',
+      });
+    } else {
+      props.dispatch({
+        type: `${namespace}/fetchMap`,
+        payload: mapPath,
+      });
+    }
+  };
+
+  const fetchMap = (path?: string) => {
+    console.log('fetch: ' + path);
+    props.dispatch<string>({
+      type: `${namespace}/setMap`,
+      payload: path,
     });
+    // console.log(props.currentMap)
+    initialFetch(props.currentMap);
   };
 
   const getData = () => {
@@ -260,10 +279,7 @@ const Playground: React.FC<PlaygroundProps> = (props) => {
   const onClickReset = () => {
     setDisabled(false);
     setCode('// Input your code...');
-    props.dispatch({
-      type: `${namespace}/initialFetch`,
-      payload: '',
-    });
+    initialFetch(props.currentMap);
   };
 
   const onClickSubmit = (event: React.MouseEvent<HTMLElement>) => {
@@ -322,6 +338,7 @@ const Playground: React.FC<PlaygroundProps> = (props) => {
       <Row gutter={[16, 16]}>
         <Col className="gutter-row" xs={24} sm={24} md={12} lg={12} xl={12}>
           <InputBox
+            onFetchMap={fetchMap}
             onSubmit={onClickSubmit}
             onReset={onClickReset}
             onChange={onChange}

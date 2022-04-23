@@ -121,15 +121,15 @@ const Dashboard: React.FC<DashboardProp> = (props) => {
   const getStatus = (s: ExecutionStatus) => {
     switch (s) {
       case ExecutionStatus.Err:
-        return 'exception';
+        return 'err';
       case ExecutionStatus.Idle:
-        return 'normal';
+        return 'idle';
       case ExecutionStatus.Processing:
-        return 'active';
+        return 'processing';
       case ExecutionStatus.Success:
         return 'success';
       case ExecutionStatus.Impossible:
-        return 'exception';
+        return 'impossible';
     }
   };
 

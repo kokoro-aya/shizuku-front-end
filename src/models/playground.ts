@@ -19,6 +19,7 @@ export interface PlaygroundModelInterface {
   };
   reducers: {
     initialize: ImmerReducer<ModelStates>;
+    setMap: ImmerReducer<ModelStates>;
     loadPlayground: ImmerReducer<ModelStates>;
     nextFrame: ImmerReducer<ModelStates>;
     returnError: ImmerReducer<ErrorState>;
@@ -50,7 +51,6 @@ const model: PlaygroundModelInterface = {
       }
     },
     *initialFetch({ payload }, { call, put }) {
-      // console.log('initializing')
       const endPointURI = '/dev/playground/fetch/default';
       try {
         const playground = yield call(request, endPointURI);
@@ -61,7 +61,14 @@ const model: PlaygroundModelInterface = {
       }
     },
     *fetchMap({ payload }, { call, put }) {
-      // TODO add fetch logics
+      const endPointURI = `/dev/playground/fetch/${payload}`;
+      try {
+        const playground = yield call(request, endPointURI);
+        yield put({ type: 'initialize', payload: playground });
+      } catch (e) {
+        message.error('数据获取失败');
+        yield put({ type: 'returnError' });
+      }
     },
   },
   reducers: {
@@ -94,6 +101,14 @@ const model: PlaygroundModelInterface = {
         userCollision: _p.userCollision,
         gameStatus: GameStatus.PENDING,
         gained: 0,
+        currentMap: state.currentMap,
+      };
+      return nextState;
+    },
+    setMap(state, { payload }) {
+      const nextState: ModelStates = {
+        ...state,
+        currentMap: payload,
       };
       return nextState;
     },
@@ -130,7 +145,6 @@ const model: PlaygroundModelInterface = {
     },
     returnError(state, { payload }) {
       return {
-        ...state,
         returnedError: true,
       };
     },

@@ -60,6 +60,10 @@ export const GameConditions: React.FC<GameConditionsProps> = (props) => {
     ? useIntl().formatMessage({ id: 'playground.gameCond.noSameTileRepassed' })
     : null;
 
+  const noEndGameCondition = useIntl().formatMessage({
+    id: 'playground.gameCond.noEndGameCondition',
+  });
+
   const items: Array<string> = [
     collectGemsBy,
     switchesOnBy,
@@ -71,17 +75,20 @@ export const GameConditions: React.FC<GameConditionsProps> = (props) => {
   ].filter((e) => e !== null) as Array<string>;
 
   if (items.length === 0) {
-    items.push(
-      useIntl().formatMessage({ id: 'playground.gameCond.noEndGameCondition' }),
-    );
+    items.push(noEndGameCondition);
   }
+
+  const gameRulesDesc = useIntl().formatMessage({
+    id: 'playground.gameCond.gameRules',
+  });
+  const clickDesc = useIntl().formatMessage({
+    id: 'playground.gameCond.click',
+  });
 
   return (
     <>
       <div style={{ padding: '0% 5% 0% 5%', width: '100%' }}>
-        <Divider orientation="left">
-          {useIntl().formatMessage({ id: 'playground.gameCond.gameRules' })}
-        </Divider>
+        <Divider orientation="left">{gameRulesDesc}</Divider>
         <Space wrap size="middle">
           {
             // @ts-ignore
@@ -95,9 +102,7 @@ export const GameConditions: React.FC<GameConditionsProps> = (props) => {
               }
               placement="bottomLeft"
             >
-              <Button>
-                {useIntl().formatMessage({ id: 'playground.gameCond.click' })}
-              </Button>
+              <Button>{clickDesc}</Button>
             </Dropdown>
           }
         </Space>
