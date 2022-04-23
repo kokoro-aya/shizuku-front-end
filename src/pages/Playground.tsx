@@ -9,6 +9,7 @@ import { Frame, ModelStates } from '@/models/playground.types';
 import { SentData } from '@/data/SentData';
 import { DispatchSender } from '@/models/dispatch.type';
 import { GameStatus } from '@/data/Enums';
+import { useThrottle } from '@/Utils';
 
 const namespace = 'playground';
 
@@ -147,7 +148,24 @@ const Playground: React.FC<PlaygroundProps> = (props) => {
   // setInterval相当于一个闭包，里面的变量如果不额外声明的话值是固定的
 
   // Align bottom of editor and board
-  useEffect(() => {});
+  const handleAlign = () => {
+    const h1 = document.getElementById('board')!.getBoundingClientRect().bottom;
+    const h2 = document.getElementById('editor')!.getBoundingClientRect().top;
+    if (h1 - h2 > 144) {
+      document.getElementById('editor')!.style.height = `${h1 - h2}px`;
+    }
+  };
+  useEffect(handleAlign, []);
+
+  const handleResize = handleAlign;
+  window.addEventListener('resize', handleResize);
+
+  // Clean up
+  useEffect(() => {
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  });
 
   const initialFetch = () => {
     props.dispatch({
@@ -313,13 +331,22 @@ const Playground: React.FC<PlaygroundProps> = (props) => {
             disabled={disabled}
           />
         </Col>
-        <Col className="gutter-row" xs={24} sm={24} md={12} lg={12} xl={12}>
+        <Col
+          className="gutter-row"
+          xs={24}
+          sm={24}
+          md={12}
+          lg={12}
+          xl={12}
+          style={{ maxHeight: '200vh' }}
+        >
           <div
             id="board"
             style={{
               background: 'white',
               overflow: 'scroll',
               overflowWrap: 'break-word',
+              maxHeight: '100%',
               boxShadow: '0 4px 8px 0 rgba(0,0,0,0.2)',
               border: '1px solid #e8e8e8',
             }}

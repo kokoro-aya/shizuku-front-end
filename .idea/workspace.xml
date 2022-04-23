@@ -19,13 +19,9 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="095a5d38-2a3c-4e5c-abe6-e5e436d6447a" name="Default Changelist" comment="update commands to reflect back end as well as translations">
-      <change afterPath="$PROJECT_DIR$/src/locales/zh-TW.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/locales/zh-TW/playground.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/locales/zh-TW/sections.ts" afterDir="false" />
+    <list default="true" id="095a5d38-2a3c-4e5c-abe6-e5e436d6447a" name="Default Changelist" comment="added zh-TW translation, minor fixes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SimpleLayout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/SimpleLayout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Help.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Help.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/Playground.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Playground.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/playground.page/components/Input.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/playground.page/components/Input.tsx" afterDir="false" />
     </list>
@@ -64,7 +60,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/Users/irony/WebstormProjects/shizuku-front-end/src/locales",
+    "last_opened_file_path": "/Users/irony/WebstormProjects/shizuku-front-end/img",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -78,9 +74,9 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/img" />
       <recent name="$PROJECT_DIR$/src/locales" />
       <recent name="$PROJECT_DIR$/src/styles" />
-      <recent name="$PROJECT_DIR$/img" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/playground.page" />
@@ -144,7 +140,7 @@
       <workItem from="1650499403125" duration="5623000" />
       <workItem from="1650571744331" duration="9670000" />
       <workItem from="1650630136808" duration="9329000" />
-      <workItem from="1650645490736" duration="12881000" />
+      <workItem from="1650645490736" duration="15365000" />
     </task>
     <task id="LOCAL-00001" summary="Commit 1. Page Layout Setup">
       <created>1608342769408</created>
@@ -405,7 +401,21 @@
       <option name="project" value="LOCAL" />
       <updated>1650703095905</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="added zh-TW translation, minor fixes">
+      <created>1650708021041</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1650708021041</updated>
+    </task>
+    <task id="LOCAL-00039" summary="added zh-TW translation, minor fixes">
+      <created>1650708270964</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1650708270964</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -440,7 +450,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="start to work on version 2, change text area to monaco editor" />
     <MESSAGE value="typescript: fixed imports" />
     <MESSAGE value="ver2.0.0 adapt to typescript" />
     <MESSAGE value="update README.md" />
@@ -465,6 +474,7 @@
     <MESSAGE value="i18n (besides debug info in Square and map selections)" />
     <MESSAGE value="prepare for map editor and selector" />
     <MESSAGE value="update commands to reflect back end as well as translations" />
-    <option name="LAST_COMMIT_MESSAGE" value="update commands to reflect back end as well as translations" />
+    <MESSAGE value="added zh-TW translation, minor fixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="added zh-TW translation, minor fixes" />
   </component>
 </project>

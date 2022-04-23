@@ -418,7 +418,7 @@ const InputBox: React.FC<InputBoxProps> = (props) => {
         style={{
           width: '100%',
           height: '50vh',
-          maxHeight: '50vh',
+          maxHeight: '100vh',
           border: '1px dashed #aaa',
         }}
       >
