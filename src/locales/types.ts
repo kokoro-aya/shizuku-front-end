@@ -84,11 +84,50 @@ const DEFAULT_MESSAGES = [
   'light',
 ] as const;
 
+const SQUARE_MESSAGES = [
+  'square.isChar',
+  'square.player.id',
+  'square.player.coo',
+  'square.player.beeper',
+  'square.player.gem',
+  'square.player.stamina',
+  'square.player.role',
+  'square.direction.up',
+  'square.direction.down',
+  'square.direction.left',
+  'square.direction.right',
+  'square.blocked',
+  'square.open',
+  'square.biome.snowy',
+  'square.biome.plains',
+  'square.biome.rainy',
+  'square.biome.hell',
+  'square.biome.info',
+  'square.color',
+  'square.gem',
+  'square.beeper',
+  'square.opened',
+  'square.closed',
+  'square.switch',
+  'square.portal',
+  'square.portal.dest',
+  'square.energy',
+  'square.monster',
+  'square.lock',
+  'square.lock.controlled',
+  'square.lock.info',
+  'square.platform',
+  'square.height',
+  'square.stair',
+  'square.direction',
+] as const;
+
 const MESSAGES = [
   ...PLAYGROUND_MESSAGES,
   ...DIALOG_MESSAGES,
   ...DEFAULT_MESSAGES,
   ...SECTION_MESSAGES,
+  ...SQUARE_MESSAGES,
 ] as const;
 
 export type MessageType = typeof MESSAGES[number];

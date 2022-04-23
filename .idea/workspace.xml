@@ -20,37 +20,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="095a5d38-2a3c-4e5c-abe6-e5e436d6447a" name="Default Changelist" comment="Types for i18n, added collision info, more i18n messages">
-      <change afterPath="$PROJECT_DIR$/mock/utils.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/locales/en-US/dialog.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/locales/fr-FR/dialog.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/locales/hook.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/locales/types.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/locales/zh-CN/dialog.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/locales/zh-TW/dialog.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/locales/en-US/square.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/locales/fr-FR/square.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/locales/zh-CN/square.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/locales/zh-TW/square.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mock/playground.ts" beforeDir="false" afterPath="$PROJECT_DIR$/mock/playground.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/locales/en-US.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/locales/en-US.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/locales/en-US/playground.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/locales/en-US/playground.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/locales/fr-FR.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/locales/fr-FR.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/locales/fr-FR/playground.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/locales/fr-FR/playground.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/locales/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/locales/types.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/locales/zh-CN.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/locales/zh-CN.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/locales/zh-CN/playground.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/locales/zh-CN/playground.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/locales/zh-TW.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/locales/zh-TW.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/locales/zh-TW/playground.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/locales/zh-TW/playground.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/mapselect.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/mapselect.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/About.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/About.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Editor.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Editor.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Feedback.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Feedback.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Gallery.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Gallery.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Help.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Help.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Home.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Playground.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Playground.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Story.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Story.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/playground.page/components/Dashboard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/playground.page/components/Dashboard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/playground.page/components/Input.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/playground.page/components/Input.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/playground.page/fragments/GameConditions.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/playground.page/fragments/GameConditions.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/playground.page/fragments/MapSelector.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/playground.page/fragments/MapSelector.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/playground.page/fragments/StatusBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/playground.page/fragments/StatusBar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/playground.page/fragments/Square.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/playground.page/fragments/Square.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,7 +67,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/Users/irony/WebstormProjects/shizuku-front-end/src/locales/zh-TW",
+    "last_opened_file_path": "/Users/irony/WebstormProjects/shizuku-front-end/src/locales/fr-FR",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -101,9 +81,9 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/locales/fr-FR" />
       <recent name="$PROJECT_DIR$/src/locales/zh-TW" />
       <recent name="$PROJECT_DIR$/src/locales/zh-CN" />
-      <recent name="$PROJECT_DIR$/src/locales/fr-FR" />
       <recent name="$PROJECT_DIR$/img" />
       <recent name="$PROJECT_DIR$/src/locales" />
     </key>
@@ -169,7 +149,7 @@
       <workItem from="1650499403125" duration="5623000" />
       <workItem from="1650571744331" duration="9670000" />
       <workItem from="1650630136808" duration="9329000" />
-      <workItem from="1650645490736" duration="37368000" />
+      <workItem from="1650645490736" duration="40119000" />
     </task>
     <task id="LOCAL-00001" summary="Commit 1. Page Layout Setup">
       <created>1608342769408</created>
@@ -479,7 +459,14 @@
       <option name="project" value="LOCAL" />
       <updated>1650733014171</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="Types for i18n, added collision info, more i18n messages">
+      <created>1650748820058</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1650748820058</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

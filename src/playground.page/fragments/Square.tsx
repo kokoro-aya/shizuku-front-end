@@ -6,9 +6,10 @@ import {
   UpOutlined,
 } from '@ant-design/icons';
 import { Popover } from 'antd';
-import _ from 'lodash';
 import { Coordinate, Grid, PlayerData } from '@/data/DataFragments';
 import { Biome, Block, Color, Direction, Role } from '@/data/Enums';
+import { useIntl } from 'umi';
+import { renderMessage } from '@/locales/hook';
 
 interface SquareProps {
   fontSize: number;
@@ -30,6 +31,8 @@ interface GroundObjects {
 }
 
 const Square: React.FC<SquareProps> = (props) => {
+  const intl = useIntl();
+
   const fontSize = props.fontSize;
 
   const { player, terrain, groundObjects } = props;
@@ -145,15 +148,34 @@ const Square: React.FC<SquareProps> = (props) => {
     if (player === undefined) return null;
     return (
       <div>
-        <p>这是一个角色</p>
-        <p>id: {player.id}</p>
+        <p>{renderMessage(intl, 'square.isChar')}</p>
+        <p>{renderMessage(intl, 'square.player.id', { id: player.id })}</p>
         <p>
-          坐标: x:{player.x}, y:{player.y}
+          {renderMessage(intl, 'square.player.coo', {
+            x: player.x,
+            y: player.y,
+          })}
         </p>
-        <p>持有的beeper数量: {player.hasBeeper ?? 0}</p>
-        <p>收集的宝石: {player.collectedGem ?? 0}</p>
-        <p>角色: {player.role === Role.PLAYER ? '角色' : '专家'}</p>
-        <p>体力: {player.stamina}</p>
+        <p>
+          {renderMessage(intl, 'square.player.beeper', {
+            num: player.hasBeeper ?? 0,
+          })}
+        </p>
+        <p>
+          {renderMessage(intl, 'square.player.gem', {
+            num: player.collectedGem ?? 0,
+          })}
+        </p>
+        <p>
+          {renderMessage(intl, 'square.player.stamina', {
+            count: player.stamina,
+          })}
+        </p>
+        <p>
+          {renderMessage(intl, 'square.player.role', {
+            role: player.role === Role.PLAYER ? 'Player' : 'Specialist',
+          })}
+        </p>
       </div>
     );
   };
@@ -161,13 +183,13 @@ const Square: React.FC<SquareProps> = (props) => {
   const getDirInfo = (dir: Direction) => {
     switch (dir) {
       case Direction.UP:
-        return '上';
+        return renderMessage(intl, 'square.direction.up');
       case Direction.DOWN:
-        return '下';
+        return renderMessage(intl, 'square.direction.down');
       case Direction.LEFT:
-        return '左';
+        return renderMessage(intl, 'square.direction.left');
       case Direction.RIGHT:
-        return '右';
+        return renderMessage(intl, 'square.direction.right');
     }
   };
 
@@ -175,86 +197,128 @@ const Square: React.FC<SquareProps> = (props) => {
     const terrainText =
       terrain.block === Block.BLOCKED ? (
         <div>
-          <p>这个格子被阻挡了</p>
+          <p>{renderMessage(intl, 'square.blocked')}</p>
         </div>
       ) : (
         <div>
-          <p>这个格子是空白的</p>
+          <p>{renderMessage(intl, 'square.open')}</p>
         </div>
       );
 
     const switchBiome = () => {
       switch (terrain.biome) {
         case Biome.SNOWY:
-          return '雪山';
+          return renderMessage(intl, 'square.biome.snowy');
         case Biome.PLAINS:
-          return '平地';
+          return renderMessage(intl, 'square.biome.plains');
         case Biome.RAINY:
-          return '雨林';
+          return renderMessage(intl, 'square.biome.rainy');
         case Biome.HELL:
-          return '地狱';
+          return renderMessage(intl, 'square.biome.hell');
       }
     };
 
     const biomeText = (
       <div>
-        <p>生物群系: {switchBiome()}</p>
+        <p>
+          {renderMessage(intl, 'square.biome.info')}
+          {switchBiome()}
+        </p>
       </div>
     );
     const colorText = (
       <div>
-        <p>颜色: {terrain.color}</p>
+        <p>{renderMessage(intl, 'square.color', { color: terrain.color })}</p>
       </div>
     );
+    const gemText = groundObjects.beeper ? (
+      <div>
+        <p>{renderMessage(intl, 'square.gem')}</p>
+      </div>
+    ) : null;
     const beeperText = groundObjects.beeper ? (
       <div>
-        <p>这里有个beeper</p>
+        <p>{renderMessage(intl, 'square.beeper')}</p>
       </div>
     ) : null;
     const switchText = groundObjects.aSwitch ? (
       <div>
-        <p>这里有个{groundObjects.aSwitch.on ? '开启的' : '关闭的'}开关</p>
+        <p>
+          {renderMessage(intl, 'square.switch', {
+            status: groundObjects.aSwitch.on
+              ? renderMessage(intl, 'square.opened')
+              : renderMessage(intl, 'square.closed'),
+          })}
+        </p>
       </div>
     ) : null;
     const portalText = groundObjects.portal ? (
       <div>
-        <p>这里有一个传送门</p>
+        <p>{renderMessage(intl, 'square.portal')}</p>
         <p>
-          目的地: x:{groundObjects.portal.dest.x}, y:
-          {groundObjects.portal.dest.y}
+          {renderMessage(intl, 'square.portal.dest', {
+            x: groundObjects.portal.dest.x,
+            y: groundObjects.portal.dest.y,
+          })}
         </p>
-        <p>颜色: {getColor(groundObjects.portal.color)}</p>
-        <p>能量: {groundObjects.portal.energy}</p>
+        <p>
+          {renderMessage(intl, 'square.color', {
+            color: getColor(groundObjects.portal.color),
+          })}
+        </p>
+        <p>
+          {renderMessage(intl, 'square.energy', {
+            energy: groundObjects.portal.energy,
+          })}
+        </p>
       </div>
     ) : null;
     const monsterText = groundObjects.monster ? (
       <div>
-        <p>这里有个怪物</p>
+        <p>{renderMessage(intl, 'square.monster')}</p>
       </div>
     ) : null;
     const lockText = groundObjects.lock ? (
       <div>
-        <p>这里有个机关锁</p>
+        <p>{renderMessage(intl, 'square.lock')}</p>
         <p>
-          控制以下的平台:{' '}
-          {groundObjects.lock.controlled
-            .map((e) => `(x:${e.x} y:${e.y})`)
-            .join(', ')}
+          {renderMessage(intl, 'square.lock.controlled', {
+            controlled: groundObjects.lock.controlled
+              .map((e) => `(x:${e.x} y:${e.y})`)
+              .join(', '),
+          })}
         </p>
-        <p>这个机关锁是{groundObjects.lock.isActive ? '开启的' : '关闭的'}</p>
-        <p>能量: {groundObjects.lock.energy}</p>
+        <p>
+          {renderMessage(intl, 'square.lock.info', {
+            status: groundObjects.lock.isActive
+              ? renderMessage(intl, 'square.opened')
+              : renderMessage(intl, 'square.closed'),
+          })}
+        </p>
+        <p>
+          {renderMessage(intl, 'square.energy', {
+            energy: groundObjects.lock.energy,
+          })}
+        </p>
       </div>
     ) : null;
     const platformText = groundObjects.platform ? (
       <div>
-        <p>这是一个平台</p>
-        <p>高度: {groundObjects.platform.level}</p>
+        <p>{renderMessage(intl, 'square.platform')}</p>
+        <p>
+          {renderMessage(intl, 'square.height', {
+            height: groundObjects.platform.level,
+          })}
+        </p>
       </div>
     ) : null;
     const stairText = groundObjects.stair ? (
       <div>
-        <p>这是一个楼梯</p>
-        <p>方向: {getDirInfo(groundObjects.stair.dir)}</p>
+        <p>{renderMessage(intl, 'square.stair')}</p>
+        <p>
+          {renderMessage(intl, 'square.direction')}
+          {getDirInfo(groundObjects.stair.dir)}
+        </p>
       </div>
     ) : null;
 
@@ -277,7 +341,11 @@ const Square: React.FC<SquareProps> = (props) => {
   const getPopoverContent = () => {
     return (
       <div>
-        <p>高度: {terrain.level}</p>
+        <p>
+          {renderMessage(intl, 'square.height', {
+            height: terrain.level,
+          })}
+        </p>
         {getPlayerInfo()}
         {getObjectInfo()}
       </div>

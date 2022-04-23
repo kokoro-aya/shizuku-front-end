@@ -20,7 +20,7 @@ Here are several features that could be achieved in the current refactor:
 - [x] Refactor with TypeScript
 - [x] Adapt to the new server side (at last, I have decided to adapt to the [simulatte](https://github.com/kokoro-aya/simulatte) server instead of another one)
 - [x] Adapt to Monaco Editor, link the editor to the playground and add support for themes
-- [x] i18n
+- [x] i18n in a typed way
 - [ ] ~~dark mode~~ (won't achieve due to limits of ant design)
 - [x] Some predefined maps and possibility to switch the map
 - [ ] A simple map editor

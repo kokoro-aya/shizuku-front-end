@@ -1,6 +1,7 @@
 import sections from './zh-CN/sections';
 import playground from './zh-CN/playground';
 import dialog from '@/locales/zh-CN/dialog';
+import square from '@/locales/zh-CN/square';
 
 export default {
   welcome: '欢迎',
@@ -10,4 +11,5 @@ export default {
   ...sections,
   ...playground,
   ...dialog,
+  ...square,
 };
