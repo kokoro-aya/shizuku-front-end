@@ -134,6 +134,7 @@ const MapSelector: React.FC<MapSelectorProps> = (props) => {
           title="选择一张地图"
           visible={props.visible}
           onOk={() => {
+            // console.log(path);
             props.onSelect(path);
             props.close();
           }}

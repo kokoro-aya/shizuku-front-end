@@ -145,14 +145,14 @@ const Playground: React.FC<PlaygroundProps> = (props) => {
     }
   };
 
-  const fetchMap = (path?: string) => {
-    console.log('fetch: ' + path);
+  const fetchMap = async (path?: string) => {
+    // There is an issue that the props.currentMap is not immediately updated after dispatch to setMap, that's why the initialFetch calls directly on path
+    // However, the setMap ensures that if the map is reloaded, it will be persisted instead of reload the default one
     props.dispatch<string>({
       type: `${namespace}/setMap`,
       payload: path,
     });
-    // console.log(props.currentMap)
-    initialFetch(props.currentMap);
+    initialFetch(path);
   };
 
   const getData = () => {
@@ -250,7 +250,7 @@ const Playground: React.FC<PlaygroundProps> = (props) => {
   };
 
   const makeRequest = () => {
-    console.log(code);
+    // console.log(code);
     const { output, special, ...sentData } = props.nextFrame;
     props.dispatch<SentData>({
       type: `${namespace}/handleSubmit`,
@@ -262,13 +262,13 @@ const Playground: React.FC<PlaygroundProps> = (props) => {
         userCollision: props.userCollision,
       },
     });
-    console.log(props.answer);
-    console.log(props.answer !== []);
+    // console.log(props.answer);
+    // console.log(props.answer !== []);
     if (props.answer !== []) {
       // fixme 用同步的思路写异步，错了，而且不能直接[] !== []
       setIdle(false);
       setDisabled(true);
-      console.log('set idle to false');
+      // console.log('set idle to false');
     }
   };
 

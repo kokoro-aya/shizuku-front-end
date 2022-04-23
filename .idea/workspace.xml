@@ -19,20 +19,11 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="095a5d38-2a3c-4e5c-abe6-e5e436d6447a" name="Default Changelist" comment="Change map finished">
+    <list default="true" id="095a5d38-2a3c-4e5c-abe6-e5e436d6447a" name="Default Changelist" comment="Fixed issue on useIntl() hooks">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/About.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/About.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Editor.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Editor.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Feedback.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Feedback.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Gallery.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Gallery.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Help.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Help.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Home.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/playground.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/playground.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/Playground.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Playground.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Story.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Story.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/playground.page/components/Input.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/playground.page/components/Input.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/playground.page/fragments/GameConditions.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/playground.page/fragments/GameConditions.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/playground.page/fragments/StatusBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/playground.page/fragments/StatusBar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/playground.page/fragments/MapSelector.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/playground.page/fragments/MapSelector.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -149,7 +140,7 @@
       <workItem from="1650499403125" duration="5623000" />
       <workItem from="1650571744331" duration="9670000" />
       <workItem from="1650630136808" duration="9329000" />
-      <workItem from="1650645490736" duration="30381000" />
+      <workItem from="1650645490736" duration="31294000" />
     </task>
     <task id="LOCAL-00001" summary="Commit 1. Page Layout Setup">
       <created>1608342769408</created>
@@ -445,7 +436,14 @@
       <option name="project" value="LOCAL" />
       <updated>1650730681759</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="Fixed issue on useIntl() hooks">
+      <created>1650732140412</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1650732140412</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -480,7 +478,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add data definition, prepare to migrate to new data structure protocol" />
     <MESSAGE value="moved all to typescript" />
     <MESSAGE value="Adapt to new data structure and refactored code (not finished yet)" />
     <MESSAGE value="Fixed last adaptations" />
@@ -505,6 +502,7 @@
     <MESSAGE value="Fixed box bottom aligns" />
     <MESSAGE value="Add model for map selection" />
     <MESSAGE value="Change map finished" />
-    <option name="LAST_COMMIT_MESSAGE" value="Change map finished" />
+    <MESSAGE value="Fixed issue on useIntl() hooks" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed issue on useIntl() hooks" />
   </component>
 </project>
