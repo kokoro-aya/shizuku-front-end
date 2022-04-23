@@ -5,7 +5,7 @@ import {
   RightOutlined,
   UpOutlined,
 } from '@ant-design/icons';
-import { Popover } from 'antd';
+import { Popover, Collapse, Tabs } from 'antd';
 import { Coordinate, Grid, PlayerData } from '@/data/DataFragments';
 import { Biome, Block, Color, Direction, Role } from '@/data/Enums';
 import { useIntl } from 'umi';
@@ -147,8 +147,7 @@ const Square: React.FC<SquareProps> = (props) => {
   const getPlayerInfo = () => {
     if (player === undefined) return null;
     return (
-      <div>
-        <p>{renderMessage(intl, 'square.isChar')}</p>
+      <Tabs.TabPane tab={renderMessage(intl, 'square.isChar')} key="1">
         <p>{renderMessage(intl, 'square.player.id', { id: player.id })}</p>
         <p>
           {renderMessage(intl, 'square.player.coo', {
@@ -176,7 +175,7 @@ const Square: React.FC<SquareProps> = (props) => {
             role: player.role === Role.PLAYER ? 'Player' : 'Specialist',
           })}
         </p>
-      </div>
+      </Tabs.TabPane>
     );
   };
 
@@ -205,6 +204,14 @@ const Square: React.FC<SquareProps> = (props) => {
         </div>
       );
 
+    const heightText = (
+      <p>
+        {renderMessage(intl, 'square.height', {
+          height: terrain.level,
+        })}
+      </p>
+    );
+
     const switchBiome = () => {
       switch (terrain.biome) {
         case Biome.SNOWY:
@@ -219,42 +226,33 @@ const Square: React.FC<SquareProps> = (props) => {
     };
 
     const biomeText = (
-      <div>
-        <p>
-          {renderMessage(intl, 'square.biome.info')}
-          {switchBiome()}
-        </p>
-      </div>
+      <p>
+        {renderMessage(intl, 'square.biome.info')}
+        {switchBiome()}
+      </p>
     );
     const colorText = (
-      <div>
-        <p>{renderMessage(intl, 'square.color', { color: terrain.color })}</p>
-      </div>
+      <p>{renderMessage(intl, 'square.color', { color: terrain.color })}</p>
     );
     const gemText = groundObjects.beeper ? (
-      <div>
-        <p>{renderMessage(intl, 'square.gem')}</p>
-      </div>
+      <p>{renderMessage(intl, 'square.gem')}</p>
     ) : null;
     const beeperText = groundObjects.beeper ? (
-      <div>
-        <p>{renderMessage(intl, 'square.beeper')}</p>
-      </div>
+      <p>{renderMessage(intl, 'square.beeper')}</p>
     ) : null;
     const switchText = groundObjects.aSwitch ? (
-      <div>
-        <p>
-          {renderMessage(intl, 'square.switch', {
-            status: groundObjects.aSwitch.on
-              ? renderMessage(intl, 'square.opened')
-              : renderMessage(intl, 'square.closed'),
-          })}
-        </p>
-      </div>
+      <p>
+        {renderMessage(intl, 'square.switch', {
+          status: groundObjects.aSwitch.on
+            ? renderMessage(intl, 'square.opened')
+            : renderMessage(intl, 'square.closed'),
+        })}
+      </p>
     ) : null;
+
     const portalText = groundObjects.portal ? (
-      <div>
-        <p>{renderMessage(intl, 'square.portal')}</p>
+      // @ts-ignore
+      <Collapse.Panel header={renderMessage(intl, 'square.portal')} key="1">
         <p>
           {renderMessage(intl, 'square.portal.dest', {
             x: groundObjects.portal.dest.x,
@@ -271,16 +269,14 @@ const Square: React.FC<SquareProps> = (props) => {
             energy: groundObjects.portal.energy,
           })}
         </p>
-      </div>
+      </Collapse.Panel>
     ) : null;
     const monsterText = groundObjects.monster ? (
-      <div>
-        <p>{renderMessage(intl, 'square.monster')}</p>
-      </div>
+      <Collapse.Panel header={renderMessage(intl, 'square.monster')} key="2" />
     ) : null;
     const lockText = groundObjects.lock ? (
-      <div>
-        <p>{renderMessage(intl, 'square.lock')}</p>
+      // @ts-ignore
+      <Collapse.Panel header={renderMessage(intl, 'square.lock')} key="3">
         <p>
           {renderMessage(intl, 'square.lock.controlled', {
             controlled: groundObjects.lock.controlled
@@ -300,55 +296,60 @@ const Square: React.FC<SquareProps> = (props) => {
             energy: groundObjects.lock.energy,
           })}
         </p>
-      </div>
+      </Collapse.Panel>
     ) : null;
     const platformText = groundObjects.platform ? (
-      <div>
-        <p>{renderMessage(intl, 'square.platform')}</p>
+      // @ts-ignore
+      <Collapse.Panel header={renderMessage(intl, 'square.platform')} key="4">
         <p>
           {renderMessage(intl, 'square.height', {
             height: groundObjects.platform.level,
           })}
         </p>
-      </div>
+      </Collapse.Panel>
     ) : null;
     const stairText = groundObjects.stair ? (
-      <div>
-        <p>{renderMessage(intl, 'square.stair')}</p>
+      // @ts-ignore
+      <Collapse.Panel header={renderMessage(intl, 'square.stair')} key="5">
         <p>
           {renderMessage(intl, 'square.direction')}
           {getDirInfo(groundObjects.stair.dir)}
         </p>
-      </div>
+      </Collapse.Panel>
     ) : null;
 
     return (
-      <div>
-        {terrainText}
-        {biomeText}
-        {colorText}
-        {beeperText}
-        {switchText}
-        {portalText}
-        {monsterText}
-        {lockText}
-        {platformText}
-        {stairText}
-      </div>
+      <>
+        <Tabs.TabPane tab={renderMessage(intl, 'square.info')} key="2">
+          {terrainText}
+          {biomeText}
+          {colorText}
+          {gemText}
+          {beeperText}
+          {switchText}
+        </Tabs.TabPane>
+        <Tabs.TabPane tab={renderMessage(intl, 'square.advanced')} key="3">
+          {
+            // @ts-ignore
+            <Collapse defaultActiveKey={['1']}>
+              {portalText}
+              {monsterText}
+              {lockText}
+              {platformText}
+              {stairText}
+            </Collapse>
+          }
+        </Tabs.TabPane>
+      </>
     );
   };
 
   const getPopoverContent = () => {
     return (
-      <div>
-        <p>
-          {renderMessage(intl, 'square.height', {
-            height: terrain.level,
-          })}
-        </p>
+      <Tabs defaultActiveKey="1">
         {getPlayerInfo()}
         {getObjectInfo()}
-      </div>
+      </Tabs>
     );
   };
 

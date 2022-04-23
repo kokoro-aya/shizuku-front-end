@@ -35,4 +35,6 @@ export default {
   'square.height': 'Hauteur: {height}',
   'square.stair': 'Il y a un escalier',
   'square.direction': 'Direction: ',
+  'square.info': 'Info du Square',
+  'square.advanced': 'Info Avancées',
 };

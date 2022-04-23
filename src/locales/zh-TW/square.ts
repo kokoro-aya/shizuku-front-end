@@ -34,4 +34,6 @@ export default {
   'square.height': '高度: {height}',
   'square.stair': '這裡有個樓梯',
   'square.direction': '方向: ',
+  'square.info': '方格信息',
+  'square.advanced': '高級信息',
 };

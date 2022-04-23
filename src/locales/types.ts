@@ -120,6 +120,8 @@ const SQUARE_MESSAGES = [
   'square.height',
   'square.stair',
   'square.direction',
+  'square.info',
+  'square.advanced',
 ] as const;
 
 const MESSAGES = [
