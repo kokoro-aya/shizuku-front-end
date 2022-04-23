@@ -3,6 +3,7 @@ import { Divider } from 'antd';
 import { useIntl } from 'umi';
 
 const Feedback = () => {
+  const intl = useIntl();
   return (
     <div
       style={{
@@ -10,9 +11,9 @@ const Feedback = () => {
       }}
     >
       <Divider orientation="left">
-        {useIntl().formatMessage({ id: 'section.Feedback' })}
+        {intl.formatMessage({ id: 'section.Feedback' })}
       </Divider>
-      <div>{useIntl().formatMessage({ id: 'underConstruct' })}</div>
+      <div>{intl.formatMessage({ id: 'underConstruct' })}</div>
     </div>
   );
 };

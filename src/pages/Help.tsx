@@ -436,6 +436,7 @@ const _ = () => {
 };
 
 export default () => {
+  const intl = useIntl();
   return (
     <div
       style={{
@@ -443,9 +444,9 @@ export default () => {
       }}
     >
       <Divider orientation="left">
-        {useIntl().formatMessage({ id: 'section.Help' })}
+        {intl.formatMessage({ id: 'section.Help' })}
       </Divider>
-      <div>{useIntl().formatMessage({ id: 'underConstruct' })}</div>
+      <div>{intl.formatMessage({ id: 'underConstruct' })}</div>
     </div>
   );
 };

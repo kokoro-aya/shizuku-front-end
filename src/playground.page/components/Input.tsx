@@ -92,23 +92,25 @@ const InputBox: React.FC<InputBoxProps> = (props) => {
     props.onReset();
   };
 
+  const intl = useIntl();
+
   // Global
 
   const initPlayers = [
     {
-      desc: useIntl().formatMessage({ id: 'playground.input.player' }),
+      desc: intl.formatMessage({ id: 'playground.input.player' }),
       code: 'Player()',
     },
     {
-      desc: useIntl().formatMessage({ id: 'playground.input.specialist' }),
+      desc: intl.formatMessage({ id: 'playground.input.specialist' }),
       code: 'Specialist()',
     },
     {
-      desc: useIntl().formatMessage({ id: 'playground.input.playerNull' }),
+      desc: intl.formatMessage({ id: 'playground.input.playerNull' }),
       code: 'PlayerOrNull()',
     },
     {
-      desc: useIntl().formatMessage({ id: 'playground.input.specialistNull' }),
+      desc: intl.formatMessage({ id: 'playground.input.specialistNull' }),
       code: 'SpecialistOrNull()',
     },
   ];
@@ -204,7 +206,7 @@ const InputBox: React.FC<InputBoxProps> = (props) => {
   ];
   const structuralCommands = [
     {
-      desc: useIntl().formatMessage(
+      desc: intl.formatMessage(
         { id: 'playground.input.loop' },
         { name: 'for' },
       ),
@@ -212,7 +214,7 @@ const InputBox: React.FC<InputBoxProps> = (props) => {
 ...`,
     },
     {
-      desc: useIntl().formatMessage(
+      desc: intl.formatMessage(
         { id: 'playground.input.loop' },
         { name: 'while' },
       ),
@@ -220,7 +222,7 @@ const InputBox: React.FC<InputBoxProps> = (props) => {
 ...`,
     },
     {
-      desc: useIntl().formatMessage(
+      desc: intl.formatMessage(
         { id: 'playground.input.loop' },
         { name: 'repeat' },
       ),
@@ -228,7 +230,7 @@ const InputBox: React.FC<InputBoxProps> = (props) => {
 ...`,
     },
     {
-      desc: useIntl().formatMessage({ id: 'playground.input.function' }),
+      desc: intl.formatMessage({ id: 'playground.input.function' }),
       code: `fun foo(): Unit {
 ...`,
     },
@@ -244,11 +246,11 @@ const InputBox: React.FC<InputBoxProps> = (props) => {
       />
       <div style={{ marginTop: '16px', marginLeft: '16px' }}>
         <Button type="primary" onClick={() => setModalDisplayed(true)}>
-          {useIntl().formatMessage({ id: 'playground.input.changeMap' })}
+          {intl.formatMessage({ id: 'playground.input.changeMap' })}
         </Button>
       </div>
       <Divider orientation="left">
-        {useIntl().formatMessage({ id: 'playground.input.globalCode' })}
+        {intl.formatMessage({ id: 'playground.input.globalCode' })}
       </Divider>
       <div style={{ margin: '16px' }}>
         <Space wrap size="middle">
@@ -261,7 +263,7 @@ const InputBox: React.FC<InputBoxProps> = (props) => {
               arrow
             >
               <Button>
-                {useIntl().formatMessage({ id: 'playground.input.newChar' })}
+                {intl.formatMessage({ id: 'playground.input.newChar' })}
                 <DownOutlined />
               </Button>
             </Dropdown>
@@ -274,7 +276,7 @@ const InputBox: React.FC<InputBoxProps> = (props) => {
               arrow
             >
               <Button>
-                {useIntl().formatMessage({ id: 'playground.input.global' })}
+                {intl.formatMessage({ id: 'playground.input.global' })}
                 <DownOutlined />
               </Button>
             </Dropdown>
@@ -282,7 +284,7 @@ const InputBox: React.FC<InputBoxProps> = (props) => {
         </Space>
       </div>
       <Divider orientation="left">
-        {useIntl().formatMessage({ id: 'playground.input.instanceCode' })}
+        {intl.formatMessage({ id: 'playground.input.instanceCode' })}
       </Divider>
       <div style={{ margin: '16px' }}>
         <Space wrap size="middle">
@@ -294,7 +296,7 @@ const InputBox: React.FC<InputBoxProps> = (props) => {
               arrow
             >
               <Button>
-                {useIntl().formatMessage(
+                {intl.formatMessage(
                   { id: 'playground.input.inst' },
                   { var: 'blocked' },
                 )}
@@ -310,7 +312,7 @@ const InputBox: React.FC<InputBoxProps> = (props) => {
               arrow
             >
               <Button>
-                {useIntl().formatMessage(
+                {intl.formatMessage(
                   { id: 'playground.input.inst' },
                   { var: 'isOn' },
                 )}
@@ -326,7 +328,7 @@ const InputBox: React.FC<InputBoxProps> = (props) => {
               arrow
             >
               <Button>
-                {useIntl().formatMessage({ id: 'playground.input.collected' })}
+                {intl.formatMessage({ id: 'playground.input.collected' })}
                 <DownOutlined />
               </Button>
             </Dropdown>
@@ -348,7 +350,7 @@ const InputBox: React.FC<InputBoxProps> = (props) => {
               arrow
             >
               <Button>
-                {useIntl().formatMessage({ id: 'playground.input.turn' })}
+                {intl.formatMessage({ id: 'playground.input.turn' })}
                 <DownOutlined />
               </Button>
             </Dropdown>
@@ -361,7 +363,7 @@ const InputBox: React.FC<InputBoxProps> = (props) => {
               arrow
             >
               <Button>
-                {useIntl().formatMessage(
+                {intl.formatMessage(
                   { id: 'playground.input.inst' },
                   { var: 'toggle' },
                 )}
@@ -382,7 +384,7 @@ const InputBox: React.FC<InputBoxProps> = (props) => {
         </Space>
       </div>
       <Divider orientation="left">
-        {useIntl().formatMessage({ id: 'playground.input.instructions' })}
+        {intl.formatMessage({ id: 'playground.input.instructions' })}
       </Divider>
       <div style={{ margin: '16px' }}>
         <Space wrap size="middle">
@@ -394,7 +396,7 @@ const InputBox: React.FC<InputBoxProps> = (props) => {
               arrow
             >
               <Button>
-                {useIntl().formatMessage({ id: 'playground.input.print' })}
+                {intl.formatMessage({ id: 'playground.input.print' })}
                 <DownOutlined />
               </Button>
             </Dropdown>
@@ -407,7 +409,7 @@ const InputBox: React.FC<InputBoxProps> = (props) => {
               arrow
             >
               <Button>
-                {useIntl().formatMessage({ id: 'playground.input.structInst' })}
+                {intl.formatMessage({ id: 'playground.input.structInst' })}
                 <DownOutlined />
               </Button>
             </Dropdown>
@@ -449,7 +451,7 @@ const InputBox: React.FC<InputBoxProps> = (props) => {
             onClick={handleSubmit}
             disabled={props.disabled}
           >
-            {useIntl().formatMessage({ id: 'playground.input.run' })}
+            {intl.formatMessage({ id: 'playground.input.run' })}
           </Button>
         </Col>
         <Col
@@ -461,7 +463,7 @@ const InputBox: React.FC<InputBoxProps> = (props) => {
           }}
         >
           <Button type="dashed" onClick={handleReset}>
-            {useIntl().formatMessage({ id: 'playground.input.reset' })}
+            {intl.formatMessage({ id: 'playground.input.reset' })}
           </Button>
         </Col>
       </Row>

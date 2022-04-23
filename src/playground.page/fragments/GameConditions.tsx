@@ -8,8 +8,10 @@ interface GameConditionsProps {
 }
 
 export const GameConditions: React.FC<GameConditionsProps> = (props) => {
+  const intl = useIntl();
+
   const collectGemsBy = props?.gamingCondition?.collectGemsBy
-    ? useIntl().formatMessage(
+    ? intl.formatMessage(
         { id: 'playground.gameCond.collectGems' },
         {
           num: props.gamingCondition.collectGemsBy,
@@ -17,7 +19,7 @@ export const GameConditions: React.FC<GameConditionsProps> = (props) => {
       )
     : null;
   const switchesOnBy = props?.gamingCondition?.switchesOnBy
-    ? useIntl().formatMessage(
+    ? intl.formatMessage(
         { id: 'playground.gameCond.switchesBy' },
         {
           num: props.gamingCondition.switchesOnBy,
@@ -25,7 +27,7 @@ export const GameConditions: React.FC<GameConditionsProps> = (props) => {
       )
     : null;
   const monstersKilled = props?.gamingCondition?.monstersKilled
-    ? useIntl().formatMessage(
+    ? intl.formatMessage(
         { id: 'playground.gameCond.monstersKilled' },
         {
           num: props.gamingCondition.monstersKilled,
@@ -33,7 +35,7 @@ export const GameConditions: React.FC<GameConditionsProps> = (props) => {
       )
     : null;
   const monstersKilledLessThan = props?.gamingCondition?.monstersKilledLessThan
-    ? useIntl().formatMessage(
+    ? intl.formatMessage(
         { id: 'playground.gameCond.monstersKilledLessThan' },
         {
           num: props.gamingCondition.monstersKilledLessThan,
@@ -41,7 +43,7 @@ export const GameConditions: React.FC<GameConditionsProps> = (props) => {
       )
     : null;
   const arriveAt = props?.gamingCondition?.arriveAt
-    ? useIntl().formatMessage(
+    ? intl.formatMessage(
         { id: 'playground.gameCond.arriveAt' },
         {
           coo: props.gamingCondition.arriveAt
@@ -51,16 +53,16 @@ export const GameConditions: React.FC<GameConditionsProps> = (props) => {
       )
     : null;
   const endGameAfter = props?.gamingCondition?.endGameAfter
-    ? useIntl().formatMessage(
+    ? intl.formatMessage(
         { id: 'playground.gameCond.endGameAfter' },
         { num: props.gamingCondition.endGameAfter },
       )
     : null;
   const noSameTileRepassed = props?.gamingCondition?.noSameTileRepassed
-    ? useIntl().formatMessage({ id: 'playground.gameCond.noSameTileRepassed' })
+    ? intl.formatMessage({ id: 'playground.gameCond.noSameTileRepassed' })
     : null;
 
-  const noEndGameCondition = useIntl().formatMessage({
+  const noEndGameCondition = intl.formatMessage({
     id: 'playground.gameCond.noEndGameCondition',
   });
 
@@ -78,10 +80,10 @@ export const GameConditions: React.FC<GameConditionsProps> = (props) => {
     items.push(noEndGameCondition);
   }
 
-  const gameRulesDesc = useIntl().formatMessage({
+  const gameRulesDesc = intl.formatMessage({
     id: 'playground.gameCond.gameRules',
   });
-  const clickDesc = useIntl().formatMessage({
+  const clickDesc = intl.formatMessage({
     id: 'playground.gameCond.click',
   });
 

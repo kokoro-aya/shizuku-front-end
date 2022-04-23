@@ -1,8 +1,6 @@
 # Shizuku (WIP)
 
-A front-end for [simulatte](https://github.com/kokoro-aya/simulatte). Run on umijs/antd.
-
-**Currently this project is under refactoring. The goals of this refactor is listed below the description.**
+A front-end for [simulatte](https://github.com/kokoro-aya/simulatte). Run on umijs/antd/monaco editor.
 
 ![](./img/screenshot.png)
 
@@ -14,7 +12,7 @@ features of game by using Kotlin DSL.
 The Shizuku is a SPA with following features:
 
 - Basic input/output/grid to present the gaming experience
-- A modal to change and load another map (TODO)
+- A modal to change and load another map
 - A page of map editing (TODO)
 
 Here are several features that could be achieved in the current refactor:

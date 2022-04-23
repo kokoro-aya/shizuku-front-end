@@ -32,69 +32,29 @@ export enum ExecutionStatus {
 
 const activateNotification = (
   type: NotificationType,
-  message: string | null = null,
-  desc: string | null = null,
+  message: string,
+  desc: string,
 ) => {
   switch (type) {
     case NotificationType.Success:
       return notification['success']({
-        message:
-          message == null
-            ? useIntl().formatMessage({
-                id: 'playground.defaultNotification.success.message',
-              })
-            : message,
-        description:
-          desc == null
-            ? useIntl().formatMessage({
-                id: 'playground.defaultNotification.success.desc',
-              })
-            : desc,
+        message: message,
+        description: desc,
       });
     case NotificationType.Info:
       return notification['info']({
-        message:
-          message == null
-            ? useIntl().formatMessage({
-                id: 'playground.defaultNotification.info.message',
-              })
-            : message,
-        description:
-          desc == null
-            ? useIntl().formatMessage({
-                id: 'playground.defaultNotification.info.desc',
-              })
-            : desc,
+        message: message,
+        description: desc,
       });
     case NotificationType.Warning:
       return notification['warning']({
-        message:
-          message == null
-            ? useIntl().formatMessage({
-                id: 'playground.defaultNotification.warning.message',
-              })
-            : message,
-        description:
-          desc == null
-            ? useIntl().formatMessage({
-                id: 'playground.defaultNotification.warning.desc',
-              })
-            : desc,
+        message: message,
+        description: desc,
       });
     case NotificationType.Error:
       return notification['error']({
-        message:
-          message == null
-            ? useIntl().formatMessage({
-                id: 'playground.defaultNotification.error.message',
-              })
-            : message,
-        description:
-          desc == null
-            ? useIntl().formatMessage({
-                id: 'playground.defaultNotification.error.desc',
-              })
-            : desc,
+        message: message,
+        description: desc,
       });
   }
 };
@@ -135,6 +95,8 @@ const Playground: React.FC<PlaygroundProps> = (props) => {
   const [code, setCode] = useState(initCode);
   const [idle, setIdle] = useState(true);
   const [disabled, setDisabled] = useState(false);
+
+  const intl = useIntl();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -203,16 +165,16 @@ const Playground: React.FC<PlaygroundProps> = (props) => {
         // console.log('Collected a gem');
         activateNotification(
           NotificationType.Info,
-          useIntl().formatMessage({ id: 'playground.notification.type.info' }),
-          useIntl().formatMessage({ id: 'playground.notification.desc.gem' }),
+          intl.formatMessage({ id: 'playground.notification.type.info' }),
+          intl.formatMessage({ id: 'playground.notification.desc.gem' }),
         );
       }
       if (!idle && nextFrame.special.includes('SWITCH')) {
         // console.log('Toggled a switch');
         activateNotification(
           NotificationType.Info,
-          useIntl().formatMessage({ id: 'playground.notification.type.info' }),
-          useIntl().formatMessage({
+          intl.formatMessage({ id: 'playground.notification.type.info' }),
+          intl.formatMessage({
             id: 'playground.notification.desc.switch',
           }),
         );
@@ -220,8 +182,8 @@ const Playground: React.FC<PlaygroundProps> = (props) => {
       if (!idle && nextFrame.special.includes('BEEPER')) {
         activateNotification(
           NotificationType.Info,
-          useIntl().formatMessage({ id: 'playground.notification.type.info' }),
-          useIntl().formatMessage({
+          intl.formatMessage({ id: 'playground.notification.type.info' }),
+          intl.formatMessage({
             id: 'playground.notification.desc.beeper',
           }),
         );
@@ -229,8 +191,8 @@ const Playground: React.FC<PlaygroundProps> = (props) => {
       if (!idle && nextFrame.special.includes('ATTACK')) {
         activateNotification(
           NotificationType.Info,
-          useIntl().formatMessage({ id: 'playground.notification.type.info' }),
-          useIntl().formatMessage({
+          intl.formatMessage({ id: 'playground.notification.type.info' }),
+          intl.formatMessage({
             id: 'playground.notification.desc.attack',
           }),
         );
@@ -239,28 +201,28 @@ const Playground: React.FC<PlaygroundProps> = (props) => {
         if (props.gameStatus === GameStatus.WIN) {
           activateNotification(
             NotificationType.Success,
-            useIntl().formatMessage({ id: 'playground.notification.type.win' }),
-            useIntl().formatMessage({ id: 'playground.notification.desc.win' }),
+            intl.formatMessage({ id: 'playground.notification.type.win' }),
+            intl.formatMessage({ id: 'playground.notification.desc.win' }),
           );
         } else if (props.gameStatus === GameStatus.LOST) {
           activateNotification(
             NotificationType.Warning,
-            useIntl().formatMessage({
+            intl.formatMessage({
               id: 'playground.notification.type.lost',
             }),
-            useIntl().formatMessage({
+            intl.formatMessage({
               id: 'playground.notification.desc.lost',
             }),
           );
         } else {
           activateNotification(
             NotificationType.Info,
-            useIntl().formatMessage({
+            intl.formatMessage({
               id: 'playground.notification.type.pending',
             }),
-            useIntl().formatMessage(
+            intl.formatMessage(
               { id: 'playground.notification.desc.pending' },
-              { count: `${props.gained}` },
+              { count: `${props.gained ?? 0}` },
             ),
           );
         }
@@ -269,8 +231,8 @@ const Playground: React.FC<PlaygroundProps> = (props) => {
     if (!props.returnedError && !idle && answer.length === 0) {
       activateNotification(
         NotificationType.Info,
-        useIntl().formatMessage({ id: 'playground.notification.type.endGame' }),
-        useIntl().formatMessage({ id: 'playground.notification.desc.endGame' }),
+        intl.formatMessage({ id: 'playground.notification.type.endGame' }),
+        intl.formatMessage({ id: 'playground.notification.desc.endGame' }),
       );
       setIdle(true);
     }
