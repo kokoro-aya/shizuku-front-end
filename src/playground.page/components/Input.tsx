@@ -91,26 +91,76 @@ const InputBox: React.FC<InputBoxProps> = (props) => {
     props.onReset();
   };
 
+  // Global
+
+  const initPlayers = [
+    {
+      desc: useIntl().formatMessage({ id: 'playground.input.player' }),
+      code: 'Player()',
+    },
+    {
+      desc: useIntl().formatMessage({ id: 'playground.input.specialist' }),
+      code: 'Specialist()',
+    },
+    {
+      desc: useIntl().formatMessage({ id: 'playground.input.playerNull' }),
+      code: 'PlayerOrNull()',
+    },
+    {
+      desc: useIntl().formatMessage({ id: 'playground.input.specialistNull' }),
+      code: 'SpecialistOrNull()',
+    },
+  ];
+
+  const allCounters = [
+    { desc: 'allGemCollected', code: 'allGemCollected ' },
+    { desc: 'allGemLeft', code: 'allGemLeft ' },
+    { desc: 'allBeeperCollected', code: 'allBeeperCollected ' },
+    { desc: 'allBeeperLeft', code: 'allBeeperLeft ' },
+    { desc: 'allOpenedSwitch', code: 'allOpenedSwitch ' },
+    { desc: 'allBeeperCollected', code: 'allClosedSwitch ' },
+  ];
+
+  // Per player
+
   const blockedCommands = [
     { desc: 'isBlocked', code: 'isBlocked ' },
     { desc: 'isBlockedLeft', code: 'isBlockedLeft ' },
     { desc: 'isBlockedRight', code: 'isBlockedRight ' },
   ];
   const isOnCommands = [
+    { desc: 'isAlive', code: 'isAlive ' },
     { desc: 'isOnGem', code: 'isOnGem ' },
     { desc: 'isOnOpenedSwitch', code: 'isOnOpenedSwitch ' },
     { desc: 'isOnClosedSwitch', code: 'isOnClosedSwitch ' },
+    { desc: 'isOnBeeper', code: 'isOnBeeper ' },
+    { desc: 'isOnPortal', code: 'isOnPortal ' },
+    { desc: 'isOnPlatform', code: 'isOnPlatform ' },
+    { desc: 'isBeforeMonster', code: 'isBeforeMonster ' },
   ];
+
+  const collectedVars = [
+    { desc: 'collectedGem', code: 'collectedGem ' },
+    { desc: 'collectedBeeper', code: 'collectedBeeper ' },
+  ];
+
   const moveForwardCommand = {
     desc: 'moveForward()',
     code: `moveForward()
   `,
   };
-  const turnLeftCommand = {
-    desc: 'turnLeft()',
-    code: `turnLeft()
+  const turnCommand = [
+    {
+      desc: 'turnLeft()',
+      code: `turnLeft()
   `,
-  };
+    },
+    {
+      desc: 'turnRight()',
+      code: `turnRight()
+  `,
+    },
+  ];
   const toggleCommands = [
     {
       desc: 'collectGem()',
@@ -122,9 +172,35 @@ const InputBox: React.FC<InputBoxProps> = (props) => {
       code: `toggleSwitch()
     `,
     },
+    {
+      desc: 'takeBeeper()',
+      code: `takeBeeper()
+    `,
+    },
+    {
+      desc: 'dropBeeper()',
+      code: `dropBeeper()
+    `,
+    },
   ];
+  const attackCommand = {
+    desc: 'attack()',
+    code: `attack()
+    `,
+  };
 
-  const printCommand = { desc: 'console.log(...)', code: 'console.log() ' };
+  // Insts
+
+  const printCommands = [
+    {
+      desc: 'console.log()',
+      code: 'console.log()',
+    },
+    {
+      desc: 'console.logln()',
+      code: 'console.logln()',
+    },
+  ];
   const structuralCommands = [
     {
       desc: useIntl().formatMessage(
@@ -170,12 +246,45 @@ const InputBox: React.FC<InputBoxProps> = (props) => {
         </Button>
       </div>
       <Divider orientation="left">
-        {useIntl().formatMessage({ id: 'playground.input.insertCode' })}
+        {useIntl().formatMessage({ id: 'playground.input.globalCode' })}
       </Divider>
       <div style={{ margin: '16px' }}>
         <Space wrap size="middle">
           {
             // FIXME find a solution for the no children error of Dropdown
+            // @ts-ignore
+            <Dropdown
+              overlay={dropdown(initPlayers, monacoRef.current!)}
+              placement="bottomLeft"
+              arrow
+            >
+              <Button>
+                {useIntl().formatMessage({ id: 'playground.input.newChar' })}
+                <DownOutlined />
+              </Button>
+            </Dropdown>
+          }
+          {
+            // @ts-ignore
+            <Dropdown
+              overlay={dropdown(initPlayers, monacoRef.current!)}
+              placement="bottomLeft"
+              arrow
+            >
+              <Button>
+                {useIntl().formatMessage({ id: 'playground.input.global' })}
+                <DownOutlined />
+              </Button>
+            </Dropdown>
+          }
+        </Space>
+      </div>
+      <Divider orientation="left">
+        {useIntl().formatMessage({ id: 'playground.input.instanceCode' })}
+      </Divider>
+      <div style={{ margin: '16px' }}>
+        <Space wrap size="middle">
+          {
             // @ts-ignore
             <Dropdown
               overlay={dropdown(blockedCommands, monacoRef.current!)}
@@ -186,7 +295,7 @@ const InputBox: React.FC<InputBoxProps> = (props) => {
                 {useIntl().formatMessage(
                   { id: 'playground.input.inst' },
                   { var: 'blocked' },
-                )}{' '}
+                )}
                 <DownOutlined />
               </Button>
             </Dropdown>
@@ -202,7 +311,20 @@ const InputBox: React.FC<InputBoxProps> = (props) => {
                 {useIntl().formatMessage(
                   { id: 'playground.input.inst' },
                   { var: 'isOn' },
-                )}{' '}
+                )}
+                <DownOutlined />
+              </Button>
+            </Dropdown>
+          }
+          {
+            // @ts-ignore
+            <Dropdown
+              overlay={dropdown(collectedVars, monacoRef.current!)}
+              placement="bottomLeft"
+              arrow
+            >
+              <Button>
+                {useIntl().formatMessage({ id: 'playground.input.collected' })}
                 <DownOutlined />
               </Button>
             </Dropdown>
@@ -214,17 +336,21 @@ const InputBox: React.FC<InputBoxProps> = (props) => {
               })
             }
           >
-            moveForward
+            {moveForwardCommand.desc}
           </Button>
-          <Button
-            onClick={() =>
-              monacoRef.current!.trigger('keyboard', 'type', {
-                text: turnLeftCommand.code,
-              })
-            }
-          >
-            turnLeft
-          </Button>
+          {
+            // @ts-ignore
+            <Dropdown
+              overlay={dropdown(turnCommand, monacoRef.current!)}
+              placement="bottomLeft"
+              arrow
+            >
+              <Button>
+                {useIntl().formatMessage({ id: 'playground.input.turn' })}
+                <DownOutlined />
+              </Button>
+            </Dropdown>
+          }
           {
             // @ts-ignore
             <Dropdown
@@ -236,20 +362,41 @@ const InputBox: React.FC<InputBoxProps> = (props) => {
                 {useIntl().formatMessage(
                   { id: 'playground.input.inst' },
                   { var: 'toggle' },
-                )}{' '}
+                )}
                 <DownOutlined />
               </Button>
             </Dropdown>
           }
+
           <Button
             onClick={() =>
               monacoRef.current!.trigger('keyboard', 'type', {
-                text: printCommand.code,
+                text: attackCommand.code,
               })
             }
           >
-            print(...)
+            {attackCommand.desc}
           </Button>
+        </Space>
+      </div>
+      <Divider orientation="left">
+        {useIntl().formatMessage({ id: 'playground.input.instructions' })}
+      </Divider>
+      <div style={{ margin: '16px' }}>
+        <Space wrap size="middle">
+          {
+            // @ts-ignore
+            <Dropdown
+              overlay={dropdown(printCommands, monacoRef.current!)}
+              placement="bottomLeft"
+              arrow
+            >
+              <Button>
+                {useIntl().formatMessage({ id: 'playground.input.print' })}
+                <DownOutlined />
+              </Button>
+            </Dropdown>
+          }
           {
             // @ts-ignore
             <Dropdown
@@ -258,7 +405,7 @@ const InputBox: React.FC<InputBoxProps> = (props) => {
               arrow
             >
               <Button>
-                {useIntl().formatMessage({ id: 'playground.input.structInst' })}{' '}
+                {useIntl().formatMessage({ id: 'playground.input.structInst' })}
                 <DownOutlined />
               </Button>
             </Dropdown>
