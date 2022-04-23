@@ -1,8 +1,10 @@
 import React from 'react';
-import { Col, Divider, Row } from 'antd';
+import { Divider } from 'antd';
 import { useIntl } from 'umi';
+import { renderMessage } from '@/locales/hook';
 
 export default () => {
+  const intl = useIntl();
   return (
     <div
       style={{
@@ -10,9 +12,9 @@ export default () => {
       }}
     >
       <Divider orientation="left">
-        {useIntl().formatMessage({ id: 'section.Gallery' })}
+        {renderMessage(intl, 'section.Gallery')}
       </Divider>
-      <div>{useIntl().formatMessage({ id: 'underConstruct' })}</div>
+      <div>{renderMessage(intl, 'underConstruct')}</div>
     </div>
   );
 };

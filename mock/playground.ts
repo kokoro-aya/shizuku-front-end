@@ -1,6 +1,4 @@
-import { Frame } from '@/models/playground.types';
 import { Request, Response } from '@umijs/types';
-import { GamingCondition } from '@/data/SentData';
 import { map1 } from './maps/map1';
 import { map2 } from './maps/map2';
 import { map3 } from './maps/map3';
@@ -10,37 +8,8 @@ import { map6 } from './maps/map6';
 import { map7 } from './maps/map7';
 import { map8 } from './maps/map8';
 import { parseInt } from 'lodash';
+import { isTypeKey, option, StoreType } from './utils';
 // mock value should not be "export default" otherwise will not compile
-
-export interface InitStates extends Frame {
-  id: number;
-  name?: string;
-  gamingCondition?: GamingCondition;
-  userCollision: boolean;
-}
-
-const TYPES = [
-  'default',
-  'simple',
-  'puzzle',
-  'hills',
-  'complex',
-  'custom',
-] as const;
-type StoreKey = typeof TYPES[number];
-
-const isTypeKey = (typeKey: string): typeKey is StoreKey => {
-  return TYPES.includes(typeKey as StoreKey);
-};
-
-interface StoreType {
-  default: Array<InitStates>;
-  simple: Array<InitStates>;
-  puzzle: Array<InitStates>;
-  hills: Array<InitStates>;
-  complex: Array<InitStates>;
-  custom: Array<InitStates>;
-}
 
 let playgrounds: StoreType = {
   default: [map1, map2, map3, map4, map5, map6, map7, map8],
@@ -67,50 +36,13 @@ export default {
   // Return type: Array<{ value: string, label: string, children: Array<{ value: string, label: string }> }>
   'get /dev/playground/fetch/': (req: Request, res: Response) => {
     const r = [
-      {
-        value: 'default',
-        label: 'default',
-        children: playgrounds.default.map((e) => {
-          return { value: '' + e.id, label: e.name ?? 'No Name' };
-        }),
-      },
-      {
-        value: 'simple',
-        label: 'simple',
-        children: playgrounds.simple.map((e) => {
-          return { value: '' + e.id, label: e.name ?? 'No Name' };
-        }),
-      },
-      {
-        value: 'puzzle',
-        label: 'puzzle',
-        children: playgrounds.puzzle.map((e) => {
-          return { value: '' + e.id, label: e.name ?? 'No Name' };
-        }),
-      },
-      {
-        value: 'hills',
-        label: 'hills',
-        children: playgrounds.hills.map((e) => {
-          return { value: '' + e.id, label: e.name ?? 'No Name' };
-        }),
-      },
-      {
-        value: 'complex',
-        label: 'complex',
-        children: playgrounds.complex.map((e) => {
-          return { value: '' + e.id, label: e.name ?? 'No Name' };
-        }),
-      },
-      {
-        value: 'custom',
-        label: 'custom',
-        children: playgrounds.custom.map((e) => {
-          return { value: '' + e.id, label: e.name ?? 'No Name' };
-        }),
-      },
+      option(playgrounds, 'default'),
+      option(playgrounds, 'simple'),
+      option(playgrounds, 'puzzle'),
+      option(playgrounds, 'hills'),
+      option(playgrounds, 'complex'),
+      option(playgrounds, 'custom'),
     ];
-    // console.log(r);
     setTimeout(() => {
       res.json(r);
     }, 1000);
@@ -123,7 +55,7 @@ export default {
       setTimeout(() => {
         res.json(
           playgrounds[category].map((s) => {
-            return { id: s.id, name: s.name };
+            return { ...s };
           }),
         );
       });

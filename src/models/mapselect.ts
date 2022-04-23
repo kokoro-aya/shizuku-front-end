@@ -38,14 +38,7 @@ const model: MapSelectInterface = {
   reducers: {
     initialize(state, { payload }) {
       const options = (payload as Array<MapCategory>).map((e) =>
-        e.children.length === 0
-          ? {
-              label: e.label,
-              value: e.value,
-              children: e.children,
-              disabled: true,
-            }
-          : e,
+        e.children.length === 0 ? { ...e, disabled: true } : e,
       );
       const nextState: MapSelectStates = {
         maps: options,

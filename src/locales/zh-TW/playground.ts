@@ -49,6 +49,8 @@ export default {
   'playground.gameCond.noEndGameCondition': '這款遊戲沒有設置結束條件。',
   'playground.gameCond.gameRules': '遊戲規則',
   'playground.gameCond.click': '點這裡了解遊戲規則',
+  'playground.gameCond.useCollision': '該遊戲中角色會碰撞',
+  'playground.gameCond.noCollision': '該遊戲中角色不會碰撞',
   'playground.status.currentStatus': '當前狀態',
   'playground.status.success': '運行成功',
   'playground.status.processing': '正在運行...',
@@ -58,4 +60,6 @@ export default {
   'playground.status.switch': '開關: {openedSwitch} / {allSwitch}',
   'playground.status.beeper': '蜂鳴器: {beeperInBag} / {allBeeper}',
   'playground.status.monster': '剩下的怪獸: {monsters}',
+  'playground.map.select': '選擇地圖',
+  'playground.map.selection': '請選擇一張地圖',
 };

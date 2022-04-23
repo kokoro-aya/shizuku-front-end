@@ -57,6 +57,9 @@ export default {
     "Ce jeu n'a pas donné de condition de fin du jeu",
   'playground.gameCond.gameRules': 'Règles du Jeu',
   'playground.gameCond.click': 'Cliquer ici pour connaitre les règles',
+  'playground.gameCond.useCollision': 'Il y a une collision entre les joueurs',
+  'playground.gameCond.noCollision':
+    "Il n'y a pas de collision entre les joueurs",
   'playground.status.currentStatus': 'Le Status Actuel',
   'playground.status.success': 'Succès',
   'playground.status.processing': 'Exécution en cours...',
@@ -66,4 +69,6 @@ export default {
   'playground.status.switch': 'Switches: {openedSwitch} / {allSwitch}',
   'playground.status.beeper': 'Beepers: {beeperInBag} / {allBeeper}',
   'playground.status.monster': 'Monstres vivants: {monsters}',
+  'playground.map.select': 'Sélection de carte',
+  'playground.map.selection': 'Sélectionner une carte',
 };

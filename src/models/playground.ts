@@ -39,7 +39,7 @@ const model: PlaygroundModelInterface = {
         // console.log(answer)
         if (answer.status === 'OK') {
           message.warn('代码提交成功！');
-          console.log(answer);
+          // console.log(answer);
           yield put({ type: 'loadPlayground', payload: answer });
         } else {
           message.error(answer.msg);

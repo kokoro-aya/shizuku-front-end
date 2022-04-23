@@ -52,6 +52,9 @@ export default {
     'This game has not set an end game condition.',
   'playground.gameCond.gameRules': 'Game Rule',
   'playground.gameCond.click': 'Click to know the rules of the current game',
+  'playground.gameCond.useCollision': 'This game has collision on players',
+  'playground.gameCond.noCollision':
+    'This game does not have collision on players',
   'playground.status.currentStatus': 'Current Status',
   'playground.status.success': 'Success',
   'playground.status.processing': 'Processing...',
@@ -61,4 +64,6 @@ export default {
   'playground.status.switch': 'Switches: {openedSwitch} / {allSwitch}',
   'playground.status.beeper': 'Beepers: {beeperInBag} / {allBeeper}',
   'playground.status.monster': 'Alive monsters: {monsters}',
+  'playground.map.select': 'Select a map',
+  'playground.map.selection': 'Please select a map',
 };

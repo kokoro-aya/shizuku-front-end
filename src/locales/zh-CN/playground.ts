@@ -50,6 +50,8 @@ export default {
   'playground.gameCond.noEndGameCondition': '该游戏没有设置结束条件。',
   'playground.gameCond.gameRules': '游戏规则',
   'playground.gameCond.click': '点此了解游戏规则',
+  'playground.gameCond.useCollision': '该游戏中角色会碰撞',
+  'playground.gameCond.noCollision': '该游戏中角色不会碰撞',
   'playground.status.currentStatus': '当前状态',
   'playground.status.success': '运行成功',
   'playground.status.processing': '正在运行...',
@@ -59,4 +61,6 @@ export default {
   'playground.status.switch': '开关: {openedSwitch} / {allSwitch}',
   'playground.status.beeper': '蜂鸣器: {beeperInBag} / {allBeeper}',
   'playground.status.monster': '剩余的怪物: {monsters}',
+  'playground.map.select': '选择地图',
+  'playground.map.selection': '请选择一张地图',
 };

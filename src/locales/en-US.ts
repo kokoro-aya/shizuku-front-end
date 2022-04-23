@@ -1,5 +1,7 @@
 import sections from './en-US/sections';
 import playground from './en-US/playground';
+import dialog from '@/locales/en-US/dialog';
+import square from '@/locales/en-US/square';
 
 export default {
   welcome: 'Welcome',
@@ -8,4 +10,6 @@ export default {
   light: 'light',
   ...sections,
   ...playground,
+  ...dialog,
+  ...square,
 };
