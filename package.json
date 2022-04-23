@@ -1,6 +1,6 @@
 {
   "private": true,
-  "version": "2.1.7",
+  "version": "2.2.0",
   "scripts": {
     "start": "umi dev",
     "build": "umi build",
@@ -43,6 +43,7 @@
     "@types/react-scroll": "^1.8.3",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react-hooks": "^4.4.0",
     "typescript": "^4.1.0"
   }
 }

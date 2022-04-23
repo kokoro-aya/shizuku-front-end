@@ -63,7 +63,7 @@ export default {
   'playground.status.idle': 'En attente...',
   'playground.status.impossible': 'Erreur',
   'playground.status.gem': 'Diamonds: {gemInBag} / {gemOnGround}',
-  'playground.status.switch': 'Switches: {openedSwitch} / {closedSwitch}',
-  'playground.status.beeper': 'Beepers: {beeperInBag} / {beeperAtGround}',
+  'playground.status.switch': 'Switches: {openedSwitch} / {allSwitch}',
+  'playground.status.beeper': 'Beepers: {beeperInBag} / {allBeeper}',
   'playground.status.monster': 'Monstres vivants: {monsters}',
 };

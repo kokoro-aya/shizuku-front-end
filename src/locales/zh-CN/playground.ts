@@ -56,7 +56,7 @@ export default {
   'playground.status.idle': '等待中...',
   'playground.status.impossible': '发生错误',
   'playground.status.gem': '宝石: {gemInBag} / {gemOnGround}',
-  'playground.status.switch': '开关: {openedSwitch} / {closedSwitch}',
-  'playground.status.beeper': '蜂鸣器: {beeperInBag} / {beeperAtGround}',
+  'playground.status.switch': '开关: {openedSwitch} / {allSwitch}',
+  'playground.status.beeper': '蜂鸣器: {beeperInBag} / {allBeeper}',
   'playground.status.monster': '剩余的怪物: {monsters}',
 };

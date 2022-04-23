@@ -1,8 +1,6 @@
 import { Frame } from '@/models/playground.types';
 import { Request, Response } from '@umijs/types';
 import { GamingCondition } from '@/data/SentData';
-import { Biome, Block, Color } from './enums';
-import { Direction, Role } from '@/data/Enums';
 import { map1 } from './maps/map1';
 import { map2 } from './maps/map2';
 import { map3 } from './maps/map3';
@@ -56,6 +54,7 @@ let playgrounds: StoreType = {
 let random_playground = 0;
 
 export default {
+  // Return type: InitStates
   'get /dev/playground/fetch/default': (req: Request, res: Response) => {
     // const responseObj = playgrounds[random_playground % playgrounds.length]
     const responseObj = map4;
@@ -64,8 +63,74 @@ export default {
       res.json(responseObj);
     }, 1000);
   },
-  'get /dev/playground/fetch/': (req: Request, res: Response) => {},
-  'get /dev/playground/fetch/:category/': (req: Request, res: Response) => {},
+
+  // Return type: Array<{ value: string, label: string, children: Array<{ value: string, label: string }> }>
+  'get /dev/playground/fetch/': (req: Request, res: Response) => {
+    const r = [
+      {
+        value: 'default',
+        label: 'default',
+        children: playgrounds.default.map((e) => {
+          return { value: 'default/' + e.id, label: e.name ?? 'No Name' };
+        }),
+      },
+      {
+        value: 'simple',
+        label: 'simple',
+        children: playgrounds.simple.map((e) => {
+          return { value: 'simple/' + e.id, label: e.name ?? 'No Name' };
+        }),
+      },
+      {
+        value: 'puzzle',
+        label: 'puzzle',
+        children: playgrounds.puzzle.map((e) => {
+          return { value: 'puzzle/' + e.id, label: e.name ?? 'No Name' };
+        }),
+      },
+      {
+        value: 'hills',
+        label: 'hills',
+        children: playgrounds.hills.map((e) => {
+          return { value: 'hills/' + e.id, label: e.name ?? 'No Name' };
+        }),
+      },
+      {
+        value: 'complex',
+        label: 'complex',
+        children: playgrounds.complex.map((e) => {
+          return { value: 'complex/' + e.id, label: e.name ?? 'No Name' };
+        }),
+      },
+      {
+        value: 'custom',
+        label: 'custom',
+        children: playgrounds.custom.map((e) => {
+          return { value: 'custom/' + e.id, label: e.name ?? 'No Name' };
+        }),
+      },
+    ];
+    console.log(r);
+    setTimeout(() => {
+      res.json(r);
+    }, 1000);
+  },
+
+  // Return type: Array<{ id: number, name: string }> aka a list of maps in the category
+  'get /dev/playground/fetch/:category/': (req: Request, res: Response) => {
+    const category = req.params.category;
+    if (isTypeKey(category)) {
+      setTimeout(() => {
+        res.json(
+          playgrounds[category].map((s) => {
+            return { id: s.id, name: s.name };
+          }),
+        );
+      });
+    }
+  },
+
+  // Return type: InitStates
   'get /dev/playground/fetch/:category/:id': (req: Request, res: Response) => {
     const category = req.params.category;
     const id = parseInt(req.params.id);
@@ -82,6 +147,9 @@ export default {
       });
     }
   },
+
+  // Post type: EditPlayground
+  // Return type: { success: bool, message: string }
   'post /dev/playground/add': (req: Request, res: Response) => {
     const newId = playgrounds.custom.length + 1;
     playgrounds.custom = [
@@ -96,7 +164,33 @@ export default {
       message: `Added a map to custom category with id = ${newId}`,
     });
   },
-  'put /dev/playground/add/:id': (req: Request, res: Response) => {},
+
+  // Put type: EditPlayground
+  // Return type: { success: bool, message: string }
+  'put /dev/playground/add/:id': (req: Request, res: Response) => {
+    const id = req.params.id;
+    if (playgrounds.custom.find((e) => e.id) !== undefined) {
+      playgrounds.custom = [
+        ...playgrounds.custom.filter((e) => e.id < id),
+        {
+          ...req.body,
+          id: id,
+        },
+        ...playgrounds.custom.filter((e) => e.id > id),
+      ];
+      res.json({
+        success: true,
+        message: `Updated a map to custom category with id = ${id}`,
+      });
+    } else {
+      res.json({
+        success: false,
+        message: `No such map with associated id = ${id}`,
+      });
+    }
+  },
+
+  // Return type: { success: bool, message: string }
   'delete /dev/playground/:id': (req: Request, res: Response) => {
     let id = parseInt(req.params.id);
     if (playgrounds.custom.find((p) => p.id === id) === undefined) {

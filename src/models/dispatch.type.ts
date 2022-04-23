@@ -4,5 +4,9 @@ export type DispatchType<T> = {
 };
 
 export interface DispatchSender {
-  dispatch<T>(arg0: DispatchType<T>): void;
+  dispatch: <T>(arg0: DispatchType<T>) => void;
+}
+
+export interface CompatibleDispatchSender {
+  dispatch?: <T>(arg0: DispatchType<T>) => void;
 }

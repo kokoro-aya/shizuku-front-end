@@ -130,7 +130,6 @@ const model: PlaygroundModelInterface = {
     },
     returnError(state, { payload }) {
       return {
-        ...state,
         returnedError: true,
       };
     },

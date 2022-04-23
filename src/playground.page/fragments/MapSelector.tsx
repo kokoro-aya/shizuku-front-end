@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Modal,
   Cascader,
-  Switch,
   Row,
   Col,
   Space,
@@ -11,7 +10,9 @@ import {
   Divider,
   RadioChangeEvent,
 } from 'antd';
-import { CloseOutlined, CheckOutlined } from '@ant-design/icons';
+import { CompatibleDispatchSender } from '@/models/dispatch.type';
+import { MapSelectStates } from '@/models/mapselect.types';
+import { connect } from 'umi';
 
 interface CustomizableProps {
   check: boolean;
@@ -77,7 +78,16 @@ const Customizable: React.FC<CustomizableProps> = (props) => {
   );
 };
 
-interface MapSelectorProps {
+const namespace = 'mapselect' as const;
+
+const mapStateToProps = (state: MapSelectorStateToPropsMap) => {
+  const { maps } = state[namespace];
+  return { maps };
+};
+
+type MapSelectorStateToPropsMap = { mapselect: MapSelectStates };
+
+interface MapSelectorProps extends MapSelectStates, CompatibleDispatchSender {
   visible: boolean;
   close: () => void;
 }
@@ -85,58 +95,21 @@ interface MapSelectorProps {
 const MapSelector: React.FC<MapSelectorProps> = (props) => {
   const [check, setCheck] = useState(false);
 
-  const options = [
-    {
-      value: 'simple',
-      label: '简单',
-      children: [
-        {
-          value: 'plain',
-          label: '平原',
-        },
-        {
-          value: '3-walls',
-          label: '三堵墙',
-        },
-        {
-          value: 'helloworld',
-          label: '你好世界',
-        },
-      ],
-    },
-    {
-      value: 'maze',
-      label: '迷宫',
-      children: [
-        {
-          value: 'go-and-back',
-          label: '回形路径',
-        },
-        {
-          value: 'labyrinth',
-          label: '迷宫',
-        },
-      ],
-    },
-    {
-      value: 'mountainous',
-      label: '丘陵',
-      children: [
-        {
-          value: 'mountains',
-          label: '崇山峻岭',
-        },
-        {
-          value: 'small-path',
-          label: '小径',
-        },
-        {
-          value: 'zigzag',
-          label: 'Z字',
-        },
-      ],
-    },
-  ];
+  useEffect(() => {
+    const interval = setInterval(() => {
+      console.log('Dispatch fetch');
+      initialFetch();
+      console.log(props.maps);
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const initialFetch = () => {
+    props.dispatch!({
+      type: `${namespace}/fetch`,
+      payload: '',
+    });
+  };
 
   const onCascadeChange = (value: (string | number)[]) => {
     console.log('Cascade: ' + value);
@@ -175,31 +148,31 @@ const MapSelector: React.FC<MapSelectorProps> = (props) => {
         >
           <div style={{ padding: '16px' }}>
             <Cascader
-              options={options}
+              options={props.maps}
               placeholder="请选择一张地图"
               onChange={onCascadeChange}
             />
           </div>
-          <div style={{ padding: '16px' }}>
-            <Switch
-              checkedChildren={<CheckOutlined />}
-              unCheckedChildren={<CloseOutlined />}
-              onChange={() => setCheck(!check)}
-              style={{ marginRight: '16px' }}
-            />
-            自定义地图初始化
-          </div>
-          <Customizable
-            check={check}
-            onHorizontalChange={handleHorizontalChange}
-            onVerticalChange={handleVerticalChange}
-            onDirectionChange={handleDirectionChange}
-            dir="up"
-          />
+          {/*<div style={{ padding: '16px' }}>*/}
+          {/*  <Switch*/}
+          {/*    checkedChildren={<CheckOutlined />}*/}
+          {/*    unCheckedChildren={<CloseOutlined />}*/}
+          {/*    onChange={() => setCheck(!check)}*/}
+          {/*    style={{ marginRight: '16px' }}*/}
+          {/*  />*/}
+          {/*  自定义地图初始化*/}
+          {/*</div>*/}
+          {/*<Customizable*/}
+          {/*  check={check}*/}
+          {/*  onHorizontalChange={handleHorizontalChange}*/}
+          {/*  onVerticalChange={handleVerticalChange}*/}
+          {/*  onDirectionChange={handleDirectionChange}*/}
+          {/*  dir="up"*/}
+          {/*/>*/}
         </Modal>
       }
     </>
   );
 };
 
-export default MapSelector;
+export default connect(mapStateToProps)(MapSelector);

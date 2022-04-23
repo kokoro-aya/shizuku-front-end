@@ -82,7 +82,7 @@ const StatusBar: React.FC<StatusBarProps> = (props) => {
                 { id: 'playground.status.switch' },
                 {
                   openedSwitch: props.openedSwitch,
-                  closedSwitch: props.closedSwitch,
+                  allSwitch: props.closedSwitch + props.openedSwitch,
                 },
               )}
             </Tag>
@@ -94,7 +94,7 @@ const StatusBar: React.FC<StatusBarProps> = (props) => {
                 { id: 'playground.status.beeper' },
                 {
                   beeperInBag: props.beeperInBag,
-                  beeperAtGround: props.beeperAtGround,
+                  allBeeper: props.beeperAtGround + props.beeperInBag,
                 },
               )}
             </Tag>
