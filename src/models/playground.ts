@@ -15,6 +15,7 @@ export interface PlaygroundModelInterface {
   effects: {
     handleSubmit: Effect;
     initialFetch: Effect;
+    fetchMap: Effect;
   };
   reducers: {
     initialize: ImmerReducer<ModelStates>;
@@ -50,7 +51,7 @@ const model: PlaygroundModelInterface = {
     },
     *initialFetch({ payload }, { call, put }) {
       // console.log('initializing')
-      const endPointURI = '/dev/playground/fetch';
+      const endPointURI = '/dev/playground/fetch/default';
       try {
         const playground = yield call(request, endPointURI);
         yield put({ type: 'initialize', payload: playground });
@@ -58,6 +59,9 @@ const model: PlaygroundModelInterface = {
         message.error('数据获取失败');
         yield put({ type: 'returnError' });
       }
+    },
+    *fetchMap({ payload }, { call, put }) {
+      // TODO add fetch logics
     },
   },
   reducers: {

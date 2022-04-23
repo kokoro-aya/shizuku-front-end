@@ -1,5 +1,6 @@
 import React from 'react';
 import { Card, Col, Divider, Row, Tabs } from 'antd';
+import { useIntl } from '@@/plugin-locale/localeExports';
 
 const { TabPane } = Tabs;
 
@@ -405,7 +406,7 @@ const UpdateLogs = () => {
   );
 };
 
-export default () => {
+const _ = () => {
   return (
     <Row>
       <Col xs={24} sm={22} md={20} lg={18} xl={16}>
@@ -431,5 +432,20 @@ export default () => {
         </Card>
       </Col>
     </Row>
+  );
+};
+
+export default () => {
+  return (
+    <div
+      style={{
+        minHeight: '600px',
+      }}
+    >
+      <Divider orientation="left">
+        {useIntl().formatMessage({ id: 'section.Help' })}
+      </Divider>
+      <div>{useIntl().formatMessage({ id: 'underConstruct' })}</div>
+    </div>
   );
 };
