@@ -9,6 +9,7 @@ import {
   MessageOutlined,
 } from '@ant-design/icons';
 import { Link, useIntl } from 'umi';
+import { renderMessage } from '@/locales/hook';
 
 export default () => {
   const intl = useIntl();
@@ -31,11 +32,9 @@ export default () => {
         minHeight: '600px',
       }}
     >
-      <Divider orientation="left">
-        {intl.formatMessage({ id: 'welcome' })}
-      </Divider>
+      <Divider orientation="left">{renderMessage(intl, 'welcome')}</Divider>
       <div style={{ margin: '16px' }}>
-        {intl.formatMessage({ id: 'underConstruct' })}
+        {renderMessage(intl, 'underConstruct')}
       </div>
       <Row
         gutter={[
@@ -60,7 +59,7 @@ export default () => {
                 background: hovered[0] ? 'aliceblue' : 'white',
               }}
             >
-              {intl.formatMessage({ id: 'section.Playground' })}
+              {renderMessage(intl, 'section.Playground')}
             </Card>
           </Link>
         </Col>
@@ -81,7 +80,7 @@ export default () => {
                 background: hovered[1] ? 'aliceblue' : 'white',
               }}
             >
-              {intl.formatMessage({ id: 'section.Editor' })}
+              {renderMessage(intl, 'section.Editor')}
             </Card>
           </Link>
         </Col>
@@ -101,7 +100,7 @@ export default () => {
                 background: hovered[2] ? 'aliceblue' : 'white',
               }}
             >
-              {intl.formatMessage({ id: 'section.Gallery' })}
+              {renderMessage(intl, 'section.Gallery')}
             </Card>
           </Link>
         </Col>
@@ -121,7 +120,7 @@ export default () => {
                 background: hovered[3] ? 'aliceblue' : 'white',
               }}
             >
-              {intl.formatMessage({ id: 'section.Story' })}
+              {renderMessage(intl, 'section.Story')}
             </Card>
           </Link>
         </Col>
@@ -142,7 +141,7 @@ export default () => {
                 background: hovered[4] ? 'aliceblue' : 'white',
               }}
             >
-              {intl.formatMessage({ id: 'section.Help' })}
+              {renderMessage(intl, 'section.Help')}
             </Card>
           </Link>
         </Col>
@@ -163,7 +162,7 @@ export default () => {
                 background: hovered[5] ? 'aliceblue' : 'white',
               }}
             >
-              {intl.formatMessage({ id: 'section.Feedback' })}
+              {renderMessage(intl, 'section.Feedback')}
             </Card>
           </Link>
         </Col>

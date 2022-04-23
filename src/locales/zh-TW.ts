@@ -1,5 +1,6 @@
 import sections from './zh-TW/sections';
 import playground from './zh-TW/playground';
+import dialog from './zh-TW/dialog';
 
 export default {
   welcome: '歡迎',
@@ -8,4 +9,5 @@ export default {
   light: '亮色',
   ...sections,
   ...playground,
+  ...dialog,
 };

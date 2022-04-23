@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card, Col, Divider, Row, Tabs } from 'antd';
 import { useIntl } from '@@/plugin-locale/localeExports';
+import { renderMessage } from '@/locales/hook';
 
 const { TabPane } = Tabs;
 
@@ -444,9 +445,9 @@ export default () => {
       }}
     >
       <Divider orientation="left">
-        {intl.formatMessage({ id: 'section.Help' })}
+        {renderMessage(intl, 'section.Help')}
       </Divider>
-      <div>{intl.formatMessage({ id: 'underConstruct' })}</div>
+      <div>{renderMessage(intl, 'underConstruct')}</div>
     </div>
   );
 };

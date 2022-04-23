@@ -9,7 +9,8 @@ import { Frame, ModelStates } from '@/models/playground.types';
 import { SentData } from '@/data/SentData';
 import { DispatchSender } from '@/models/dispatch.type';
 import { GameStatus } from '@/data/Enums';
-import { useThrottle } from '@/Utils';
+import { renderMessage } from '@/locales/hook';
+import * as _ from 'lodash';
 
 const namespace = 'playground';
 
@@ -121,7 +122,7 @@ const Playground: React.FC<PlaygroundProps> = (props) => {
   };
   useEffect(handleAlign, []);
 
-  const handleResize = handleAlign;
+  const handleResize = _.throttle(handleAlign);
   window.addEventListener('resize', handleResize);
 
   // Clean up
@@ -165,65 +166,52 @@ const Playground: React.FC<PlaygroundProps> = (props) => {
         // console.log('Collected a gem');
         activateNotification(
           NotificationType.Info,
-          intl.formatMessage({ id: 'playground.notification.type.info' }),
-          intl.formatMessage({ id: 'playground.notification.desc.gem' }),
+          renderMessage(intl, 'playground.notification.type.info'),
+          renderMessage(intl, 'playground.notification.desc.gem'),
         );
       }
       if (!idle && nextFrame.special.includes('SWITCH')) {
         // console.log('Toggled a switch');
         activateNotification(
           NotificationType.Info,
-          intl.formatMessage({ id: 'playground.notification.type.info' }),
-          intl.formatMessage({
-            id: 'playground.notification.desc.switch',
-          }),
+          renderMessage(intl, 'playground.notification.type.info'),
+          renderMessage(intl, 'playground.notification.desc.switch'),
         );
       }
       if (!idle && nextFrame.special.includes('BEEPER')) {
         activateNotification(
           NotificationType.Info,
-          intl.formatMessage({ id: 'playground.notification.type.info' }),
-          intl.formatMessage({
-            id: 'playground.notification.desc.beeper',
-          }),
+          renderMessage(intl, 'playground.notification.type.info'),
+          renderMessage(intl, 'playground.notification.desc.beeper'),
         );
       }
       if (!idle && nextFrame.special.includes('ATTACK')) {
         activateNotification(
           NotificationType.Info,
-          intl.formatMessage({ id: 'playground.notification.type.info' }),
-          intl.formatMessage({
-            id: 'playground.notification.desc.attack',
-          }),
+          renderMessage(intl, 'playground.notification.type.info'),
+          renderMessage(intl, 'playground.notification.desc.attack'),
         );
       }
       if (!idle && answer.length === 0) {
         if (props.gameStatus === GameStatus.WIN) {
           activateNotification(
             NotificationType.Success,
-            intl.formatMessage({ id: 'playground.notification.type.win' }),
-            intl.formatMessage({ id: 'playground.notification.desc.win' }),
+            renderMessage(intl, 'playground.notification.type.win'),
+            renderMessage(intl, 'playground.notification.desc.win'),
           );
         } else if (props.gameStatus === GameStatus.LOST) {
           activateNotification(
             NotificationType.Warning,
-            intl.formatMessage({
-              id: 'playground.notification.type.lost',
-            }),
-            intl.formatMessage({
-              id: 'playground.notification.desc.lost',
-            }),
+            renderMessage(intl, 'playground.notification.type.lost'),
+            renderMessage(intl, 'playground.notification.desc.lost'),
           );
         } else {
           activateNotification(
             NotificationType.Info,
-            intl.formatMessage({
-              id: 'playground.notification.type.pending',
+            renderMessage(intl, 'playground.notification.type.pending'),
+            renderMessage(intl, 'playground.notification.desc.pending', {
+              count: `${props.gained ?? 0}`,
             }),
-            intl.formatMessage(
-              { id: 'playground.notification.desc.pending' },
-              { count: `${props.gained ?? 0}` },
-            ),
           );
         }
       }
@@ -231,8 +219,8 @@ const Playground: React.FC<PlaygroundProps> = (props) => {
     if (!props.returnedError && !idle && answer.length === 0) {
       activateNotification(
         NotificationType.Info,
-        intl.formatMessage({ id: 'playground.notification.type.endGame' }),
-        intl.formatMessage({ id: 'playground.notification.desc.endGame' }),
+        renderMessage(intl, 'playground.notification.type.endGame'),
+        renderMessage(intl, 'playground.notification.desc.endGame'),
       );
       setIdle(true);
     }
@@ -338,6 +326,7 @@ const Playground: React.FC<PlaygroundProps> = (props) => {
                 aLength={props.answerLength}
                 status={status}
                 gamingCondition={props.gamingCondition}
+                useCollision={props.userCollision}
               />
             </Row>
             <Row>

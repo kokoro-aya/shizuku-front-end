@@ -18,6 +18,7 @@ interface DashboardProp {
   aLength: number;
   status: ExecutionStatus;
   gamingCondition?: GamingCondition;
+  useCollision: boolean;
 }
 
 const Dashboard: React.FC<DashboardProp> = (props) => {
@@ -147,7 +148,10 @@ const Dashboard: React.FC<DashboardProp> = (props) => {
   return (
     <Col span={24}>
       <Row>
-        <GameConditions gamingCondition={props.gamingCondition} />
+        <GameConditions
+          gamingCondition={props.gamingCondition}
+          useCollision={props.useCollision}
+        />
       </Row>
       <Row>
         <StatusBar
