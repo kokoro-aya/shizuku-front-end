@@ -234,7 +234,7 @@ const InputBox: React.FC<InputBoxProps> = (props) => {
   ];
 
   return (
-    <div>
+    <>
       <Divider orientation="left">Playground</Divider>
       <MapSelector
         visible={isModalDisplayed}
@@ -267,7 +267,7 @@ const InputBox: React.FC<InputBoxProps> = (props) => {
           {
             // @ts-ignore
             <Dropdown
-              overlay={dropdown(initPlayers, monacoRef.current!)}
+              overlay={dropdown(allCounters, monacoRef.current!)}
               placement="bottomLeft"
               arrow
             >
@@ -414,34 +414,22 @@ const InputBox: React.FC<InputBoxProps> = (props) => {
       </div>
       <br />
       <div
+        id="editor"
         style={{
           width: '100%',
-          height: '400px',
-          overflow: 'scroll',
+          height: '50vh',
+          maxHeight: '50vh',
           border: '1px dashed #aaa',
         }}
       >
-        {/*<Editor*/}
-        {/*  value={props.store}*/}
-        {/*  onValueChange={code => handleChange(code)}*/}
-        {/*  textareaClassName='editor_textarea'*/}
-        {/*  preClassName='editor_pre'*/}
-        {/*  textareaId='amatsukaze-code-editor'*/}
-        {/*  padding={10}*/}
-        {/*  highlight={code => Prism.highlight(code, Prism.languages.swift, 'swift')}*/}
-        {/*  style={{*/}
-        {/*    'fontFamily': 'Fira Code, Iosevka, source-code-pro, Menlo, Monaco, Consolas, Droid Sans, monospace, sans-serif',*/}
-        {/*    fontVariantLigatures: 'normal',*/}
-        {/*    'resize': 'none',*/}
-        {/*  }}*/}
-        {/*/>*/}
         <Editor
-          height="50vh"
+          height="100%"
           language="kotlin"
           theme={props.theme.toString()}
           value={props.store}
           onChange={props.onEditorChange}
           onMount={onEditorMount}
+          className="monaco.editor"
         />
       </div>
       <br />
@@ -489,7 +477,7 @@ const InputBox: React.FC<InputBoxProps> = (props) => {
         </Col>
         <Col span={12}></Col>
       </Row>
-    </div>
+    </>
   );
 };
 

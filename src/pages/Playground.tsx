@@ -146,6 +146,9 @@ const Playground: React.FC<PlaygroundProps> = (props) => {
   }, [props.initialized, props.nextFrame, props.answer, idle, disabled]); // 如果想要让setInterval和呼叫的函数里对应的变量发生改变，就要在数组里声明
   // setInterval相当于一个闭包，里面的变量如果不额外声明的话值是固定的
 
+  // Align bottom of editor and board
+  useEffect(() => {});
+
   const initialFetch = () => {
     props.dispatch({
       type: `${namespace}/initialFetch`,
@@ -312,6 +315,7 @@ const Playground: React.FC<PlaygroundProps> = (props) => {
         </Col>
         <Col className="gutter-row" xs={24} sm={24} md={12} lg={12} xl={12}>
           <div
+            id="board"
             style={{
               background: 'white',
               overflow: 'scroll',

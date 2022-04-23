@@ -121,9 +121,10 @@ const SimpleLayout: React.FC<SimpleLayoutProps> = (props) => {
             <Select
               onSelect={(value: string) => setLocale(value, false)}
               defaultValue="zh-CN"
-              style={{ width: 144 }}
+              style={{ width: 192 }}
             >
-              <Option value="zh-CN">中文/Chinese</Option>
+              <Option value="zh-CN">简体中文/Simp. Chinese</Option>
+              <Option value="zh-TW">正體中文/Trad. Chinese</Option>
               <Option value="en-US">英文/English</Option>
               <Option value="fr-FR">法语/Français</Option>
             </Select>

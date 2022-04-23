@@ -19,11 +19,14 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="095a5d38-2a3c-4e5c-abe6-e5e436d6447a" name="Default Changelist" comment="prepare for map editor and selector">
+    <list default="true" id="095a5d38-2a3c-4e5c-abe6-e5e436d6447a" name="Default Changelist" comment="update commands to reflect back end as well as translations">
+      <change afterPath="$PROJECT_DIR$/src/locales/zh-TW.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/locales/zh-TW/playground.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/locales/zh-TW/sections.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/locales/en-US/playground.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/locales/en-US/playground.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/locales/fr-FR/playground.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/locales/fr-FR/playground.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/locales/zh-CN/playground.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/locales/zh-CN/playground.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SimpleLayout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/SimpleLayout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Help.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Help.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Playground.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Playground.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/playground.page/components/Input.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/playground.page/components/Input.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -58,23 +61,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/irony/WebstormProjects/shizuku-front-end/src/styles&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;/Users/irony/WebstormProjects/shizuku-front-end/node_modules/prettier&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/Users/irony/WebstormProjects/shizuku-front-end/node_modules/typescript/lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/Users/irony/WebstormProjects/shizuku-front-end/src/locales",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "prettierjs.PrettierConfiguration.Package": "/Users/irony/WebstormProjects/shizuku-front-end/node_modules/prettier",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "ts.external.directory.path": "/Users/irony/WebstormProjects/shizuku-front-end/node_modules/typescript/lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/locales" />
       <recent name="$PROJECT_DIR$/src/styles" />
       <recent name="$PROJECT_DIR$/img" />
     </key>
@@ -140,7 +144,7 @@
       <workItem from="1650499403125" duration="5623000" />
       <workItem from="1650571744331" duration="9670000" />
       <workItem from="1650630136808" duration="9329000" />
-      <workItem from="1650645490736" duration="8944000" />
+      <workItem from="1650645490736" duration="12881000" />
     </task>
     <task id="LOCAL-00001" summary="Commit 1. Page Layout Setup">
       <created>1608342769408</created>
@@ -394,7 +398,14 @@
       <option name="project" value="LOCAL" />
       <updated>1650662966918</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="update commands to reflect back end as well as translations">
+      <created>1650703095905</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1650703095905</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -429,7 +440,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="minor updates version 1.0.x and WIP started" />
     <MESSAGE value="start to work on version 2, change text area to monaco editor" />
     <MESSAGE value="typescript: fixed imports" />
     <MESSAGE value="ver2.0.0 adapt to typescript" />
@@ -454,6 +464,7 @@
     <MESSAGE value="locales cover to notifications" />
     <MESSAGE value="i18n (besides debug info in Square and map selections)" />
     <MESSAGE value="prepare for map editor and selector" />
-    <option name="LAST_COMMIT_MESSAGE" value="prepare for map editor and selector" />
+    <MESSAGE value="update commands to reflect back end as well as translations" />
+    <option name="LAST_COMMIT_MESSAGE" value="update commands to reflect back end as well as translations" />
   </component>
 </project>
