@@ -1,5 +1,15 @@
-import React, { useState } from 'react';
-import { Layout, Menu, Select, Space, Switch } from 'antd';
+/*
+ * Copyright (c) 2020-2022. kokoro-aya. All right reserved.
+ * Shizuku - A Playground Front-End implemented with React/Ant Design/UmiJS and Monaco Editor
+ *
+ * This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or any later version.
+ * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
+ * You should have received a copy of the GNU Affero General Public License along with this program. If not, see <https://www.gnu.org/licenses/>.
+ *
+ */
+
+import React, { useEffect, useState } from 'react';
+import { Layout, Menu, Select, Space } from 'antd';
 import {
   AndroidOutlined,
   CodeOutlined,
@@ -14,6 +24,7 @@ import { connect, Link } from 'umi';
 import { Theme, ThemeState } from '@/models/codescheme';
 import { DispatchSender } from '@/models/dispatch.type';
 import { setLocale, useIntl } from 'umi';
+import { getLocale } from '@@/plugin-locale/localeExports';
 
 const namespace = 'codescheme';
 
@@ -41,6 +52,16 @@ const SimpleLayout: React.FC<SimpleLayoutProps> = (props) => {
     collapsed: false,
     theme: 'light',
   });
+
+  let defaultLocale = 'zh-CN';
+
+  const locale = getLocale();
+  if (['zh-CN', 'zh-TW', 'en-US', 'fr-FR'].includes(locale)) {
+    defaultLocale = locale;
+  } else {
+    setLocale('en-US', false);
+    defaultLocale = 'en-US';
+  }
 
   const onCollapse = (collapsed: boolean) => {
     setState({ ...state, collapsed });
@@ -120,7 +141,7 @@ const SimpleLayout: React.FC<SimpleLayoutProps> = (props) => {
             <p></p>
             <Select
               onSelect={(value: string) => setLocale(value, false)}
-              defaultValue="zh-CN"
+              defaultValue={defaultLocale}
               style={{ width: 192 }}
             >
               <Option value="zh-CN">简体中文/Simp. Chinese</Option>

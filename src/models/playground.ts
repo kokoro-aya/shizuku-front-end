@@ -1,9 +1,19 @@
+/*
+ * Copyright (c) 2020-2022. kokoro-aya. All right reserved.
+ * Shizuku - A Playground Front-End implemented with React/Ant Design/UmiJS and Monaco Editor
+ *
+ * This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or any later version.
+ * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
+ * You should have received a copy of the GNU Affero General Public License along with this program. If not, see <https://www.gnu.org/licenses/>.
+ *
+ */
+
 import request from 'umi-request';
 import * as playgroundService from '../services/playground';
 import { message } from 'antd';
 import { ErrorState, ModelStates } from '@/models/playground.types';
 import { Effect, ImmerReducer } from 'umi';
-import { InitStates } from '../../mock/playground';
+import { InitStates } from '../../mock/utils';
 import { SuccessData } from '@/data/ReceivedData';
 import { constructFrame } from '@/Utils';
 import { GameStatus } from '@/data/Enums';
@@ -120,7 +130,7 @@ const model: PlaygroundModelInterface = {
         answer: data.payload.map((p) =>
           constructFrame(p, state.nextFrame.grid, state.nextFrame.stairs),
         ),
-        answerLength: payload.length,
+        answerLength: data.payload.length,
         returnedError: false,
         gameStatus: data.game,
         gained: data.gained,

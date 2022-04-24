@@ -19,16 +19,9 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="095a5d38-2a3c-4e5c-abe6-e5e436d6447a" name="Default Changelist" comment="Add i18n for squares">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+    <list default="true" id="095a5d38-2a3c-4e5c-abe6-e5e436d6447a" name="Default Changelist" comment="Add MFSU support, fixed locale init issue and update readme">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/locales/en-US/square.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/locales/en-US/square.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/locales/fr-FR/square.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/locales/fr-FR/square.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/locales/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/locales/types.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/locales/zh-CN/square.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/locales/zh-CN/square.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/locales/zh-TW/square.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/locales/zh-TW/square.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/playground.page/fragments/Square.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/playground.page/fragments/Square.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,6 +46,11 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="NamedScopeManager">
+    <order>
+      <scope name="Shizuku-Source" />
+    </order>
+  </component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="ProjectErrors" />
   </component>
@@ -72,7 +70,8 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "prettierjs.PrettierConfiguration.Package": "/Users/irony/WebstormProjects/shizuku-front-end/node_modules/prettier",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "project.scopes",
     "ts.external.directory.path": "/Users/irony/WebstormProjects/shizuku-front-end/node_modules/typescript/lib",
     "vue.rearranger.settings.migration": "true"
   }
@@ -147,21 +146,8 @@
       <workItem from="1650499403125" duration="5623000" />
       <workItem from="1650571744331" duration="9670000" />
       <workItem from="1650630136808" duration="9329000" />
-      <workItem from="1650645490736" duration="42246000" />
-    </task>
-    <task id="LOCAL-00001" summary="Commit 1. Page Layout Setup">
-      <created>1608342769408</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1608342769408</updated>
-    </task>
-    <task id="LOCAL-00002" summary="Commit 1.1 removed state in input, now it's lifted up to main">
-      <created>1608374320473</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1608374320473</updated>
+      <workItem from="1650645490736" duration="42538000" />
+      <workItem from="1650756003998" duration="4034000" />
     </task>
     <task id="LOCAL-00003" summary="Commit 2. Highlight textarea">
       <created>1608381547822</created>
@@ -471,7 +457,42 @@
       <option name="project" value="LOCAL" />
       <updated>1650751651499</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="Update README.md">
+      <created>1650753835579</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1650753835579</updated>
+    </task>
+    <task id="LOCAL-00048" summary="added copyright, fixed status bar issue, updated readme and others">
+      <created>1650758177813</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1650758177813</updated>
+    </task>
+    <task id="LOCAL-00049" summary="added copyright, fixed status bar issue, updated readme and others">
+      <created>1650758194158</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1650758194158</updated>
+    </task>
+    <task id="LOCAL-00050" summary="added copyright, fixed status bar issue, updated readme and others">
+      <created>1650758205300</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1650758205301</updated>
+    </task>
+    <task id="LOCAL-00051" summary="Add MFSU support, fixed locale init issue and update readme">
+      <created>1650759866001</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1650759866001</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -506,10 +527,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fixed minor issues, import of enums" />
-    <MESSAGE value="update readme" />
-    <MESSAGE value="license and minor updates" />
-    <MESSAGE value="Monaco editor works, pass theme as state and it works" />
     <MESSAGE value="Bind monaco to state, added themes" />
     <MESSAGE value="Adapted command palette for monaco editor" />
     <MESSAGE value="refactor code" />
@@ -531,6 +548,10 @@
     <MESSAGE value="Fixed map loading/reloading issue and remove useless console.logs" />
     <MESSAGE value="Types for i18n, added collision info, more i18n messages" />
     <MESSAGE value="Add i18n for squares" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add i18n for squares" />
+    <MESSAGE value="Update README.md" />
+    <MESSAGE value="added copyright" />
+    <MESSAGE value="added copyright, fixed status bar issue, updated readme and others" />
+    <MESSAGE value="Add MFSU support, fixed locale init issue and update readme" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add MFSU support, fixed locale init issue and update readme" />
   </component>
 </project>

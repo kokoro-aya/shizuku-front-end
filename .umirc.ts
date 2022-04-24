@@ -23,9 +23,10 @@ export default defineConfig({
   ],
   locale: {
     antd: true,
-    default: 'zh-CN',
+    default: 'en-US',
     title: true,
     baseNavigator: true,
     baseSeparator: '-',
   },
+  mfsu: { production: { output: '.mfsu-production' } },
 });
