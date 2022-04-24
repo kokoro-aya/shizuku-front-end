@@ -32,17 +32,3 @@ export const constructFrame = (
     ...values,
   };
 };
-
-// UseThrottle: https://stackoverflow.com/questions/54666401/how-to-use-throttle-or-debounce-with-react-hook
-export const useThrottle = (cb: (...args: any) => void, delay: number) => {
-  const options = { leading: true, trailing: false }; // add custom lodash options
-  const cbRef = useRef(cb);
-  // use mutable ref to make useCallback/throttle not depend on `cb` dep
-  useEffect(() => {
-    cbRef.current = cb;
-  });
-  return useCallback(
-    _.throttle((...args: any) => cbRef.current(...args), delay, options),
-    [delay],
-  );
-};

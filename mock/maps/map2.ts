@@ -290,3 +290,39 @@ export const map2: InitStates = {
   ],
   userCollision: true,
 };
+
+// Code
+
+// val totalGem = 7
+// var collected = 0
+//
+// val p = Player()
+//
+// fun turnRight() {
+//   p.turnLeft()
+//   p.turnLeft()
+//   p.turnLeft()
+// }
+//
+// while (collected < totalGem) {
+//   if (p.isOnGem) {
+//     console.logln("Collected your ${collected}th gem!")
+//     p.collectGem()
+//     collected += 1
+//   }
+//   if (p.isOnClosedSwitch) {
+//     console.logln("Toggled switch!")
+//     p.toggleSwitch()
+//   }
+//   if (!p.isBlockedRight) {
+//     p.turnRight()
+//     p.moveForward()
+//   } else {
+//     if (p.isBlocked) {
+//       while (p.isBlocked) {
+//         p.turnLeft()
+//       }
+//     }
+//     p.moveForward()
+//   }
+// }

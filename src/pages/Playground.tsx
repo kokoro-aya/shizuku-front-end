@@ -164,14 +164,17 @@ const Playground: React.FC<PlaygroundProps> = (props) => {
       payload: path,
     });
     initialFetch(path);
+    setDisabled(false);
+    setCode('// Input your code...');
   };
 
   const getData = () => {
     props.dispatch<Frame>({
       type: `${namespace}/nextFrame`,
     });
+    console.log(props.returnedError);
     const { nextFrame, answer } = props;
-    if (nextFrame) {
+    if (!props.returnedError) {
       if (!idle && nextFrame.special.includes('GEM')) {
         // console.log('Collected a gem');
         activateNotification(
@@ -225,6 +228,15 @@ const Playground: React.FC<PlaygroundProps> = (props) => {
           );
         }
       }
+    } else {
+      if (!idle) {
+        activateNotification(
+          NotificationType.Error,
+          renderMessage(intl, 'playground.notification.type.error'),
+          renderMessage(intl, 'playground.notification.desc.error'),
+        );
+      }
+      setIdle(true);
     }
     if (!props.returnedError && !idle && answer.length === 0) {
       activateNotification(
@@ -238,8 +250,8 @@ const Playground: React.FC<PlaygroundProps> = (props) => {
 
   const onClickReset = () => {
     setDisabled(false);
-    setCode('// Input your code...');
     initialFetch(props.currentMap);
+    setCode('// Input your code...');
   };
 
   const onClickSubmit = (event: React.MouseEvent<HTMLElement>) => {
@@ -260,8 +272,8 @@ const Playground: React.FC<PlaygroundProps> = (props) => {
         userCollision: props.userCollision,
       },
     });
-    // console.log(props.answer);
-    // console.log(props.answer !== []);
+    console.log(props.answer);
+    console.log(props.answer !== []);
     if (props.answer !== []) {
       // fixme 用同步的思路写异步，错了，而且不能直接[] !== []
       setIdle(false);
@@ -292,7 +304,6 @@ const Playground: React.FC<PlaygroundProps> = (props) => {
     <div
       style={{
         minHeight: '600px',
-        overflow: 'hidden',
       }}
     >
       <Row gutter={[16, 16]}>
@@ -340,7 +351,10 @@ const Playground: React.FC<PlaygroundProps> = (props) => {
               />
             </Row>
             <Row>
-              <Console output={props.nextFrame.output} />
+              <Console
+                output={props.nextFrame.output}
+                err={props.returnedError}
+              />
             </Row>
           </div>
         </Col>

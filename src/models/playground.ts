@@ -11,10 +11,10 @@
 import request from 'umi-request';
 import * as playgroundService from '../services/playground';
 import { message } from 'antd';
-import { ErrorState, ModelStates } from '@/models/playground.types';
+import { ModelStates } from '@/models/playground.types';
 import { Effect, ImmerReducer } from 'umi';
 import { InitStates } from '../../mock/utils';
-import { SuccessData } from '@/data/ReceivedData';
+import { ReceivedData, SuccessData } from '@/data/ReceivedData';
 import { constructFrame } from '@/Utils';
 import { GameStatus } from '@/data/Enums';
 import { initialState } from '@/models/initialstuff';
@@ -32,7 +32,7 @@ export interface PlaygroundModelInterface {
     setMap: ImmerReducer<ModelStates>;
     loadPlayground: ImmerReducer<ModelStates>;
     nextFrame: ImmerReducer<ModelStates>;
-    returnError: ImmerReducer<ErrorState>;
+    returnError: ImmerReducer<ModelStates>;
   };
 }
 
@@ -45,15 +45,13 @@ const model: PlaygroundModelInterface = {
     *handleSubmit({ payload }, { call, put }) {
       // console.log(payload)
       try {
-        const answer = yield call(playgroundService.submit, payload);
-        // console.log(answer)
+        const a_ = yield call(playgroundService.submit, payload);
+        const answer = a_ as ReceivedData;
         if (answer.status === 'OK') {
           message.warn('代码提交成功！');
-          // console.log(answer);
           yield put({ type: 'loadPlayground', payload: answer });
         } else {
-          message.error(answer.msg);
-          yield put({ type: 'returnError' });
+          yield put({ type: 'returnError', payload: { message: answer.msg } });
         }
       } catch (e) {
         message.error('无法连接到远端服务器');
@@ -154,9 +152,13 @@ const model: PlaygroundModelInterface = {
       }
     },
     returnError(state, { payload }) {
-      return {
+      // console.log(payload)
+      const nextState: ModelStates = {
+        ...state,
+        nextFrame: { ...state.nextFrame, output: payload.message ?? '' },
         returnedError: true,
       };
+      return nextState;
     },
   },
 };

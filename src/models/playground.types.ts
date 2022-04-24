@@ -34,7 +34,3 @@ export interface ModelStates {
   gained: number;
   currentMap?: string;
 }
-
-export interface ErrorState {
-  returnedError: boolean;
-}

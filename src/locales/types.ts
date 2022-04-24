@@ -30,6 +30,8 @@ const PLAYGROUND_MESSAGES = [
   'playground.notification.desc.pending',
   'playground.notification.type.endGame',
   'playground.notification.desc.endGame',
+  'playground.notification.type.error',
+  'playground.notification.desc.error',
   'playground.input.loop',
   'playground.input.function',
   'playground.input.changeMap',

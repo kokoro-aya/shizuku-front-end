@@ -134,7 +134,10 @@ const SimpleLayout: React.FC<SimpleLayoutProps> = (props) => {
         <Header
           className="site-layout-background"
           style={{
-            /*position: 'fixed', zIndex: 1, width: '100%',*/ padding: 0,
+            position: 'fixed',
+            zIndex: 999,
+            width: '100%',
+            padding: 0,
           }}
         >
           <Space size="large" align="center">
@@ -177,8 +180,8 @@ const SimpleLayout: React.FC<SimpleLayoutProps> = (props) => {
         <Content
           className="site-layout-background"
           style={{
-            margin: '24px, 16px',
-            padding: 24,
+            marginTop: '100px',
+            padding: '0 50px',
             minHeight: 480,
           }}
         >

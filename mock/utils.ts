@@ -46,7 +46,7 @@ export const option = (p: StoreType, s: StoreKey) => {
     value: s,
     label: s,
     children: p[s].map((e) => {
-      return { value: '' + e.id, label: e.name ?? 'No Name' };
+      return { value: '' + e.id, label: `No.${e.id}. ${e.name ?? 'No Name'}` };
     }),
   };
 };

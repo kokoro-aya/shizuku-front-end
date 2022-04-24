@@ -2,7 +2,8 @@
 
 A front-end for [simulatte](https://github.com/kokoro-aya/simulatte). Run on umijs/antd/monaco editor.
 
-![](./img/screenshot.png)
+![](./img/screenshot1.png)
+![](./img/screenshot2.png)
 
 ## Introduction
 
@@ -57,6 +58,7 @@ test the corresponding map. The default map to be loaded is set to map4 in mock.
 
 ## Known bugs
 
+- You have to wait a while for the map menu to be pop over
 - The ending-game notice might be pop up in the first time as soon as the game is in process, I have fixed this issue but not sure if it persists.
 - You may need to reset the game to make it possible to launch a game (while clicking reset, the playground will keep the same)
 - Bottom lines of the editor box and dashboard box is not aligned on load, but you could resize the page, and then they will be aligned
