@@ -2,7 +2,8 @@
 
 A front-end for [simulatte](https://github.com/kokoro-aya/simulatte). Run on umijs/antd/monaco editor.
 
-![](./img/screenshot.png)
+![](./img/screenshot1.png)
+![](./img/screenshot2.png)
 
 ## Introduction
 

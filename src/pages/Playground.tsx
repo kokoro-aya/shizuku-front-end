@@ -163,7 +163,9 @@ const Playground: React.FC<PlaygroundProps> = (props) => {
       type: `${namespace}/setMap`,
       payload: path,
     });
-    onResetEvent();
+    initialFetch(path);
+    setDisabled(false);
+    setCode('// Input your code...');
   };
 
   const getData = () => {
@@ -246,13 +248,9 @@ const Playground: React.FC<PlaygroundProps> = (props) => {
     }
   };
 
-  const onResetEvent = () => {
+  const onClickReset = () => {
     setDisabled(false);
     initialFetch(props.currentMap);
-  };
-
-  const onClickReset = () => {
-    onResetEvent();
     setCode('// Input your code...');
   };
 
