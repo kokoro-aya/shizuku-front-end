@@ -28,9 +28,71 @@ To run the project, go to the project's folder in terminal, then:
 - Setup a local server via `umi dev` or `npm start`
 - The site could be accessed from `localhost:8000`
 - Run the [Simulatte](https://github.com/kokoro-aya/simulatte) program in a separated terminal in order to be able to connect to server
-- Code something and explore
+- Code something in Kotlin and explore
+
+See [the wiki of Simulatte](https://github.com/kokoro-aya/simulatte/wiki) to know about how the playground is defined and how to use
+the Kotlin language to direct the playground to work using your code.
+
+## How to play
+
+- Initialize a player
+
+  ```kotlin
+  val p = Player() // or a Specialist() 
+  ```
+
+  see the number of `>` in the playground and consult their info (id, role) in dropdown)
+
+  the player with lower id will be first used to fulfill creation of your player unit
+
+- Make it do something
+
+  ```kotlin
+  p.moveForward()
+  p.toggleSwitch()
+  p.collectGem()
+  p.turnLeft()
+  // ... and so on
+  ```
+
+  see the wiki for a comprehensive list of available commands
+
+- Use structural instructions for repeated patterns
+
+  ```kotlin
+  for (i in 1 until 4) {
+      // do something ...
+  }
+  ```
+
+  or
+
+  ```kotlin
+  val a = 3
+  while (a > 0) {
+      // do something ...
+      a -= 1
+  }
+  ```
+
+  or
+
+  ```kotlin
+  val goal = 10
+  // do something ...
+  if (p.collectedGem < 10) {
+      // do something ...
+  }
+  ```
+
+  see the wiki for a comprehensive list of available global variables that you can rely on to check the game's status
+
+- Observer the game, recode it and have fun
 
 ## Technic issues
+
+Due to some limit of server side, methods like `println` or `print` will not output to the console in the front-end. Use `console.log`
+and `console.logln` instead.
 
 Due to limit of Ant Design, dynamic dark mode cannot be achieved or could be very hard to implement so the idea was abandoned.
 
@@ -38,7 +100,7 @@ The Simulatte server has implemented some advanced features such as map leveling
 server is imperfect and presents tons of bugs regarding these advanced features, they are not featured in this project. Still,
 I have implemented data structures regarding these features, but only reserved for future usage.
 
-Besides, the game type is `default` only and no `creative` type. The idea of this project is just to feature some basic ideas 
+Besides, the game type is `default` only and no `creative` type. The idea of this project is just to feature some basic ideas
 of the playground.
 
 The layout is on 2d, this has created difficulty to present information (for example, when different objects overlap), I have
@@ -67,6 +129,7 @@ More documentations are under construction.
 
 ## Features that could be implemented later
 
+- [ ] Upgrade to use Umi4 (Umi Next) and make use of more powerful mechanisms such as mock.js
 - [ ] A simple map editor
 - [ ] A connected server and code evaluation *on the fly* (need to adapt the server at the same time)
 - [ ] A gallery of maps and maybe a map server to persist data
