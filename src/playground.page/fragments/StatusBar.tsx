@@ -84,7 +84,7 @@ const StatusBar: React.FC<StatusBarProps> = (props) => {
             <Tag style={spanStyle} color="blue">
               {renderMessage(intl, 'playground.status.gem', {
                 gemInBag: props.gemInBag,
-                gemOnGround: props.gemOnGround,
+                allGems: props.gemOnGround + props.gemInBag,
               })}
             </Tag>
           </div>

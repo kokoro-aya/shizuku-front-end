@@ -13,17 +13,21 @@ import { animateScroll } from 'react-scroll';
 
 interface ConsoleProps {
   output: string;
+  err: boolean;
 }
 
-const consoleStyle = {
-  flexGrow: '1',
-  height: '192px',
-  margin: '5%',
-  border: '1px solid #ccc',
-  overflow: 'auto' as const,
-  fontSize: '15px',
-  whiteSpace: 'pre-wrap' as const,
-  textAlign: 'left' as const,
+const consoleStyle = (err: boolean) => {
+  return {
+    flexGrow: '1',
+    height: '192px',
+    margin: '5%',
+    border: '1px solid #ccc',
+    color: err ? 'red' : undefined,
+    overflow: 'auto' as const,
+    fontSize: '15px',
+    whiteSpace: 'pre-wrap' as const,
+    textAlign: 'left' as const,
+  };
 };
 
 export default class Console extends React.Component<ConsoleProps, {}> {
@@ -44,7 +48,11 @@ export default class Console extends React.Component<ConsoleProps, {}> {
 
   render() {
     return (
-      <div className="Console" id="console" style={consoleStyle}>
+      <div
+        className="Console"
+        id="console"
+        style={consoleStyle(this.props.err)}
+      >
         {this.props.output}
       </div>
     );
