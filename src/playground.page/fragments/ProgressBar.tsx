@@ -19,7 +19,7 @@ interface ProgressBarProps {
 const ProgressBar: React.FC<ProgressBarProps> = (props) => {
   // console.log(props.curr, props.total)
   const progress = Math.round((props.curr * 100) / props.total);
-  const active = progress > 0 && progress < 100 ? 'active' : 'normal';
+  const active = progress > 0 && progress < 100 ? 'active' : undefined;
   return (
     <div style={{ padding: '0% 5% 0% 5%', width: '100%' }}>
       <Progress percent={progress} status={active} />

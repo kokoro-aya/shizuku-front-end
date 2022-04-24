@@ -292,7 +292,6 @@ const Playground: React.FC<PlaygroundProps> = (props) => {
     <div
       style={{
         minHeight: '600px',
-        overflow: 'hidden',
       }}
     >
       <Row gutter={[16, 16]}>

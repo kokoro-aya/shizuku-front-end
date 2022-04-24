@@ -30,14 +30,11 @@ let playgrounds: StoreType = {
   custom: [],
 };
 
-let random_playground = 0;
-
 export default {
   // Return type: InitStates
   'get /dev/playground/fetch/default': (req: Request, res: Response) => {
     // const responseObj = playgrounds[random_playground % playgrounds.length]
     const responseObj = map4;
-    random_playground += 1;
     setTimeout(() => {
       res.json(responseObj);
     }, 1000);
@@ -77,9 +74,17 @@ export default {
     const category = req.params.category;
     const id = parseInt(req.params.id);
     if (isTypeKey(category)) {
-      setTimeout(() => {
-        res.json(playgrounds[category][id]);
-      });
+      const map = playgrounds[category].find((e) => e.id === id);
+      if (map !== undefined) {
+        setTimeout(() => {
+          res.json(map);
+        });
+      } else {
+        res.json({
+          success: false,
+          message: `No map with id = ${id} has been found`,
+        });
+      }
     } else {
       setTimeout(() => {
         res.json({

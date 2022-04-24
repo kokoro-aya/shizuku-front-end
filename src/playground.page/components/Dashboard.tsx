@@ -93,7 +93,7 @@ const Dashboard: React.FC<DashboardProp> = (props) => {
               lock === undefined
                 ? undefined
                 : {
-                    controlled: lock.controlled!,
+                    controlled: lock.controlled ?? [],
                     isActive: lock.isActive,
                     energy: lock.energy,
                   },
