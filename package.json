@@ -34,7 +34,7 @@
     "react-contenteditable": "^3.3.5",
     "react-dom": "^17.0.0",
     "react-scroll": "^1.8.1",
-    "umi": "^3.3.1",
+    "umi": "^3.5.0",
     "yorkie": "^2.0.0"
   },
   "devDependencies": {

@@ -8,7 +8,7 @@
  *
  */
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Layout, Menu, Select, Space } from 'antd';
 import {
   AndroidOutlined,
@@ -24,6 +24,7 @@ import { connect, Link } from 'umi';
 import { Theme, ThemeState } from '@/models/codescheme';
 import { DispatchSender } from '@/models/dispatch.type';
 import { setLocale, useIntl } from 'umi';
+import { getLocale } from '@@/plugin-locale/localeExports';
 
 const namespace = 'codescheme';
 
@@ -51,6 +52,16 @@ const SimpleLayout: React.FC<SimpleLayoutProps> = (props) => {
     collapsed: false,
     theme: 'light',
   });
+
+  let defaultLocale = 'zh-CN';
+
+  const locale = getLocale();
+  if (['zh-CN', 'zh-TW', 'en-US', 'fr-FR'].includes(locale)) {
+    defaultLocale = locale;
+  } else {
+    setLocale('en-US', false);
+    defaultLocale = 'en-US';
+  }
 
   const onCollapse = (collapsed: boolean) => {
     setState({ ...state, collapsed });
@@ -130,7 +141,7 @@ const SimpleLayout: React.FC<SimpleLayoutProps> = (props) => {
             <p></p>
             <Select
               onSelect={(value: string) => setLocale(value, false)}
-              defaultValue="zh-CN"
+              defaultValue={defaultLocale}
               style={{ width: 192 }}
             >
               <Option value="zh-CN">简体中文/Simp. Chinese</Option>
