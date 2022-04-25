@@ -19,8 +19,7 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="095a5d38-2a3c-4e5c-abe6-e5e436d6447a" name="Default Changelist" comment="fixed a bug where the error of code execution will run into undefined (in fact, all reducers in a namespace must share the same store), and minor fixed in appearance">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="095a5d38-2a3c-4e5c-abe6-e5e436d6447a" name="Default Changelist" comment="update README.md">
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -38,7 +37,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="dev" />
+        <entry key="$PROJECT_DIR$" value="fd03e210135b466e6550080554a67e4ec9c5be02" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -153,13 +152,6 @@
       <workItem from="1650761476727" duration="266000" />
       <workItem from="1650762519146" duration="559000" />
       <workItem from="1650801164516" duration="5766000" />
-    </task>
-    <task id="LOCAL-00006" summary="Commit 3.1 Add modal for change of map (currently not implemented)">
-      <created>1608417083232</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1608417083232</updated>
     </task>
     <task id="LOCAL-00007" summary="Commit 3.2 minor updates">
       <created>1608474408473</created>
@@ -497,7 +489,14 @@
       <option name="project" value="LOCAL" />
       <updated>1650811924108</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL-00055" summary="update README.md">
+      <created>1650829215699</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1650829215700</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -532,7 +531,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="refactor code" />
     <MESSAGE value="now the code works and css is awesome" />
     <MESSAGE value="added more maps" />
     <MESSAGE value="added more maps and minor fixes" />
@@ -557,6 +555,23 @@
     <MESSAGE value="Add MFSU support, fixed locale init issue and update readme" />
     <MESSAGE value="fixed issue on controlled locks and make the header fixed position" />
     <MESSAGE value="fixed a bug where the error of code execution will run into undefined (in fact, all reducers in a namespace must share the same store), and minor fixed in appearance" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed a bug where the error of code execution will run into undefined (in fact, all reducers in a namespace must share the same store), and minor fixed in appearance" />
+    <MESSAGE value="update README.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="update README.md" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/models/playground.js</url>
+          <line>72</line>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/fragments/Utils.jsx</url>
+          <line>13</line>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

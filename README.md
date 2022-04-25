@@ -88,6 +88,8 @@ the Kotlin language to direct the playground to work using your code.
   see the wiki for a comprehensive list of available global variables that you can rely on to check the game's status
 
 - Observer the game, recode it and have fun
+- You may write code that runs into error or wrong codes, the interface will reflect them and you can see the error occurred in
+server side as well to confirm it
 
 ## Technic issues
 
@@ -118,12 +120,14 @@ test the corresponding map. The default map to be loaded is set to map4 in mock.
 - [x] i18n in a typed way (4 languages are supported: zh-CN, zh-TW, en-US and fr-FR)
 - [x] Some predefined maps and possibility to switch the map
 
-## Known bugs
+## Known issues
 
-- You have to wait a while for the map menu to be pop over
+- The first connection to the server may take longer to response, once the server is set up, it will be much faster to connect to the server and receive response.
+This is caused by the usage of reflection and ki-shell in the server side.
+- You have to wait awhile for the map menu to be pop over
 - The ending-game notice might be pop up in the first time as soon as the game is in process, I have fixed this issue but not sure if it persists.
 - You may need to reset the game to make it possible to launch a game (while clicking reset, the playground will keep the same)
-- Bottom lines of the editor box and dashboard box is not aligned on load, but you could resize the page, and then they will be aligned
+- Bottom lines of the editor box and dashboard box is not aligned on load, but you could resize the page, and then they will be aligned at resizing events
 
 More documentations are under construction.
 
