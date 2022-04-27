@@ -25,7 +25,7 @@ NPM is required.
 To run the project, go to the project's folder in terminal, then:
 
 - Install dependencies via `npm install`
-- Setup a local server via `umi dev` or `npm start`
+- Setup a local server via `npm start`
 - The site could be accessed from `localhost:8000`
 - Run the [Simulatte](https://github.com/kokoro-aya/simulatte) program (please use version newer than ver 3.3.4) in a separated terminal in order to be able to connect to server
 - Code something in Kotlin and explore
