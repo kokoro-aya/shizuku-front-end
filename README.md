@@ -138,6 +138,8 @@ More documentations are under construction.
 - [ ] A connected server and code evaluation *on the fly* (need to adapt the server at the same time)
 - [ ] A gallery of maps and maybe a map server to persist data
 
+An adaptation to 3d playground instead of 2d grid could be considered. There is a plan to port it to the three.js.
+
 ## Main libraries used
 
 - React / ver 17
